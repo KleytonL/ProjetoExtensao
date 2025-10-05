@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c5qfijvh88uqm"]
+[gd_scene load_steps=23 format=3 uid="uid://c5qfijvh88uqm"]
 
 [ext_resource type="Script" uid="uid://dvi2mnhktqoic" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://b5v2ipax1ogj4" path="res://resources/Sprite-0001.png" id="2_onrkg"]
@@ -129,6 +129,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(8, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(16, 16)
 
@@ -141,7 +144,13 @@ animation = &"run"
 frame = 2
 frame_progress = 0.6609807
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qhqgy")
+disabled = true
+
+[node name="SceneryCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(0.35, 0.35)
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="."]

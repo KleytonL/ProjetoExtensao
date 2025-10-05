@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
+const SPEED = 75.0
 const DECELERATION = 300.0
 
 @onready var _animation = $AnimatedSprite2D
