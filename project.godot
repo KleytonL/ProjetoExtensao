@@ -36,4 +36,4 @@ punch={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.1254902, 0.08235294, 0.2, 1)
+environment/defaults/default_clear_color=Color(0.08235294, 0.2, 0.12156863, 1)
