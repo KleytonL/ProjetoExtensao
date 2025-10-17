@@ -233,11 +233,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(53.333332, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(8, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(33.333336, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(16, 16)
@@ -271,7 +271,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D/CombatCollisions/HitBox:disabled")
+tracks/2/path = NodePath("AnimatedSprite2D/HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -342,7 +342,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D/CombatCollisions/HitBox:disabled")
+tracks/2/path = NodePath("AnimatedSprite2D/HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -461,25 +461,30 @@ states/run/node = SubResource("AnimationNodeBlendTree_fjrip")
 states/run/position = Vector2(694, 232)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_dqkch"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "run", "punch", SubResource("AnimationNodeStateMachineTransition_fjrip"), "punch", "run", SubResource("AnimationNodeStateMachineTransition_smehm"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ur7pv")]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
 script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b26j0")
 animation = &"idle"
 
-[node name="CombatCollisions" type="Area2D" parent="AnimatedSprite2D"]
+[node name="HitBox" type="Area2D" parent="AnimatedSprite2D" groups=["player_hitbox"]]
 collision_layer = 2
 collision_mask = 2
 
-[node name="HurtBox" type="CollisionShape2D" parent="AnimatedSprite2D/CombatCollisions"]
-shape = SubResource("RectangleShape2D_qhqgy")
-
-[node name="HitBox" type="CollisionShape2D" parent="AnimatedSprite2D/CombatCollisions"]
-position = Vector2(16, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
+position = Vector2(13, 0)
 scale = Vector2(0.3, 0.5)
 shape = SubResource("RectangleShape2D_dqkch")
 disabled = true
+
+[node name="HurtBox" type="Area2D" parent="AnimatedSprite2D" groups=["player_hurtbox"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HurtBox"]
+shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="SceneryCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -500,3 +505,5 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/idle/TimeScale/scale = 0.60000336
 parameters/punch/TimeScale/scale = 3.5
 parameters/run/TimeScale/scale = 1.25
+
+[connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="_on_combat_collisions_area_entered"]
