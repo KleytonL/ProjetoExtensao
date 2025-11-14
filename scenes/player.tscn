@@ -150,6 +150,11 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dqkch")
@@ -431,9 +436,6 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
 nodes/TimeScale/position = Vector2(520, 120)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dqkch"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qlg0r"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y4r1p"]
@@ -451,15 +453,18 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ur7pv"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dqkch"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dqkch"]
-states/Start/position = Vector2(176, 100)
+states/Start/position = Vector2(206, 100)
 states/idle/node = SubResource("AnimationNodeBlendTree_ur7pv")
 states/idle/position = Vector2(576, 100)
 states/punch/node = SubResource("AnimationNodeBlendTree_tuyoq")
 states/punch/position = Vector2(457, 232)
 states/run/node = SubResource("AnimationNodeBlendTree_fjrip")
 states/run/position = Vector2(694, 232)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_dqkch"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "run", "punch", SubResource("AnimationNodeStateMachineTransition_fjrip"), "punch", "run", SubResource("AnimationNodeStateMachineTransition_smehm"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ur7pv")]
+transitions = ["idle", "End", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "run", "punch", SubResource("AnimationNodeStateMachineTransition_fjrip"), "punch", "run", SubResource("AnimationNodeStateMachineTransition_smehm"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_dqkch")]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1

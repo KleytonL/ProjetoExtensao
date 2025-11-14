@@ -58,7 +58,7 @@ func set_state(new_state: States) -> void:
 		state_machine.travel("punch")
 		velocity = knockback
 		await _animation.animation_finished
-		state = previous_state
+		state = States.IDLE
 
 func take_damage(damage: int) -> void:
 	set_state(States.HURT)
