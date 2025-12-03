@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://nyyc581y20pa"]
+[gd_scene load_steps=3 format=3 uid="uid://nyyc581y20pa"]
+
+[ext_resource type="Script" uid="uid://bj58y8j25ptbf" path="res://scripts/credits_menu.gd" id="1_27l6r"]
+[ext_resource type="Texture2D" uid="uid://cvx46v5a4qlnu" path="res://resources/TeamLogo.png" id="2_p38dx"]
 
 [node name="credits_menu" type="Control"]
 layout_mode = 3
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_27l6r")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -16,3 +20,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1254902, 0.08235294, 0.2, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p38dx")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="voltar_btn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 94.0
+offset_right = 233.0
+offset_bottom = 125.0
+text = "Voltar"
+
+[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]

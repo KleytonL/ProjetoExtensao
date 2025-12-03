@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdeic8y778515"]
+
+[ext_resource type="Script" uid="uid://cy3uf441bvb7x" path="res://pause_menu.gd" id="1_n87rw"]
+
+[node name="pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n87rw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.08235294, 0.2, 0.39215687)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="resume_btn" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Retomar"
+
+[node name="restart_btn" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reiniciar"
+
+[node name="exit_btn" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sair"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]

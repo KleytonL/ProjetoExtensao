@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://malowjn7nk0u"
-path="res://.godot/imported/Sprite-0004.svg-8d46220273f977bc49f7ac69d6dac25d.ctex"
+uid="uid://ncrgpoebctbv"
+path="res://.godot/imported/spritesheet-hayato.svg-c3496c9fb5ba7af4860d430f4f4cb8c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Sprite-0004.svg"
-dest_files=["res://.godot/imported/Sprite-0004.svg-8d46220273f977bc49f7ac69d6dac25d.ctex"]
+source_file="res://resources/spritesheet-hayato.svg"
+dest_files=["res://.godot/imported/spritesheet-hayato.svg-c3496c9fb5ba7af4860d430f4f4cb8c8.ctex"]
 
 [params]
 

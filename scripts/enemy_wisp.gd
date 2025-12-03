@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-const SPEED = 25.0
-const DAMAGE = 10
+const SPEED = 10.0
+const DAMAGE = 3
 
 var health = 10
 @onready var player = get_tree().get_first_node_in_group("Player")
