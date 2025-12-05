@@ -12,7 +12,7 @@ func pause():
 	get_tree().paused = true
 
 func pauseGame():
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pauseBtn"):
 		if get_tree().paused:
 			resume()
 		else:

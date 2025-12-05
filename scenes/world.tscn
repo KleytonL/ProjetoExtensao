@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://rtuwmx00d3gh"]
+[gd_scene load_steps=8 format=4 uid="uid://rtuwmx00d3gh"]
 
 [ext_resource type="PackedScene" uid="uid://c5qfijvh88uqm" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://ccphn3uunk7c2" path="res://scenes/enemy_spawner.tscn" id="2_k0juu"]
 [ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/Sprite-0003-Sheet.svg" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://cdeic8y778515" path="res://scenes/pause_menu.tscn" id="4_k0juu"]
+[ext_resource type="PackedScene" uid="uid://c1kbped141h63" path="res://scenes/deathscreen.tscn" id="5_71j4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("3_4wyf3")
@@ -108,3 +109,6 @@ tile_set = SubResource("TileSet_k0juu")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_k0juu")]
+
+[node name="deathscreen" parent="CanvasLayer" instance=ExtResource("5_71j4m")]
+visible = false
