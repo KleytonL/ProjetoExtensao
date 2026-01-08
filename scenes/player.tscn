@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c5qfijvh88uqm"]
+[gd_scene load_steps=58 format=3 uid="uid://c5qfijvh88uqm"]
 
 [ext_resource type="Script" uid="uid://dvi2mnhktqoic" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://ncrgpoebctbv" path="res://resources/spritesheet-hayato.svg" id="2_g2els"]
@@ -7,7 +7,7 @@
 size = Vector2(6, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(28, 20)
+size = Vector2(28, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(16, 16)
@@ -62,7 +62,7 @@ tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
+"times": PackedFloat32Array(0, 0.3, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -90,7 +90,7 @@ tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.90000004),
+"times": PackedFloat32Array(0, 0.4, 0.90000004),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -225,7 +225,7 @@ animation = &"attack_animation_02"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_smehm"]
-graph_offset = Vector2(2, 140)
+graph_offset = Vector2(-37.90912, 145.36363)
 nodes/output/position = Vector2(760, 200)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_tuyoq")
 nodes/Animation/position = Vector2(300, 180)
@@ -250,11 +250,16 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smehm"]
 animation = &"dash_animation"
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_smehm"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ur7pv"]
+graph_offset = Vector2(-164, 288)
 nodes/output/position = Vector2(580, 280)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_smehm")
 nodes/Animation/position = Vector2(153.67001, 307.34003)
-node_connections = [&"output", 0, &"Animation"]
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_smehm")
+nodes/TimeScale/position = Vector2(400, 360)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
 animation = &"hurt_animation"
@@ -376,7 +381,7 @@ states/idle_anim/position = Vector2(543, 100)
 states/run_anim/node = SubResource("AnimationNodeBlendTree_qlg0r")
 states/run_anim/position = Vector2(543, 320)
 transitions = ["Start", "idle_anim", SubResource("AnimationNodeStateMachineTransition_g2els"), "idle_anim", "End", SubResource("AnimationNodeStateMachineTransition_qhqgy"), "idle_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "run_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_dqkch"), "run_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "hurt_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_smehm"), "hurt_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "idle_anim", "atk_anim_01", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "atk_anim_01", "atk_anim_02", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "atk_anim_02", "atk_anim_03", SubResource("AnimationNodeStateMachineTransition_jej6c"), "atk_anim_03", "idle_anim", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "atk_anim_02", "idle_anim", SubResource("AnimationNodeStateMachineTransition_oprun"), "atk_anim_01", "idle_anim", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "atk_anim_01", "run_anim", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "atk_anim_02", "run_anim", SubResource("AnimationNodeStateMachineTransition_qfm1y"), "atk_anim_03", "run_anim", SubResource("AnimationNodeStateMachineTransition_fulsm"), "idle_anim", "dash_anim", SubResource("AnimationNodeStateMachineTransition_4r5pv"), "run_anim", "dash_anim", SubResource("AnimationNodeStateMachineTransition_60mlk"), "dash_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_i4ail"), "dash_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_a38lo")]
-graph_offset = Vector2(38, 107)
+graph_offset = Vector2(-21, -37)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
@@ -421,15 +426,16 @@ next/attack_animation_01 = &"attack_animation_01"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_g2els")
 anim_player = NodePath("../AnimationPlayer")
-parameters/atk_anim_01/TimeScale/scale = 2.0
+parameters/atk_anim_01/TimeScale/scale = 2.5
 parameters/atk_anim_02/TimeScale/scale = 2.0
-parameters/atk_anim_03/TimeScale/scale = 2.0
+parameters/atk_anim_03/TimeScale/scale = 1.7999999999999972
+parameters/dash_anim/TimeScale/scale = 4.0
 parameters/hurt_anim/TimeScale/scale = 2.0
 parameters/idle_anim/TimeScale/scale = 0.7000000000000028
 parameters/run_anim/TimeScale/scale = 1.2000000000000028
 
 [node name="AttackResetTimer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.7
 
 [connection signal="area_entered" from="Sprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="AttackResetTimer" to="." method="_on_attack_reset_timer_timeout"]

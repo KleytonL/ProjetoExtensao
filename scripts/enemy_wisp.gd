@@ -1,7 +1,7 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 const SPEED = 10.0
-const DAMAGE = 3
+const DAMAGE = 5
 
 enum States {ACTIVE, HURT}
 var state: States = States.ACTIVE : set = set_state
@@ -11,11 +11,15 @@ var health = 10
 @onready var _sprite = $Sprite2D
 @onready var _animation = $AnimationTree
 
+var knockback: Vector2 = Vector2.ZERO
+var exp_base = preload("res://scenes/experience.tscn")
+
 func _physics_process(delta: float) -> void:
-	if player:
+	if player && state == States.ACTIVE:
 		var direction = global_position.direction_to(player.global_position)
-		linear_velocity = direction * SPEED
-		_sprite.scale.x = -1 if linear_velocity.x < 0 else 1
+		velocity = direction * SPEED
+		_sprite.scale.x = -1 if velocity.x < 0 else 1
+	move_and_slide()
 
 func set_state(new_state: States) -> void:
 	var state_machine = _animation.get("parameters/playback")
@@ -26,7 +30,9 @@ func set_state(new_state: States) -> void:
 		state_machine.travel("active_anim")
 	elif state == States.HURT:
 		state_machine.travel("hurt_anim")
+		velocity = knockback
 		await _animation.animation_finished
+		velocity = Vector2.ZERO
 		state = previous_state
 
 func take_damage(damage: int) -> void:
@@ -34,6 +40,9 @@ func take_damage(damage: int) -> void:
 	health = health - damage
 	if health <= 0:
 		queue_free()
+
+func apply_knockback(direction: Vector2, force: float) -> void:
+	knockback = direction * force
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	var knockback_direction = (player.global_position - global_position).normalized()

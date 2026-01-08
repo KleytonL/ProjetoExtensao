@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum States {IDLE, RUN, ATK01, ATK02, ATK03, HURT, DEAD}
+enum States {IDLE, RUN, DASH, ATK01, ATK02, ATK03, HURT}
 
 const SPEED = 50.0
 const DECELERATION = 200.0
@@ -13,6 +13,7 @@ var health: int = 100
 var knockback: Vector2 = Vector2.ZERO
 @onready var _sprite = $Sprite2D
 @onready var _animation = $AnimationTree
+@onready var _hurtbox = $Sprite2D/HurtBox/CollisionShape2D
 @onready var _timer = $AttackResetTimer
 
 func _physics_process(delta: float) -> void:
@@ -44,10 +45,13 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_pressed("attackBtn") && atkPoints == 1:
 			atkPoints -= 1
 			set_state(States.ATK03)
-		
+
+		if Input.is_action_just_pressed("dashBtn"):
+			set_state(States.DASH)
+
 		if state in [States.ATK01, States.ATK02, States.ATK03]:
 			velocity = Vector2.ZERO
-
+	
 	move_and_slide()
 
 func set_state(new_state: States) -> void:
@@ -60,16 +64,24 @@ func set_state(new_state: States) -> void:
 	elif state == States.RUN:
 		state_machine.travel("run_anim")
 		_sprite.scale.x = -1 if velocity.x < 0 else 1
+	elif state == States.DASH:
+		state_machine.travel("dash_anim")
+		velocity.x *= 2.25
+		_hurtbox.disabled = true
+		await _animation.animation_finished
+		velocity = Vector2.ZERO
+		_hurtbox.disabled = false
+		state = previous_state
 	elif state == States.ATK01:
 		state_machine.travel("atk_anim_01")
 		await _animation.animation_finished
-		state = previous_state
 		_timer.start()
+		state = previous_state
 	elif state == States.ATK02:
 		state_machine.travel("atk_anim_02")
 		await _animation.animation_finished
-		state = States.IDLE
 		_timer.start()
+		state = States.IDLE
 	elif state == States.ATK03:
 		state_machine.travel("atk_anim_03")
 		await _animation.animation_finished
@@ -95,7 +107,10 @@ func apply_knockback(direction: Vector2, force: float) -> void:
 
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
+	#a coisa mais depressiva desse código
+	var knockback_direction = (area.get_parent().get_parent().global_position - global_position).normalized()
 	if area.is_in_group("enemy_hurtbox"):
+		area.get_parent().get_parent().apply_knockback(knockback_direction, 20.0)
 		area.get_parent().get_parent().take_damage(DAMAGE)
 
 
