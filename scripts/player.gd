@@ -8,18 +8,18 @@ const DAMAGE = 2
 
 var atkPoints = 3;
 var state: States = States.IDLE : set = set_state
-
+var level = 0
 var health: int = 100
 var knockback: Vector2 = Vector2.ZERO
 @onready var _sprite = $Sprite2D
 @onready var _animation = $AnimationTree
-@onready var _hurtbox = $Sprite2D/HurtBox/CollisionShape2D
+@onready var _hurtbox = $HurtBox/CollisionShape2D
 @onready var _timer = $AttackResetTimer
 
 func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
-	
+
 	if state in [States.IDLE, States.RUN]:
 		if direction_x:
 			velocity.x = direction_x * SPEED
@@ -66,7 +66,7 @@ func set_state(new_state: States) -> void:
 		_sprite.scale.x = -1 if velocity.x < 0 else 1
 	elif state == States.DASH:
 		state_machine.travel("dash_anim")
-		velocity.x *= 2.25
+		velocity *= 2.5
 		_hurtbox.disabled = true
 		await _animation.animation_finished
 		velocity = Vector2.ZERO
@@ -99,21 +99,28 @@ func take_damage(damage: int) -> void:
 	set_state(States.HURT)
 	health = health - damage
 	if health <= 0:
-		queue_free()
+		call_deferred("queue_free")
 		get_tree().change_scene_to_file("res://scenes/deathscreen.tscn")
 
 func apply_knockback(direction: Vector2, force: float) -> void:
 	knockback = direction * force
 
-
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	#a coisa mais depressiva desse código
-	var knockback_direction = (area.get_parent().get_parent().global_position - global_position).normalized()
+	var knockback_direction = (area.get_parent().global_position - global_position).normalized()
 	if area.is_in_group("enemy_hurtbox"):
-		area.get_parent().get_parent().apply_knockback(knockback_direction, 20.0)
-		area.get_parent().get_parent().take_damage(DAMAGE)
-
+		area.get_parent().apply_knockback(knockback_direction, 20.0)
+		area.get_parent().call_deferred("take_damage", DAMAGE)
 
 func _on_attack_reset_timer_timeout() -> void:
 	set_state(States.IDLE)
 	atkPoints = 3;
+
+
+func _on_pull_range_area_entered(area: Area2D) -> void:
+	if area.is_in_group("collectables"):
+		area.target = self
+
+func _on_collect_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("collectables"):
+		area.call_deferred("queue_free")

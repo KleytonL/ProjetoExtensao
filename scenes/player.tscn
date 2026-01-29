@@ -1,16 +1,22 @@
-[gd_scene load_steps=58 format=3 uid="uid://c5qfijvh88uqm"]
+[gd_scene format=3 uid="uid://c5qfijvh88uqm"]
 
 [ext_resource type="Script" uid="uid://dvi2mnhktqoic" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://ncrgpoebctbv" path="res://resources/spritesheet-hayato.svg" id="2_g2els"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(6, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(28, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(6, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 3.0
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -383,47 +389,59 @@ states/run_anim/position = Vector2(543, 320)
 transitions = ["Start", "idle_anim", SubResource("AnimationNodeStateMachineTransition_g2els"), "idle_anim", "End", SubResource("AnimationNodeStateMachineTransition_qhqgy"), "idle_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "run_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_dqkch"), "run_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "hurt_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_smehm"), "hurt_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "idle_anim", "atk_anim_01", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "atk_anim_01", "atk_anim_02", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "atk_anim_02", "atk_anim_03", SubResource("AnimationNodeStateMachineTransition_jej6c"), "atk_anim_03", "idle_anim", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "atk_anim_02", "idle_anim", SubResource("AnimationNodeStateMachineTransition_oprun"), "atk_anim_01", "idle_anim", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "atk_anim_01", "run_anim", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "atk_anim_02", "run_anim", SubResource("AnimationNodeStateMachineTransition_qfm1y"), "atk_anim_03", "run_anim", SubResource("AnimationNodeStateMachineTransition_fulsm"), "idle_anim", "dash_anim", SubResource("AnimationNodeStateMachineTransition_4r5pv"), "run_anim", "dash_anim", SubResource("AnimationNodeStateMachineTransition_60mlk"), "dash_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_i4ail"), "dash_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_a38lo")]
 graph_offset = Vector2(-21, -37)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1155197298 groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_onrkg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1469339804]
 texture = ExtResource("2_g2els")
 hframes = 9
 vframes = 6
 
-[node name="HurtBox" type="Area2D" parent="Sprite2D" groups=["player_hurtbox"]]
+[node name="HitBox" type="Area2D" parent="Sprite2D" unique_id=94988456 groups=["player_hitbox"]]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_g2els")
-
-[node name="HitBox" type="Area2D" parent="Sprite2D" groups=["player_hitbox"]]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox" unique_id=1707922413]
 position = Vector2(14, 0)
 shape = SubResource("RectangleShape2D_qhqgy")
 disabled = true
 
-[node name="SceneryCollision" type="CollisionShape2D" parent="."]
+[node name="SceneryCollision" type="CollisionShape2D" parent="." unique_id=2063977328]
 position = Vector2(0, 5)
 scale = Vector2(0.6, 0.3)
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1511141511]
 position_smoothing_speed = 20.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_y4r1p")
-}
+[node name="HurtBox" type="Area2D" parent="." unique_id=283028893 groups=["player_hurtbox"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=60886327]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="PullRange" type="Area2D" parent="." unique_id=2037866254]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullRange" unique_id=961783433]
+shape = SubResource("CircleShape2D_qhqgy")
+
+[node name="CollectArea" type="Area2D" parent="." unique_id=43664321]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea" unique_id=1273212571]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1044955616]
+libraries/ = SubResource("AnimationLibrary_y4r1p")
 next/attack_animation_01 = &"attack_animation_01"
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=2051751713]
 tree_root = SubResource("AnimationNodeStateMachine_g2els")
 anim_player = NodePath("../AnimationPlayer")
 parameters/atk_anim_01/TimeScale/scale = 2.5
@@ -434,8 +452,10 @@ parameters/hurt_anim/TimeScale/scale = 2.0
 parameters/idle_anim/TimeScale/scale = 0.7000000000000028
 parameters/run_anim/TimeScale/scale = 1.2000000000000028
 
-[node name="AttackResetTimer" type="Timer" parent="."]
+[node name="AttackResetTimer" type="Timer" parent="." unique_id=704023711]
 wait_time = 0.7
 
 [connection signal="area_entered" from="Sprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="PullRange" to="." method="_on_pull_range_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 [connection signal="timeout" from="AttackResetTimer" to="." method="_on_attack_reset_timer_timeout"]

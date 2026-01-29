@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://cq2hne6jxythc"]
+[gd_scene format=3 uid="uid://cq2hne6jxythc"]
 
 [ext_resource type="Script" uid="uid://bu71qcx3yexab" path="res://scripts/enemy_wisp.gd" id="1_pfldh"]
+[ext_resource type="Texture2D" uid="uid://cjd2wolu70se" path="res://resources/spritesheet-wispG1.svg" id="2_pfldh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
+radius = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_graqp"]
 size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cw7i"]
 size = Vector2(6, 4)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
-radius = 3.0
 
 [sub_resource type="Animation" id="Animation_0cw7i"]
 length = 0.001
@@ -115,44 +116,42 @@ states/hurt_anim/position = Vector2(538, 230)
 transitions = ["Start", "active_anim", SubResource("AnimationNodeStateMachineTransition_graqp"), "active_anim", "End", SubResource("AnimationNodeStateMachineTransition_0cw7i"), "active_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_dm05c"), "hurt_anim", "active_anim", SubResource("AnimationNodeStateMachineTransition_ymxtd")]
 graph_offset = Vector2(9, 51)
 
-[node name="enemy_wispG2" type="CharacterBody2D" groups=["Enemy"]]
+[node name="enemy_wispG1" type="CharacterBody2D" unique_id=1459275880 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_pfldh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1332708801]
+texture = ExtResource("2_pfldh")
 hframes = 7
 vframes = 2
 
-[node name="HurtBox" type="Area2D" parent="Sprite2D" groups=["enemy_hurtbox"]]
+[node name="OtherCollisions" type="CollisionShape2D" parent="." unique_id=611785299]
+shape = SubResource("CircleShape2D_graqp")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1047293221 groups=["enemy_hurtbox"]]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=808563412]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_graqp")
 
-[node name="HitBox" type="Area2D" parent="Sprite2D" groups=["enemy_hitbox"]]
+[node name="HitBox" type="Area2D" parent="." unique_id=1101868041 groups=["enemy_hitbox"]]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=545874123]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_0cw7i")
 
-[node name="OtherCollisions" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_graqp")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=689970815]
+libraries/ = SubResource("AnimationLibrary_ymxtd")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ymxtd")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=243848135]
 tree_root = SubResource("AnimationNodeStateMachine_indkd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/active_anim/TimeScale/scale = 1.2000000000000028
 parameters/hurt_anim/TimeScale/scale = 1.75
 
-[connection signal="area_entered" from="Sprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -1,18 +1,18 @@
 extends CharacterBody2D
 
-const SPEED = 15.0
-const DAMAGE = 2
+const SPEED = 10.0
+const DAMAGE = 5
 
 enum States {ACTIVE, HURT}
 var state: States = States.ACTIVE : set = set_state
 
-var health = 3
+var health = 10
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var _sprite = $Sprite2D
 @onready var _animation = $AnimationTree
 
 var knockback: Vector2 = Vector2.ZERO
-var exp_base = preload("res://scenes/experience.tscn").instantiate()
+var exp_base = preload("res://scenes/experience.tscn")
 
 func _physics_process(delta: float) -> void:
 	if player && state == States.ACTIVE:
@@ -39,8 +39,6 @@ func take_damage(damage: int) -> void:
 	set_state(States.HURT)
 	health = health - damage
 	if health <= 0:
-		exp_base.global_position = global_position
-		get_parent().call_deferred("add_child", exp_base)
 		queue_free()
 
 func apply_knockback(direction: Vector2, force: float) -> void:
