@@ -1,18 +1,27 @@
 extends Control
 
+@onready var player = get_tree().get_first_node_in_group("Player")
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-#	hide()
+func _ready():
+	hide()
 
+func pause():
+	show()
+	get_tree().paused = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func resume():
+	hide()
+	get_tree().paused = false
+
+func _process(_delta: float) -> void:
+	if !player:
+		pause()
 
 func _on_restart_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	resume()
+	get_tree().change_scene_to_file("res://scenes/world/world.tscn")
 
 
 func _on_exit_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	resume()
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")

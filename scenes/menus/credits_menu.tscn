@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://nyyc581y20pa"]
+
+[ext_resource type="Script" uid="uid://bj58y8j25ptbf" path="res://scripts/credits_menu.gd" id="1_xtkoc"]
+[ext_resource type="Texture2D" uid="uid://jkhccmsab5jw" path="res://resources/TeamLogo.svg" id="2_d74go"]
+[ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="3_325oc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tljk3"]
+atlas = ExtResource("3_325oc")
+region = Rect2(0, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6i0t"]
+atlas = ExtResource("3_325oc")
+region = Rect2(96, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urgkg"]
+atlas = ExtResource("3_325oc")
+region = Rect2(48, 96, 48, 16)
+
+[node name="credits_menu" type="Control" unique_id=71861332]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xtkoc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=527571387]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.08235294, 0.2, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=963757443]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d74go")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="voltar_btn" type="TextureButton" parent="." unique_id=697255411]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_tljk3")
+texture_pressed = SubResource("AtlasTexture_c6i0t")
+texture_hover = SubResource("AtlasTexture_urgkg")
+
+[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]

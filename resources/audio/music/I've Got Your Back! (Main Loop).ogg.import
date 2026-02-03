@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c84pfv7750ami"
+path="res://.godot/imported/I've Got Your Back! (Main Loop).ogg-38ef4189dfe5dfbd2810924f2d860ac6.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/audio/music/I've Got Your Back! (Main Loop).ogg"
+dest_files=["res://.godot/imported/I've Got Your Back! (Main Loop).ogg-38ef4189dfe5dfbd2810924f2d860ac6.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

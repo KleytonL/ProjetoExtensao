@@ -12,9 +12,9 @@ var health = 10
 @onready var _animation = $AnimationTree
 
 var knockback: Vector2 = Vector2.ZERO
-var exp_base = preload("res://scenes/experience.tscn")
+var exp_base = preload("res://scenes/misc/experience.tscn").instantiate()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player && state == States.ACTIVE:
 		var direction = global_position.direction_to(player.global_position)
 		velocity = direction * SPEED
@@ -33,12 +33,17 @@ func set_state(new_state: States) -> void:
 		velocity = knockback
 		await _animation.animation_finished
 		velocity = Vector2.ZERO
-		state = previous_state
+		if previous_state != States.HURT:
+			state = previous_state
+		else:
+			state = States.ACTIVE
 
 func take_damage(damage: int) -> void:
 	set_state(States.HURT)
 	health = health - damage
 	if health <= 0:
+		exp_base.global_position = global_position
+		get_parent().call_deferred("add_child", exp_base)
 		queue_free()
 
 func apply_knockback(direction: Vector2, force: float) -> void:

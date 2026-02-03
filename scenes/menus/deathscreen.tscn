@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c1kbped141h63"]
+
+[ext_resource type="Script" uid="uid://b7eqb4qqqk3dc" path="res://scripts/deathscreen.gd" id="1_ylnw1"]
+[ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="2_uurjc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylnw1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eye5d"]
+atlas = ExtResource("2_uurjc")
+region = Rect2(0, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke8wd"]
+atlas = ExtResource("2_uurjc")
+region = Rect2(96, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgqth"]
+atlas = ExtResource("2_uurjc")
+region = Rect2(48, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uurjc"]
+atlas = ExtResource("2_uurjc")
+region = Rect2(0, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1dwg"]
+atlas = ExtResource("2_uurjc")
+region = Rect2(96, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1dl8"]
+atlas = ExtResource("2_uurjc")
+region = Rect2(48, 80, 48, 16)
+
+[node name="deathscreen" type="Control" unique_id=1999397955]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ylnw1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1406505701]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.78431374)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1419294847]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ylnw1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=712033016]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="restart_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=2023860156]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_eye5d")
+texture_pressed = SubResource("AtlasTexture_ke8wd")
+texture_hover = SubResource("AtlasTexture_hgqth")
+
+[node name="exit_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=286395758]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_uurjc")
+texture_pressed = SubResource("AtlasTexture_l1dwg")
+texture_hover = SubResource("AtlasTexture_t1dl8")
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]
