@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu71qcx3yexab" path="res://scripts/enemy_wisp.gd" id="1_pfldh"]
 [ext_resource type="Texture2D" uid="uid://cjd2wolu70se" path="res://resources/spritesheets/spritesheet-wispG1.svg" id="2_pfldh"]
+[ext_resource type="AudioStream" uid="uid://chl28uamx1kui" path="res://resources/audio/sfx/hurt.ogg" id="3_frurr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
 radius = 5.0
@@ -116,6 +117,11 @@ states/hurt_anim/position = Vector2(538, 230)
 transitions = ["Start", "active_anim", SubResource("AnimationNodeStateMachineTransition_graqp"), "active_anim", "End", SubResource("AnimationNodeStateMachineTransition_0cw7i"), "active_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_dm05c"), "hurt_anim", "active_anim", SubResource("AnimationNodeStateMachineTransition_ymxtd")]
 graph_offset = Vector2(9, 51)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t0ky7"]
+random_pitch = 1.7817973
+streams_count = 1
+stream_0/stream = ExtResource("3_frurr")
+
 [node name="enemy_wispG1" type="CharacterBody2D" unique_id=1459275880 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
@@ -154,4 +160,10 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/active_anim/TimeScale/scale = 1.2000000000000028
 parameters/hurt_anim/TimeScale/scale = 1.75
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2108160051]
+stream = SubResource("AudioStreamRandomizer_t0ky7")
+volume_db = -15.0
+pitch_scale = 2.0
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

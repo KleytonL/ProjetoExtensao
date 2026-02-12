@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://ncrgpoebctbv" path="res://resources/spritesheets/spritesheet-hayato.svg" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://dxx577v0rhwua" path="res://resources/spritesheets/spritesheet-vfx.svg" id="3_dqkch"]
 [ext_resource type="AudioStream" uid="uid://cp783xvrsfb2c" path="res://resources/audio/sfx/punch.ogg" id="4_1y732"]
-[ext_resource type="AudioStream" uid="uid://chl28uamx1kui" path="res://resources/audio/sfx/hurt.ogg" id="5_erpy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 16)
@@ -20,6 +19,9 @@ radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1y732"]
+radius = 125.0
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -492,9 +494,8 @@ graph_offset = Vector2(-202, -92)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_smehm"]
 random_pitch = 1.7817973
-streams_count = 2
+streams_count = 1
 stream_0/stream = ExtResource("4_1y732")
-stream_1/stream = ExtResource("5_erpy8")
 
 [node name="Player" type="CharacterBody2D" unique_id=1155197298 groups=["Player"]]
 motion_mode = 1
@@ -550,6 +551,19 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectRange" unique_id=1273212571]
 shape = SubResource("CircleShape2D_g2els")
 
+[node name="EnemyRange" type="Area2D" parent="." unique_id=768311267]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRange" unique_id=1639531256]
+shape = SubResource("CircleShape2D_1y732")
+
+[node name="Attack" type="Node2D" parent="." unique_id=2126773543]
+
+[node name="SoulfireTimer" type="Timer" parent="Attack" unique_id=1082120759]
+unique_name_in_owner = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1044955616]
 libraries/ = SubResource("AnimationLibrary_y4r1p")
 next/attack_animation_01 = &"attack_animation_01"
@@ -568,15 +582,19 @@ parameters/run_anim/TimeScale/scale = 1.2000000000000028
 [node name="AttackResetTimer" type="Timer" parent="." unique_id=704023711]
 wait_time = 1.2
 
+[node name="AttackLeapTimer" type="Timer" parent="." unique_id=230725599]
+wait_time = 0.125
+
 [node name="DashTimer" type="Timer" parent="." unique_id=919026005]
-wait_time = 2.5
+wait_time = 2.0
 
 [node name="iFramesTimer" type="Timer" parent="." unique_id=1611005781]
 wait_time = 0.35
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1054863802]
 stream = SubResource("AudioStreamRandomizer_smehm")
-volume_db = -15.25
+volume_db = -17.5
+pitch_scale = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2019851261]
 
@@ -620,6 +638,9 @@ vertical_alignment = 1
 [connection signal="area_entered" from="Sprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="PullRange" to="." method="_on_pull_range_area_entered"]
 [connection signal="area_entered" from="CollectRange" to="." method="_on_collect_range_area_entered"]
+[connection signal="body_entered" from="EnemyRange" to="." method="_on_enemy_range_body_entered"]
+[connection signal="body_exited" from="EnemyRange" to="." method="_on_enemy_range_body_exited"]
+[connection signal="timeout" from="Attack/SoulfireTimer" to="." method="_on_soulfire_timer_timeout"]
 [connection signal="timeout" from="AttackResetTimer" to="." method="_on_attack_reset_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="iFramesTimer" to="." method="_on_i_frames_timer_timeout"]

@@ -17,20 +17,31 @@ var experience = 0
 var collected_exp = 0
 var time = 0
 
+var soulfire = preload("res://scenes/character/weapon_soulfire.tscn")
+
+var soulfire_atkspeed = 3
+var soulfire_level = 1
+
+var enemy_in_range: Array = []
+
 @onready var _sprite = $Sprite2D
 @onready var _animation = $AnimationTree
 @onready var _hurtbox = $HurtBox/CollisionShape2D
 @onready var _atk_timer = $AttackResetTimer
+@onready var _leap_timer = $AttackLeapTimer
 @onready var _dash_timer = $DashTimer
 @onready var _iframes_timer = $iFramesTimer
 @onready var _sfx = $AudioStreamPlayer
 
-@onready var _exp_bar = get_node("%ExpBar")
-@onready var _level_label = get_node("%LevelLabel")
-@onready var _timer_label = get_node("%TimerLabel")
+@onready var _exp_bar: ProgressBar = get_node("%ExpBar")
+@onready var _level_label: Label = get_node("%LevelLabel")
+@onready var _timer_label: Label = get_node("%TimerLabel")
+
+@onready var _soulfire_timer: Timer = get_node("%SoulfireTimer")
 
 func _ready():
 	set_expbar(experience, exp_capacity())
+	attack()
 
 func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
@@ -53,8 +64,8 @@ func _physics_process(delta: float) -> void:
 			set_state(States.IDLE)
 
 		if Input.is_action_just_pressed("dashBtn") && canDash:
-			if state == States.IDLE:
-				velocity = Vector2(SPEED*3, 0) if _sprite.scale.x == 1 else Vector2(-SPEED*3, 0)
+			if state == States.IDLE || (direction_x == 0 && direction_y == 0):
+				velocity = Vector2(SPEED * 3, 0) if _sprite.scale.x == 1 else Vector2(-SPEED * 3, 0)
 			elif state == States.RUN:
 				velocity = Vector2(direction_x * (SPEED * 3), direction_y * (SPEED * 3))
 			set_state(States.DASH)
@@ -70,7 +81,17 @@ func _physics_process(delta: float) -> void:
 			set_state(States.ATK03)
 
 		if state in [States.ATK01, States.ATK02, States.ATK03]:
-			velocity = Vector2(SPEED/2, 0) if _sprite.scale.x == 1 else Vector2(-SPEED/2, 0)
+			_sfx.play()
+			
+			_leap_timer.start()
+			await _leap_timer.timeout
+			
+			velocity = Vector2(SPEED*1.25, 0) if _sprite.scale.x == 1 else Vector2(-SPEED*1.25, 0)
+			
+			_leap_timer.start()
+			await _leap_timer.timeout
+			
+			velocity = Vector2.ZERO
 
 	move_and_slide()
 
@@ -124,6 +145,12 @@ func set_state(new_state: States) -> void:
 		velocity = Vector2.ZERO
 		state = States.IDLE
 
+func attack():
+	if soulfire_level > 0:
+		_soulfire_timer.wait_time = soulfire_atkspeed
+		if _soulfire_timer.is_stopped():
+			_soulfire_timer.start()
+
 func take_damage(damage: int) -> void:
 	set_state(States.HURT)
 	health = health - damage
@@ -138,10 +165,8 @@ func on_death():
 	call_deferred("queue_free")
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-	#a coisa mais depressiva desse código
 	var knockback_direction = (area.get_parent().global_position - global_position).normalized()
 	if area.is_in_group("enemy_hurtbox"):
-		_sfx.play()
 		area.get_parent().apply_knockback(knockback_direction, 20.0)
 		area.get_parent().call_deferred("take_damage", DAMAGE)
 
@@ -155,6 +180,13 @@ func _on_attack_reset_timer_timeout() -> void:
 func _on_i_frames_timer_timeout() -> void:
 	_hurtbox.call_deferred("set", "disabled", false)
 
+func _on_soulfire_timer_timeout() -> void:
+	var soulfire_instance = soulfire.instantiate()
+	soulfire_instance.position = position
+	soulfire_instance.target = get_random_target()
+	soulfire_instance.level = soulfire_level
+	add_child(soulfire_instance)
+
 func _on_pull_range_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectables"):
 		area.target = self
@@ -163,6 +195,20 @@ func _on_collect_range_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectables"):
 		var exp_value = area.collect()
 		calculate_exp(exp_value)
+
+func get_random_target():
+	if enemy_in_range.size() > 0:
+		return enemy_in_range.pick_random().global_position
+	else:
+		return Vector2.ZERO
+
+func _on_enemy_range_body_entered(body: Node2D) -> void:
+	if not enemy_in_range.has(body):
+		enemy_in_range.append(body)
+
+func _on_enemy_range_body_exited(body: Node2D) -> void:
+	if enemy_in_range.has(body):
+		enemy_in_range.erase(body)
 
 func calculate_exp(exp_value):
 	var exp_required = exp_capacity()

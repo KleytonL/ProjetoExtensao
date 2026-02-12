@@ -13,6 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_xl0gr"]
 script = ExtResource("3_dlabj")
+time_start = 5
 time_end = 90
 enemy = ExtResource("4_srmg5")
 enemy_num = 3
@@ -21,7 +22,7 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 
 [sub_resource type="Resource" id="Resource_q5onr"]
 script = ExtResource("3_dlabj")
-time_start = 30
+time_start = 35
 time_end = 120
 enemy = ExtResource("5_umvgx")
 enemy_num = 2
@@ -146,7 +147,7 @@ tile_set = SubResource("TileSet_k0juu")
 [node name="deathscreen" parent="CanvasLayer" unique_id=609795518 instance=ExtResource("8_71ii3")]
 visible = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2089122602]
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2089122602]
 stream = SubResource("AudioStreamInteractive_e3hyu")
 volume_db = -15.0
 autoplay = true
