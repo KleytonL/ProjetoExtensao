@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cosije1l4tlpf"]
+
+[ext_resource type="Texture2D" uid="uid://cqyhjqyd63ed6" path="res://resources/spritesheets/spritesheet-soulfire.svg" id="1_bolky"]
+[ext_resource type="Script" uid="uid://ydi1lhbr6s18" path="res://scripts/item_option.gd" id="1_cxave"]
+
+[node name="ItemOption" type="Button" unique_id=1361442912]
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 0.14814815
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_cxave")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1427039018]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033333335
+anchor_top = 0.1
+anchor_right = 0.3
+anchor_bottom = 0.9
+color = Color(0.8392157, 0, 0.27058825, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemIcon" type="TextureRect" parent="ColorRect" unique_id=1315089553]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bolky")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="NameLabel" type="Label" parent="." unique_id=1909088671]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38333333
+anchor_right = 0.9166667
+anchor_bottom = 0.6
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 8
+text = "SoulFire"
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelLabel" type="Label" parent="." unique_id=209864353]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51666665
+anchor_top = 0.55
+anchor_right = 0.78333336
+anchor_bottom = 0.9
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 4
+text = "Level: 1"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -18,6 +18,7 @@ var collected_exp = 0
 var time = 0
 
 var soulfire = preload("res://scenes/character/weapon_soulfire.tscn")
+@onready var _item_options = preload("res://scenes/misc/item_option.tscn")
 
 var soulfire_atkspeed = 3
 var soulfire_level = 1
@@ -36,6 +37,8 @@ var enemy_in_range: Array = []
 @onready var _exp_bar: ProgressBar = get_node("%ExpBar")
 @onready var _level_label: Label = get_node("%LevelLabel")
 @onready var _timer_label: Label = get_node("%TimerLabel")
+@onready var _level_panel: Panel = get_node("%LevelPanel")
+@onready var _upgrade_grid: VBoxContainer = get_node("%UpgradeGrid")
 
 @onready var _soulfire_timer: Timer = get_node("%SoulfireTimer")
 
@@ -216,9 +219,8 @@ func calculate_exp(exp_value):
 	if experience + collected_exp >= exp_required:
 		collected_exp -= exp_required - experience
 		level += 1
-		_level_label.text = str("Level: ", level)
 		experience = 0
-		calculate_exp(0)
+		level_up()
 	else:
 		experience += collected_exp
 		collected_exp = 0
@@ -238,6 +240,25 @@ func exp_capacity():
 func set_expbar(set_value = 1, set_max_value = 100):
 	_exp_bar.value = set_value
 	_exp_bar.max_value = set_max_value
+
+func level_up():
+	_level_label.text = str("Level: ", level)
+	_level_panel.visible = true
+	var options = 0
+	var max_options = 3
+	while options < max_options:
+		var option_choice = _item_options.instantiate()
+		_upgrade_grid.add_child(option_choice)
+		options+=1
+	get_tree().paused = true
+
+func upgrade_character(upgrade):
+	var option_children = _upgrade_grid.get_children()
+	for i in option_children:
+		i.queue_free()
+	_level_panel.visible = false
+	get_tree().paused = false
+	calculate_exp(0)
 
 func change_time(argtime = 0):
 	time = argtime

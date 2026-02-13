@@ -14,6 +14,7 @@ var health = 5
 
 var knockback: Vector2 = Vector2.ZERO
 var exp_base = preload("res://scenes/misc/experience.tscn").instantiate()
+var death_vfx = preload("res://scenes/misc/death_vfx.tscn").instantiate()
 
 func _physics_process(_delta: float) -> void:
 	if player && state == States.ACTIVE:
@@ -44,9 +45,10 @@ func take_damage(damage: int) -> void:
 	_sfx.play()
 	health = health - damage
 	if health <= 0:
-		await _sfx.finished
 		exp_base.global_position = global_position
+		death_vfx.global_position = global_position
 		get_parent().call_deferred("add_child", exp_base)
+		get_parent().call_deferred("add_child", death_vfx)
 		queue_free()
 
 func apply_knockback(direction: Vector2, force: float) -> void:
