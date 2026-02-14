@@ -12,6 +12,10 @@ region = Rect2(0, 0, 48, 16)
 atlas = ExtResource("3_wu84c")
 region = Rect2(96, 0, 48, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o76q"]
+atlas = ExtResource("3_wu84c")
+region = Rect2(48, 0, 48, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgwnu"]
 atlas = ExtResource("3_wu84c")
 region = Rect2(48, 0, 48, 16)
@@ -28,6 +32,10 @@ region = Rect2(96, 16, 48, 16)
 atlas = ExtResource("3_wu84c")
 region = Rect2(48, 16, 48, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bivr"]
+atlas = ExtResource("3_wu84c")
+region = Rect2(48, 16, 48, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqqt6"]
 atlas = ExtResource("3_wu84c")
 region = Rect2(0, 32, 48, 16)
@@ -35,6 +43,10 @@ region = Rect2(0, 32, 48, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
 atlas = ExtResource("3_wu84c")
 region = Rect2(96, 32, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imvie"]
+atlas = ExtResource("3_wu84c")
+region = Rect2(48, 32, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oa1go"]
 atlas = ExtResource("3_wu84c")
@@ -92,25 +104,40 @@ metadata/_edit_use_anchors_ = true
 
 [node name="play_btn" type="TextureButton" parent="VBoxContainer" unique_id=1670840545]
 layout_mode = 2
+focus_neighbor_top = NodePath("../cred_btn")
+focus_neighbor_bottom = NodePath("../config_btn")
+focus_next = NodePath("../config_btn")
+focus_previous = NodePath("../cred_btn")
 texture_normal = SubResource("AtlasTexture_5dd4i")
 texture_pressed = SubResource("AtlasTexture_flqon")
-texture_hover = SubResource("AtlasTexture_lgwnu")
+texture_hover = SubResource("AtlasTexture_2o76q")
+texture_focused = SubResource("AtlasTexture_lgwnu")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="config_btn" type="TextureButton" parent="VBoxContainer" unique_id=983532980]
 layout_mode = 2
+focus_neighbor_top = NodePath("../play_btn")
+focus_neighbor_bottom = NodePath("../cred_btn")
+focus_next = NodePath("../cred_btn")
+focus_previous = NodePath("../play_btn")
 texture_normal = SubResource("AtlasTexture_wu84c")
 texture_pressed = SubResource("AtlasTexture_rtw2f")
 texture_hover = SubResource("AtlasTexture_8ln24")
+texture_focused = SubResource("AtlasTexture_6bivr")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="cred_btn" type="TextureButton" parent="VBoxContainer" unique_id=999826929]
 layout_mode = 2
+focus_neighbor_top = NodePath("../config_btn")
+focus_neighbor_bottom = NodePath("../play_btn")
+focus_next = NodePath("../play_btn")
+focus_previous = NodePath("../config_btn")
 texture_normal = SubResource("AtlasTexture_bqqt6")
 texture_pressed = SubResource("AtlasTexture_tbmy8")
-texture_hover = SubResource("AtlasTexture_oa1go")
+texture_hover = SubResource("AtlasTexture_imvie")
+texture_focused = SubResource("AtlasTexture_oa1go")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 

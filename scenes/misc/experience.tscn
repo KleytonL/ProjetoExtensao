@@ -213,6 +213,7 @@ animation = &"exp_blue"
 autoplay = "exp_blue"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2113238956]
+process_mode = 3
 stream = SubResource("AudioStreamRandomizer_iudx8")
 volume_db = -22.5
 

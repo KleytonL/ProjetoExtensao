@@ -12,6 +12,7 @@ var state: States = States.IDLE : set = set_state
 var knockback: Vector2 = Vector2.ZERO
 
 var health: int = 100
+var max_health: int = 100
 var level = 1
 var experience = 0
 var collected_exp = 0
@@ -21,9 +22,17 @@ var soulfire = preload("res://scenes/character/weapon_soulfire.tscn")
 @onready var _item_options = preload("res://scenes/misc/item_option.tscn")
 
 var soulfire_atkspeed = 3
-var soulfire_level = 1
+var soulfire_amount = 1
+var soulfire_level = 0
 
 var enemy_in_range: Array = []
+var upgrades_collected = []
+var upgrade_options = []
+var defense = 0
+var speed = 0
+var attack_cooldown = 0
+var attack_size = 0
+var additional_attacks = 0
 
 @onready var _sprite = $Sprite2D
 @onready var _animation = $AnimationTree
@@ -33,10 +42,12 @@ var enemy_in_range: Array = []
 @onready var _dash_timer = $DashTimer
 @onready var _iframes_timer = $iFramesTimer
 @onready var _sfx = $AudioStreamPlayer
+@onready var _deathscreen = $"../CanvasLayer/deathscreen"
 
 @onready var _exp_bar: ProgressBar = get_node("%ExpBar")
-@onready var _level_label: Label = get_node("%LevelLabel")
-@onready var _timer_label: Label = get_node("%TimerLabel")
+@onready var _health_bar: ProgressBar = get_node("%HealthBar")
+@onready var _level_label: Label = get_node("%lbl_level")
+@onready var _timer_label: Label = get_node("%lbl_timer")
 @onready var _level_panel: Panel = get_node("%LevelPanel")
 @onready var _upgrade_grid: VBoxContainer = get_node("%UpgradeGrid")
 
@@ -44,7 +55,7 @@ var enemy_in_range: Array = []
 
 func _ready():
 	set_expbar(experience, exp_capacity())
-	attack()
+	set_healthbar(health, max_health)
 
 func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
@@ -111,8 +122,8 @@ func set_state(new_state: States) -> void:
 		_sprite.scale.x = -1 if velocity.x < 0 else 1
 	
 	elif state == States.DASH:
-		state_machine.travel("dash_anim")
 		_hurtbox.call_deferred("set", "disabled", true)
+		state_machine.travel("dash_anim")
 		canDash = false
 		await _animation.animation_finished
 		_dash_timer.start()
@@ -157,15 +168,13 @@ func attack():
 func take_damage(damage: int) -> void:
 	set_state(States.HURT)
 	health = health - damage
+	set_healthbar(health, max_health)
 	_sfx.play()
 	if health <= 0:
 		on_death()
 
 func apply_knockback(direction: Vector2, force: float) -> void:
 	knockback = direction * force
-
-func on_death():
-	call_deferred("queue_free")
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	var knockback_direction = (area.get_parent().global_position - global_position).normalized()
@@ -184,11 +193,14 @@ func _on_i_frames_timer_timeout() -> void:
 	_hurtbox.call_deferred("set", "disabled", false)
 
 func _on_soulfire_timer_timeout() -> void:
-	var soulfire_instance = soulfire.instantiate()
-	soulfire_instance.position = position
-	soulfire_instance.target = get_random_target()
-	soulfire_instance.level = soulfire_level
-	add_child(soulfire_instance)
+	var soulfire_count = soulfire_amount + additional_attacks
+	while soulfire_count > 0:
+		var soulfire_instance = soulfire.instantiate()
+		soulfire_instance.position = position
+		soulfire_instance.target = get_random_target()
+		soulfire_instance.level = soulfire_level
+		add_child(soulfire_instance)
+		soulfire_count -= 1
 
 func _on_pull_range_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectables"):
@@ -241,6 +253,10 @@ func set_expbar(set_value = 1, set_max_value = 100):
 	_exp_bar.value = set_value
 	_exp_bar.max_value = set_max_value
 
+func set_healthbar(set_value = 1, set_max_value = 100):
+	_health_bar.value = set_value
+	_health_bar.max_value = set_max_value
+
 func level_up():
 	_level_label.text = str("Level: ", level)
 	_level_panel.visible = true
@@ -248,17 +264,69 @@ func level_up():
 	var max_options = 3
 	while options < max_options:
 		var option_choice = _item_options.instantiate()
+		option_choice.item = get_random_item()
 		_upgrade_grid.add_child(option_choice)
 		options+=1
 	get_tree().paused = true
 
 func upgrade_character(upgrade):
+	match upgrade:
+		"soulfire1":
+			soulfire_level += 1
+		"soulfire2":
+			soulfire_level += 1
+			soulfire_amount += 1
+		"soulfire3":
+			soulfire_level += 1
+		"soulfire4":
+			soulfire_level += 1
+			soulfire_amount += 1
+		"soulfire5":
+			soulfire_level += 1
+			soulfire_atkspeed -= 1
+		"soulfire6":
+			soulfire_level += 1
+			soulfire_amount += 2
+		"food":
+			health += 5
+			health = clamp(health, 0, max_health)
+
+	attack()
+	set_healthbar(health, max_health)
+
 	var option_children = _upgrade_grid.get_children()
 	for i in option_children:
 		i.queue_free()
+	upgrade_options.clear()
+	upgrades_collected.append(upgrade)
 	_level_panel.visible = false
 	get_tree().paused = false
 	calculate_exp(0)
+
+func get_random_item():
+	var datalist = []
+	for i in UpgradeDatabase.UPGRADES:
+		if i in upgrades_collected:
+			pass
+		elif i in upgrade_options:
+			pass
+		elif UpgradeDatabase.UPGRADES[i]["type"] == "item":
+			pass
+		elif UpgradeDatabase.UPGRADES[i]["prerequisite"].size() > 0:
+			var to_add = true
+			for n in UpgradeDatabase.UPGRADES[i]["prerequisite"]:
+				if not n in upgrades_collected:
+					to_add = false
+			if to_add:
+				datalist.append(i)
+		else: 
+			datalist.append(i)
+	if datalist.size() > 0:
+		var random_item = datalist.pick_random()
+		upgrade_options.append(random_item)
+		return random_item
+	else:
+		return null
 
 func change_time(argtime = 0):
 	time = argtime
@@ -269,3 +337,7 @@ func change_time(argtime = 0):
 	if get_seconds < 10:
 		get_seconds = str(0, get_seconds)
 	_timer_label.text = str(get_minutes, ":", get_seconds)
+
+func on_death():
+	get_tree().paused = true
+	_deathscreen.visible = true

@@ -29,6 +29,15 @@ enemy_num = 2
 enemy_spawn_delay = 5
 metadata/_custom_type_script = "uid://fqca6eefpksa"
 
+[sub_resource type="Resource" id="Resource_gb53w"]
+script = ExtResource("3_dlabj")
+time_start = 100
+time_end = 240
+enemy = ExtResource("5_umvgx")
+enemy_num = 5
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("6_mxkvs")
 0:0/0 = 0
@@ -134,7 +143,7 @@ position = Vector2(585, 342)
 
 [node name="EnemySpawner" parent="." unique_id=792942877 instance=ExtResource("2_5qq27")]
 z_index = 1
-spawns = Array[ExtResource("3_dlabj")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr")])
+spawns = Array[ExtResource("3_dlabj")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr"), SubResource("Resource_gb53w")])
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=148254953]
 z_index = -1

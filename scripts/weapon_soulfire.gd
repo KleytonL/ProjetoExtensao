@@ -4,7 +4,7 @@ var level = 1
 var health = 1
 var speed = 75
 var damage = 5
-var knockback = 100
+var knockback = 10
 var atk_size = 1.0
 
 var target = Vector2.ZERO
@@ -22,7 +22,37 @@ func _ready() -> void:
 			speed = 75
 			damage = 5
 			knockback = 10
-			atk_size = 1.0
+			atk_size = 1.0 * (1 + player.attack_size)
+		2:
+			health = 1
+			speed = 75
+			damage = 5
+			knockback = 10
+			atk_size = 1.0 * (1 + player.attack_size)
+		3:
+			health = 2
+			speed = 75
+			damage = 5
+			knockback = 10
+			atk_size = 1.0 * (1 + player.attack_size)
+		4:
+			health = 2
+			speed = 75
+			damage = 5
+			knockback = 10
+			atk_size = 1.0 * (1 + player.attack_size)
+		5:
+			health = 2
+			speed = 100
+			damage = 5
+			knockback = 10
+			atk_size = 1.0 * (1 + player.attack_size)
+		6: 
+			health = 3
+			speed = 100
+			damage = 7
+			knockback = 10
+			atk_size = 1.0 * (1 + player.attack_size)
 
 func _physics_process(delta: float) -> void:
 	position += angle * speed * delta

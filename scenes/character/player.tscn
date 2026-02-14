@@ -580,7 +580,7 @@ parameters/idle_anim/TimeScale/scale = 0.7000000000000028
 parameters/run_anim/TimeScale/scale = 1.2000000000000028
 
 [node name="AttackResetTimer" type="Timer" parent="." unique_id=704023711]
-wait_time = 1.2
+wait_time = 0.75
 
 [node name="AttackLeapTimer" type="Timer" parent="." unique_id=230725599]
 wait_time = 0.125
@@ -604,7 +604,7 @@ anchors_preset = 0
 offset_right = 240.0
 offset_bottom = 135.0
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer/Control" unique_id=855311992]
+[node name="lbl_timer" type="Label" parent="CanvasLayer/Control" unique_id=855311992]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
@@ -619,6 +619,19 @@ text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=1978236397]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+show_percentage = false
+
 [node name="ExpBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=383323475]
 unique_name_in_owner = true
 layout_mode = 0
@@ -626,7 +639,7 @@ offset_right = 240.0
 offset_bottom = 10.0
 show_percentage = false
 
-[node name="LevelLabel" type="Label" parent="CanvasLayer/Control/ExpBar" unique_id=1706011688]
+[node name="lbl_level" type="Label" parent="CanvasLayer/Control/ExpBar" unique_id=1706011688]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 100.0
@@ -652,7 +665,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelUpLabel" type="Label" parent="CanvasLayer/Control/LevelPanel" unique_id=109070831]
+[node name="lbl_levelup" type="Label" parent="CanvasLayer/Control/LevelPanel" unique_id=109070831]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
