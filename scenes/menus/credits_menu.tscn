@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://nyyc581y20pa"]
 
 [ext_resource type="Script" uid="uid://bj58y8j25ptbf" path="res://scripts/credits_menu.gd" id="1_xtkoc"]
-[ext_resource type="Texture2D" uid="uid://jkhccmsab5jw" path="res://resources/TeamLogo.svg" id="2_d74go"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="3_325oc"]
+[ext_resource type="Script" uid="uid://bbocj1776cis1" path="res://scenes/menus/animacao.gd" id="3_xtkoc"]
+[ext_resource type="AudioStream" uid="uid://d28bi2yg3rloq" path="res://resources/audio/music/Yiruma.mp3" id="4_d74go"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d74go"]
+load_path = "res://.godot/imported/TeamLogo.svg-665e8638d50fb7d69437b3e05b54ef0f.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tljk3"]
 atlas = ExtResource("3_325oc")
@@ -41,9 +45,113 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_d74go")
+texture = SubResource("CompressedTexture2D_d74go")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1443246077]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+draw_focus_border = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("3_xtkoc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer" unique_id=1949940069]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.8558595, 0.6599137, 1.2131723, 1)
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+bbcode_enabled = true
+text = "[center]
+[b]CRÉDITOS[/b]
+
+[b]Equipe de Desenvolvimento[/b] 
+
+[b]Diretor Criativo:[/b] 
+Kleyton Luiz
+
+[b]Lead Developer:[/b] 
+Kleyton Luiz
+
+[b]Game Designer:[/b] 
+Equipe PRISMA
+
+[b]Programadores:[/b]
+- Kleyton Luiz
+- Matheus Oliveira
+- Guilherme Acioli
+- Fernando Bersellini
+- Vitor Kenji
+
+[b]Artistas:[/b]
+- 2D : Equipe PRISMA
+
+[b]Animadores:[/b] 
+Kleyton Luiz
+
+[b]Música e Som[/b]
+[b]Diretor Musical:[/b] 
+Equipe PRISMA
+
+[b]Compositores:[/b] 
+Equipe PRISMA
+
+[b]Edição de Som:[/b]
+ Equipe PRISMA
+
+[b]Produção[/b]
+[b]Produtor Executivo:[/b]
+ Kleyton Luiz
+
+[b]Gerente de Projeto:[/b]
+ Kleyton Luiz
+
+[b]Coordenador de Equipe:[/b] 
+Kleyton Luiz
+
+[b]Testadores[/b]
+Equipe PRISMA
+
+[b]Agradecimentos Especiais[/b]
+- Godot Engine
+- UNIFIL
+- Professores, mentores e amigos que inspiraram este projeto.
+- Aos nosso familiares, que sempre apoiaram nossos sonhos.
+
+[b]Ferramentas Utilizadas[/b]
+[b]Engine:[/b] 
+Godot Engine
+[b]Linguagem de Programação:[/b]
+ GDScript 
+[b]Ferramentas Gráficas:[/b]
+- Aseprite
+
+[b]Tecnologias Suportadas[/b]
+[b]Plataformas:[/b]
+- Windows
+- macOS
+- Linux
+
+[b]Resoluções:[/b]
+- Full HD
+- 1080p
+
+[b]Mensagem Final[/b]
+[b]Hayato: Training Ground[/b] é um projeto de extensão currícular que consiste em um jogo roguelite 2D de visão Top-Down (de cima para baixo), inspirado em jogos como \"Vampire Survivor\", \"Undertale\" e \"Touhou\". O principal objetivo do jogo consiste no protagonista sendo desafiado a escalar uma torre cheia de inimigos para ficar mais forte conforme alcança novos andares.
+
+[b]Em nome de toda Equipe PRISMA, muito obrigado por jogar e  apoiar nosso projeto![/b]
+[center] "
+fit_content = true
 
 [node name="voltar_btn" type="TextureButton" parent="." unique_id=697255411]
 layout_mode = 1
@@ -56,8 +164,13 @@ offset_left = -55.0
 offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_tljk3")
 texture_pressed = SubResource("AtlasTexture_c6i0t")
 texture_hover = SubResource("AtlasTexture_urgkg")
+
+[node name="yiruma" type="AudioStreamPlayer2D" parent="." unique_id=760261029]
+stream = ExtResource("4_d74go")
+autoplay = true
 
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]
