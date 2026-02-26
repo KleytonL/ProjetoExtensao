@@ -7,13 +7,13 @@ extends ScrollContainer
 @onready var logo = $"../TextureRect"
 
 func _ready() -> void:
-	
-	print(logo)
 	await get_tree().process_frame
-	await get_tree().process_frame
-	
+	logo_visibility()
 	iniciar_creditos()
 
+func logo_visibility() -> void:
+	var tween = create_tween()
+	tween.tween_property(logo, "modulate:a", 0.25, 1.0)
 
 func iniciar_creditos() -> void:
 	var altura_texto = text_node.get_content_height()

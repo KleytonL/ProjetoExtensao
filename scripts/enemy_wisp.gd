@@ -58,9 +58,11 @@ func apply_knockback(direction: Vector2, force: float) -> void:
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	var knockback_direction = (player.global_position - global_position).normalized()
-	if area.is_in_group("player_hurtbox"):
+	if area is HurtboxComponent:
+		var hurtbox = area
 		player.apply_knockback(knockback_direction, 60.0)
-		player.take_damage(DAMAGE)
+		player.take_damage()
+		hurtbox.damage(DAMAGE)
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_hitbox"):

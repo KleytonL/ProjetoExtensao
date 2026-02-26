@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ncrgpoebctbv" path="res://resources/spritesheets/spritesheet-hayato.svg" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://dxx577v0rhwua" path="res://resources/spritesheets/spritesheet-vfx.svg" id="3_dqkch"]
 [ext_resource type="AudioStream" uid="uid://cp783xvrsfb2c" path="res://resources/audio/sfx/punch.ogg" id="4_1y732"]
+[ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="4_erpy8"]
+[ext_resource type="PackedScene" uid="uid://c3a6he0woet82" path="res://scenes/misc/components/hurtbox_component.tscn" id="4_wmtbp"]
+[ext_resource type="PackedScene" uid="uid://43nfrubuu2kq" path="res://scenes/misc/gui/health_bar.tscn" id="6_erpy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 16)
@@ -11,8 +14,8 @@ size = Vector2(24, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(6, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5y66v"]
+size = Vector2(7, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 25.0
@@ -529,13 +532,14 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1511141511]
 position_smoothing_speed = 20.0
 
-[node name="HurtBox" type="Area2D" parent="." unique_id=283028893 groups=["player_hurtbox"]]
+[node name="HurtboxComponent" parent="." unique_id=880340575 node_paths=PackedStringArray("health_component") instance=ExtResource("4_wmtbp")]
 collision_layer = 2
 collision_mask = 2
+health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=60886327]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_g2els")
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=61538903]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_5y66v")
 
 [node name="PullRange" type="Area2D" parent="." unique_id=2037866254]
 collision_layer = 4
@@ -558,6 +562,9 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRange" unique_id=1639531256]
 shape = SubResource("CircleShape2D_1y732")
+
+[node name="HealthComponent" parent="." unique_id=1120913824 instance=ExtResource("4_erpy8")]
+max_health = 100
 
 [node name="Attack" type="Node2D" parent="." unique_id=2126773543]
 
@@ -596,15 +603,18 @@ stream = SubResource("AudioStreamRandomizer_smehm")
 volume_db = -17.5
 pitch_scale = 5.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2019851261]
+[node name="GUI" type="CanvasLayer" parent="." unique_id=2019851261]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=2098064748]
+[node name="HealthBar" parent="GUI" unique_id=1333183330 node_paths=PackedStringArray("health_component") instance=ExtResource("6_erpy8")]
+health_component = NodePath("../../HealthComponent")
+
+[node name="Control" type="Control" parent="GUI" unique_id=2098064748]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 240.0
 offset_bottom = 135.0
 
-[node name="lbl_timer" type="Label" parent="CanvasLayer/Control" unique_id=855311992]
+[node name="lbl_timer" type="Label" parent="GUI/Control" unique_id=855311992]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
@@ -619,27 +629,14 @@ text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=1978236397]
-unique_name_in_owner = true
-modulate = Color(1, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -4.0
-grow_horizontal = 2
-grow_vertical = 0
-show_percentage = false
-
-[node name="ExpBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=383323475]
+[node name="ExpBar" type="ProgressBar" parent="GUI/Control" unique_id=383323475]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 240.0
 offset_bottom = 10.0
 show_percentage = false
 
-[node name="lbl_level" type="Label" parent="CanvasLayer/Control/ExpBar" unique_id=1706011688]
+[node name="lbl_level" type="Label" parent="GUI/Control/ExpBar" unique_id=1706011688]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 100.0
@@ -648,7 +645,7 @@ theme_override_font_sizes/font_size = 6
 text = "Level: 1"
 vertical_alignment = 1
 
-[node name="LevelPanel" type="Panel" parent="CanvasLayer/Control" unique_id=1733489924]
+[node name="LevelPanel" type="Panel" parent="GUI/Control" unique_id=1733489924]
 unique_name_in_owner = true
 process_mode = 2
 visible = false
@@ -665,7 +662,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="lbl_levelup" type="Label" parent="CanvasLayer/Control/LevelPanel" unique_id=109070831]
+[node name="lbl_levelup" type="Label" parent="GUI/Control/LevelPanel" unique_id=109070831]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -677,7 +674,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 8
 text = "LEVEL UP!"
 
-[node name="UpgradeGrid" type="VBoxContainer" parent="CanvasLayer/Control/LevelPanel" unique_id=439175752]
+[node name="UpgradeGrid" type="VBoxContainer" parent="GUI/Control/LevelPanel" unique_id=439175752]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -693,6 +690,7 @@ grow_vertical = 2
 [connection signal="area_entered" from="CollectRange" to="." method="_on_collect_range_area_entered"]
 [connection signal="body_entered" from="EnemyRange" to="." method="_on_enemy_range_body_entered"]
 [connection signal="body_exited" from="EnemyRange" to="." method="_on_enemy_range_body_exited"]
+[connection signal="update_healthbar" from="HealthComponent" to="GUI/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="timeout" from="Attack/SoulfireTimer" to="." method="_on_soulfire_timer_timeout"]
 [connection signal="timeout" from="AttackResetTimer" to="." method="_on_attack_reset_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

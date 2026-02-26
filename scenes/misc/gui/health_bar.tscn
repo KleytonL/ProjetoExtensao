@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://43nfrubuu2kq"]
+
+[ext_resource type="Script" uid="uid://cptwhkwdat0tc" path="res://scripts/gui/health_bar.gd" id="1_sl3yn"]
+
+[node name="HealthBar" type="ProgressBar" unique_id=698148893]
+modulate = Color(1, 0, 0, 1)
+offset_top = 130.0
+offset_right = 240.0
+offset_bottom = 135.0
+show_percentage = false
+script = ExtResource("1_sl3yn")

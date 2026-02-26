@@ -36,7 +36,6 @@ var additional_attacks = 0
 
 @onready var _sprite = $Sprite2D
 @onready var _animation = $AnimationTree
-@onready var _hurtbox = $HurtBox/CollisionShape2D
 @onready var _atk_timer = $AttackResetTimer
 @onready var _leap_timer = $AttackLeapTimer
 @onready var _dash_timer = $DashTimer
@@ -45,7 +44,6 @@ var additional_attacks = 0
 @onready var _deathscreen = $"../CanvasLayer/deathscreen"
 
 @onready var _exp_bar: ProgressBar = get_node("%ExpBar")
-@onready var _health_bar: ProgressBar = get_node("%HealthBar")
 @onready var _level_label: Label = get_node("%lbl_level")
 @onready var _timer_label: Label = get_node("%lbl_timer")
 @onready var _level_panel: Panel = get_node("%LevelPanel")
@@ -55,7 +53,7 @@ var additional_attacks = 0
 
 func _ready():
 	set_expbar(experience, exp_capacity())
-	set_healthbar(health, max_health)
+	#set_healthbar(health, max_health)
 
 func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
@@ -122,7 +120,7 @@ func set_state(new_state: States) -> void:
 		_sprite.scale.x = -1 if velocity.x < 0 else 1
 	
 	elif state == States.DASH:
-		_hurtbox.call_deferred("set", "disabled", true)
+		#_hurtbox.call_deferred("set", "disabled", true)
 		state_machine.travel("dash_anim")
 		canDash = false
 		await _animation.animation_finished
@@ -151,7 +149,7 @@ func set_state(new_state: States) -> void:
 	
 	elif state == States.HURT:
 		state_machine.travel("hurt_anim")
-		_hurtbox.call_deferred("set", "disabled", true)
+		#_hurtbox.call_deferred("set", "disabled", true)
 		velocity = knockback
 		_sprite.scale.x = -1 if velocity.x > 0 else 1
 		await _animation.animation_finished
@@ -165,13 +163,9 @@ func attack():
 		if _soulfire_timer.is_stopped():
 			_soulfire_timer.start()
 
-func take_damage(damage: int) -> void:
+func take_damage() -> void:
 	set_state(States.HURT)
-	health = health - damage
-	set_healthbar(health, max_health)
 	_sfx.play()
-	if health <= 0:
-		on_death()
 
 func apply_knockback(direction: Vector2, force: float) -> void:
 	knockback = direction * force
@@ -190,7 +184,8 @@ func _on_attack_reset_timer_timeout() -> void:
 	atkPoints = 3;
 
 func _on_i_frames_timer_timeout() -> void:
-	_hurtbox.call_deferred("set", "disabled", false)
+	pass
+	#_hurtbox.call_deferred("set", "disabled", false)
 
 func _on_soulfire_timer_timeout() -> void:
 	var soulfire_count = soulfire_amount + additional_attacks
@@ -253,10 +248,6 @@ func set_expbar(set_value = 1, set_max_value = 100):
 	_exp_bar.value = set_value
 	_exp_bar.max_value = set_max_value
 
-func set_healthbar(set_value = 1, set_max_value = 100):
-	_health_bar.value = set_value
-	_health_bar.max_value = set_max_value
-
 func level_up():
 	_level_label.text = str("Level: ", level)
 	_level_panel.visible = true
@@ -292,7 +283,7 @@ func upgrade_character(upgrade):
 			health = clamp(health, 0, max_health)
 
 	attack()
-	set_healthbar(health, max_health)
+	#set_healthbar(health, max_health)
 
 	var option_children = _upgrade_grid.get_children()
 	for i in option_children:

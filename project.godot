@@ -22,7 +22,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 UpgradeDatabase="*uid://b7p0akh1qctg8"
-Yiruma="*uid://01sf6a86mbnt"
 
 [display]
 

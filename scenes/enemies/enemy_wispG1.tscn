@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bu71qcx3yexab" path="res://scripts/enemy_wisp.gd" id="1_pfldh"]
 [ext_resource type="Texture2D" uid="uid://cjd2wolu70se" path="res://resources/spritesheets/spritesheet-wispG1.svg" id="2_pfldh"]
 [ext_resource type="AudioStream" uid="uid://chl28uamx1kui" path="res://resources/audio/sfx/hurt.ogg" id="3_frurr"]
+[ext_resource type="PackedScene" uid="uid://c3a6he0woet82" path="res://scenes/misc/components/hurtbox_component.tscn" id="3_qg6r0"]
+[ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="5_ji61n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
 radius = 4.0
@@ -135,13 +137,17 @@ vframes = 2
 [node name="OtherCollisions" type="CollisionShape2D" parent="." unique_id=611785299]
 shape = SubResource("CircleShape2D_graqp")
 
+[node name="HealthComponent" parent="." unique_id=1120913824 instance=ExtResource("5_ji61n")]
+
+[node name="HurtboxComponent" parent="." unique_id=880340575 instance=ExtResource("3_qg6r0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=808563412]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_graqp")
+
 [node name="HurtBox" type="Area2D" parent="." unique_id=1047293221 groups=["enemy_hurtbox"]]
 collision_layer = 2
 collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=808563412]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_graqp")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1101868041 groups=["enemy_hitbox"]]
 collision_layer = 2
