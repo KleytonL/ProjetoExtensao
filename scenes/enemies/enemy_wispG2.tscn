@@ -2,18 +2,19 @@
 
 [ext_resource type="Script" uid="uid://do5wmbmxkrnjr" path="res://scripts/enemy_wisp_g2.gd" id="1_867ag"]
 [ext_resource type="Texture2D" uid="uid://c4uefmbe7rguo" path="res://resources/spritesheets/spritesheet-wisp.svg" id="2_graqp"]
-[ext_resource type="AudioStream" uid="uid://chl28uamx1kui" path="res://resources/audio/sfx/hurt.ogg" id="3_gpr2o"]
-[ext_resource type="PackedScene" uid="uid://c3a6he0woet82" path="res://scenes/misc/components/hurtbox_component.tscn" id="3_rfdpy"]
 [ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="4_eam0m"]
+[ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="4_re62y"]
+[ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="5_eam0m"]
+[ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="5_re62y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
 radius = 5.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_graqp"]
-size = Vector2(12, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cw7i"]
 size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_graqp"]
+size = Vector2(12, 16)
 
 [sub_resource type="Animation" id="Animation_0cw7i"]
 length = 0.001
@@ -119,11 +120,6 @@ states/hurt_anim/position = Vector2(538, 230)
 transitions = ["Start", "active_anim", SubResource("AnimationNodeStateMachineTransition_graqp"), "active_anim", "End", SubResource("AnimationNodeStateMachineTransition_0cw7i"), "active_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_dm05c"), "hurt_anim", "active_anim", SubResource("AnimationNodeStateMachineTransition_ymxtd")]
 graph_offset = Vector2(9, 51)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oue82"]
-random_pitch = 1.7817973
-streams_count = 1
-stream_0/stream = ExtResource("3_gpr2o")
-
 [node name="enemy_wispG2" type="CharacterBody2D" unique_id=1361067532 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
@@ -139,24 +135,26 @@ position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_graqp")
 
 [node name="HealthComponent" parent="." unique_id=1120913824 instance=ExtResource("4_eam0m")]
+max_health = 10
 
-[node name="HurtboxComponent" parent="." unique_id=880340575 instance=ExtResource("3_rfdpy")]
+[node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target") instance=ExtResource("4_re62y")]
+target = NodePath("..")
+force = 20
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2067656242]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_graqp")
+[node name="EnemyHitboxComponent" parent="." unique_id=1431613630 instance=ExtResource("5_eam0m")]
+damage = 5
 
-[node name="HurtBox" type="Area2D" parent="." unique_id=1436817233 groups=["enemy_hurtbox"]]
-collision_layer = 2
-collision_mask = 2
-
-[node name="HitBox" type="Area2D" parent="." unique_id=26614535 groups=["enemy_hitbox"]]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1806173179]
+[node name="HitboxCollision" type="CollisionShape2D" parent="EnemyHitboxComponent" unique_id=1806173179]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_0cw7i")
+
+[node name="EnemyHurtboxComponent" parent="." unique_id=442173391 node_paths=PackedStringArray("health_component", "knockback_component") instance=ExtResource("5_re62y")]
+health_component = NodePath("../HealthComponent")
+knockback_component = NodePath("../KnockbackComponent")
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=2067656242]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_graqp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=928287098]
 libraries/ = SubResource("AnimationLibrary_ymxtd")
@@ -166,11 +164,3 @@ tree_root = SubResource("AnimationNodeStateMachine_indkd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/active_anim/TimeScale/scale = 1.2000000000000028
 parameters/hurt_anim/TimeScale/scale = 1.75
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=918079948]
-stream = SubResource("AudioStreamRandomizer_oue82")
-volume_db = -15.0
-pitch_scale = 2.0
-
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

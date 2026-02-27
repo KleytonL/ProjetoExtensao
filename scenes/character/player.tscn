@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://dvi2mnhktqoic" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://ncrgpoebctbv" path="res://resources/spritesheets/spritesheet-hayato.svg" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://dxx577v0rhwua" path="res://resources/spritesheets/spritesheet-vfx.svg" id="3_dqkch"]
-[ext_resource type="AudioStream" uid="uid://cp783xvrsfb2c" path="res://resources/audio/sfx/punch.ogg" id="4_1y732"]
+[ext_resource type="PackedScene" uid="uid://df7ff6u76jghh" path="res://scenes/misc/components/player_hitbox_component.tscn" id="4_5y66v"]
 [ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="4_erpy8"]
-[ext_resource type="PackedScene" uid="uid://c3a6he0woet82" path="res://scenes/misc/components/hurtbox_component.tscn" id="4_wmtbp"]
+[ext_resource type="PackedScene" uid="uid://c3a6he0woet82" path="res://scenes/misc/components/player_hurtbox_component.tscn" id="4_wmtbp"]
+[ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="6_5y66v"]
 [ext_resource type="PackedScene" uid="uid://43nfrubuu2kq" path="res://scenes/misc/gui/health_bar.tscn" id="6_erpy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
@@ -43,7 +44,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Sprite2D/PlayerHitboxComponent/HitboxCollision:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,7 +85,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/HitBox/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Sprite2D/PlayerHitboxComponent/HitboxCollision:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -137,7 +138,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/HitBox/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Sprite2D/PlayerHitboxComponent/HitboxCollision:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -190,7 +191,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/HitBox/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Sprite2D/PlayerHitboxComponent/HitboxCollision:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -495,11 +496,6 @@ states/run_anim/position = Vector2(543, 320)
 transitions = ["Start", "idle_anim", SubResource("AnimationNodeStateMachineTransition_g2els"), "idle_anim", "End", SubResource("AnimationNodeStateMachineTransition_qhqgy"), "idle_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "run_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_dqkch"), "run_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "hurt_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_smehm"), "hurt_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "idle_anim", "atk_anim_01", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "atk_anim_01", "atk_anim_02", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "atk_anim_02", "atk_anim_03", SubResource("AnimationNodeStateMachineTransition_jej6c"), "atk_anim_03", "idle_anim", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "atk_anim_02", "idle_anim", SubResource("AnimationNodeStateMachineTransition_oprun"), "atk_anim_01", "idle_anim", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "atk_anim_01", "run_anim", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "atk_anim_02", "run_anim", SubResource("AnimationNodeStateMachineTransition_qfm1y"), "atk_anim_03", "run_anim", SubResource("AnimationNodeStateMachineTransition_fulsm"), "idle_anim", "dash_anim", SubResource("AnimationNodeStateMachineTransition_4r5pv"), "run_anim", "dash_anim", SubResource("AnimationNodeStateMachineTransition_60mlk"), "dash_anim", "idle_anim", SubResource("AnimationNodeStateMachineTransition_i4ail"), "dash_anim", "run_anim", SubResource("AnimationNodeStateMachineTransition_a38lo")]
 graph_offset = Vector2(-202, -92)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_smehm"]
-random_pitch = 1.7817973
-streams_count = 1
-stream_0/stream = ExtResource("4_1y732")
-
 [node name="Player" type="CharacterBody2D" unique_id=1155197298 groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_onrkg")
@@ -515,29 +511,34 @@ position = Vector2(18, 0)
 texture = ExtResource("3_dqkch")
 hframes = 4
 
-[node name="HitBox" type="Area2D" parent="Sprite2D" unique_id=94988456 groups=["player_hitbox"]]
-collision_layer = 2
-collision_mask = 2
+[node name="PlayerHitboxComponent" parent="Sprite2D" unique_id=1804852658 instance=ExtResource("4_5y66v")]
+damage = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox" unique_id=1707922413]
+[node name="HitboxCollision" type="CollisionShape2D" parent="Sprite2D/PlayerHitboxComponent" unique_id=1707922413]
 position = Vector2(12, 0)
 shape = SubResource("RectangleShape2D_qhqgy")
 disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1511141511]
+position_smoothing_speed = 20.0
 
 [node name="SceneryCollision" type="CollisionShape2D" parent="." unique_id=2063977328]
 position = Vector2(0, 5)
 scale = Vector2(0.6, 0.3)
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1511141511]
-position_smoothing_speed = 20.0
+[node name="HealthComponent" parent="." unique_id=1120913824 instance=ExtResource("4_erpy8")]
+max_health = 100
 
-[node name="HurtboxComponent" parent="." unique_id=880340575 node_paths=PackedStringArray("health_component") instance=ExtResource("4_wmtbp")]
-collision_layer = 2
-collision_mask = 2
+[node name="KnockbackComponent" parent="." unique_id=422348709 node_paths=PackedStringArray("target") instance=ExtResource("6_5y66v")]
+target = NodePath("..")
+force = 50
+
+[node name="PlayerHurtboxComponent" parent="." unique_id=880340575 node_paths=PackedStringArray("health_component", "knockback_component") instance=ExtResource("4_wmtbp")]
 health_component = NodePath("../HealthComponent")
+knockback_component = NodePath("../KnockbackComponent")
 
-[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=61538903]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="PlayerHurtboxComponent" unique_id=61538903]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_5y66v")
 
@@ -562,9 +563,6 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRange" unique_id=1639531256]
 shape = SubResource("CircleShape2D_1y732")
-
-[node name="HealthComponent" parent="." unique_id=1120913824 instance=ExtResource("4_erpy8")]
-max_health = 100
 
 [node name="Attack" type="Node2D" parent="." unique_id=2126773543]
 
@@ -597,11 +595,6 @@ wait_time = 2.0
 
 [node name="iFramesTimer" type="Timer" parent="." unique_id=1611005781]
 wait_time = 0.35
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1054863802]
-stream = SubResource("AudioStreamRandomizer_smehm")
-volume_db = -17.5
-pitch_scale = 5.0
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=2019851261]
 
@@ -685,12 +678,11 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="area_entered" from="Sprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="update_healthbar" from="HealthComponent" to="GUI/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="area_entered" from="PullRange" to="." method="_on_pull_range_area_entered"]
 [connection signal="area_entered" from="CollectRange" to="." method="_on_collect_range_area_entered"]
 [connection signal="body_entered" from="EnemyRange" to="." method="_on_enemy_range_body_entered"]
 [connection signal="body_exited" from="EnemyRange" to="." method="_on_enemy_range_body_exited"]
-[connection signal="update_healthbar" from="HealthComponent" to="GUI/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="timeout" from="Attack/SoulfireTimer" to="." method="_on_soulfire_timer_timeout"]
 [connection signal="timeout" from="AttackResetTimer" to="." method="_on_attack_reset_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

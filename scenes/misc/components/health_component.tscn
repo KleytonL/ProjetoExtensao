@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://chl33m4knqv6"]
 
 [ext_resource type="Script" uid="uid://dhyqcu7putkcr" path="res://scripts/components/health_component.gd" id="1_yols5"]
+[ext_resource type="AudioStream" uid="uid://chl28uamx1kui" path="res://resources/audio/sfx/hurt.ogg" id="2_4f3j1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ilb6t"]
+streams_count = 1
+stream_0/stream = ExtResource("2_4f3j1")
 
 [node name="HealthComponent" type="Node" unique_id=1120913824]
 script = ExtResource("1_yols5")
+
+[node name="sfx_damage" type="AudioStreamPlayer" parent="." unique_id=233152113]
+stream = SubResource("AudioStreamRandomizer_ilb6t")
+volume_db = -17.5
+pitch_scale = 5.0

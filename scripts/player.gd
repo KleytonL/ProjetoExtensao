@@ -1,10 +1,10 @@
 extends CharacterBody2D
+class_name Player
 
 enum States {IDLE, RUN, DASH, ATK01, ATK02, ATK03, HURT}
 
 const SPEED = 50.0
 const DECELERATION = 200.0
-const DAMAGE = 2
 
 var atkPoints = 3;
 var canDash: bool = true
@@ -40,8 +40,6 @@ var additional_attacks = 0
 @onready var _leap_timer = $AttackLeapTimer
 @onready var _dash_timer = $DashTimer
 @onready var _iframes_timer = $iFramesTimer
-@onready var _sfx = $AudioStreamPlayer
-@onready var _deathscreen = $"../CanvasLayer/deathscreen"
 
 @onready var _exp_bar: ProgressBar = get_node("%ExpBar")
 @onready var _level_label: Label = get_node("%lbl_level")
@@ -93,7 +91,6 @@ func _physics_process(delta: float) -> void:
 			set_state(States.ATK03)
 
 		if state in [States.ATK01, States.ATK02, States.ATK03]:
-			_sfx.play()
 			
 			_leap_timer.start()
 			await _leap_timer.timeout
@@ -165,16 +162,6 @@ func attack():
 
 func take_damage() -> void:
 	set_state(States.HURT)
-	_sfx.play()
-
-func apply_knockback(direction: Vector2, force: float) -> void:
-	knockback = direction * force
-
-func _on_hit_box_area_entered(area: Area2D) -> void:
-	var knockback_direction = (area.get_parent().global_position - global_position).normalized()
-	if area.is_in_group("enemy_hurtbox"):
-		area.get_parent().apply_knockback(knockback_direction, 20.0)
-		area.get_parent().call_deferred("take_damage", DAMAGE)
 
 func _on_dash_timer_timeout() -> void:
 	canDash = true
@@ -328,7 +315,3 @@ func change_time(argtime = 0):
 	if get_seconds < 10:
 		get_seconds = str(0, get_seconds)
 	_timer_label.text = str(get_minutes, ":", get_seconds)
-
-func on_death():
-	get_tree().paused = true
-	_deathscreen.visible = true
