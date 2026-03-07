@@ -1,18 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
-enum States {IDLE, RUN, DASH, ATK01, ATK02, ATK03, HURT}
+@onready var animations: AnimationPlayer = $AnimationPlayer
+@onready var state_machine: StateMachine = $StateMachine
+@onready var sprite: Sprite2D = $Sprite2D
 
-const SPEED = 50.0
-const DECELERATION = 200.0
-
-var atkPoints = 3;
-var canDash: bool = true
-var state: States = States.IDLE : set = set_state
-var knockback: Vector2 = Vector2.ZERO
-
-var health: int = 100
-var max_health: int = 100
 var level = 1
 var experience = 0
 var collected_exp = 0
@@ -34,155 +26,86 @@ var attack_cooldown = 0
 var attack_size = 0
 var additional_attacks = 0
 
-@onready var _sprite = $Sprite2D
-@onready var _animation = $AnimationTree
-@onready var _atk_timer = $AttackResetTimer
-@onready var _leap_timer = $AttackLeapTimer
-@onready var _dash_timer = $DashTimer
-@onready var _iframes_timer = $iFramesTimer
-
 @onready var _exp_bar: ProgressBar = get_node("%ExpBar")
 @onready var _level_label: Label = get_node("%lbl_level")
 @onready var _timer_label: Label = get_node("%lbl_timer")
 @onready var _level_panel: Panel = get_node("%LevelPanel")
 @onready var _upgrade_grid: VBoxContainer = get_node("%UpgradeGrid")
 
-@onready var _soulfire_timer: Timer = get_node("%SoulfireTimer")
-
 func _ready():
+	state_machine.init(self)
 	set_expbar(experience, exp_capacity())
-	#set_healthbar(health, max_health)
+
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
-	var direction_x := Input.get_axis("ui_left", "ui_right")
-	var direction_y := Input.get_axis("ui_up", "ui_down")
+	state_machine.process_physics(delta)
+#	var direction_y := Input.get_axis("ui_up", "ui_down")
+#	
+#	if state in [States.IDLE, States.RUN]:
+#		if direction_x:
+#			velocity.x = direction_x * SPEED
+#		else:
+#			velocity.x = move_toward(velocity.x, 0, DECELERATION * delta)
+#
+#		if direction_y:
+#			velocity.y = direction_y * SPEED
+#		else:
+#			velocity.y = move_toward(velocity.y, 0, DECELERATION * delta)
+#
+#		if velocity.x != 0 || velocity.y != 0:
+#			set_state(States.RUN)
+#		else:
+#			set_state(States.IDLE)
+#
+#		if Input.is_action_just_pressed("ui_dash"):
+#			if state == States.IDLE || (direction_x == 0 && direction_y == 0):
+#				velocity = Vector2(SPEED * 3, 0) if _sprite.scale.x == 1 else Vector2(-SPEED * 3, 0)
+#			elif state == States.RUN:
+#				velocity = Vector2(direction_x * (SPEED * 3), direction_y * (SPEED * 3))
+#			set_state(States.DASH)
+#
+#		if Input.is_action_just_pressed("ui_attack") && atkPoints == 3:
+#			atkPoints -= 1
+#			set_state(States.ATK01)
+#		elif Input.is_action_just_pressed("ui_attack") && atkPoints == 2:
+#			atkPoints -= 1
+#			set_state(States.ATK02)
+#		elif Input.is_action_just_pressed("ui_attack") && atkPoints == 1:
+#			atkPoints -= 1
+#			set_state(States.ATK03)
+#
+#		if state in [States.ATK01, States.ATK02, States.ATK03]:
+#			
+#			_leap_timer.start()
+#			await _leap_timer.timeout
+#			
+#			velocity = Vector2(SPEED*1.25, 0) if _sprite.scale.x == 1 else Vector2(-SPEED*1.25, 0)
+#			
+#			_leap_timer.start()
+#			await _leap_timer.timeout
+#			
+#			velocity = Vector2.ZERO
 
-	if state in [States.IDLE, States.RUN]:
-		if direction_x:
-			velocity.x = direction_x * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, DECELERATION * delta)
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
 
-		if direction_y:
-			velocity.y = direction_y * SPEED
-		else:
-			velocity.y = move_toward(velocity.y, 0, DECELERATION * delta)
+#func attack():
+#	if soulfire_level > 0:
+#		_soulfire_timer.wait_time = soulfire_atkspeed
+#		if _soulfire_timer.is_stopped():
+#			_soulfire_timer.start()
 
-		if velocity.x != 0 || velocity.y != 0:
-			set_state(States.RUN)
-		else:
-			set_state(States.IDLE)
-
-		if Input.is_action_just_pressed("dashBtn") && canDash:
-			if state == States.IDLE || (direction_x == 0 && direction_y == 0):
-				velocity = Vector2(SPEED * 3, 0) if _sprite.scale.x == 1 else Vector2(-SPEED * 3, 0)
-			elif state == States.RUN:
-				velocity = Vector2(direction_x * (SPEED * 3), direction_y * (SPEED * 3))
-			set_state(States.DASH)
-
-		if Input.is_action_just_pressed("attackBtn") && atkPoints == 3:
-			atkPoints -= 1
-			set_state(States.ATK01)
-		elif Input.is_action_just_pressed("attackBtn") && atkPoints == 2:
-			atkPoints -= 1
-			set_state(States.ATK02)
-		elif Input.is_action_just_pressed("attackBtn") && atkPoints == 1:
-			atkPoints -= 1
-			set_state(States.ATK03)
-
-		if state in [States.ATK01, States.ATK02, States.ATK03]:
-			
-			_leap_timer.start()
-			await _leap_timer.timeout
-			
-			velocity = Vector2(SPEED*1.25, 0) if _sprite.scale.x == 1 else Vector2(-SPEED*1.25, 0)
-			
-			_leap_timer.start()
-			await _leap_timer.timeout
-			
-			velocity = Vector2.ZERO
-
-	move_and_slide()
-
-func set_state(new_state: States) -> void:
-	var state_machine = _animation.get("parameters/playback")
-	var previous_state := state
-	state = new_state
-
-	if state == States.IDLE:
-		state_machine.travel("idle_anim")
-	
-	elif state == States.RUN:
-		state_machine.travel("run_anim")
-		_sprite.scale.x = -1 if velocity.x < 0 else 1
-	
-	elif state == States.DASH:
-		#_hurtbox.call_deferred("set", "disabled", true)
-		state_machine.travel("dash_anim")
-		canDash = false
-		await _animation.animation_finished
-		_dash_timer.start()
-		_iframes_timer.start()
-		velocity = Vector2.ZERO
-		state = previous_state
-	
-	elif state == States.ATK01:
-		state_machine.travel("atk_anim_01")
-		await _animation.animation_finished
-		_atk_timer.start()
-		state = previous_state
-	
-	elif state == States.ATK02:
-		state_machine.travel("atk_anim_02")
-		await _animation.animation_finished
-		_atk_timer.start()
-		state = States.IDLE
-	
-	elif state == States.ATK03:
-		state_machine.travel("atk_anim_03")
-		await _animation.animation_finished
-		state = States.IDLE
-		atkPoints = 3
-	
-	elif state == States.HURT:
-		state_machine.travel("hurt_anim")
-		#_hurtbox.call_deferred("set", "disabled", true)
-		velocity = knockback
-		_sprite.scale.x = -1 if velocity.x > 0 else 1
-		await _animation.animation_finished
-		_iframes_timer.start()
-		velocity = Vector2.ZERO
-		state = States.IDLE
-
-func attack():
-	if soulfire_level > 0:
-		_soulfire_timer.wait_time = soulfire_atkspeed
-		if _soulfire_timer.is_stopped():
-			_soulfire_timer.start()
-
-func take_damage() -> void:
-	set_state(States.HURT)
-
-func _on_dash_timer_timeout() -> void:
-	canDash = true
-
-func _on_attack_reset_timer_timeout() -> void:
-	set_state(States.IDLE)
-	atkPoints = 3;
-
-func _on_i_frames_timer_timeout() -> void:
-	pass
-	#_hurtbox.call_deferred("set", "disabled", false)
-
-func _on_soulfire_timer_timeout() -> void:
-	var soulfire_count = soulfire_amount + additional_attacks
-	while soulfire_count > 0:
-		var soulfire_instance = soulfire.instantiate()
-		soulfire_instance.position = position
-		soulfire_instance.target = get_random_target()
-		soulfire_instance.level = soulfire_level
-		add_child(soulfire_instance)
-		soulfire_count -= 1
+#func _on_soulfire_timer_timeout() -> void:
+#	var soulfire_count = soulfire_amount + additional_attacks
+#	while soulfire_count > 0:
+#		var soulfire_instance = soulfire.instantiate()
+#		soulfire_instance.position = position
+#		soulfire_instance.target = get_random_target()
+#		soulfire_instance.level = soulfire_level
+#		add_child(soulfire_instance)
+#		soulfire_count -= 1
 
 func _on_pull_range_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectables"):
@@ -265,12 +188,11 @@ func upgrade_character(upgrade):
 		"soulfire6":
 			soulfire_level += 1
 			soulfire_amount += 2
-		"food":
-			health += 5
-			health = clamp(health, 0, max_health)
-
-	attack()
-	#set_healthbar(health, max_health)
+#		"food":
+#			health += 5
+#			health = clamp(health, 0, max_health)
+#	attack()
+#	set_healthbar(health, max_health)
 
 	var option_children = _upgrade_grid.get_children()
 	for i in option_children:

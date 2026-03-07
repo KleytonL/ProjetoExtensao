@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chl33m4knqv6"]
 
-[ext_resource type="Script" uid="uid://dhyqcu7putkcr" path="res://scripts/components/health_component.gd" id="1_yols5"]
+[ext_resource type="Script" uid="uid://dhyqcu7putkcr" path="res://scripts/component_scripts/health_component.gd" id="1_yols5"]
 [ext_resource type="AudioStream" uid="uid://chl28uamx1kui" path="res://resources/audio/sfx/hurt.ogg" id="2_4f3j1"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ilb6t"]

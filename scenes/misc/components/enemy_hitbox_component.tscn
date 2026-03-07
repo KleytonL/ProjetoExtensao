@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb2yhgaert72e"]
 
-[ext_resource type="Script" uid="uid://dqxtrlu4tcb2x" path="res://scripts/components/enemy_hitbox_component.gd" id="1_24ldk"]
+[ext_resource type="Script" uid="uid://dqxtrlu4tcb2x" path="res://scripts/component_scripts/enemy_hitbox_component.gd" id="1_24ldk"]
 
 [node name="EnemyHitboxComponent" type="Area2D" unique_id=1431613630]
 collision_layer = 2

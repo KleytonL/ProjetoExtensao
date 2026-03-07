@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://nyyc581y20pa"]
 
-[ext_resource type="Script" uid="uid://bj58y8j25ptbf" path="res://scripts/credits_menu.gd" id="1_xtkoc"]
+[ext_resource type="Script" uid="uid://bj58y8j25ptbf" path="res://scripts/menu_scripts/credits_menu.gd" id="1_xtkoc"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="3_325oc"]
-[ext_resource type="Script" uid="uid://bbocj1776cis1" path="res://scenes/menus/animacao.gd" id="3_xtkoc"]
+[ext_resource type="Script" uid="uid://bbocj1776cis1" path="res://scripts/menu_scripts/credits_scroll.gd" id="3_xtkoc"]
 [ext_resource type="AudioStream" uid="uid://d28bi2yg3rloq" path="res://resources/audio/music/Yiruma.mp3" id="4_d74go"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d74go"]

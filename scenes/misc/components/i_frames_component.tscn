@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ccjj5vrdceihn"]
+
+[ext_resource type="Script" uid="uid://dnlucuq35if5j" path="res://scripts/component_scripts/i_frames_component.gd" id="1_s5nkf"]
+
+[node name="iFramesComponent" type="Node" unique_id=672068334]
+script = ExtResource("1_s5nkf")

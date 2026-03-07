@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://g75n8i2ud3th"]
+
+[ext_resource type="Script" uid="uid://dpo1t07360jbi" path="res://scripts/component_scripts/frame_freeze_component.gd" id="1_q45yd"]
+
+[node name="FrameFreezeComponent" type="Node" unique_id=1638875044]
+script = ExtResource("1_q45yd")

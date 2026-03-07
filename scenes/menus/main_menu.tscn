@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4gj3wwh26hgr"]
 
-[ext_resource type="Script" uid="uid://dhghlu43kuokv" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Script" uid="uid://dhghlu43kuokv" path="res://scripts/menu_scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://chkwlgogwuicr" path="res://resources/HayatoLogo.svg" id="2_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="3_wu84c"]
 

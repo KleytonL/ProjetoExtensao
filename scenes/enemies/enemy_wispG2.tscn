@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://dqgu5pr8xhjh5"]
 
-[ext_resource type="Script" uid="uid://do5wmbmxkrnjr" path="res://scripts/enemy_wisp_g2.gd" id="1_867ag"]
+[ext_resource type="Script" uid="uid://do5wmbmxkrnjr" path="res://scripts/enemy_scripts/enemy_wisp_g2.gd" id="1_867ag"]
 [ext_resource type="Texture2D" uid="uid://c4uefmbe7rguo" path="res://resources/spritesheets/spritesheet-wisp.svg" id="2_graqp"]
 [ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="4_eam0m"]
 [ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="4_re62y"]
 [ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="5_eam0m"]
+[ext_resource type="Script" uid="uid://ccwg7amauu6kk" path="res://scripts/state_scripts/hurt_state.gd" id="5_lx71q"]
 [ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="5_re62y"]
+[ext_resource type="Script" uid="uid://b6wu7hresy3q6" path="res://scripts/state_scripts/pursuit_state.gd" id="6_2wjjs"]
+[ext_resource type="Script" uid="uid://bboq2cifjak1t" path="res://scripts/state_scripts/death_state.gd" id="6_5o3s1"]
+[ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="7_re62y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
 radius = 5.0
@@ -31,8 +35,25 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_dm05c"]
+resource_name = "hurt_animation"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 12, 13, 12, 13]
+}
+
 [sub_resource type="Animation" id="Animation_graqp"]
-resource_name = "active_anim"
+resource_name = "pursuit_animation"
 length = 1.1
 loop_mode = 1
 step = 0.1
@@ -49,76 +70,12 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
 }
 
-[sub_resource type="Animation" id="Animation_dm05c"]
-resource_name = "hurt_anim"
-length = 0.6
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 12, 13, 12, 13]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ymxtd"]
 _data = {
 &"RESET": SubResource("Animation_0cw7i"),
-&"active_anim": SubResource("Animation_graqp"),
-&"hurt_anim": SubResource("Animation_dm05c")
+&"hurt_animation": SubResource("Animation_dm05c"),
+&"pursuit_animation": SubResource("Animation_graqp")
 }
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_graqp"]
-animation = &"active_anim"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_0cw7i"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dm05c"]
-nodes/output/position = Vector2(640, 80)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_graqp")
-nodes/Animation/position = Vector2(140, 60)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_0cw7i")
-nodes/TimeScale/position = Vector2(400, 40)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0cw7i"]
-animation = &"hurt_anim"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_dm05c"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ymxtd"]
-graph_offset = Vector2(-279, 30)
-nodes/output/position = Vector2(420, 100)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_0cw7i")
-nodes/Animation/position = Vector2(0, 80)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_dm05c")
-nodes/TimeScale/position = Vector2(220, 100)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_graqp"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0cw7i"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dm05c"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ymxtd"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_indkd"]
-states/Start/position = Vector2(227, 100)
-states/active_anim/node = SubResource("AnimationNodeBlendTree_dm05c")
-states/active_anim/position = Vector2(538, 100)
-states/hurt_anim/node = SubResource("AnimationNodeBlendTree_ymxtd")
-states/hurt_anim/position = Vector2(538, 230)
-transitions = ["Start", "active_anim", SubResource("AnimationNodeStateMachineTransition_graqp"), "active_anim", "End", SubResource("AnimationNodeStateMachineTransition_0cw7i"), "active_anim", "hurt_anim", SubResource("AnimationNodeStateMachineTransition_dm05c"), "hurt_anim", "active_anim", SubResource("AnimationNodeStateMachineTransition_ymxtd")]
-graph_offset = Vector2(9, 51)
 
 [node name="enemy_wispG2" type="CharacterBody2D" unique_id=1361067532 groups=["Enemy"]]
 collision_layer = 2
@@ -134,11 +91,33 @@ vframes = 2
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_graqp")
 
-[node name="HealthComponent" parent="." unique_id=1120913824 instance=ExtResource("4_eam0m")]
+[node name="StateMachine" parent="." unique_id=46313988 node_paths=PackedStringArray("initial_state") instance=ExtResource("7_re62y")]
+initial_state = NodePath("PursuitState")
+
+[node name="PursuitState" type="Node" parent="StateMachine" unique_id=1122450387]
+script = ExtResource("6_2wjjs")
+animation_name = "pursuit_animation"
+move_speed = 10
+metadata/_custom_type_script = "uid://b6wu7hresy3q6"
+
+[node name="HurtState" type="Node" parent="StateMachine" unique_id=1497239797 node_paths=PackedStringArray("recovery_state", "knockback_component")]
+script = ExtResource("5_lx71q")
+recovery_state = NodePath("../PursuitState")
+knockback_component = NodePath("../../KnockbackComponent")
+animation_name = "hurt_animation"
+metadata/_custom_type_script = "uid://ccwg7amauu6kk"
+
+[node name="DeathState" type="Node" parent="StateMachine" unique_id=1449046355]
+script = ExtResource("6_5o3s1")
+metadata/_custom_type_script = "uid://bboq2cifjak1t"
+
+[node name="HealthComponent" parent="." unique_id=1120913824 node_paths=PackedStringArray("death_state") instance=ExtResource("4_eam0m")]
+death_state = NodePath("../StateMachine/DeathState")
 max_health = 10
 
-[node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target") instance=ExtResource("4_re62y")]
+[node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("4_re62y")]
 target = NodePath("..")
+hurt_state = NodePath("../StateMachine/HurtState")
 force = 20
 
 [node name="EnemyHitboxComponent" parent="." unique_id=1431613630 instance=ExtResource("5_eam0m")]
@@ -158,9 +137,3 @@ shape = SubResource("RectangleShape2D_graqp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=928287098]
 libraries/ = SubResource("AnimationLibrary_ymxtd")
-
-[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1607266180]
-tree_root = SubResource("AnimationNodeStateMachine_indkd")
-anim_player = NodePath("../AnimationPlayer")
-parameters/active_anim/TimeScale/scale = 1.2000000000000028
-parameters/hurt_anim/TimeScale/scale = 1.75

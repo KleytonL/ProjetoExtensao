@@ -1,6 +1,7 @@
 extends Node
 class_name HealthComponent
 
+@export var death_state: State
 @export var max_health: int
 var health: int
 
@@ -13,7 +14,7 @@ func damage_enemy(attack: int) -> void:
 	health -= attack
 	$sfx_damage.play()
 	if health <= 0:
-		get_parent().queue_free()
+		$"../StateMachine".change_state(death_state)
 
 func damage_player(attack: int) -> void:
 	health -= attack

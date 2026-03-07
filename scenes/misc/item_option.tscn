@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cosije1l4tlpf"]
 
 [ext_resource type="Texture2D" uid="uid://cqyhjqyd63ed6" path="res://resources/spritesheets/spritesheet-soulfire.svg" id="1_bolky"]
-[ext_resource type="Script" uid="uid://ydi1lhbr6s18" path="res://scripts/item_option.gd" id="1_cxave"]
+[ext_resource type="Script" uid="uid://ydi1lhbr6s18" path="res://scripts/gui_scripts/item_option.gd" id="1_cxave"]
 
 [node name="ItemOption" type="Button" unique_id=1361442912]
 anchors_preset = -1

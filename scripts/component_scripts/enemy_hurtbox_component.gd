@@ -8,4 +8,4 @@ func damage(attack: PlayerHitboxComponent) -> void:
 	if health_component:
 		health_component.damage_enemy(attack.damage)
 	if knockback_component:
-		knockback_component.apply(attack.direction)
+		knockback_component.apply_direction(attack.direction)

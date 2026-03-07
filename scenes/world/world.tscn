@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5qfijvh88uqm" path="res://scenes/character/player.tscn" id="1_gb53w"]
 [ext_resource type="PackedScene" uid="uid://ccphn3uunk7c2" path="res://scenes/enemies/enemy_spawner.tscn" id="2_5qq27"]
-[ext_resource type="Script" uid="uid://fqca6eefpksa" path="res://scripts/spawn_info.gd" id="3_dlabj"]
+[ext_resource type="Script" uid="uid://fqca6eefpksa" path="res://scripts/enemy_scripts/spawn_info.gd" id="3_dlabj"]
 [ext_resource type="PackedScene" uid="uid://cq2hne6jxythc" path="res://scenes/enemies/enemy_wispG1.tscn" id="4_srmg5"]
 [ext_resource type="PackedScene" uid="uid://dqgu5pr8xhjh5" path="res://scenes/enemies/enemy_wispG2.tscn" id="5_umvgx"]
 [ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/tilemaps/tilemapsheet.svg" id="6_mxkvs"]
