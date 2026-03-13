@@ -4,10 +4,12 @@ class_name HealthComponent
 @export var death_state: State
 @export var max_health: int
 var health: int
+@onready var morte = get_tree().get_first_node_in_group("Teste")
 
 signal update_healthbar
 
 func _ready() -> void:
+	print(morte)
 	health = max_health
 
 func damage_enemy(attack: int) -> void:
@@ -21,4 +23,4 @@ func damage_player(attack: int) -> void:
 	$sfx_damage.play()
 	emit_signal("update_healthbar")
 	if health <= 0:
-		get_tree().paused = true
+		morte.pause()

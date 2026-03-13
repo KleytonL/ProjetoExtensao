@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://rae8dvp1an4" path="res://scripts/state_scripts/attack_state_three.gd" id="13_vhx6d"]
 [ext_resource type="Script" uid="uid://b7c87rtlqm2u0" path="res://scripts/state_scripts/attack_state_one.gd" id="15_e5n5u"]
 [ext_resource type="PackedScene" uid="uid://ccjj5vrdceihn" path="res://scenes/misc/components/i_frames_component.tscn" id="18_2smwq"]
+[ext_resource type="FontFile" uid="uid://dxrmmuex0h54n" path="res://fonts/VCR_OSD_MONO.ttf" id="21_x06ku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 16)
@@ -529,9 +530,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
+offset_top = 9.0
 offset_right = 20.0
-offset_bottom = 23.0
+offset_bottom = 22.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("21_x06ku")
 theme_override_font_sizes/font_size = 6
 text = "00:00"
 horizontal_alignment = 1
@@ -549,11 +552,21 @@ metadata/_edit_use_anchors_ = true
 
 [node name="lbl_level" type="Label" parent="GUI/Control/ExpBar" unique_id=1706011688]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 10.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -3.0
+offset_right = 16.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("21_x06ku")
 theme_override_font_sizes/font_size = 6
-text = "Level: 1"
+text = "Level: 1 "
 vertical_alignment = 1
 
 [node name="LevelPanel" type="Panel" parent="GUI/Control" unique_id=1733489924]
@@ -574,6 +587,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="lbl_levelup" type="Label" parent="GUI/Control/LevelPanel" unique_id=109070831]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -582,6 +596,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 12.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("21_x06ku")
 theme_override_font_sizes/font_size = 8
 text = "LEVEL UP!"
 

@@ -154,7 +154,7 @@ tile_set = SubResource("TileSet_k0juu")
 
 [node name="pause_menu" parent="CanvasLayer" unique_id=1608591503 instance=ExtResource("7_m114p")]
 
-[node name="deathscreen" parent="CanvasLayer" unique_id=609795518 instance=ExtResource("8_71ii3")]
+[node name="deathscreen" parent="CanvasLayer" unique_id=609795518 groups=["Teste"] instance=ExtResource("8_71ii3")]
 visible = false
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2089122602]

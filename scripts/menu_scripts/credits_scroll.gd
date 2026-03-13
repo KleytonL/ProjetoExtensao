@@ -1,35 +1,35 @@
 extends ScrollContainer
 
 @onready var text_node: RichTextLabel = $RichTextLabel
-@export var delay_no_final : float = 2.0
-@export var velocidade : float = 30.0
+@export var delay_final : float = 2.0
+@export var velocity : float = 30.0
 
 @onready var logo = $"../TextureRect"
 
 func _ready() -> void:
 	await get_tree().process_frame
 	logo_visibility()
-	iniciar_creditos()
+	start_credit()
 
 func logo_visibility() -> void:
 	var tween = create_tween()
 	tween.tween_property(logo, "modulate:a", 0.25, 1.0)
 
-func iniciar_creditos() -> void:
-	var altura_texto = text_node.get_content_height()
-	var altura_container = size.y
+func start_credit() -> void:
+	var height_text = text_node.get_content_height()
+	var height_container = size.y
 	
-	text_node.position.y = altura_container
+	text_node.position.y = height_container
 	
-	var destino_final = -altura_texto
+	var destiny_final = -height_text
 	
-	var distancia_total = altura_texto + altura_container
-	var duracao = distancia_total / velocidade
+	var distance_total = height_text + height_container
+	var duration = distance_total / velocity
 	
 	var tween = create_tween()
-	tween.tween_property(text_node, "position:y", destino_final, duracao)\
+	tween.tween_property(text_node, "position:y", destiny_final, duration)\
 		.set_trans(tween.TRANS_LINEAR)\
 		.set_ease(tween.EASE_IN_OUT)
 	
-	tween.tween_interval(delay_no_final)
-	tween.tween_callback(iniciar_creditos)
+	tween.tween_interval(delay_final)
+	tween.tween_callback(start_credit)

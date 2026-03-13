@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bj58y8j25ptbf" path="res://scripts/menu_scripts/credits_menu.gd" id="1_xtkoc"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="3_325oc"]
+[ext_resource type="FontFile" uid="uid://dxrmmuex0h54n" path="res://fonts/VCR_OSD_MONO.ttf" id="3_wywfy"]
 [ext_resource type="Script" uid="uid://bbocj1776cis1" path="res://scripts/menu_scripts/credits_scroll.gd" id="3_xtkoc"]
 [ext_resource type="AudioStream" uid="uid://d28bi2yg3rloq" path="res://resources/audio/music/Yiruma.mp3" id="4_d74go"]
 
@@ -65,7 +66,9 @@ script = ExtResource("3_xtkoc")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.8558595, 0.6599137, 1.2131723, 1)
+theme_override_colors/default_color = Color(13.539555, 10.651967, 18.892157, 1)
+theme_override_fonts/normal_font = ExtResource("3_wywfy")
+theme_override_fonts/bold_font = ExtResource("3_wywfy")
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 theme_override_font_sizes/bold_italics_font_size = 10
