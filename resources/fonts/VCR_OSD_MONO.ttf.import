@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://4tflrljs74ag"
-path="res://.godot/imported/unlearne.ttf-26820540327a4367fc44972134b489bf.fontdata"
+uid="uid://dxrmmuex0h54n"
+path="res://.godot/imported/VCR_OSD_MONO.ttf-310537e128ef5d75ad9093c079f471e9.fontdata"
 
 [deps]
 
-source_file="res://fonts/unlearne.ttf"
-dest_files=["res://.godot/imported/unlearne.ttf-26820540327a4367fc44972134b489bf.fontdata"]
+source_file="res://resources/fonts/VCR_OSD_MONO.ttf"
+dest_files=["res://.godot/imported/VCR_OSD_MONO.ttf-310537e128ef5d75ad9093c079f471e9.fontdata"]
 
 [params]
 

@@ -99,9 +99,9 @@ animation_name = "pursuit_animation"
 move_speed = 15
 metadata/_custom_type_script = "uid://b6wu7hresy3q6"
 
-[node name="HurtState" type="Node" parent="StateMachine" unique_id=5557983 node_paths=PackedStringArray("recovery_state", "knockback_component")]
+[node name="HurtState" type="Node" parent="StateMachine" unique_id=5557983 node_paths=PackedStringArray("idle_state", "knockback_component")]
 script = ExtResource("5_7f1wl")
-recovery_state = NodePath("../PursuitState")
+idle_state = NodePath("../PursuitState")
 knockback_component = NodePath("../../KnockbackComponent")
 animation_name = "hurt_animation"
 metadata/_custom_type_script = "uid://ccwg7amauu6kk"

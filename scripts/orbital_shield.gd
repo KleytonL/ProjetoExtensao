@@ -12,7 +12,7 @@ var _orb_count: int   = 0
 var _angle: float     = 0.0
 var _orbs: Array      = []
 var _active: bool     = false
-var _orb_texture = preload("res://icons/shield2.png")
+var _orb_texture = preload("res://resources/shield2.png")
 
 func _ready() -> void:
 	set_process(false)

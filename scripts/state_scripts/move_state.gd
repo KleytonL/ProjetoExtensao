@@ -19,10 +19,10 @@ func process_physics(_delta: float) -> State:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
 	
-	parent.sprite.scale.x = -1 if parent.velocity.x < 0 else 1
 	
 	if direction_x:
 		parent.velocity.x = direction_x * move_speed
+		parent.sprite.scale.x = -1 if parent.velocity.x < 0 else 1
 	else:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, 200 * _delta)
 	

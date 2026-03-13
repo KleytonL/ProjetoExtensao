@@ -26,4 +26,4 @@ func calculate_movement() -> void:
 	if parent.velocity == Vector2.ZERO:
 		parent.velocity = Vector2(move_speed*3, 0) if parent.sprite.scale.x == 1 else Vector2(-move_speed*3, 0)
 	elif parent.velocity != Vector2.ZERO:
-		parent.velocity = Vector2(direction_x * (move_speed * 3), direction_y * (move_speed * 3))
+		parent.velocity = Vector2(direction_x * (move_speed * 2.5), direction_y * (move_speed * 2.5))

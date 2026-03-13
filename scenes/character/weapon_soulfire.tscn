@@ -63,11 +63,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3ji8"]
 size = Vector2(5.761047, 19.798992)
 
-[node name="weapon_soulfire" type="Area2D" unique_id=512954155 groups=["player_hitbox"]]
+[node name="weapon_soulfire" type="Area2D" unique_id=512954155 node_paths=PackedStringArray("attack_timer") groups=["player_hitbox"]]
 top_level = true
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_e3ji8")
+attack_timer = NodePath("AttackTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2076857498]
 sprite_frames = SubResource("SpriteFrames_ww51i")
@@ -84,4 +85,7 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="AttackTimer" type="Timer" parent="." unique_id=1467052096]
+
 [connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

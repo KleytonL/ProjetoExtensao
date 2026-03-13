@@ -9,7 +9,6 @@ var health: int
 signal update_healthbar
 
 func _ready() -> void:
-	print(morte)
 	health = max_health
 
 func damage_enemy(attack: int) -> void:
