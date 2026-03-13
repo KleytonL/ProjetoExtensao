@@ -17,6 +17,12 @@ var soulfire_atkspeed = 3
 var soulfire_amount = 1
 var soulfire_level = 0
 
+#escudo orbital
+var shield_level = 0
+var shield_orb_count = 1
+var shield_damage = 3
+@onready var orbital_shield: Node2D = $OrbitalShield
+
 var enemy_in_range: Array = []
 var upgrades_collected = []
 var upgrade_options = []
@@ -188,6 +194,36 @@ func upgrade_character(upgrade):
 		"soulfire6":
 			soulfire_level += 1
 			soulfire_amount += 2
+			
+		"shield1":
+			shield_level = 1
+			orbital_shield.activate()
+		"shield2":
+			shield_level = 2
+			shield_damage = 2
+			orbital_shield.set_orb_count(2)
+			orbital_shield.set_damage(shield_damage)
+		"shield3":
+			shield_level = 3
+			shield_damage = 4
+			orbital_shield.set_damage(shield_damage)
+			orbital_shield.set_recharge_time(2.0)
+		"shield4":
+			shield_level = 4
+			shield_orb_count = 3
+			orbital_shield.set_orb_count(3)
+			
+		"shield5":
+			shield_level = 5
+			shield_orb_count = 4
+			orbital_shield.set_orb_count(4)
+				
+		"shield6":
+			shield_level = 6
+			shield_damage = 5
+			orbital_shield.set_damage(shield_damage)
+			orbital_shield.set_recharge_time(1.5)
+			orbital_shield.rotation_speed = 2.5
 #		"food":
 #			health += 5
 #			health = clamp(health, 0, max_health)

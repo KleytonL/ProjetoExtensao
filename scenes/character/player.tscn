@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://b7c87rtlqm2u0" path="res://scripts/state_scripts/attack_state_one.gd" id="15_e5n5u"]
 [ext_resource type="PackedScene" uid="uid://ccjj5vrdceihn" path="res://scenes/misc/components/i_frames_component.tscn" id="18_2smwq"]
 [ext_resource type="FontFile" uid="uid://dxrmmuex0h54n" path="res://fonts/VCR_OSD_MONO.ttf" id="21_x06ku"]
+[ext_resource type="Script" uid="uid://bwqa5vri3nltq" path="res://scripts/orbital_shield.gd" id="22_pygui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 16)
@@ -610,6 +611,9 @@ anchor_bottom = 1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="OrbitalShield" type="Node2D" parent="." unique_id=207341936]
+script = ExtResource("22_pygui")
 
 [connection signal="update_healthbar" from="HealthComponent" to="GUI/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="area_entered" from="PullRange" to="." method="_on_pull_range_area_entered"]
