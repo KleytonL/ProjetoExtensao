@@ -3,6 +3,7 @@ class_name Player
 
 @onready var animations: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
+@onready var attack_range: AttackRangeComponent = $AttackRangeComponent
 @onready var sprite: Sprite2D = $Sprite2D
 
 var level = 1
@@ -10,22 +11,11 @@ var experience = 0
 var collected_exp = 0
 var time = 0
 
-var soulfire = preload("res://scenes/character/weapon_soulfire.tscn")
-@onready var _item_options = preload("res://scenes/misc/item_option.tscn")
-
-var soulfire_atkspeed = 3
-var soulfire_amount = 1
-var soulfire_level = 0
-
 #escudo orbital
 var shield_level = 0
 var shield_orb_count = 1
 var shield_damage = 3
-@onready var orbital_shield: Node2D = $OrbitalShield
 
-var enemy_in_range: Array = []
-var upgrades_collected = []
-var upgrade_options = []
 var defense = 0
 var speed = 0
 var attack_cooldown = 0
@@ -33,10 +23,7 @@ var attack_size = 0
 var additional_attacks = 0
 
 @onready var _exp_bar: ProgressBar = get_node("%ExpBar")
-@onready var _level_label: Label = get_node("%lbl_level")
 @onready var _timer_label: Label = get_node("%lbl_timer")
-@onready var _level_panel: Panel = get_node("%LevelPanel")
-@onready var _upgrade_grid: VBoxContainer = get_node("%UpgradeGrid")
 
 func _ready():
 	state_machine.init(self)
@@ -47,52 +34,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
-#	var direction_y := Input.get_axis("ui_up", "ui_down")
-#	
-#	if state in [States.IDLE, States.RUN]:
-#		if direction_x:
-#			velocity.x = direction_x * SPEED
-#		else:
-#			velocity.x = move_toward(velocity.x, 0, DECELERATION * delta)
-#
-#		if direction_y:
-#			velocity.y = direction_y * SPEED
-#		else:
-#			velocity.y = move_toward(velocity.y, 0, DECELERATION * delta)
-#
-#		if velocity.x != 0 || velocity.y != 0:
-#			set_state(States.RUN)
-#		else:
-#			set_state(States.IDLE)
-#
-#		if Input.is_action_just_pressed("ui_dash"):
-#			if state == States.IDLE || (direction_x == 0 && direction_y == 0):
-#				velocity = Vector2(SPEED * 3, 0) if _sprite.scale.x == 1 else Vector2(-SPEED * 3, 0)
-#			elif state == States.RUN:
-#				velocity = Vector2(direction_x * (SPEED * 3), direction_y * (SPEED * 3))
-#			set_state(States.DASH)
-#
-#		if Input.is_action_just_pressed("ui_attack") && atkPoints == 3:
-#			atkPoints -= 1
-#			set_state(States.ATK01)
-#		elif Input.is_action_just_pressed("ui_attack") && atkPoints == 2:
-#			atkPoints -= 1
-#			set_state(States.ATK02)
-#		elif Input.is_action_just_pressed("ui_attack") && atkPoints == 1:
-#			atkPoints -= 1
-#			set_state(States.ATK03)
-#
-#		if state in [States.ATK01, States.ATK02, States.ATK03]:
-#			
-#			_leap_timer.start()
-#			await _leap_timer.timeout
-#			
-#			velocity = Vector2(SPEED*1.25, 0) if _sprite.scale.x == 1 else Vector2(-SPEED*1.25, 0)
-#			
-#			_leap_timer.start()
-#			await _leap_timer.timeout
-#			
-#			velocity = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -122,20 +63,6 @@ func _on_collect_range_area_entered(area: Area2D) -> void:
 		var exp_value = area.collect()
 		calculate_exp(exp_value)
 
-func get_random_target():
-	if enemy_in_range.size() > 0:
-		return enemy_in_range.pick_random().global_position
-	else:
-		return Vector2.ZERO
-
-func _on_enemy_range_body_entered(body: Node2D) -> void:
-	if not enemy_in_range.has(body):
-		enemy_in_range.append(body)
-
-func _on_enemy_range_body_exited(body: Node2D) -> void:
-	if enemy_in_range.has(body):
-		enemy_in_range.erase(body)
-
 func calculate_exp(exp_value):
 	var exp_required = exp_capacity()
 	collected_exp += exp_value
@@ -143,7 +70,7 @@ func calculate_exp(exp_value):
 		collected_exp -= exp_required - experience
 		level += 1
 		experience = 0
-		level_up()
+		$GUI/Control/UpgradePanel.level_up()
 	else:
 		experience += collected_exp
 		collected_exp = 0
@@ -163,106 +90,6 @@ func exp_capacity():
 func set_expbar(set_value = 1, set_max_value = 100):
 	_exp_bar.value = set_value
 	_exp_bar.max_value = set_max_value
-
-func level_up():
-	_level_label.text = str("Level: ", level)
-	_level_panel.visible = true
-	var options = 0
-	var max_options = 3
-	while options < max_options:
-		var option_choice = _item_options.instantiate()
-		option_choice.item = get_random_item()
-		_upgrade_grid.add_child(option_choice)
-		options+=1
-	get_tree().paused = true
-
-func upgrade_character(upgrade):
-	match upgrade:
-		"soulfire1":
-			soulfire_level += 1
-		"soulfire2":
-			soulfire_level += 1
-			soulfire_amount += 1
-		"soulfire3":
-			soulfire_level += 1
-		"soulfire4":
-			soulfire_level += 1
-			soulfire_amount += 1
-		"soulfire5":
-			soulfire_level += 1
-			soulfire_atkspeed -= 1
-		"soulfire6":
-			soulfire_level += 1
-			soulfire_amount += 2
-			
-		"shield1":
-			shield_level = 1
-			orbital_shield.activate()
-		"shield2":
-			shield_level = 2
-			shield_damage = 2
-			orbital_shield.set_orb_count(2)
-			orbital_shield.set_damage(shield_damage)
-		"shield3":
-			shield_level = 3
-			shield_damage = 4
-			orbital_shield.set_damage(shield_damage)
-			orbital_shield.set_recharge_time(2.0)
-		"shield4":
-			shield_level = 4
-			shield_orb_count = 3
-			orbital_shield.set_orb_count(3)
-			
-		"shield5":
-			shield_level = 5
-			shield_orb_count = 4
-			orbital_shield.set_orb_count(4)
-				
-		"shield6":
-			shield_level = 6
-			shield_damage = 5
-			orbital_shield.set_damage(shield_damage)
-			orbital_shield.set_recharge_time(1.5)
-			orbital_shield.rotation_speed = 2.5
-#		"food":
-#			health += 5
-#			health = clamp(health, 0, max_health)
-#	attack()
-#	set_healthbar(health, max_health)
-
-	var option_children = _upgrade_grid.get_children()
-	for i in option_children:
-		i.queue_free()
-	upgrade_options.clear()
-	upgrades_collected.append(upgrade)
-	_level_panel.visible = false
-	get_tree().paused = false
-	calculate_exp(0)
-
-func get_random_item():
-	var datalist = []
-	for i in UpgradeDatabase.UPGRADES:
-		if i in upgrades_collected:
-			pass
-		elif i in upgrade_options:
-			pass
-		elif UpgradeDatabase.UPGRADES[i]["type"] == "item":
-			pass
-		elif UpgradeDatabase.UPGRADES[i]["prerequisite"].size() > 0:
-			var to_add = true
-			for n in UpgradeDatabase.UPGRADES[i]["prerequisite"]:
-				if not n in upgrades_collected:
-					to_add = false
-			if to_add:
-				datalist.append(i)
-		else: 
-			datalist.append(i)
-	if datalist.size() > 0:
-		var random_item = datalist.pick_random()
-		upgrade_options.append(random_item)
-		return random_item
-	else:
-		return null
 
 func change_time(argtime = 0):
 	time = argtime

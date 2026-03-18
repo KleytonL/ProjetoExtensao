@@ -20,8 +20,6 @@
 [ext_resource type="Script" uid="uid://rae8dvp1an4" path="res://scripts/state_scripts/attack_state_three.gd" id="13_vhx6d"]
 [ext_resource type="Script" uid="uid://b7c87rtlqm2u0" path="res://scripts/state_scripts/attack_state_one.gd" id="15_e5n5u"]
 [ext_resource type="PackedScene" uid="uid://ccjj5vrdceihn" path="res://scenes/misc/components/i_frames_component.tscn" id="18_2smwq"]
-[ext_resource type="PackedScene" uid="uid://kc7a0gpr4mx4" path="res://scenes/misc/components/attack_range_component.tscn" id="20_okkwj"]
-[ext_resource type="PackedScene" uid="uid://xd64r25wko58" path="res://scenes/misc/gui/upgrade_panel.tscn" id="21_pygui"]
 [ext_resource type="FontFile" uid="uid://dxrmmuex0h54n" path="res://resources/fonts/VCR_OSD_MONO.ttf" id="21_x06ku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
@@ -38,6 +36,9 @@ radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1y732"]
+radius = 125.0
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -480,11 +481,6 @@ knockback_component = NodePath("../KnockbackComponent")
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_5y66v")
 
-[node name="AttackRangeComponent" parent="." unique_id=1963143180 instance=ExtResource("20_okkwj")]
-collision_layer = 2
-collision_mask = 2
-range_radius = 100.0
-
 [node name="PullRange" type="Area2D" parent="." unique_id=2037866254]
 collision_layer = 4
 collision_mask = 4
@@ -499,21 +495,20 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectRange" unique_id=1273212571]
 shape = SubResource("CircleShape2D_g2els")
 
+[node name="EnemyRange" type="Area2D" parent="." unique_id=768311267]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRange" unique_id=1639531256]
+shape = SubResource("CircleShape2D_1y732")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1044955616]
 libraries/ = SubResource("AnimationLibrary_y4r1p")
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=2019851261]
 
-[node name="Control" type="Control" parent="GUI" unique_id=2098064748]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HealthBar" parent="GUI/Control" unique_id=1333183330 node_paths=PackedStringArray("health_component") instance=ExtResource("6_erpy8")]
-layout_mode = 1
+[node name="HealthBar" parent="GUI" unique_id=1333183330 node_paths=PackedStringArray("health_component") instance=ExtResource("6_erpy8")]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -523,10 +518,15 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
-health_component = NodePath("../../../HealthComponent")
+health_component = NodePath("../../HealthComponent")
 
-[node name="UpgradePanel" parent="GUI/Control" unique_id=702306916 instance=ExtResource("21_pygui")]
-layout_mode = 1
+[node name="Control" type="Control" parent="GUI" unique_id=2098064748]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="lbl_timer" type="Label" parent="GUI/Control" unique_id=855311992]
 unique_name_in_owner = true
@@ -574,6 +574,50 @@ theme_override_font_sizes/font_size = 6
 text = "Level: 1 "
 vertical_alignment = 1
 
-[connection signal="update_healthbar" from="HealthComponent" to="GUI/Control/HealthBar" method="_on_health_component_update_healthbar"]
+[node name="LevelPanel" type="Panel" parent="GUI/Control" unique_id=1733489924]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lbl_levelup" type="Label" parent="GUI/Control/LevelPanel" unique_id=109070831]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 12.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("21_x06ku")
+theme_override_font_sizes/font_size = 8
+text = "LEVEL UP!"
+
+[node name="UpgradeGrid" type="VBoxContainer" parent="GUI/Control/LevelPanel" unique_id=439175752]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.17500001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="update_healthbar" from="HealthComponent" to="GUI/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="area_entered" from="PullRange" to="." method="_on_pull_range_area_entered"]
 [connection signal="area_entered" from="CollectRange" to="." method="_on_collect_range_area_entered"]
+[connection signal="body_entered" from="EnemyRange" to="." method="_on_enemy_range_body_entered"]
+[connection signal="body_exited" from="EnemyRange" to="." method="_on_enemy_range_body_exited"]

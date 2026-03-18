@@ -6,7 +6,7 @@ const UPGRADES = {
 	"soulfire1": {
 		"icon": WEAPON_PATH + "spritesheet-soulfire.svg",
 		"displayname": "Soulfire",
-		"details": "Sua alma erradia esperança!",
+		"details": "Dispara um projétil flamejante!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "weapon"
@@ -14,7 +14,7 @@ const UPGRADES = {
 	"soulfire2": {
 		"icon": WEAPON_PATH + "spritesheet-soulfire.svg",
 		"displayname": "Soulfire",
-		"details": "Dispara 1 projétil adicional.",
+		"details": "Dispara +1 projétil adicional.",
 		"level": "Level 2",
 		"prerequisite": ["soulfire1"],
 		"type": "weapon"
@@ -30,7 +30,7 @@ const UPGRADES = {
 	"soulfire4": {
 		"icon": WEAPON_PATH + "spritesheet-soulfire.svg",
 		"displayname": "Soulfire",
-		"details": "Dispara 1 projétil adicional.",
+		"details": "Dispara +1 projétil adicional.",
 		"level": "Level 4",
 		"prerequisite": ["soulfire3"],
 		"type": "weapon"

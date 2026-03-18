@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://kc7a0gpr4mx4"]
+
+[ext_resource type="Script" uid="uid://x61m450aettj" path="res://scripts/component_scripts/attack_range_component.gd" id="1_6wy6l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5oitk"]
+
+[node name="AttackRangeComponent" type="Area2D" unique_id=1963143180]
+script = ExtResource("1_6wy6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533467989]
+shape = SubResource("CircleShape2D_5oitk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

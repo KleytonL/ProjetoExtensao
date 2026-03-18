@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bc0wqow6l5yuh"]
+
+[ext_resource type="Script" uid="uid://bwqa5vri3nltq" path="res://scripts/weapon_scripts/weapon_orbital_shield.gd" id="1_egwxu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5hjb"]
+
+[node name="WeaponOrbitalShield" type="Area2D" unique_id=798655016 groups=["player_hitbox"]]
+script = ExtResource("1_egwxu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2124007688]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=337588768]
+shape = SubResource("CircleShape2D_n5hjb")

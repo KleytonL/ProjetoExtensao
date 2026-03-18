@@ -23,7 +23,7 @@ func calculate_movement() -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
 	
-	if parent.velocity == Vector2.ZERO:
+	if !direction_x and !direction_y:
 		parent.velocity = Vector2(move_speed*3, 0) if parent.sprite.scale.x == 1 else Vector2(-move_speed*3, 0)
-	elif parent.velocity != Vector2.ZERO:
+	elif direction_x or direction_y:
 		parent.velocity = Vector2(direction_x * (move_speed * 2.5), direction_y * (move_speed * 2.5))
