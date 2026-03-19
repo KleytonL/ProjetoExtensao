@@ -1,7 +1,6 @@
 extends Area2D
 class_name PlayerHitboxComponent
 
-
 @export var damage: int
 @export var camera: Camera2D
 @export var freeze_component: FrameFreezeComponent

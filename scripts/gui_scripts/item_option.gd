@@ -1,24 +1,25 @@
 extends Button
 
 var item = null
+var type = null
 
-@onready var _panel = get_tree().get_first_node_in_group("Panel")
-@onready var _name = $lbl_name
-@onready var _description = $lbl_description
-@onready var _level = $lbl_level
-@onready var _icon = $ColorRect/ItemIcon
+@onready var _controller: UpgradeController = get_tree().get_first_node_in_group("UpgradeController")
+@onready var _panel: Panel = get_tree().get_first_node_in_group("UpgradePanel")
 
-signal selected_upgrade(upgrade)
+signal selected_upgrade(item)
 
 func _ready() -> void:
-	connect("selected_upgrade", Callable(_panel, "upgrade_character"))
+	connect("selected_upgrade", Callable(_controller, "handle_upgrade"))
+	connect("selected_upgrade", Callable(_panel, "close_and_save"))
 	
 	if item == null:
 		item = "food"
-	_name.text = UpgradeDatabase.UPGRADES[item]["displayname"]
-	_description.text = UpgradeDatabase.UPGRADES[item]["details"]
-	_level.text = UpgradeDatabase.UPGRADES[item]["level"]
-	_icon.texture = load(UpgradeDatabase.UPGRADES[item]["icon"])
+	
+	type = UpgradeDatabase.UPGRADES[item]["type"]
+	$NameLabel.text = UpgradeDatabase.UPGRADES[item]["displayname"]
+	$DescriptionLabel.text = UpgradeDatabase.UPGRADES[item]["details"]
+	$LevelLabel.text = UpgradeDatabase.UPGRADES[item]["level"]
+	$ColorRect/ItemIcon.texture = load(UpgradeDatabase.UPGRADES[item]["icon"])
 
 func _on_pressed() -> void:
 	emit_signal("selected_upgrade", item)

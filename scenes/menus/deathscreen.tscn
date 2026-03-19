@@ -29,7 +29,7 @@ region = Rect2(96, 80, 48, 16)
 atlas = ExtResource("2_uurjc")
 region = Rect2(48, 80, 48, 16)
 
-[node name="deathscreen" type="Control" unique_id=1999397955]
+[node name="deathscreen" type="Control" unique_id=1999397955 groups=["DeathScreen"]]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15

@@ -44,16 +44,6 @@ func _process(delta: float) -> void:
 #		if _soulfire_timer.is_stopped():
 #			_soulfire_timer.start()
 
-#func _on_soulfire_timer_timeout() -> void:
-#	var soulfire_count = soulfire_amount + additional_attacks
-#	while soulfire_count > 0:
-#		var soulfire_instance = soulfire.instantiate()
-#		soulfire_instance.position = position
-#		soulfire_instance.target = get_random_target()
-#		soulfire_instance.level = soulfire_level
-#		add_child(soulfire_instance)
-#		soulfire_count -= 1
-
 func _on_pull_range_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectables"):
 		area.target = self

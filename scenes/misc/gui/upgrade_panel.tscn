@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mjey8w23tduo" path="res://scripts/gui_scripts/upgrade_panel.gd" id="1_mjvmj"]
 
-[node name="UpgradePanel" type="Panel" unique_id=216387890 groups=["Panel"]]
+[node name="UpgradePanel" type="Panel" unique_id=216387890 groups=["UpgradePanel"]]
 process_mode = 2
 visible = false
 anchors_preset = 8

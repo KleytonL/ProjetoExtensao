@@ -1,10 +1,10 @@
 extends Node
 class_name HealthComponent
 
+@onready var death = get_tree().get_first_node_in_group("DeathScreen")
 @export var death_state: State
 @export var max_health: int
 var health: int
-@onready var morte = get_tree().get_first_node_in_group("Teste")
 
 signal update_healthbar
 
@@ -22,4 +22,4 @@ func damage_player(attack: int) -> void:
 	$sfx_damage.play()
 	emit_signal("update_healthbar")
 	if health <= 0:
-		morte.pause()
+		death.pause()

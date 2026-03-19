@@ -1,101 +1,87 @@
-extends Area2D
-class_name Soulfire
+extends Node2D
+class_name WeaponSoulfire
 
-var current_level: int = 5
-var health: int
-var projectile_speed: int
-var projectile_quantity: int
-var attack_speed: int
-var damage: int
-var knockback: int
-var atk_size: float
+var current_level: int = 1
+var projectile_quantity: int = 1
+var attack_speed: int = 3
 
-var target: Vector2 = Vector2.ZERO
-var angle: Vector2 = Vector2.ZERO
-
-@onready var player: Player = get_tree().get_first_node_in_group("Player")
 @onready var attack_timer: Timer = $AttackTimer
+@onready var player: Player = get_tree().get_first_node_in_group("Player")
+@onready var _soulfire = preload("res://scenes/character/soulfire_projectile.tscn")
 
 func _ready() -> void:
-	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg_to_rad(45)
+	print("ATTACK IS _READY")
 	release_attack()
 
-func _physics_process(delta: float) -> void:
-	position += angle * projectile_speed * delta
-
-func calculate_current_level() -> void:
-	match current_level:
-		1:
-			health = 1
-			projectile_speed = 75
-			projectile_quantity = 1
-			attack_speed = 3
-			damage = 5
-			knockback = 10
-			atk_size = 1.0 * (1 + player.attack_size)
-		2:
-			health = 1
-			projectile_speed = 75
-			projectile_quantity = 2
-			attack_speed = 3
-			damage = 5
-			knockback = 10
-			atk_size = 1.0 * (1 + player.attack_size)
-		3:
-			health = 2
-			projectile_speed = 75
-			projectile_quantity = 2
-			attack_speed = 3
-			damage = 5
-			knockback = 10
-			atk_size = 1.0 * (1 + player.attack_size)
-		4:
-			health = 2
-			projectile_speed = 75
-			projectile_quantity = 3
-			attack_speed = 3
-			damage = 5
-			knockback = 10
-			atk_size = 1.0 * (1 + player.attack_size)
-		5:
-			health = 2
-			projectile_speed = 100
-			projectile_quantity = 3
-			attack_speed = 2
-			damage = 5
-			knockback = 10
-			atk_size = 1.0 * (1 + player.attack_size)
-		6: 
-			health = 3
-			projectile_speed = 100
-			projectile_quantity = 5
-			attack_speed = 3
-			damage = 7
-			knockback = 10
-			atk_size = 1.0 * (1 + player.attack_size)
-
 func release_attack() -> void:
-	calculate_current_level()
-	print(current_level)
 	if current_level > 0:
 		attack_timer.wait_time = attack_speed
 		if attack_timer.is_stopped():
 			attack_timer.start()
 
-func enemy_hit(charge = 1):
-	health -= charge
-	if health <= 0:
-		queue_free()
-
 func _on_attack_timer_timeout() -> void:
+	print("TIMEOUT")
 	var attack_count = projectile_quantity
 	while attack_count > 0:
-		var projectile = self.duplicate()
-		projectile.position = player.global_position
-		projectile.target = player.attack_range.get_random_target()
-		player.call_deferred("add_child", projectile)
+		print(attack_count)
+		var instance: SoulfireProjectile = _soulfire.instantiate()
+		print(instance)
+		calculate_current_level(instance)
+		instance.position = global_position
+		instance.projectile_target = player.attack_range.get_random_target()
+		print(player)
+		print(player.attack_range.get_random_target())
+		player.add_child(instance)
 		attack_count -= 1
 
-func _on_duration_timer_timeout() -> void:
-	queue_free()
+func calculate_current_level(instance: SoulfireProjectile) -> void:
+	print(current_level)
+	match current_level:
+		1:
+			instance.health = 1
+			instance.projectile_speed = 75
+			projectile_quantity = 1
+			attack_speed = 3
+			instance.damage = 5
+			instance.knockback = 10
+			instance.projectile_size = 1.0 * (1 + player.attack_size)
+		2:
+			instance.health = 1
+			instance.projectile_speed = 75
+			projectile_quantity = 2
+			attack_speed = 3
+			instance.damage = 5
+			instance.knockback = 10
+			instance.projectile_size = 1.0 * (1 + player.attack_size)
+		3:
+			instance.health = 2
+			instance.projectile_speed = 75
+			projectile_quantity = 2
+			attack_speed = 3
+			instance.damage = 5
+			instance.knockback = 10
+			instance.projectile_size = 1.0 * (1 + player.attack_size)
+		4:
+			instance.health = 2
+			instance.projectile_speed = 75
+			projectile_quantity = 3
+			attack_speed = 3
+			instance.damage = 5
+			instance.knockback = 10
+			instance.projectile_size = 1.0 * (1 + player.attack_size)
+		5:
+			instance.health = 2
+			instance.projectile_speed = 100
+			projectile_quantity = 3
+			attack_speed = 2
+			instance.damage = 5
+			instance.knockback = 10
+			instance.projectile_size = 1.0 * (1 + player.attack_size)
+		6: 
+			instance.health = 3
+			instance.projectile_speed = 100
+			projectile_quantity = 5
+			attack_speed = 3
+			instance.damage = 7
+			instance.knockback = 10
+			instance.projectile_size = 1.0 * (1 + player.attack_size)
