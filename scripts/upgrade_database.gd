@@ -69,7 +69,7 @@ const UPGRADES = {
 	"shield2": {
 		"icon": WEAPON_PATH + "spritesheet-misc.svg",
 		"displayname": "Escudo Orbital",
-		"details": "Adiciona +1 orbe e aumenta o dano.",
+		"details": "Adiciona +1 orbe e aumenta velocidade de rotação",
 		"level": "Level 2",
 		"prerequisite": ["shield1"],
 		"type": "weapon",

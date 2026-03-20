@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cj3otafopn1gv"]
+
+[ext_resource type="Texture2D" uid="uid://bjg1b53dlduv" path="res://icon.svg" id="1_0yvub"]
+[ext_resource type="Script" uid="uid://d22yhbq0t4enf" path="res://scripts/weapon_scripts/shield_orb.gd" id="1_4rpsw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4rpsw"]
+radius = 5.0
+
+[node name="ShieldOrb" type="Area2D" unique_id=1648715277]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_4rpsw")
+damage = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=615215319]
+scale = Vector2(0.046874996, 0.046875004)
+texture = ExtResource("1_0yvub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=404666509]
+shape = SubResource("CircleShape2D_4rpsw")
+
+[node name="DurationTimer" type="Timer" parent="." unique_id=416110414]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

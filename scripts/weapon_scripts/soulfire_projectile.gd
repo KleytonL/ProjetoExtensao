@@ -16,10 +16,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position += projectile_angle * projectile_speed * delta
 
-func enemy_hit(charge = 1):
-	health -= charge
-	if health <= 0:
-		queue_free()
+func _on_area_entered(area: Area2D) -> void:
+	super(area)
+	if area is EnemyHurtboxComponent:
+		health -= 1
+		if health <= 0:
+			queue_free()
 
 func _on_duration_timer_timeout() -> void:
 	queue_free()

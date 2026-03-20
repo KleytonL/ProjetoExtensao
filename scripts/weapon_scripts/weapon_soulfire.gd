@@ -10,7 +10,6 @@ var attack_speed: int = 3
 @onready var _soulfire = preload("res://scenes/character/soulfire_projectile.tscn")
 
 func _ready() -> void:
-	print("ATTACK IS _READY")
 	release_attack()
 
 func release_attack() -> void:
@@ -20,22 +19,16 @@ func release_attack() -> void:
 			attack_timer.start()
 
 func _on_attack_timer_timeout() -> void:
-	print("TIMEOUT")
 	var attack_count = projectile_quantity
 	while attack_count > 0:
-		print(attack_count)
 		var instance: SoulfireProjectile = _soulfire.instantiate()
-		print(instance)
 		calculate_current_level(instance)
 		instance.position = global_position
 		instance.projectile_target = player.attack_range.get_random_target()
-		print(player)
-		print(player.attack_range.get_random_target())
 		player.add_child(instance)
 		attack_count -= 1
 
 func calculate_current_level(instance: SoulfireProjectile) -> void:
-	print(current_level)
 	match current_level:
 		1:
 			instance.health = 1

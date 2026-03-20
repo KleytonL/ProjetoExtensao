@@ -13,7 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 		_in_range.append(body)
 
 func _on_body_exited(body: Node2D) -> void:
-	if not _in_range.has(body):
+	if _in_range.has(body):
 		_in_range.erase(body)
 
 func get_random_target():
