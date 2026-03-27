@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="3_325oc"]
 [ext_resource type="FontFile" uid="uid://dxrmmuex0h54n" path="res://resources/fonts/VCR_OSD_MONO.ttf" id="3_wywfy"]
 [ext_resource type="Script" uid="uid://bbocj1776cis1" path="res://scripts/menu_scripts/credits_scroll.gd" id="3_xtkoc"]
-[ext_resource type="AudioStream" uid="uid://d28bi2yg3rloq" path="res://resources/audio/music/Yiruma.mp3" id="4_d74go"]
+[ext_resource type="AudioStream" uid="uid://cttlqhb40mlhu" path="res://resources/audio/sfx/hover.wav" id="5_wywfy"]
+[ext_resource type="AudioStream" uid="uid://chycdwh3j6hus" path="res://resources/audio/sfx/select.wav" id="6_komaw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d74go"]
 load_path = "res://.godot/imported/TeamLogo.svg-665e8638d50fb7d69437b3e05b54ef0f.ctex"
@@ -103,11 +104,16 @@ Equipe PRISMA
 Kleyton Luiz
 
 [b]Música e Som[/b]
-[b]Diretor Musical:[/b] 
-Equipe PRISMA
+Musicas compostas por Bert Cole
+Site oficial: bitbybitsound.com
+Patreon: patreon.com/bitbybitsound
+Twitter: @BitByBitSound
 
-[b]Compositores:[/b] 
-Equipe PRISMA
+[b]Músicas utilizadas:[/b] 
+- Smooth As Glass
+- I've Got Your Back!
+- Battle Mage
+- Final Showdown
 
 [b]Edição de Som:[/b]
  Equipe PRISMA
@@ -167,13 +173,18 @@ offset_left = -55.0
 offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_tljk3")
 texture_pressed = SubResource("AtlasTexture_c6i0t")
 texture_hover = SubResource("AtlasTexture_urgkg")
+texture_focused = SubResource("AtlasTexture_urgkg")
 
-[node name="yiruma" type="AudioStreamPlayer2D" parent="." unique_id=760261029]
-stream = ExtResource("4_d74go")
-autoplay = true
+[node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=677511507]
+stream = ExtResource("5_wywfy")
 
+[node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=721412431]
+stream = ExtResource("6_komaw")
+
+[connection signal="focus_entered" from="voltar_btn" to="." method="_on_voltar_btn_focus_entered"]
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b7eqb4qqqk3dc" path="res://scripts/menu_scripts/deathscreen.gd" id="1_ylnw1"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="2_uurjc"]
+[ext_resource type="AudioStream" uid="uid://cttlqhb40mlhu" path="res://resources/audio/sfx/hover.wav" id="3_nu4b8"]
+[ext_resource type="AudioStream" uid="uid://chycdwh3j6hus" path="res://resources/audio/sfx/select.wav" id="4_mceff"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylnw1"]
 
@@ -64,15 +66,27 @@ size_flags_vertical = 4
 
 [node name="restart_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=2023860156]
 layout_mode = 2
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_eye5d")
 texture_pressed = SubResource("AtlasTexture_ke8wd")
 texture_hover = SubResource("AtlasTexture_hgqth")
+texture_focused = SubResource("AtlasTexture_hgqth")
 
 [node name="exit_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=286395758]
 layout_mode = 2
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_uurjc")
 texture_pressed = SubResource("AtlasTexture_l1dwg")
 texture_hover = SubResource("AtlasTexture_t1dl8")
+texture_focused = SubResource("AtlasTexture_t1dl8")
 
+[node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=1982114398]
+stream = ExtResource("3_nu4b8")
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1644894351]
+stream = ExtResource("4_mceff")
+
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/restart_btn" to="." method="_on_restart_btn_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/exit_btn" to="." method="_on_exit_btn_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]

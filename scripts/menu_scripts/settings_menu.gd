@@ -1,15 +1,16 @@
 extends Control
 
+@onready var _voltar_btn: TextureButton = $PanelContainer/VBoxContainer/voltar_btn
+@onready var _hover: AudioStreamPlayer = $HoverSFX
+@onready var _click: AudioStreamPlayer = $ClickSFX
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	_voltar_btn.grab_focus()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
-
+func _on_voltar_btn_focus_entered() -> void:
+	_hover.play()
 
 func _on_voltar_btn_pressed() -> void:
+	_click.play()
+	await _click.finished
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")

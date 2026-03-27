@@ -9,6 +9,7 @@ var max_options = 3
 @onready var _item_options = preload("res://scenes/misc/gui/item_option.tscn")
 
 func level_up():
+	GameLogic.can_pause = false
 	self.visible = true
 	var options = 0
 	while options < max_options:
@@ -50,3 +51,4 @@ func close_and_save(item):
 	upgrades_collected.append(item)
 	self.visible = false
 	get_tree().paused = false
+	GameLogic.can_pause = true

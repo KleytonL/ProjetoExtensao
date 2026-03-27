@@ -2,6 +2,7 @@ extends Node
 class_name iFramesComponent
 
 @export var hurtbox_component: PlayerHurtboxComponent
+var active: bool
 
 func activate_iframes(time: float) -> void:
 	hurtbox_component.monitorable = false

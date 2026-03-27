@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dama3cjmi5xso" path="res://scripts/menu_scripts/settings_menu.gd" id="1_7i3iu"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="2_s2d1y"]
+[ext_resource type="AudioStream" uid="uid://cttlqhb40mlhu" path="res://resources/audio/sfx/hover.wav" id="3_ojvp1"]
+[ext_resource type="AudioStream" uid="uid://chycdwh3j6hus" path="res://resources/audio/sfx/select.wav" id="4_da10i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wswnh"]
 atlas = ExtResource("2_s2d1y")
@@ -48,18 +50,29 @@ size_flags_vertical = 4
 
 [node name="sfx_toggle" type="CheckButton" parent="PanelContainer/VBoxContainer" unique_id=27608373]
 layout_mode = 2
+mouse_filter = 2
 text = "SFX"
 
 [node name="bgm_toggle" type="CheckButton" parent="PanelContainer/VBoxContainer" unique_id=734122690]
 layout_mode = 2
+mouse_filter = 2
 text = "Musica"
 
 [node name="voltar_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=722768808]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_wswnh")
 texture_pressed = SubResource("AtlasTexture_lwwgp")
 texture_hover = SubResource("AtlasTexture_labj1")
+texture_focused = SubResource("AtlasTexture_labj1")
 
+[node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=986707458]
+stream = ExtResource("3_ojvp1")
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=288502740]
+stream = ExtResource("4_da10i")
+
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/voltar_btn" to="." method="_on_voltar_btn_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/voltar_btn" to="." method="_on_voltar_btn_pressed"]

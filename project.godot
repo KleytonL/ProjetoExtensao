@@ -22,6 +22,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 UpgradeDatabase="*uid://b7p0akh1qctg8"
+MenuMusic="*uid://bgaat75bghrxs"
+GameLogic="*uid://ceqsr76c3f0f5"
 
 [display]
 
