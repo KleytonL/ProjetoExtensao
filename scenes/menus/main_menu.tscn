@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dhghlu43kuokv" path="res://scripts/menu_scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://chkwlgogwuicr" path="res://resources/HayatoLogo.svg" id="2_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="3_wu84c"]
-[ext_resource type="AudioStream" uid="uid://chycdwh3j6hus" path="res://resources/audio/sfx/select.wav" id="4_6bivr"]
-[ext_resource type="AudioStream" uid="uid://cttlqhb40mlhu" path="res://resources/audio/sfx/hover.wav" id="4_imvie"]
+[ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="4_imvie"]
+[ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="5_ng0o5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
 atlas = ExtResource("3_wu84c")
@@ -150,7 +150,7 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("4_imvie")
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1045478318]
-stream = ExtResource("4_6bivr")
+stream = ExtResource("5_ng0o5")
 
 [connection signal="focus_entered" from="VBoxContainer/play_btn" to="." method="_on_play_btn_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]

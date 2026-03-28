@@ -21,6 +21,7 @@ func release_attack() -> void:
 
 func _on_recharge_timer_timeout() -> void:
 	if current_active == 0:
+		$ShieldUpSFX.play()
 		var orb_count = orb_quantity
 		for i in orb_count:
 			var instance: ShieldOrb = _shield_orb.instantiate()
@@ -33,6 +34,7 @@ func _on_recharge_timer_timeout() -> void:
 func calculate_recharge() -> void:
 	current_active -= 1
 	if current_active == 0:
+		$ShieldDownSFX.play()
 		recharge_timer.start()
 
 func calculate_current_level(instance: ShieldOrb) -> void:
@@ -40,6 +42,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 		1:
 			instance.damage = 1
 			instance.duration = 3
+			instance.orb_size = 1.0
 			recharge_speed = 4
 			orb_quantity = 1
 			instance.knockback = 10
@@ -48,6 +51,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 		2:
 			instance.damage = 1
 			instance.duration = 3
+			instance.orb_size = 1.0
 			recharge_speed = 4
 			orb_quantity = 2
 			instance.knockback = 10
@@ -56,6 +60,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 		3:
 			instance.damage = 2
 			instance.duration = 3
+			instance.orb_size = 1.0
 			recharge_speed = 4
 			orb_quantity = 2
 			instance.knockback = 15
@@ -64,6 +69,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 		4:
 			instance.damage = 2
 			instance.duration = 3
+			instance.orb_size = 1.0
 			recharge_speed = 3
 			orb_quantity = 3
 			instance.knockback = 15
@@ -72,6 +78,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 		5:
 			instance.damage = 2
 			instance.duration = 3
+			instance.orb_size = 1.0
 			recharge_speed = 3
 			orb_quantity = 3
 			instance.knockback = 15
@@ -80,8 +87,9 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 		6:
 			instance.damage = 3
 			instance.duration = 4
+			instance.orb_size = 1.2
 			recharge_speed = 2
 			orb_quantity = 4
 			instance.knockback = 20
 			instance.rotation_speed = 2
-			instance.orbit_radius = 25
+			instance.orbit_radius = 30

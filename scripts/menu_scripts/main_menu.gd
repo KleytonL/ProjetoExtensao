@@ -15,8 +15,7 @@ func _on_play_btn_focus_entered() -> void:
 func _on_play_btn_pressed() -> void:
 	MenuMusic.stop()
 	_click.play()
-	await _click.finished
-	get_tree().change_scene_to_file("res://scenes/world/level_01.tscn")
+	LoadingScreen.change_scene("res://scenes/world/level_01.tscn")
 
 
 func _on_config_btn_focus_entered() -> void:
@@ -24,8 +23,7 @@ func _on_config_btn_focus_entered() -> void:
 
 func _on_config_btn_pressed() -> void:
 	_click.play()
-	await _click.finished
-	get_tree().change_scene_to_file("res://scenes/menus/settings_menu.tscn")
+	LoadingScreen.change_scene("res://scenes/menus/settings_menu.tscn")
 
 
 func _on_cred_btn_focus_entered() -> void:
@@ -33,6 +31,5 @@ func _on_cred_btn_focus_entered() -> void:
 
 func _on_cred_btn_pressed() -> void:
 	_click.play()
-	await _click.finished
-	get_tree().change_scene_to_file("res://scenes/menus/credits_menu.tscn")
+	LoadingScreen.change_scene("res://scenes/menus/credits_menu.tscn")
 	

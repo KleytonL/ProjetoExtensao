@@ -43,6 +43,7 @@ animations = [{
 radius = 5.0
 
 [node name="ShieldOrb" type="Area2D" unique_id=1648715277]
+scale = Vector2(0.1, 0.1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_4rpsw")

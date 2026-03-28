@@ -6,6 +6,8 @@ class_name AttackState
 @export var next_attack: State
 @export var hitbox_component: PlayerHitboxComponent
 
+var attack_leap: int = 40
+
 var attack_buffer: bool
 var input_window: bool
 

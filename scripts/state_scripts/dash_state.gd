@@ -5,6 +5,8 @@ class_name DashState
 @export var move_state: State
 @export var iframes_component: iFramesComponent
 
+var dash_speed: int = 50
+
 func enter() -> void:
 	super()
 	iframes_component.activate_iframes(1.5)
@@ -24,6 +26,6 @@ func calculate_movement() -> void:
 	var direction_y := Input.get_axis("ui_up", "ui_down")
 	
 	if !direction_x and !direction_y:
-		parent.velocity = Vector2(move_speed*3, 0) if parent.sprite.scale.x == 1 else Vector2(-move_speed*3, 0)
+		parent.velocity = Vector2(dash_speed*3, 0) if parent.sprite.scale.x == 1 else Vector2(-dash_speed*3, 0)
 	elif direction_x or direction_y:
-		parent.velocity = Vector2(direction_x * (move_speed * 2.5), direction_y * (move_speed * 2.5))
+		parent.velocity = Vector2(direction_x * (dash_speed * 2.5), direction_y * (dash_speed * 2.5))

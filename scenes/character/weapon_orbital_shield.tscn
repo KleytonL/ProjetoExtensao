@@ -1,10 +1,30 @@
 [gd_scene format=3 uid="uid://bc0wqow6l5yuh"]
 
 [ext_resource type="Script" uid="uid://bwqa5vri3nltq" path="res://scripts/weapon_scripts/weapon_orbital_shield.gd" id="1_egwxu"]
+[ext_resource type="AudioStream" uid="uid://cd6yuej6v4jr6" path="res://resources/audio/sfx/weapon/shield_up.wav" id="2_tx508"]
+[ext_resource type="AudioStream" uid="uid://ciy4m22js5a1l" path="res://resources/audio/sfx/weapon/shield_down.wav" id="3_xn2r7"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tx508"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("2_tx508")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xn2r7"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("3_xn2r7")
 
 [node name="WeaponOrbitalShield" type="Node2D" unique_id=1363381612]
 script = ExtResource("1_egwxu")
 
 [node name="RechargeTimer" type="Timer" parent="." unique_id=1731723836]
+
+[node name="ShieldUpSFX" type="AudioStreamPlayer" parent="." unique_id=931437470]
+stream = SubResource("AudioStreamRandomizer_tx508")
+volume_db = -24.0
+
+[node name="ShieldDownSFX" type="AudioStreamPlayer" parent="." unique_id=230653877]
+stream = SubResource("AudioStreamRandomizer_xn2r7")
+volume_db = -24.0
 
 [connection signal="timeout" from="RechargeTimer" to="." method="_on_recharge_timer_timeout"]

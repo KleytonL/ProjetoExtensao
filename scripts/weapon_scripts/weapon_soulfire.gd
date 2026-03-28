@@ -19,6 +19,7 @@ func release_attack() -> void:
 			attack_timer.start()
 
 func _on_attack_timer_timeout() -> void:
+	$SoulfireShotSFX.play()
 	var attack_count = projectile_quantity
 	while attack_count > 0:
 		var instance: SoulfireProjectile = _soulfire.instantiate()

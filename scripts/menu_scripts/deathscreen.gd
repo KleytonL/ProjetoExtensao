@@ -24,15 +24,13 @@ func _on_restart_btn_focus_entered() -> void:
 
 func _on_restart_btn_pressed() -> void:
 	_click.play()
-	await _click.finished
 	resume()
-	get_tree().reload_current_scene()
+	LoadingScreen.reload()
 
 func _on_exit_btn_focus_entered() -> void:
 	_hover.play()
 
 func _on_exit_btn_pressed() -> void:
-	resume()
 	_click.play()
-	await _click.finished
-	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
+	resume()
+	LoadingScreen.change_scene("res://scenes/menus/main_menu.tscn")

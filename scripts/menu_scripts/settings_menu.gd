@@ -12,5 +12,4 @@ func _on_voltar_btn_focus_entered() -> void:
 
 func _on_voltar_btn_pressed() -> void:
 	_click.play()
-	await _click.finished
-	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
+	LoadingScreen.change_scene("res://scenes/menus/main_menu.tscn")

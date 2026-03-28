@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://cigcmcgxrb84y"]
 
 [ext_resource type="Script" uid="uid://cb7esqkm88l31" path="res://scripts/weapon_scripts/weapon_soulfire.gd" id="1_e3ji8"]
+[ext_resource type="AudioStream" uid="uid://c4ps2feb4iyek" path="res://resources/audio/sfx/weapon/soulfire_shot.wav" id="2_fqtsv"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fqtsv"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("2_fqtsv")
 
 [node name="WeaponSoulfire" type="Node2D" unique_id=539672612]
 script = ExtResource("1_e3ji8")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=713396233]
+
+[node name="SoulfireShotSFX" type="AudioStreamPlayer" parent="." unique_id=850481212]
+stream = SubResource("AudioStreamRandomizer_fqtsv")
+volume_db = -24.0
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

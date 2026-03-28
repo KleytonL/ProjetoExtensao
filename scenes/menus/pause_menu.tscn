@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cy3uf441bvb7x" path="res://scripts/menu_scripts/pause_menu.gd" id="1_n87rw"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="2_myx47"]
-[ext_resource type="AudioStream" uid="uid://cttlqhb40mlhu" path="res://resources/audio/sfx/hover.wav" id="3_2wrho"]
-[ext_resource type="AudioStream" uid="uid://chycdwh3j6hus" path="res://resources/audio/sfx/select.wav" id="4_gh0u6"]
+[ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="3_gsnt3"]
+[ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="4_2wrho"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myx47"]
 
@@ -107,10 +107,10 @@ texture_hover = SubResource("AtlasTexture_knqa7")
 texture_focused = SubResource("AtlasTexture_knqa7")
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=1717572582]
-stream = ExtResource("3_2wrho")
+stream = ExtResource("3_gsnt3")
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=309157316]
-stream = ExtResource("4_gh0u6")
+stream = ExtResource("4_2wrho")
 
 [connection signal="focus_entered" from="PanelContainer/VBoxContainer/resume_btn" to="." method="_on_resume_btn_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/resume_btn" to="." method="_on_resume_btn_pressed"]

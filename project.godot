@@ -21,9 +21,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-UpgradeDatabase="*uid://b7p0akh1qctg8"
 MenuMusic="*uid://bgaat75bghrxs"
-GameLogic="*uid://ceqsr76c3f0f5"
+GameLogic="*uid://dl2skylds7poj"
+UpgradeDatabase="*uid://bsw7i8fsnghi0"
+LoadingScreen="*uid://bsdmmmyvjiu8"
 
 [display]
 
@@ -33,6 +34,14 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://resources/": "red",
+"res://scenes/": "green",
+"res://scripts/": "yellow"
+}
 
 [global_group]
 

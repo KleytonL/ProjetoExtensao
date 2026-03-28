@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="3_325oc"]
 [ext_resource type="FontFile" uid="uid://dxrmmuex0h54n" path="res://resources/fonts/VCR_OSD_MONO.ttf" id="3_wywfy"]
 [ext_resource type="Script" uid="uid://bbocj1776cis1" path="res://scripts/menu_scripts/credits_scroll.gd" id="3_xtkoc"]
-[ext_resource type="AudioStream" uid="uid://cttlqhb40mlhu" path="res://resources/audio/sfx/hover.wav" id="5_wywfy"]
-[ext_resource type="AudioStream" uid="uid://chycdwh3j6hus" path="res://resources/audio/sfx/select.wav" id="6_komaw"]
+[ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="5_325oc"]
+[ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="6_wywfy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d74go"]
 load_path = "res://.godot/imported/TeamLogo.svg-665e8638d50fb7d69437b3e05b54ef0f.ctex"
@@ -181,10 +181,10 @@ texture_hover = SubResource("AtlasTexture_urgkg")
 texture_focused = SubResource("AtlasTexture_urgkg")
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=677511507]
-stream = ExtResource("5_wywfy")
+stream = ExtResource("5_325oc")
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=721412431]
-stream = ExtResource("6_komaw")
+stream = ExtResource("6_wywfy")
 
 [connection signal="focus_entered" from="voltar_btn" to="." method="_on_voltar_btn_focus_entered"]
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]
