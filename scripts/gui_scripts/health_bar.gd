@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgressBar
 class_name HealthBar
 
 @export var health_component: HealthComponent

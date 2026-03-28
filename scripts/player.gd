@@ -11,23 +11,18 @@ var experience = 0
 var collected_exp = 0
 var time = 0
 
-#escudo orbital
-var shield_level = 0
-var shield_orb_count = 1
-var shield_damage = 3
-
 var defense = 0
 var speed = 0
 var attack_cooldown = 0
 var attack_size = 0
 var additional_attacks = 0
 
-@onready var _exp_bar: ProgressBar = get_node("%ExpBar")
+#@onready var _exp_bar: ProgressBar = get_node("%ExpBar")
 @onready var _timer_label: Label = get_node("%lbl_timer")
 
 func _ready():
 	state_machine.init(self)
-	set_expbar(experience, exp_capacity())
+#	set_expbar(experience, exp_capacity())
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
@@ -65,7 +60,7 @@ func calculate_exp(exp_value):
 		experience += collected_exp
 		collected_exp = 0
 	
-	set_expbar(experience, exp_required)
+#	set_expbar(experience, exp_required)
 
 func exp_capacity():
 	var exp_cap = level
@@ -77,9 +72,9 @@ func exp_capacity():
 		exp_cap = 255 + (level - 39) * 12
 	return exp_cap
 
-func set_expbar(set_value = 1, set_max_value = 100):
-	_exp_bar.value = set_value
-	_exp_bar.max_value = set_max_value
+#func set_expbar(set_value = 1, set_max_value = 100):
+#	_exp_bar.value = set_value
+#	_exp_bar.max_value = set_max_value
 
 func change_time(argtime = 0):
 	time = argtime

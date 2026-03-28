@@ -19,7 +19,7 @@ func _ready() -> void:
 	$NameLabel.text = UpgradeDatabase.UPGRADES[item]["displayname"]
 	$DescriptionLabel.text = UpgradeDatabase.UPGRADES[item]["details"]
 	$LevelLabel.text = UpgradeDatabase.UPGRADES[item]["level"]
-	$ColorRect/ItemIcon.texture = load(UpgradeDatabase.UPGRADES[item]["icon"])
+	$ItemIcon.texture = load(UpgradeDatabase.UPGRADES[item]["icon"])
 
 func _on_pressed() -> void:
 	emit_signal("selected_upgrade", item)

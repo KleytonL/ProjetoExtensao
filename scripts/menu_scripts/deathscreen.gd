@@ -26,7 +26,7 @@ func _on_restart_btn_pressed() -> void:
 	_click.play()
 	await _click.finished
 	resume()
-	get_tree().change_scene_to_file("res://scenes/world/world.tscn")
+	get_tree().reload_current_scene()
 
 func _on_exit_btn_focus_entered() -> void:
 	_hover.play()

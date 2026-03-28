@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cosije1l4tlpf"]
 
 [ext_resource type="Script" uid="uid://ydi1lhbr6s18" path="res://scripts/gui_scripts/item_option.gd" id="1_5orec"]
-[ext_resource type="Texture2D" uid="uid://cqyhjqyd63ed6" path="res://resources/spritesheets/spritesheet-soulfire.svg" id="2_luvam"]
+[ext_resource type="Texture2D" uid="uid://bi5ubdqrn3bt0" path="res://resources/icons/icon-soulfire.svg" id="2_5orec"]
 [ext_resource type="FontFile" uid="uid://dxrmmuex0h54n" path="res://resources/fonts/VCR_OSD_MONO.ttf" id="3_dyi16"]
 
 [node name="ItemOption" type="Button" unique_id=1361442912]
@@ -13,25 +13,18 @@ size_flags_vertical = 3
 script = ExtResource("1_5orec")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1427039018]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.033333335
-anchor_top = 0.1
-anchor_right = 0.3
-anchor_bottom = 0.9
-color = Color(0.8392157, 0, 0.27058825, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="ItemIcon" type="TextureRect" parent="ColorRect" unique_id=1315089553]
+[node name="ItemIcon" type="TextureRect" parent="." unique_id=1315089553]
 clip_contents = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.1
+anchor_right = 0.3
+anchor_bottom = 0.90000004
+offset_left = 0.01999998
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_luvam")
+texture = ExtResource("2_5orec")
 expand_mode = 1
 stretch_mode = 1
 

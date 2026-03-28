@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dbif6l4redi2d"]
+
+[ext_resource type="Texture2D" uid="uid://cmxafvwbr3rjy" path="res://resources/gui/progress-bar-under.svg" id="1_plhnv"]
+[ext_resource type="Texture2D" uid="uid://dmo6br1oiihpt" path="res://resources/gui/progress-bar-over.svg" id="2_3kvrk"]
+[ext_resource type="Texture2D" uid="uid://1dxsu85hck8y" path="res://resources/gui/progress-bar-exp.svg" id="3_ccrej"]
+
+[node name="ExperienceBar" type="TextureProgressBar" unique_id=507383564]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("1_plhnv")
+texture_over = ExtResource("2_3kvrk")
+texture_progress = ExtResource("3_ccrej")

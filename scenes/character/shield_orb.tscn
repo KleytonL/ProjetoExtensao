@@ -1,7 +1,43 @@
 [gd_scene format=3 uid="uid://cj3otafopn1gv"]
 
-[ext_resource type="Texture2D" uid="uid://bjg1b53dlduv" path="res://icon.svg" id="1_0yvub"]
 [ext_resource type="Script" uid="uid://d22yhbq0t4enf" path="res://scripts/weapon_scripts/shield_orb.gd" id="1_4rpsw"]
+[ext_resource type="Texture2D" uid="uid://dlg78e8noqa3x" path="res://resources/spritesheets/spritesheet-orbitalshield.svg" id="2_4rpsw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2ady"]
+atlas = ExtResource("2_4rpsw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl53a"]
+atlas = ExtResource("2_4rpsw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16it7"]
+atlas = ExtResource("2_4rpsw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50qkl"]
+atlas = ExtResource("2_4rpsw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_07dxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2ady")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl53a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16it7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50qkl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4rpsw"]
 radius = 5.0
@@ -12,9 +48,11 @@ collision_mask = 2
 script = ExtResource("1_4rpsw")
 damage = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=615215319]
-scale = Vector2(0.046874996, 0.046875004)
-texture = ExtResource("1_0yvub")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1070478128]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_07dxp")
+autoplay = "default"
+frame_progress = 0.7221492
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=404666509]
 shape = SubResource("CircleShape2D_4rpsw")
