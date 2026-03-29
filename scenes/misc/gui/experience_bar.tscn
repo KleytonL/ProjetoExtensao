@@ -3,10 +3,37 @@
 [ext_resource type="Texture2D" uid="uid://cmxafvwbr3rjy" path="res://resources/gui/progress-bar-under.svg" id="1_plhnv"]
 [ext_resource type="Texture2D" uid="uid://dmo6br1oiihpt" path="res://resources/gui/progress-bar-over.svg" id="2_3kvrk"]
 [ext_resource type="Texture2D" uid="uid://1dxsu85hck8y" path="res://resources/gui/progress-bar-exp.svg" id="3_ccrej"]
+[ext_resource type="Script" uid="uid://7hfyul2dcyrb" path="res://scripts/gui_scripts/experience_bar.gd" id="4_3kvrk"]
+[ext_resource type="Shader" uid="uid://drrjnfhbelmoy" path="res://scripts/gui_scripts/label_shader.gdshader" id="5_ccrej"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yc74a"]
+shader = ExtResource("5_ccrej")
+shader_parameter/color_light = Color(0.125, 0.082, 0.2, 1)
+shader_parameter/color_dark = Color(1, 1, 1, 1)
+shader_parameter/threshold = 0.5
 
 [node name="ExperienceBar" type="TextureProgressBar" unique_id=507383564]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_right = 0.26666668
+anchor_bottom = 0.05925926
 texture_under = ExtResource("1_plhnv")
 texture_over = ExtResource("2_3kvrk")
 texture_progress = ExtResource("3_ccrej")
+script = ExtResource("4_3kvrk")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1777489404]
+z_index = 1
+material = SubResource("ShaderMaterial_yc74a")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35900003
+anchor_top = 0.125
+anchor_right = 0.656
+anchor_bottom = 0.625
+offset_left = 0.02399826
+offset_right = 0.01599884
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 4
+text = "Level: 1"

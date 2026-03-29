@@ -14,6 +14,6 @@ func process_input(_event: InputEvent) -> State:
 		return move_state
 	if Input.is_action_just_pressed("ui_attack"):
 		return attack_state
-	if Input.is_action_just_pressed("ui_dash"):
+	if Input.is_action_just_pressed("ui_dash") and GameLogic.can_dash:
 		return dash_state
 	return null

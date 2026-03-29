@@ -9,6 +9,7 @@ func _ready() -> void:
 func set_healthbar() -> void:
 	self.value = health_component.health
 	self.max_value = health_component.max_health
+	$Label.text = str(health_component.health, " / ", health_component.max_health)
 
 func _on_health_component_update_healthbar() -> void:
 	set_healthbar()

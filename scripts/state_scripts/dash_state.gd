@@ -14,6 +14,7 @@ func enter() -> void:
 
 func process_physics(_delta: float) -> State:
 	if not parent.animations.is_playing():
+		GameLogic.apply_dash_timer()
 		if Input.get_axis("ui_left", "ui_right") or Input.get_axis("ui_up", "ui_down"):
 			return move_state
 		return idle_state

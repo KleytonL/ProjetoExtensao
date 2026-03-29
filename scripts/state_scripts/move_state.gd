@@ -9,7 +9,7 @@ func enter() -> void:
 	super()
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_just_pressed("ui_dash"):
+	if Input.is_action_just_pressed("ui_dash") and GameLogic.can_dash:
 		return dash_state
 	if Input.is_action_just_pressed("ui_attack"):
 		return attack_state

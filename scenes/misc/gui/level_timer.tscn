@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cyq5gud1uv3gp"]
+
+[ext_resource type="Script" uid="uid://ch1aai0x66jf8" path="res://scripts/gui_scripts/level_timer.gd" id="1_fjrrd"]
+
+[node name="LevelTimer" type="Label" unique_id=1152534606]
+anchors_preset = -1
+anchor_right = 0.075
+anchor_bottom = 0.044444446
+theme_override_font_sizes/font_size = 6
+text = "00:00"
+script = ExtResource("1_fjrrd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1424396056]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
