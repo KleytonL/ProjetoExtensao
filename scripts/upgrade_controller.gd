@@ -5,7 +5,8 @@ class_name UpgradeController
 
 var _upgrades: Dictionary = {
 	"soulfire": preload("res://scenes/character/weapon_soulfire.tscn"),
-	"shield": preload("res://scenes/character/weapon_orbital_shield.tscn")
+	"shield": preload("res://scenes/character/weapon_orbital_shield.tscn"),
+	"boomerang": preload("res://scenes/character/weapon_boomerang.tscn")
 }
 
 var _active: Dictionary = {}

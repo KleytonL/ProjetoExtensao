@@ -110,6 +110,60 @@ const UPGRADES = {
 		"type": "weapon",
 		"key": "shield"
 	},
+	"boomerang1": {
+		"icon": ICON_PATH + "icon-boomerang.svg",
+		"displayname": "Boomerang",
+		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "weapon",
+		"key": "boomerang"
+	},
+	"boomerang2": {
+		"icon": ICON_PATH + "icon-boomerang.svg",
+		"displayname": "Boomerang",
+		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"level": "Level 2",
+		"prerequisite": ["boomerang1"],
+		"type": "weapon",
+		"key": "boomerang"
+	},
+	"boomerang3": {
+		"icon": ICON_PATH + "icon-boomerang.svg",
+		"displayname": "Boomerang",
+		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"level": "Level 3",
+		"prerequisite": ["boomerang2"],
+		"type": "weapon",
+		"key": "boomerang"
+	},
+	"boomerang4": {
+		"icon": ICON_PATH + "icon-boomerang.svg",
+		"displayname": "Boomerang",
+		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"level": "Level 4",
+		"prerequisite": ["boomerang3"],
+		"type": "weapon",
+		"key": "boomerang"
+	},
+	"boomerang5": {
+		"icon": ICON_PATH + "icon-boomerang.svg",
+		"displayname": "Boomerang",
+		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"level": "Level 5",
+		"prerequisite": ["boomerang4"],
+		"type": "weapon",
+		"key": "boomerang"
+	},
+	"boomerang6": {
+		"icon": ICON_PATH + "icon-boomerang.svg",
+		"displayname": "Boomerang",
+		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"level": "Level MAX",
+		"prerequisite": ["boomerang5"],
+		"type": "weapon",
+		"key": "boomerang"
+	},
 	"food": {
 		"icon": ICON_PATH + "icon-food.svg",
 		"displayname": "Comida",

@@ -45,7 +45,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 			instance.orb_size = 1.0
 			recharge_speed = 4
 			orb_quantity = 1
-			instance.knockback = 10
+			instance.knockback = 15
 			instance.rotation_speed = 1.5
 			instance.orbit_radius = 25
 		2:
@@ -54,7 +54,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 			instance.orb_size = 1.0
 			recharge_speed = 4
 			orb_quantity = 2
-			instance.knockback = 10
+			instance.knockback = 15
 			instance.rotation_speed = 1.75
 			instance.orbit_radius = 25
 		3:
@@ -63,7 +63,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 			instance.orb_size = 1.0
 			recharge_speed = 4
 			orb_quantity = 2
-			instance.knockback = 15
+			instance.knockback = 20
 			instance.rotation_speed = 1.75
 			instance.orbit_radius = 25
 		4:
@@ -72,7 +72,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 			instance.orb_size = 1.0
 			recharge_speed = 3
 			orb_quantity = 3
-			instance.knockback = 15
+			instance.knockback = 20
 			instance.rotation_speed = 1.75
 			instance.orbit_radius = 25
 		5:
@@ -81,7 +81,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 			instance.orb_size = 1.0
 			recharge_speed = 3
 			orb_quantity = 3
-			instance.knockback = 15
+			instance.knockback = 20
 			instance.rotation_speed = 1.75
 			instance.orbit_radius = 25
 		6:
@@ -90,6 +90,6 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 			instance.orb_size = 1.2
 			recharge_speed = 2
 			orb_quantity = 4
-			instance.knockback = 20
+			instance.knockback = 25
 			instance.rotation_speed = 2
 			instance.orbit_radius = 30
