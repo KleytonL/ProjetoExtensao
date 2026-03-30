@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cdbnx2nr22phy"]
+
+[ext_resource type="Script" uid="uid://bctsmw6l7b72k" path="res://scripts/component_scripts/after_image_component.gd" id="1_i63ov"]
+
+[node name="AfterImageComponent" type="Node" unique_id=730826247]
+script = ExtResource("1_i63ov")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1606429112]
+
+[node name="IntervalTimer" type="Timer" parent="." unique_id=1682589319]
+
+[connection signal="timeout" from="IntervalTimer" to="." method="_on_interval_timer_timeout"]

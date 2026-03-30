@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cq2hne6jxythc"]
 
 [ext_resource type="Script" uid="uid://bu71qcx3yexab" path="res://scripts/enemy_scripts/enemy_wisp_g1.gd" id="1_pfldh"]
-[ext_resource type="Texture2D" uid="uid://cjd2wolu70se" path="res://resources/spritesheets/spritesheet-wispG1.svg" id="2_pfldh"]
+[ext_resource type="Texture2D" uid="uid://cjd2wolu70se" path="res://resources/spritesheets/spritesheet-wisp-g1.svg" id="2_pfldh"]
 [ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="4_qg6r0"]
 [ext_resource type="Script" uid="uid://b6wu7hresy3q6" path="res://scripts/state_scripts/pursuit_state.gd" id="4_w6yqd"]
 [ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="4_yac8a"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="7_yac8a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
-radius = 4.0
+radius = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cw7i"]
 size = Vector2(6, 4)

@@ -13,9 +13,8 @@ shader_parameter/color_dark = Color(1, 1, 1, 1)
 shader_parameter/threshold = 0.5
 
 [node name="HealthBar" type="TextureProgressBar" unique_id=177009687]
-offset_top = 127.0
-offset_right = 64.0
-offset_bottom = 135.0
+offset_right = 96.0
+offset_bottom = 8.0
 texture_under = ExtResource("1_746kx")
 texture_over = ExtResource("2_746kx")
 texture_progress = ExtResource("3_746kx")

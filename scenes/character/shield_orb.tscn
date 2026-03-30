@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d22yhbq0t4enf" path="res://scripts/weapon_scripts/shield_orb.gd" id="1_4rpsw"]
 [ext_resource type="Texture2D" uid="uid://dlg78e8noqa3x" path="res://resources/spritesheets/spritesheet-orbitalshield.svg" id="2_4rpsw"]
+[ext_resource type="PackedScene" uid="uid://cdbnx2nr22phy" path="res://scenes/misc/components/after_image_component.tscn" id="3_p2ady"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2ady"]
 atlas = ExtResource("2_4rpsw")
@@ -42,12 +43,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4rpsw"]
 radius = 5.0
 
-[node name="ShieldOrb" type="Area2D" unique_id=1648715277]
+[node name="ShieldOrb" type="Area2D" unique_id=1648715277 node_paths=PackedStringArray("after_image_component")]
 z_index = 1
 scale = Vector2(0.1, 0.1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_4rpsw")
+after_image_component = NodePath("AfterImageComponent")
 damage = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1070478128]
@@ -58,6 +60,9 @@ frame_progress = 0.7221492
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=404666509]
 shape = SubResource("CircleShape2D_4rpsw")
+
+[node name="AfterImageComponent" parent="." unique_id=730826247 node_paths=PackedStringArray("_sprite") instance=ExtResource("3_p2ady")]
+_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="DurationTimer" type="Timer" parent="." unique_id=416110414]
 

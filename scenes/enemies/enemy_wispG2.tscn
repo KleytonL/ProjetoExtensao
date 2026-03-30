@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqgu5pr8xhjh5"]
 
 [ext_resource type="Script" uid="uid://do5wmbmxkrnjr" path="res://scripts/enemy_scripts/enemy_wisp_g2.gd" id="1_867ag"]
-[ext_resource type="Texture2D" uid="uid://c4uefmbe7rguo" path="res://resources/spritesheets/spritesheet-wisp.svg" id="2_graqp"]
+[ext_resource type="Texture2D" uid="uid://c4uefmbe7rguo" path="res://resources/spritesheets/spritesheet-wisp-g2.svg" id="2_graqp"]
 [ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="4_eam0m"]
 [ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="4_re62y"]
 [ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="5_eam0m"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="7_re62y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
-radius = 5.0
+radius = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cw7i"]
 size = Vector2(8, 10)
@@ -113,7 +113,7 @@ metadata/_custom_type_script = "uid://bboq2cifjak1t"
 
 [node name="HealthComponent" parent="." unique_id=1120913824 node_paths=PackedStringArray("death_state") instance=ExtResource("4_eam0m")]
 death_state = NodePath("../StateMachine/DeathState")
-max_health = 10
+max_health = 8
 
 [node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("4_re62y")]
 target = NodePath("..")

@@ -42,7 +42,7 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 		2:
 			instance.projectile_speed = 150
 			instance.projectile_acceleration = 100
-			projectile_quantity = 2
+			projectile_quantity = 1
 			attack_speed = 10
 			instance.damage = 2
 			instance.knockback = 15
@@ -58,24 +58,24 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 		4:
 			instance.projectile_speed = 150
 			instance.projectile_acceleration = 100
-			projectile_quantity = 3
+			projectile_quantity = 2
 			attack_speed = 6
 			instance.damage = 2
 			instance.knockback = 15
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.1 * (1 + player.attack_size)
 		5:
 			instance.projectile_speed = 175
-			instance.projectile_acceleration = 120
-			projectile_quantity = 3
+			instance.projectile_acceleration = 125
+			projectile_quantity = 2
 			attack_speed = 6
 			instance.damage = 2
 			instance.knockback = 15
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.1 * (1 + player.attack_size)
 		6: 
 			instance.projectile_speed = 175
-			instance.projectile_acceleration = 120
-			projectile_quantity = 5
+			instance.projectile_acceleration = 125
+			projectile_quantity = 3
 			attack_speed = 6
 			instance.damage = 3
 			instance.knockback = 15
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.25 * (1 + player.attack_size)

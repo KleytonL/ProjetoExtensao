@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1kbped141h63"]
 
 [ext_resource type="Script" uid="uid://b7eqb4qqqk3dc" path="res://scripts/menu_scripts/deathscreen.gd" id="1_ylnw1"]
-[ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/spritesheets/spritesheet-ui.svg" id="2_uurjc"]
+[ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/gui/spritesheet-ui.svg" id="2_uurjc"]
 [ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="3_nu4b8"]
 [ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="4_mceff"]
 

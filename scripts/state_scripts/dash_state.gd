@@ -4,6 +4,7 @@ class_name DashState
 @export var idle_state: State
 @export var move_state: State
 @export var iframes_component: iFramesComponent
+@export var after_image_component: AfterImageComponent
 
 var dash_speed: int = 50
 
@@ -11,6 +12,9 @@ func enter() -> void:
 	super()
 	iframes_component.activate_iframes(1.5)
 	calculate_movement()
+
+func exit() -> void:
+	after_image_component.stop()
 
 func process_physics(_delta: float) -> State:
 	if not parent.animations.is_playing():
@@ -23,6 +27,7 @@ func process_physics(_delta: float) -> State:
 	return null
 
 func calculate_movement() -> void:
+	after_image_component.start(0.05, 0.75)
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
 	

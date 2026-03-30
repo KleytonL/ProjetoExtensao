@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjd2wolu70se"
-path="res://.godot/imported/spritesheet-wispG1.svg-842af0d95ddad5b77f378ab1997cb73e.ctex"
+uid="uid://dc50jiuugeamv"
+path="res://.godot/imported/spritesheet-demon-hand.svg-2cb108a0571aba80579c71b59516696d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/spritesheets/spritesheet-wispG1.svg"
-dest_files=["res://.godot/imported/spritesheet-wispG1.svg-842af0d95ddad5b77f378ab1997cb73e.ctex"]
+source_file="res://resources/spritesheets/spritesheet-demon-hand.svg"
+dest_files=["res://.godot/imported/spritesheet-demon-hand.svg-2cb108a0571aba80579c71b59516696d.ctex"]
 
 [params]
 

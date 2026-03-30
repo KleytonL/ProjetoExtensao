@@ -1,6 +1,8 @@
 extends Panel
 class_name UpgradePanel
 
+@export var freeze_component: FrameFreezeComponent
+
 var upgrades_collected = []
 var upgrade_options = []
 var max_options = 3
@@ -9,6 +11,7 @@ var max_options = 3
 @onready var _item_options = preload("res://scenes/misc/gui/item_option.tscn")
 
 func level_up():
+	$AnimationPlayer.play("show_animation")
 	GameLogic.can_pause = false
 	self.visible = true
 	var options = 0
@@ -44,11 +47,16 @@ func get_random_item():
 		return null
 
 func close_and_save(item):
+	$AnimationPlayer.play_backwards("show_animation")
 	var option_children = _grid.get_children()
+	for i in option_children:
+		i.disabled = true
+	await $AnimationPlayer.animation_finished
 	for i in option_children:
 		i.queue_free()
 	upgrade_options.clear()
 	upgrades_collected.append(item)
 	self.visible = false
 	get_tree().paused = false
+	freeze_component.fade_out_freeze(0.1, 0.5)
 	GameLogic.can_pause = true

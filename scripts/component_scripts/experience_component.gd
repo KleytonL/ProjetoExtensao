@@ -2,6 +2,7 @@ extends Node
 class_name ExperienceComponent
 
 @export var upgrade_panel: UpgradePanel
+@export var freeze_component: FrameFreezeComponent
 
 var level = 1
 var experience = 0
@@ -16,6 +17,9 @@ func calculate_exp(exp_value):
 		collected_experience -= exp_required - experience
 		level += 1
 		experience = 0
+		if freeze_component:
+			freeze_component.fade_in_freeze(0.01, 0.25)
+			await freeze_component.freeze_finished
 		upgrade_panel.level_up()
 	else:
 		experience += collected_experience

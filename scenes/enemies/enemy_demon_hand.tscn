@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://cyqmvtlg4kc0r"]
+
+[ext_resource type="Script" uid="uid://bftrws5xvntlr" path="res://scripts/enemy_scripts/enemy_demon_hand.gd" id="1_grmh3"]
+[ext_resource type="Texture2D" uid="uid://dc50jiuugeamv" path="res://resources/spritesheets/spritesheet-demon-hand.svg" id="1_qwhs8"]
+[ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="2_hadc6"]
+[ext_resource type="Script" uid="uid://b6wu7hresy3q6" path="res://scripts/state_scripts/pursuit_state.gd" id="3_mm73v"]
+[ext_resource type="Script" uid="uid://ccwg7amauu6kk" path="res://scripts/state_scripts/hurt_state.gd" id="4_8xu08"]
+[ext_resource type="Script" uid="uid://bboq2cifjak1t" path="res://scripts/state_scripts/death_state.gd" id="5_5scvu"]
+[ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="7_g2eem"]
+[ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="8_5scvu"]
+[ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="9_7hehc"]
+[ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="10_oxe1r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qwhs8"]
+radius = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5scvu"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hehc"]
+size = Vector2(16, 14)
+
+[sub_resource type="Animation" id="Animation_qwhs8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7qdf8"]
+resource_name = "attacking_animation"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15, 13, 12, 11, 10, 9]
+}
+
+[sub_resource type="Animation" id="Animation_hadc6"]
+resource_name = "hurt_animation"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 8, 0, 8, 0, 8]
+}
+
+[sub_resource type="Animation" id="Animation_mm73v"]
+resource_name = "pursuit_animation"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0prjj"]
+_data = {
+&"RESET": SubResource("Animation_qwhs8"),
+&"attacking_animation": SubResource("Animation_7qdf8"),
+&"hurt_animation": SubResource("Animation_hadc6"),
+&"pursuit_animation": SubResource("Animation_mm73v")
+}
+
+[node name="enemy_demon_hand" type="CharacterBody2D" unique_id=1646686987]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_grmh3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1958000273]
+texture = ExtResource("1_qwhs8")
+hframes = 4
+vframes = 4
+
+[node name="OtherCollisions" type="CollisionShape2D" parent="." unique_id=1486452780]
+shape = SubResource("CircleShape2D_qwhs8")
+
+[node name="StateMachine" parent="." unique_id=46313988 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_hadc6")]
+initial_state = NodePath("PursuitState")
+
+[node name="PursuitState" type="Node" parent="StateMachine" unique_id=1670317434]
+script = ExtResource("3_mm73v")
+animation_name = "pursuit_animation"
+move_speed = 12
+metadata/_custom_type_script = "uid://b6wu7hresy3q6"
+
+[node name="HurtState" type="Node" parent="StateMachine" unique_id=582843601 node_paths=PackedStringArray("idle_state", "knockback_component")]
+script = ExtResource("4_8xu08")
+idle_state = NodePath("../PursuitState")
+knockback_component = NodePath("../../KnockbackComponent")
+animation_name = "hurt_animation"
+metadata/_custom_type_script = "uid://ccwg7amauu6kk"
+
+[node name="DeathState" type="Node" parent="StateMachine" unique_id=865421236]
+script = ExtResource("5_5scvu")
+metadata/_custom_type_script = "uid://bboq2cifjak1t"
+
+[node name="HealthComponent" parent="." unique_id=1120913824 node_paths=PackedStringArray("death_state") instance=ExtResource("7_g2eem")]
+death_state = NodePath("../StateMachine/DeathState")
+max_health = 15
+
+[node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("8_5scvu")]
+target = NodePath("..")
+hurt_state = NodePath("../StateMachine/HurtState")
+force = 25
+
+[node name="EnemyHitboxComponent" parent="." unique_id=1431613630 instance=ExtResource("9_7hehc")]
+damage = 3
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="EnemyHitboxComponent" unique_id=1806569859]
+shape = SubResource("RectangleShape2D_5scvu")
+
+[node name="EnemyHurtboxComponent" parent="." unique_id=442173391 node_paths=PackedStringArray("health_component", "knockback_component") instance=ExtResource("10_oxe1r")]
+health_component = NodePath("../HealthComponent")
+knockback_component = NodePath("../KnockbackComponent")
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=462440479]
+shape = SubResource("RectangleShape2D_7hehc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1951712173]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_0prjj")

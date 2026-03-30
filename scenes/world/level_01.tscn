@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://fqca6eefpksa" path="res://scripts/enemy_scripts/spawn_info.gd" id="3_dlabj"]
 [ext_resource type="PackedScene" uid="uid://cq2hne6jxythc" path="res://scenes/enemies/enemy_wispG1.tscn" id="4_srmg5"]
 [ext_resource type="PackedScene" uid="uid://dqgu5pr8xhjh5" path="res://scenes/enemies/enemy_wispG2.tscn" id="5_umvgx"]
+[ext_resource type="PackedScene" uid="uid://cyqmvtlg4kc0r" path="res://scenes/enemies/enemy_demon_hand.tscn" id="6_0lvy5"]
 [ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/tilemaps/tilemapsheet.svg" id="6_mxkvs"]
 [ext_resource type="PackedScene" uid="uid://n3t27wesrn06" path="res://scenes/misc/upgrade_controller.tscn" id="7_5qq27"]
 [ext_resource type="PackedScene" uid="uid://cdeic8y778515" path="res://scenes/menus/pause_menu.tscn" id="7_m114p"]
@@ -32,10 +33,28 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 
 [sub_resource type="Resource" id="Resource_gb53w"]
 script = ExtResource("3_dlabj")
-time_start = 100
+time_start = 120
 time_end = 240
+enemy = ExtResource("4_srmg5")
+enemy_num = 3
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_grc0v"]
+script = ExtResource("3_dlabj")
+time_start = 120
+time_end = 320
 enemy = ExtResource("5_umvgx")
-enemy_num = 5
+enemy_num = 2
+enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_oosgn"]
+script = ExtResource("3_dlabj")
+time_start = 160
+time_end = 320
+enemy = ExtResource("6_0lvy5")
+enemy_num = 6
 enemy_spawn_delay = 1
 metadata/_custom_type_script = "uid://fqca6eefpksa"
 
@@ -144,7 +163,7 @@ position = Vector2(793, 786)
 
 [node name="EnemySpawner" parent="." unique_id=792942877 instance=ExtResource("2_5qq27")]
 z_index = 1
-spawns = Array[ExtResource("3_dlabj")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr"), SubResource("Resource_gb53w")])
+spawns = Array[ExtResource("3_dlabj")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr"), SubResource("Resource_gb53w"), SubResource("Resource_grc0v"), SubResource("Resource_oosgn")])
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=148254953]
 z_index = -1
@@ -164,5 +183,5 @@ visible = false
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2089122602]
 process_mode = 3
 stream = SubResource("AudioStreamInteractive_e3hyu")
-volume_db = -15.0
+volume_db = -16.0
 autoplay = true

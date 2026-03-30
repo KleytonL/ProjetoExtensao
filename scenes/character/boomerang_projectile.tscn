@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://deeww6lvsea62" path="res://scripts/weapon_scripts/boomerang_projectile.gd" id="1_bjvdw"]
 [ext_resource type="Texture2D" uid="uid://c83vvhb55lm12" path="res://resources/spritesheets/spritesheet-boomerang.svg" id="1_sg2fl"]
+[ext_resource type="PackedScene" uid="uid://cdbnx2nr22phy" path="res://scenes/misc/components/after_image_component.tscn" id="3_jqy7u"]
+[ext_resource type="AudioStream" uid="uid://cup2qanpobniv" path="res://resources/audio/sfx/weapon/boomerang_throw.wav" id="4_impx5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bjvdw"]
 
@@ -38,16 +40,27 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 8.0
+"speed": 16.0
 }]
 
-[node name="BoomerangProjectile" type="Area2D" unique_id=1292830346]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_impx5"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("4_impx5")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_j5o6x"]
+shuffle = true
+stream_count = 1
+stream_0 = SubResource("AudioStreamRandomizer_impx5")
+
+[node name="BoomerangProjectile" type="Area2D" unique_id=1292830346 node_paths=PackedStringArray("after_image_component")]
 top_level = true
 z_index = 1
 scale = Vector2(0.1, 0.1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_bjvdw")
+after_image_component = NodePath("AfterImageComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=69873020]
 shape = SubResource("CircleShape2D_bjvdw")
@@ -55,10 +68,19 @@ shape = SubResource("CircleShape2D_bjvdw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=603052815]
 sprite_frames = SubResource("SpriteFrames_j5o6x")
 autoplay = "default"
-frame_progress = 0.5339942
+frame_progress = 0.3922707
+
+[node name="AfterImageComponent" parent="." unique_id=730826247 node_paths=PackedStringArray("_sprite") instance=ExtResource("3_jqy7u")]
+_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="DurationTimer" type="Timer" parent="." unique_id=818153209]
-wait_time = 7.0
+wait_time = 3.0
+autostart = true
+
+[node name="ThrowSFX" type="AudioStreamPlayer" parent="." unique_id=1838850250]
+stream = SubResource("AudioStreamPlaylist_j5o6x")
+volume_db = -8.0
+autoplay = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]
