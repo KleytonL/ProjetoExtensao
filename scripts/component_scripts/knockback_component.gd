@@ -9,3 +9,7 @@ var knockback: Vector2
 func apply_direction(attack_direction: Vector2) -> void:
 	knockback = attack_direction * force
 	target.state_machine.change_state(hurt_state)
+
+func apply_knockback_only(direction: Vector2) -> Vector2:
+	knockback = direction * force
+	return knockback

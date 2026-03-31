@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cidhx4f4sodco"]
+
+[ext_resource type="Script" uid="uid://un50yjhjjge7" path="res://scripts/enemy_scripts/enemy_projectile.gd" id="1_lnuoc"]
+[ext_resource type="Texture2D" uid="uid://bjg1b53dlduv" path="res://icon.svg" id="1_x01nx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lnuoc"]
+radius = 5.0
+
+[node name="EnemyProjectile" type="Area2D" unique_id=733809689]
+z_index = 1
+scale = Vector2(0.1, 0.1)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_lnuoc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=780926194]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_x01nx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=791662027]
+shape = SubResource("CircleShape2D_lnuoc")
+
+[node name="DurationTimer" type="Timer" parent="." unique_id=748018029]
+wait_time = 5.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

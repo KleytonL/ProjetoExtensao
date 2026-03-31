@@ -7,9 +7,12 @@
 [ext_resource type="Script" uid="uid://ccwg7amauu6kk" path="res://scripts/state_scripts/hurt_state.gd" id="4_8xu08"]
 [ext_resource type="Script" uid="uid://bboq2cifjak1t" path="res://scripts/state_scripts/death_state.gd" id="5_5scvu"]
 [ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="7_g2eem"]
+[ext_resource type="Script" uid="uid://ctfg1rmiyqsf1" path="res://scripts/state_scripts/enemy_attack_state.gd" id="7_oxe1r"]
 [ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="8_5scvu"]
 [ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="9_7hehc"]
 [ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="10_oxe1r"]
+[ext_resource type="PackedScene" uid="uid://cbc7kfxxvc578" path="res://scenes/misc/components/enemy_attack_range_component.tscn" id="11_7hehc"]
+[ext_resource type="Script" uid="uid://co76ffpgsfet0" path="res://scripts/enemy_scripts/enemy_attack_timer.gd" id="13_qy1n3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qwhs8"]
 radius = 3.0
@@ -37,7 +40,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_7qdf8"]
 resource_name = "attacking_animation"
-length = 1.2
+length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -46,7 +49,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 1, 1.5, 1.6, 1.7, 1.8, 1.9000001),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [9, 10, 11, 12, 13, 14, 15, 13, 12, 11, 10, 9]
@@ -128,6 +131,14 @@ metadata/_custom_type_script = "uid://ccwg7amauu6kk"
 script = ExtResource("5_5scvu")
 metadata/_custom_type_script = "uid://bboq2cifjak1t"
 
+[node name="EnemyAttackState" type="Node" parent="StateMachine" unique_id=1128119571 node_paths=PackedStringArray("attack_range", "pursuit_state", "knockback_component")]
+script = ExtResource("7_oxe1r")
+attack_range = NodePath("../../EnemyAttackRangeComponent")
+pursuit_state = NodePath("../PursuitState")
+knockback_component = NodePath("../../KnockbackComponent")
+animation_name = "attacking_animation"
+metadata/_custom_type_script = "uid://ctfg1rmiyqsf1"
+
 [node name="HealthComponent" parent="." unique_id=1120913824 node_paths=PackedStringArray("death_state") instance=ExtResource("7_g2eem")]
 death_state = NodePath("../StateMachine/DeathState")
 max_health = 15
@@ -150,6 +161,19 @@ knockback_component = NodePath("../KnockbackComponent")
 [node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=462440479]
 shape = SubResource("RectangleShape2D_7hehc")
 
+[node name="EnemyAttackRangeComponent" parent="." unique_id=61270051 instance=ExtResource("11_7hehc")]
+_range_radius = 70.0
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1971665914 node_paths=PackedStringArray("state_machine", "attack_state", "attack_range_component")]
+wait_time = 6.0
+autostart = true
+script = ExtResource("13_qy1n3")
+state_machine = NodePath("../StateMachine")
+attack_state = NodePath("../StateMachine/EnemyAttackState")
+attack_range_component = NodePath("../EnemyAttackRangeComponent")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1951712173]
 root_node = NodePath("../Sprite2D")
 libraries/ = SubResource("AnimationLibrary_0prjj")
+
+[connection signal="timeout" from="AttackTimer" to="AttackTimer" method="_on_timeout"]
