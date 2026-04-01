@@ -32,37 +32,37 @@ func _on_attack_timer_timeout() -> void:
 func calculate_current_level(instance: BoomerangProjectile) -> void:
 	match current_level:
 		1:
-			instance.projectile_speed = 150
+			instance.projectile_speed = 125
 			instance.projectile_acceleration = 100
 			projectile_quantity = 1
 			attack_speed = 10
 			instance.damage = 2
-			instance.knockback = 15
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.knockback = 5
+			instance.projectile_size = 0.75 * (1 + player.attack_size)
 		2:
 			instance.projectile_speed = 150
 			instance.projectile_acceleration = 100
 			projectile_quantity = 1
 			attack_speed = 10
 			instance.damage = 2
-			instance.knockback = 15
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.knockback = 5
+			instance.projectile_size = 0.9 * (1 + player.attack_size)
 		3:
 			instance.projectile_speed = 150
 			instance.projectile_acceleration = 100
 			projectile_quantity = 2
 			attack_speed = 10
 			instance.damage = 2
-			instance.knockback = 15
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.knockback = 10
+			instance.projectile_size = 0.9 * (1 + player.attack_size)
 		4:
 			instance.projectile_speed = 150
 			instance.projectile_acceleration = 100
 			projectile_quantity = 2
 			attack_speed = 6
 			instance.damage = 2
-			instance.knockback = 15
-			instance.projectile_size = 1.1 * (1 + player.attack_size)
+			instance.knockback = 10
+			instance.projectile_size = 1.0 * (1 + player.attack_size)
 		5:
 			instance.projectile_speed = 175
 			instance.projectile_acceleration = 125
@@ -70,7 +70,7 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			attack_speed = 6
 			instance.damage = 2
 			instance.knockback = 15
-			instance.projectile_size = 1.1 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * (1 + player.attack_size)
 		6: 
 			instance.projectile_speed = 175
 			instance.projectile_acceleration = 125
@@ -78,4 +78,4 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			attack_speed = 6
 			instance.damage = 3
 			instance.knockback = 15
-			instance.projectile_size = 1.25 * (1 + player.attack_size)
+			instance.projectile_size = 1.1 * (1 + player.attack_size)

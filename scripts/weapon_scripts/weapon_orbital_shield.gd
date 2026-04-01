@@ -83,7 +83,7 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 			orb_quantity = 3
 			instance.knockback = 20
 			instance.rotation_speed = 2
-			instance.orbit_radius = 25
+			instance.orbit_radius = 30
 		6:
 			instance.damage = 4
 			instance.duration = 7

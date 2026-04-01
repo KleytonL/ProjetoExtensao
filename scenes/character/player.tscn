@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://xd64r25wko58" path="res://scenes/misc/gui/upgrade_panel.tscn" id="21_pygui"]
 [ext_resource type="PackedScene" uid="uid://dbif6l4redi2d" path="res://scenes/misc/gui/experience_bar.tscn" id="22_p86hl"]
 [ext_resource type="PackedScene" uid="uid://cyq5gud1uv3gp" path="res://scenes/misc/gui/level_timer.tscn" id="25_71sfj"]
+[ext_resource type="PackedScene" uid="uid://ctxcex2lgbh43" path="res://scenes/misc/gui/dash_progress.tscn" id="27_8sb7f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 16)
@@ -423,12 +424,13 @@ attack_state = NodePath("../AttackStateOne")
 animation_name = "move_animation"
 metadata/_custom_type_script = "uid://srqtr0cdaw3x"
 
-[node name="DashState" type="Node" parent="StateMachine" unique_id=1289362037 node_paths=PackedStringArray("idle_state", "move_state", "iframes_component", "after_image_component")]
+[node name="DashState" type="Node" parent="StateMachine" unique_id=1289362037 node_paths=PackedStringArray("idle_state", "move_state", "iframes_component", "after_image_component", "dash_update")]
 script = ExtResource("9_vhx6d")
 idle_state = NodePath("../IdleState")
 move_state = NodePath("../MoveState")
 iframes_component = NodePath("../../iFramesComponent")
 after_image_component = NodePath("../../AfterImageComponent")
+dash_update = NodePath("../../GUI/Control/DashProgress")
 animation_name = "dash_animation"
 metadata/_custom_type_script = "uid://btq28sw10mlgh"
 
@@ -554,6 +556,16 @@ layout_mode = 1
 anchor_top = 0.044444446
 anchor_bottom = 0.1037037
 experience_component = NodePath("../../../ExperienceComponent")
+
+[node name="DashProgress" parent="GUI/Control" unique_id=753568634 instance=ExtResource("27_8sb7f")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.09629629
+anchor_right = 0.06666667
+anchor_bottom = 0.21481481
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelTimer" parent="GUI/Control" unique_id=1152534606 instance=ExtResource("25_71sfj")]
 layout_mode = 1

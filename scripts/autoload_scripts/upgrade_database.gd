@@ -14,7 +14,7 @@ const UPGRADES = {
 	"soulfire2": {
 		"icon": ICON_PATH + "icon-soulfire.svg",
 		"displayname": "Soulfire",
-		"details": "Dispara +1 projétil adicional.",
+		"details": "Dispara mais um projétil adicional.",
 		"level": "Level 2",
 		"prerequisite": ["soulfire1"],
 		"type": "weapon",
@@ -23,7 +23,7 @@ const UPGRADES = {
 	"soulfire3": {
 		"icon": ICON_PATH + "icon-soulfire.svg",
 		"displayname": "Soulfire",
-		"details": "Sua soulfire pode acertar 2 inimigos.",
+		"details": "Cada soulfire pode acertar até dois inimigos.",
 		"level": "Level 3",
 		"prerequisite": ["soulfire2"],
 		"type": "weapon",
@@ -32,7 +32,7 @@ const UPGRADES = {
 	"soulfire4": {
 		"icon": ICON_PATH + "icon-soulfire.svg",
 		"displayname": "Soulfire",
-		"details": "Dispara +1 projétil adicional.",
+		"details": "Dispara mais um projétil adicional.",
 		"level": "Level 4",
 		"prerequisite": ["soulfire3"],
 		"type": "weapon",
@@ -50,7 +50,7 @@ const UPGRADES = {
 	"soulfire6": {
 		"icon": ICON_PATH + "icon-soulfire.svg",
 		"displayname": "Soulfire",
-		"details": "Aumenta o dano em 2 e pode acertar até 3 inimigos.",
+		"details": "Aumenta o dano em dois e pode acertar até três inimigos.",
 		"level": "Level MAX",
 		"prerequisite": ["soulfire5"],
 		"type": "weapon",
@@ -59,7 +59,7 @@ const UPGRADES = {
 	"shield1": {
 		"icon": ICON_PATH + "icon-orbitalshield.svg",
 		"displayname": "Escudo Orbital",
-		"details": "Invoca 1 orbe que gira ao seu redor.",
+		"details": "Invoca um escudo que gira ao seu redor.",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "weapon",
@@ -68,7 +68,7 @@ const UPGRADES = {
 	"shield2": {
 		"icon": ICON_PATH + "icon-orbitalshield.svg",
 		"displayname": "Escudo Orbital",
-		"details": "Adiciona +1 orbe e aumenta velocidade de rotação",
+		"details": "Adiciona mais um escudo e aumenta o dano.",
 		"level": "Level 2",
 		"prerequisite": ["shield1"],
 		"type": "weapon",
@@ -77,7 +77,7 @@ const UPGRADES = {
 	"shield3": {
 		"icon": ICON_PATH + "icon-orbitalshield.svg",
 		"displayname": "Escudo Orbital",
-		"details": "Aumenta dano e reduz recarga.",
+		"details": "Aumenta duração, velocidade de rotação e repulsão.",
 		"level": "Level 3",
 		"prerequisite": ["shield2"],
 		"type": "weapon",
@@ -86,7 +86,7 @@ const UPGRADES = {
 	"shield4": {
 		"icon": ICON_PATH + "icon-orbitalshield.svg",
 		"displayname": "Escudo Orbital",
-		"details": "Adiciona +1 orbe (total: 3).",
+		"details": "Adiciona mais um escudo adicional, aumenta dano e reduz recarga entre usos.",
 		"level": "Level 4",
 		"prerequisite": ["shield3"],
 		"type": "weapon",
@@ -95,7 +95,7 @@ const UPGRADES = {
 	"shield5": {
 		"icon": ICON_PATH + "icon-orbitalshield.svg",
 		"displayname": "Escudo Orbital",
-		"details": "Adiciona +1 orbe (total: 4).",
+		"details": "Aumenta duração, velocidade de rotação e distância dos escudos.",
 		"level": "Level 5",
 		"prerequisite": ["shield4"],
 		"type": "weapon",
@@ -104,7 +104,7 @@ const UPGRADES = {
 	"shield6": {
 		"icon": ICON_PATH + "icon-orbitalshield.svg",
 		"displayname": "Escudo Orbital",
-		"details": "Dano máximo e giro mais veloz.",
+		"details": "Adiciona mais um escudo adicional, aumenta o dano, tamanho, repulsão, velocidade de rotação e reduz tempo de recarga.",
 		"level": "Level MAX",
 		"prerequisite": ["shield5"],
 		"type": "weapon",
@@ -122,7 +122,7 @@ const UPGRADES = {
 	"boomerang2": {
 		"icon": ICON_PATH + "icon-boomerang.svg",
 		"displayname": "Boomerang",
-		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"details": "Aumenta velocidade e tamanho do boomerang.",
 		"level": "Level 2",
 		"prerequisite": ["boomerang1"],
 		"type": "weapon",
@@ -131,7 +131,7 @@ const UPGRADES = {
 	"boomerang3": {
 		"icon": ICON_PATH + "icon-boomerang.svg",
 		"displayname": "Boomerang",
-		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"details": "Arremessa mais um boomerang adicional e aumenta a repulsão.",
 		"level": "Level 3",
 		"prerequisite": ["boomerang2"],
 		"type": "weapon",
@@ -140,7 +140,7 @@ const UPGRADES = {
 	"boomerang4": {
 		"icon": ICON_PATH + "icon-boomerang.svg",
 		"displayname": "Boomerang",
-		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"details": "Aumenta velocidade de ataque e tamanho.",
 		"level": "Level 4",
 		"prerequisite": ["boomerang3"],
 		"type": "weapon",
@@ -149,7 +149,7 @@ const UPGRADES = {
 	"boomerang5": {
 		"icon": ICON_PATH + "icon-boomerang.svg",
 		"displayname": "Boomerang",
-		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"details": "Aumenta a velocidade e repulsão dos boomerangs.",
 		"level": "Level 5",
 		"prerequisite": ["boomerang4"],
 		"type": "weapon",
@@ -158,7 +158,7 @@ const UPGRADES = {
 	"boomerang6": {
 		"icon": ICON_PATH + "icon-boomerang.svg",
 		"displayname": "Boomerang",
-		"details": "Arremessa um boomerang que retorna para a direção do jogador.",
+		"details": "Arremessa mais um boomerang adicional, aumenta o dano e tamanho dos boomerangs.",
 		"level": "Level MAX",
 		"prerequisite": ["boomerang5"],
 		"type": "weapon",
@@ -166,7 +166,7 @@ const UPGRADES = {
 	},
 	"food": {
 		"icon": ICON_PATH + "icon-food.svg",
-		"displayname": "Comida",
+		"displayname": "Refeição",
 		"details": "Restaura 5 de vida!",
 		"level": "~",
 		"prerequisite": [],
