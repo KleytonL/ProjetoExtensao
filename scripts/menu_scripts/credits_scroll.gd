@@ -2,7 +2,7 @@ extends ScrollContainer
 
 @onready var text_node: RichTextLabel = $RichTextLabel
 @export var delay_final : float = 2.0
-@export var velocity : float = 30.0
+@export var velocity : float = 26.6
 
 @onready var logo = $"../TextureRect"
 

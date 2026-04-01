@@ -131,34 +131,26 @@ Kleyton Luiz
 [b]Testadores[/b]
 Equipe PRISMA
 
-[b]Agradecimentos Especiais[/b]
-- Godot Engine
-- UNIFIL
-- Professores, mentores e amigos que inspiraram este projeto.
-- Aos nosso familiares, que sempre apoiaram nossos sonhos.
-
 [b]Ferramentas Utilizadas[/b]
 [b]Engine:[/b] 
-Godot Engine
-[b]Linguagem de Programação:[/b]
- GDScript 
+- Godot Engine
+
+[b]Linguagens Utilizadas:[/b]
+ - GDScript 
+- GLSL (OpenGL Shading Language)
+- BBcode
+
 [b]Ferramentas Gráficas:[/b]
 - Aseprite
 
-[b]Tecnologias Suportadas[/b]
-[b]Plataformas:[/b]
-- Windows
-- macOS
-- Linux
-
-[b]Resoluções:[/b]
-- Full HD
-- 1080p
-
 [b]Mensagem Final[/b]
-[b]Hayato: Training Ground[/b] é um projeto de extensão currícular que consiste em um jogo roguelite 2D de visão Top-Down (de cima para baixo), inspirado em jogos como \"Vampire Survivor\", \"Undertale\" e \"Touhou\". O principal objetivo do jogo consiste no protagonista sendo desafiado a escalar uma torre cheia de inimigos para ficar mais forte conforme alcança novos andares.
 
-[b]Em nome de toda Equipe PRISMA, muito obrigado por jogar e  apoiar nosso projeto![/b]
+[b]Agradecimentos Especiais[/b]
+- UNIFIL - Universidade Filadélfia de Londrina.
+- Professores, mentores e amigos que inspiraram este projeto.
+- Aos nosso familiares, que sempre apoiaram nossos sonhos.
+
+[b]Em nome de toda Equipe PRISMA, muito obrigado por jogar e nos  apoiar em nosso projeto![/b]
 [center] "
 fit_content = true
 
