@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://b6wu7hresy3q6" path="res://scripts/state_scripts/pursuit_state.gd" id="3_mm73v"]
 [ext_resource type="Script" uid="uid://ccwg7amauu6kk" path="res://scripts/state_scripts/hurt_state.gd" id="4_8xu08"]
 [ext_resource type="Script" uid="uid://bboq2cifjak1t" path="res://scripts/state_scripts/death_state.gd" id="5_5scvu"]
-[ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="7_g2eem"]
 [ext_resource type="Script" uid="uid://ctfg1rmiyqsf1" path="res://scripts/state_scripts/enemy_attack_state.gd" id="7_oxe1r"]
 [ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="8_5scvu"]
+[ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="8_qy1n3"]
 [ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="9_7hehc"]
 [ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="10_oxe1r"]
 [ext_resource type="PackedScene" uid="uid://cbc7kfxxvc578" path="res://scenes/misc/components/enemy_attack_range_component.tscn" id="11_7hehc"]
@@ -139,7 +139,7 @@ knockback_component = NodePath("../../KnockbackComponent")
 animation_name = "attacking_animation"
 metadata/_custom_type_script = "uid://ctfg1rmiyqsf1"
 
-[node name="HealthComponent" parent="." unique_id=1120913824 node_paths=PackedStringArray("death_state") instance=ExtResource("7_g2eem")]
+[node name="EnemyHealthComponent" parent="." unique_id=2004770144 node_paths=PackedStringArray("death_state") instance=ExtResource("8_qy1n3")]
 death_state = NodePath("../StateMachine/DeathState")
 max_health = 15
 
@@ -149,13 +149,13 @@ hurt_state = NodePath("../StateMachine/HurtState")
 force = 25
 
 [node name="EnemyHitboxComponent" parent="." unique_id=1431613630 instance=ExtResource("9_7hehc")]
-damage = 3
+damage = 7
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="EnemyHitboxComponent" unique_id=1806569859]
 shape = SubResource("RectangleShape2D_5scvu")
 
 [node name="EnemyHurtboxComponent" parent="." unique_id=442173391 node_paths=PackedStringArray("health_component", "knockback_component") instance=ExtResource("10_oxe1r")]
-health_component = NodePath("../HealthComponent")
+health_component = NodePath("../EnemyHealthComponent")
 knockback_component = NodePath("../KnockbackComponent")
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=462440479]

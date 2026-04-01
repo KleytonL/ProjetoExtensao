@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dy8175vwe6r4u"]
+
+[ext_resource type="Script" uid="uid://ciqqodgn6wfad" path="res://scripts/component_scripts/enemy_health_component.gd" id="1_xtopx"]
+[ext_resource type="AudioStream" uid="uid://chl28uamx1kui" path="res://resources/audio/sfx/hurt.ogg" id="2_ho1ef"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c2rda"]
+streams_count = 1
+stream_0/stream = ExtResource("2_ho1ef")
+
+[node name="EnemyHealthComponent" type="Node" unique_id=2004770144]
+script = ExtResource("1_xtopx")
+
+[node name="sfx_damage" type="AudioStreamPlayer" parent="." unique_id=1845678315]
+stream = SubResource("AudioStreamRandomizer_c2rda")
+volume_db = -17.5
+pitch_scale = 5.0

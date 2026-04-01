@@ -19,7 +19,6 @@ func release_attack() -> void:
 			attack_timer.start()
 
 func _on_attack_timer_timeout() -> void:
-	#$BoomerangThrowSFX.play()
 	var attack_count = projectile_quantity
 	while attack_count > 0:
 		var instance: BoomerangProjectile = _boomerang.instantiate()
@@ -34,48 +33,48 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 		1:
 			instance.projectile_speed = 125
 			instance.projectile_acceleration = 100
-			projectile_quantity = 1
+			projectile_quantity = 1 + player.stats.bonus_projectile
 			attack_speed = 10
 			instance.damage = 2
 			instance.knockback = 5
-			instance.projectile_size = 0.75 * (1 + player.attack_size)
+			instance.projectile_size = 0.75 * player.stats.bonus_projectile_size
 		2:
 			instance.projectile_speed = 150
 			instance.projectile_acceleration = 100
-			projectile_quantity = 1
+			projectile_quantity = 1 + player.stats.bonus_projectile
 			attack_speed = 10
 			instance.damage = 2
 			instance.knockback = 5
-			instance.projectile_size = 0.9 * (1 + player.attack_size)
+			instance.projectile_size = 0.9 * player.stats.bonus_projectile_size
 		3:
 			instance.projectile_speed = 150
 			instance.projectile_acceleration = 100
-			projectile_quantity = 2
+			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 10
 			instance.damage = 2
 			instance.knockback = 10
-			instance.projectile_size = 0.9 * (1 + player.attack_size)
+			instance.projectile_size = 0.9 * player.stats.bonus_projectile_size
 		4:
 			instance.projectile_speed = 150
 			instance.projectile_acceleration = 100
-			projectile_quantity = 2
+			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 6
 			instance.damage = 2
 			instance.knockback = 10
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		5:
 			instance.projectile_speed = 175
 			instance.projectile_acceleration = 125
-			projectile_quantity = 2
+			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 6
 			instance.damage = 2
 			instance.knockback = 15
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		6: 
 			instance.projectile_speed = 175
 			instance.projectile_acceleration = 125
-			projectile_quantity = 3
+			projectile_quantity = 3 + player.stats.bonus_projectile
 			attack_speed = 6
 			instance.damage = 3
 			instance.knockback = 15
-			instance.projectile_size = 1.1 * (1 + player.attack_size)
+			instance.projectile_size = 1.1 * player.stats.bonus_projectile_size

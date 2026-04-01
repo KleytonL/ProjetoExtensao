@@ -42,54 +42,54 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 		1:
 			instance.damage = 1
 			instance.duration = 3
-			instance.orb_size = 1.0
+			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
 			recharge_speed = 4
-			orb_quantity = 1
+			orb_quantity = 1 + player.stats.bonus_projectile
 			instance.knockback = 15
 			instance.rotation_speed = 1.5
 			instance.orbit_radius = 25
 		2:
 			instance.damage = 2
 			instance.duration = 3
-			instance.orb_size = 1.0
+			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
 			recharge_speed = 4
-			orb_quantity = 2
+			orb_quantity = 2 + player.stats.bonus_projectile
 			instance.knockback = 15
 			instance.rotation_speed = 1.5
 			instance.orbit_radius = 25
 		3:
 			instance.damage = 2
 			instance.duration = 5
-			instance.orb_size = 1.0
+			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
 			recharge_speed = 4
-			orb_quantity = 2
+			orb_quantity = 2 + player.stats.bonus_projectile
 			instance.knockback = 20
 			instance.rotation_speed = 1.75
 			instance.orbit_radius = 25
 		4:
 			instance.damage = 3
 			instance.duration = 5
-			instance.orb_size = 1.0
+			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
 			recharge_speed = 3
-			orb_quantity = 3
+			orb_quantity = 3 + player.stats.bonus_projectile
 			instance.knockback = 20
 			instance.rotation_speed = 1.75
 			instance.orbit_radius = 25
 		5:
 			instance.damage = 3
 			instance.duration = 7
-			instance.orb_size = 1.0
+			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
 			recharge_speed = 3
-			orb_quantity = 3
+			orb_quantity = 3 + player.stats.bonus_projectile
 			instance.knockback = 20
 			instance.rotation_speed = 2
 			instance.orbit_radius = 30
 		6:
 			instance.damage = 4
 			instance.duration = 7
-			instance.orb_size = 1.2
+			instance.orb_size = 1.2 * player.stats.bonus_projectile_size
 			recharge_speed = 2
-			orb_quantity = 4
+			orb_quantity = 4 + player.stats.bonus_projectile
 			instance.knockback = 25
 			instance.rotation_speed = 2.5
 			instance.orbit_radius = 30

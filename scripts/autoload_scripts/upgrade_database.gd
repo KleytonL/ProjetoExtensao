@@ -164,12 +164,133 @@ const UPGRADES = {
 		"type": "weapon",
 		"key": "boomerang"
 	},
+	"speed1": {
+		"icon": ICON_PATH + "icon-speed.svg",
+		"displayname": "Velocidade",
+		"details": "Aumenta a velocidade de movimento!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "speed",
+		"value": 2
+	},
+	"speed2": {
+		"icon": ICON_PATH + "icon-speed.svg",
+		"displayname": "Velocidade",
+		"details": "Aumenta a velocidade de movimento!",
+		"level": "Level 2",
+		"prerequisite": ["speed1"],
+		"type": "stats",
+		"key": "speed",
+		"value": 3
+	},
+	"speed3": {
+		"icon": ICON_PATH + "icon-speed.svg",
+		"displayname": "Velocidade",
+		"details": "Aumenta a velocidade de movimento!",
+		"level": "Level 3",
+		"prerequisite": ["speed2"],
+		"type": "stats",
+		"key": "speed",
+		"value": 3
+	},
+	"speed4": {
+		"icon": ICON_PATH + "icon-speed.svg",
+		"displayname": "Velocidade",
+		"details": "Aumenta a velocidade de movimento!",
+		"level": "Level 4",
+		"prerequisite": ["speed3"],
+		"type": "stats",
+		"key": "speed",
+		"value": 4
+	},
+	"speed5": {
+		"icon": ICON_PATH + "icon-speed.svg",
+		"displayname": "Velocidade",
+		"details": "Aumenta a velocidade de movimento!",
+		"level": "Level 5",
+		"prerequisite": ["speed4"],
+		"type": "stats",
+		"key": "speed",
+		"value": 5
+	},
+	"speed6": {
+		"icon": ICON_PATH + "icon-speed.svg",
+		"displayname": "Velocidade",
+		"details": "Aumenta a velocidade de movimento ao máximo!",
+		"level": "Level MAX",
+		"prerequisite": ["speed5"],
+		"type": "stats",
+		"key": "speed",
+		"value": 8
+	},
+	"strenght1": {
+		"icon": ICON_PATH + "icon-strenght.svg",
+		"displayname": "Força",
+		"details": "Aumenta a força de ataque!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "strenght",
+		"value": 1
+	},
+	"strenght2": {
+		"icon": ICON_PATH + "icon-strenght.svg",
+		"displayname": "Força",
+		"details": "Aumenta a força de ataque!",
+		"level": "Level 2",
+		"prerequisite": ["strenght2"],
+		"type": "stats",
+		"key": "strenght",
+		"value": 1
+	},
+	"strenght3": {
+		"icon": ICON_PATH + "icon-strenght.svg",
+		"displayname": "Força",
+		"details": "Aumenta a força de ataque!",
+		"level": "Level 3",
+		"prerequisite": ["speed2"],
+		"type": "stats",
+		"key": "strenght",
+		"value": 1
+	},
+	"strenght4": {
+		"icon": ICON_PATH + "icon-strenght.svg",
+		"displayname": "Força",
+		"details": "Aumenta a força de ataque!",
+		"level": "Level 4",
+		"prerequisite": ["strenght3"],
+		"type": "stats",
+		"key": "strenght",
+		"value": 1
+	},
+	"strenght5": {
+		"icon": ICON_PATH + "icon-strenght.svg",
+		"displayname": "Força",
+		"details": "Aumenta a força de ataque!",
+		"level": "Level 5",
+		"prerequisite": ["strenght4"],
+		"type": "stats",
+		"key": "strenght",
+		"value": 1
+	},
+	"strenght6": {
+		"icon": ICON_PATH + "icon-strenght.svg",
+		"displayname": "Força",
+		"details": "Aumenta a força de ataque!",
+		"level": "Level MAX",
+		"prerequisite": ["strenght5"],
+		"type": "stats",
+		"key": "strenght",
+		"value": 1
+	},
 	"food": {
 		"icon": ICON_PATH + "icon-food.svg",
 		"displayname": "Refeição",
-		"details": "Restaura 5 de vida!",
+		"details": "Restaura 10 de vida!",
 		"level": "~",
 		"prerequisite": [],
-		"type": "item"
+		"type": "consumable",
+		"value": 10
 	}
 }

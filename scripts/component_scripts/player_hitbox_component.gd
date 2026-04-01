@@ -4,6 +4,7 @@ class_name PlayerHitboxComponent
 @export var damage: int
 @export var camera: Camera2D
 @export var freeze_component: FrameFreezeComponent
+@export var stats_component: StatsComponent
 var direction: Vector2
 
 func _on_area_entered(area: Area2D) -> void:

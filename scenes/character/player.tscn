@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://b7c87rtlqm2u0" path="res://scripts/state_scripts/attack_state_one.gd" id="15_e5n5u"]
 [ext_resource type="PackedScene" uid="uid://c34yury3a1q7u" path="res://scenes/misc/components/experience_component.tscn" id="16_71sfj"]
 [ext_resource type="PackedScene" uid="uid://ccjj5vrdceihn" path="res://scenes/misc/components/i_frames_component.tscn" id="18_2smwq"]
+[ext_resource type="PackedScene" uid="uid://du55s6ek6v3a8" path="res://scenes/misc/components/stats_component.tscn" id="18_8w16m"]
 [ext_resource type="PackedScene" uid="uid://cdbnx2nr22phy" path="res://scenes/misc/components/after_image_component.tscn" id="20_o0173"]
 [ext_resource type="PackedScene" uid="uid://kc7a0gpr4mx4" path="res://scenes/misc/components/attack_range_component.tscn" id="20_okkwj"]
 [ext_resource type="PackedScene" uid="uid://xd64r25wko58" path="res://scenes/misc/gui/upgrade_panel.tscn" id="21_pygui"]
@@ -370,9 +371,15 @@ _data = {
 &"move_animation": SubResource("Animation_dqkch")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1155197298 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1155197298 node_paths=PackedStringArray("animations", "state_machine", "attack_range", "stats", "health", "sprite") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_onrkg")
+animations = NodePath("AnimationPlayer")
+state_machine = NodePath("StateMachine")
+attack_range = NodePath("AttackRangeComponent")
+stats = NodePath("StatsComponent")
+health = NodePath("HealthComponent")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1469339804]
 texture = ExtResource("2_g2els")
@@ -385,10 +392,10 @@ position = Vector2(18, 0)
 texture = ExtResource("3_dqkch")
 hframes = 4
 
-[node name="PlayerHitboxComponent" parent="Sprite2D" unique_id=1804852658 node_paths=PackedStringArray("camera", "freeze_component") instance=ExtResource("4_5y66v")]
-damage = 2
+[node name="PlayerHitboxComponent" parent="Sprite2D" unique_id=1804852658 node_paths=PackedStringArray("camera", "freeze_component", "stats_component") instance=ExtResource("4_5y66v")]
 camera = NodePath("../../Camera2D")
 freeze_component = NodePath("../../FrameFreezeComponent")
+stats_component = NodePath("../../StatsComponent")
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="Sprite2D/PlayerHitboxComponent" unique_id=1707922413]
 position = Vector2(12, 0)
@@ -416,11 +423,12 @@ animation_name = "idle_animation"
 move_speed = 0
 metadata/_custom_type_script = "uid://d11bxepksiaj"
 
-[node name="MoveState" type="Node" parent="StateMachine" unique_id=233232588 node_paths=PackedStringArray("idle_state", "dash_state", "attack_state")]
+[node name="MoveState" type="Node" parent="StateMachine" unique_id=233232588 node_paths=PackedStringArray("idle_state", "dash_state", "attack_state", "stats_component")]
 script = ExtResource("12_vreni")
 idle_state = NodePath("../IdleState")
 dash_state = NodePath("../DashState")
 attack_state = NodePath("../AttackStateOne")
+stats_component = NodePath("../../StatsComponent")
 animation_name = "move_animation"
 metadata/_custom_type_script = "uid://srqtr0cdaw3x"
 
@@ -477,7 +485,8 @@ hitbox_component = NodePath("../../Sprite2D/PlayerHitboxComponent")
 animation_name = "attack_animation_03"
 metadata/_custom_type_script = "uid://rae8dvp1an4"
 
-[node name="HealthComponent" parent="." unique_id=1120913824 node_paths=PackedStringArray("freeze_component") instance=ExtResource("4_erpy8")]
+[node name="HealthComponent" parent="." unique_id=1120913824 node_paths=PackedStringArray("stats_component", "freeze_component") instance=ExtResource("4_erpy8")]
+stats_component = NodePath("../StatsComponent")
 freeze_component = NodePath("../FrameFreezeComponent")
 max_health = 100
 
@@ -489,6 +498,8 @@ freeze_component = NodePath("../FrameFreezeComponent")
 target = NodePath("..")
 hurt_state = NodePath("../StateMachine/HurtState")
 force = 50
+
+[node name="StatsComponent" parent="." unique_id=204472306 instance=ExtResource("18_8w16m")]
 
 [node name="FrameFreezeComponent" parent="." unique_id=1638875044 instance=ExtResource("10_g2qfr")]
 
@@ -577,7 +588,6 @@ grow_horizontal = 2
 
 [node name="UpgradePanel" parent="GUI/Control" unique_id=216387890 node_paths=PackedStringArray("freeze_component") instance=ExtResource("21_pygui")]
 layout_mode = 1
-anchors_preset = 11
 freeze_component = NodePath("../../../FrameFreezeComponent")
 
 [connection signal="update_healthbar" from="HealthComponent" to="GUI/Control/HealthBar" method="_on_health_component_update_healthbar"]

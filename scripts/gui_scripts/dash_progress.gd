@@ -1,19 +1,16 @@
 extends TextureProgressBar
 class_name DashProgress
 
-@onready var timer: Timer = $UpdateTimer
-
 func _ready() -> void:
-	self.max_value = 3
+	self.max_value = 100
 	self.value = max_value
 
 func update_progress() -> void:
+	GameLogic.can_dash = false
 	self.value = 0
-	timer.start()
 
-func _on_update_timer_timeout() -> void:
+func _process(_delta: float) -> void:
 	if self.value >= self.max_value:
-		timer.stop()
+		GameLogic.can_dash = true
 		return
 	self.value += 0.1
-	timer.start()
