@@ -1,16 +1,12 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var animations: AnimationPlayer = $AnimationPlayer
-@onready var state_machine: StateMachine = $StateMachine
-@onready var attack_range: AttackRangeComponent = $AttackRangeComponent
-@onready var sprite: Sprite2D = $Sprite2D
-
-var defense = 0
-var speed = 0
-var attack_cooldown = 0
-var attack_size = 0
-var additional_attacks = 0
+@export var animations: AnimationPlayer
+@export var state_machine: StateMachine
+@export var attack_range: AttackRangeComponent
+@export var stats: StatsComponent
+@export var health: HealthComponent
+@export var sprite: Sprite2D
 
 func _ready():
 	state_machine.init(self)

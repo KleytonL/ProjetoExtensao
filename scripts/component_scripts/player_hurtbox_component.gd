@@ -6,6 +6,6 @@ class_name PlayerHurtboxComponent
 
 func damage(attack: EnemyHitboxComponent) -> void:
 	if health_component:
-		health_component.damage_player(attack.damage)
+		health_component.damage(attack.damage)
 	if knockback_component:
 		knockback_component.apply_direction(attack.direction)

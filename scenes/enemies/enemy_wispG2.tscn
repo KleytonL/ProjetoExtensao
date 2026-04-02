@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://do5wmbmxkrnjr" path="res://scripts/enemy_scripts/enemy_wisp_g2.gd" id="1_867ag"]
 [ext_resource type="Texture2D" uid="uid://c4uefmbe7rguo" path="res://resources/spritesheets/spritesheet-wisp-g2.svg" id="2_graqp"]
-[ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="4_eam0m"]
 [ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="4_re62y"]
 [ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="5_eam0m"]
 [ext_resource type="Script" uid="uid://ccwg7amauu6kk" path="res://scripts/state_scripts/hurt_state.gd" id="5_lx71q"]
 [ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="5_re62y"]
 [ext_resource type="Script" uid="uid://b6wu7hresy3q6" path="res://scripts/state_scripts/pursuit_state.gd" id="6_2wjjs"]
 [ext_resource type="Script" uid="uid://bboq2cifjak1t" path="res://scripts/state_scripts/death_state.gd" id="6_5o3s1"]
+[ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="7_5o3s1"]
 [ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="7_re62y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
@@ -111,9 +111,9 @@ metadata/_custom_type_script = "uid://ccwg7amauu6kk"
 script = ExtResource("6_5o3s1")
 metadata/_custom_type_script = "uid://bboq2cifjak1t"
 
-[node name="HealthComponent" parent="." unique_id=1120913824 node_paths=PackedStringArray("death_state") instance=ExtResource("4_eam0m")]
+[node name="EnemyHealthComponent" parent="." unique_id=2004770144 node_paths=PackedStringArray("death_state") instance=ExtResource("7_5o3s1")]
 death_state = NodePath("../StateMachine/DeathState")
-max_health = 8
+max_health = 10
 
 [node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("4_re62y")]
 target = NodePath("..")
@@ -128,7 +128,7 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_0cw7i")
 
 [node name="EnemyHurtboxComponent" parent="." unique_id=442173391 node_paths=PackedStringArray("health_component", "knockback_component") instance=ExtResource("5_re62y")]
-health_component = NodePath("../HealthComponent")
+health_component = NodePath("../EnemyHealthComponent")
 knockback_component = NodePath("../KnockbackComponent")
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=2067656242]

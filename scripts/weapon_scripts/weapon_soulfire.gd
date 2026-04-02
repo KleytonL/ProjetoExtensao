@@ -34,48 +34,48 @@ func calculate_current_level(instance: SoulfireProjectile) -> void:
 		1:
 			instance.health = 1
 			instance.projectile_speed = 75
-			projectile_quantity = 1
+			projectile_quantity = 1 + player.stats.bonus_projectile
 			attack_speed = 3
 			instance.damage = 5
 			instance.knockback = 10
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		2:
 			instance.health = 1
 			instance.projectile_speed = 75
-			projectile_quantity = 2
+			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 3
 			instance.damage = 5
 			instance.knockback = 10
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		3:
 			instance.health = 2
 			instance.projectile_speed = 75
-			projectile_quantity = 2
+			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 3
 			instance.damage = 5
 			instance.knockback = 10
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		4:
 			instance.health = 2
 			instance.projectile_speed = 75
-			projectile_quantity = 3
+			projectile_quantity = 3 + player.stats.bonus_projectile
 			attack_speed = 3
 			instance.damage = 5
 			instance.knockback = 10
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		5:
 			instance.health = 2
 			instance.projectile_speed = 100
-			projectile_quantity = 3
+			projectile_quantity = 3 + player.stats.bonus_projectile
 			attack_speed = 2
 			instance.damage = 5
 			instance.knockback = 10
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		6: 
 			instance.health = 3
 			instance.projectile_speed = 100
-			projectile_quantity = 5
+			projectile_quantity = 5 + player.stats.bonus_projectile
 			attack_speed = 3
 			instance.damage = 7
 			instance.knockback = 10
-			instance.projectile_size = 1.0 * (1 + player.attack_size)
+			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size

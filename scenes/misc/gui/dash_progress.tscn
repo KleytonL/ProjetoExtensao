@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ctxcex2lgbh43"]
+
+[ext_resource type="Texture2D" uid="uid://b2myia3ccech7" path="res://resources/gui/dash-progressbar-under.svg" id="1_y1rgq"]
+[ext_resource type="Texture2D" uid="uid://3yxovt6tmrku" path="res://resources/gui/dash-progressbar-over.svg" id="2_gs0bf"]
+[ext_resource type="Texture2D" uid="uid://21biigsqfqc5" path="res://resources/gui/dash-progressbar-progress.svg" id="3_ll5b0"]
+[ext_resource type="Script" uid="uid://diwhdr13kkmll" path="res://scripts/gui_scripts/dash_progress.gd" id="4_gs0bf"]
+
+[node name="DashProgress" type="TextureProgressBar" unique_id=753568634]
+offset_right = 16.0
+offset_bottom = 16.0
+step = 0.1
+fill_mode = 4
+texture_under = ExtResource("1_y1rgq")
+texture_over = ExtResource("2_gs0bf")
+texture_progress = ExtResource("3_ll5b0")
+script = ExtResource("4_gs0bf")

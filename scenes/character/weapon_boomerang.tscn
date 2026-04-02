@@ -7,6 +7,4 @@ script = ExtResource("1_fj03e")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1565954366]
 
-[node name="BoomerangThrowSFX" type="AudioStreamPlayer" parent="." unique_id=893935459]
-
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

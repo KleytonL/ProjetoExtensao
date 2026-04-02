@@ -28,7 +28,7 @@ func get_random_item():
 	for i in UpgradeDatabase.UPGRADES:
 		if i in upgrades_collected or i in upgrade_options:
 			pass
-		elif UpgradeDatabase.UPGRADES[i]["type"] == "item":
+		elif UpgradeDatabase.UPGRADES[i]["type"] == "consumable":
 			pass
 		elif UpgradeDatabase.UPGRADES[i]["prerequisite"].size() > 0:
 			var to_add = true

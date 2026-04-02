@@ -2,7 +2,7 @@ extends Node
 class_name HealthComponent
 
 @onready var death = get_tree().get_first_node_in_group("DeathScreen")
-@export var death_state: State
+@export var stats_component: StatsComponent
 @export var freeze_component: FrameFreezeComponent
 @export var max_health: int
 var health: int
@@ -12,13 +12,7 @@ signal update_healthbar
 func _ready() -> void:
 	health = max_health
 
-func damage_enemy(attack: int) -> void:
-	health -= attack
-	$sfx_damage.play()
-	if health <= 0:
-		$"../StateMachine".change_state(death_state)
-
-func damage_player(attack: int) -> void:
+func damage(attack: int) -> void:
 	health -= attack
 	$sfx_damage.play()
 	emit_signal("update_healthbar")
@@ -27,3 +21,11 @@ func damage_player(attack: int) -> void:
 			freeze_component.fade_in_freeze(0.01, 0.75)
 			await freeze_component.freeze_finished
 		death.pause()
+
+func update_health(value: int) -> void:
+	health += value
+	emit_signal("update_healthbar")
+
+func update_max_health() -> void:
+	max_health += stats_component.bonus_health
+	emit_signal("update_healthbar")

@@ -22,6 +22,7 @@ func handle_upgrade(item: String) -> void:
 			var instance = _upgrades[key].instantiate()
 			player.call_deferred("add_child", instance)
 			_active[key] = instance
-#		"food":
-#			health += 5
-#			health = clamp(health, 0, max_health)
+	elif data["type"] == "stats":
+		player.stats.apply_stat_upgrade(data)
+	elif data["type"] == "consumable":
+		player.health.update_health(data["value"])

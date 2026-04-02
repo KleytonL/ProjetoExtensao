@@ -5,6 +5,7 @@ class_name DashState
 @export var move_state: State
 @export var iframes_component: iFramesComponent
 @export var after_image_component: AfterImageComponent
+@export var dash_update: DashProgress
 
 var dash_speed: int = 50
 
@@ -18,7 +19,6 @@ func exit() -> void:
 
 func process_physics(_delta: float) -> State:
 	if not parent.animations.is_playing():
-		GameLogic.apply_dash_timer()
 		if Input.get_axis("ui_left", "ui_right") or Input.get_axis("ui_up", "ui_down"):
 			return move_state
 		return idle_state
@@ -27,6 +27,7 @@ func process_physics(_delta: float) -> State:
 	return null
 
 func calculate_movement() -> void:
+	dash_update.update_progress()
 	after_image_component.start(0.05, 0.75)
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
