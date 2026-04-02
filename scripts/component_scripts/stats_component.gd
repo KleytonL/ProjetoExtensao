@@ -8,8 +8,13 @@ var bonus_projectile: int = 0
 var bonus_attack_speed: float = 0.0
 var bonus_projectile_size: float = 1.0
 
+signal update_stats
+
 func apply_stat_upgrade(data: Dictionary) -> void:
 	match data["key"]:
+		"health":
+			bonus_health += data["value"]
+			emit_signal("update_stats")
 		"speed":
 			bonus_speed += data["value"]
 		"strength":

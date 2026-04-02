@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://xd64r25wko58"]
 
-[ext_resource type="Texture2D" uid="uid://684iewj323ni" path="res://resources/gui/upgrade_panel.svg" id="1_dx5y6"]
+[ext_resource type="Texture2D" uid="uid://684iewj323ni" path="res://resources/gui/upgrade-panel-background.svg" id="1_dx5y6"]
 [ext_resource type="Script" uid="uid://mjey8w23tduo" path="res://scripts/gui_scripts/upgrade_panel.gd" id="1_mjvmj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dx5y6"]

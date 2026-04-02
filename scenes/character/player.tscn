@@ -577,6 +577,7 @@ anchor_right = 0.06666667
 anchor_bottom = 0.21481481
 offset_right = 0.0
 offset_bottom = 0.0
+step = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelTimer" parent="GUI/Control" unique_id=1152534606 instance=ExtResource("25_71sfj")]

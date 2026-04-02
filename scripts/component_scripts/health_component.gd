@@ -5,11 +5,14 @@ class_name HealthComponent
 @export var stats_component: StatsComponent
 @export var freeze_component: FrameFreezeComponent
 @export var max_health: int
+var base_health: int
 var health: int
 
 signal update_healthbar
 
 func _ready() -> void:
+	stats_component.update_stats.connect(update_max_health)
+	base_health = max_health
 	health = max_health
 
 func damage(attack: int) -> void:
@@ -27,5 +30,7 @@ func update_health(value: int) -> void:
 	emit_signal("update_healthbar")
 
 func update_max_health() -> void:
-	max_health += stats_component.bonus_health
+	var old_health = max_health
+	max_health = base_health + stats_component.bonus_health
+	update_health(max_health - old_health)
 	emit_signal("update_healthbar")

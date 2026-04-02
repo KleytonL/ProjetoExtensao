@@ -1,4 +1,5 @@
 extends Area2D
+class_name Experience
 
 @export var value = 1
 
@@ -11,7 +12,7 @@ var speed = -0.75
 func _ready():
 	if value < 5:
 		_sprite.play("exp_blue")
-	elif value < 25:
+	elif value < 10:
 		_sprite.play("exp_green")
 	else:
 		_sprite.play("exp_red")

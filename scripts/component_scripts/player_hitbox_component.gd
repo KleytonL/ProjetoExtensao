@@ -5,13 +5,19 @@ class_name PlayerHitboxComponent
 @export var camera: Camera2D
 @export var freeze_component: FrameFreezeComponent
 @export var stats_component: StatsComponent
+var _base_damage: int
 var direction: Vector2
+
+func _ready() -> void:
+	_base_damage = damage
 
 func _on_area_entered(area: Area2D) -> void:
 	direction = (area.global_position - get_parent().global_position).normalized()
 	if area is EnemyHurtboxComponent:
-		area.damage(self)
+		if stats_component:
+			damage = _base_damage + stats_component.bonus_damage 
 		if freeze_component:
 			freeze_component.activate(0.01, 0.5)
 		if camera:
 			camera.shake_camera()
+		area.damage(self)

@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/tilemaps/tilemapsheet.svg" id="6_mxkvs"]
 [ext_resource type="PackedScene" uid="uid://n3t27wesrn06" path="res://scenes/misc/upgrade_controller.tscn" id="7_5qq27"]
 [ext_resource type="PackedScene" uid="uid://cdeic8y778515" path="res://scenes/menus/pause_menu.tscn" id="7_m114p"]
-[ext_resource type="PackedScene" uid="uid://c1kbped141h63" path="res://scenes/menus/deathscreen.tscn" id="8_71ii3"]
-[ext_resource type="AudioStream" uid="uid://b8k7f842rrnu8" path="res://resources/audio/music/I've Got Your Back! (Intro).ogg" id="9_bt7bg"]
-[ext_resource type="AudioStream" uid="uid://c84pfv7750ami" path="res://resources/audio/music/I've Got Your Back! (Main Loop).ogg" id="10_wbwoo"]
+[ext_resource type="PackedScene" uid="uid://c1kbped141h63" path="res://scenes/menus/death_screen.tscn" id="8_71ii3"]
+[ext_resource type="AudioStream" uid="uid://b8k7f842rrnu8" path="res://resources/audio/music/ive-got-your-back-intro.ogg" id="9_bt7bg"]
+[ext_resource type="AudioStream" uid="uid://c84pfv7750ami" path="res://resources/audio/music/ive-got-your-back-loop.ogg" id="10_wbwoo"]
 
 [sub_resource type="Resource" id="Resource_xl0gr"]
 script = ExtResource("3_dlabj")
@@ -43,7 +43,7 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 [sub_resource type="Resource" id="Resource_grc0v"]
 script = ExtResource("3_dlabj")
 time_start = 120
-time_end = 320
+time_end = 180
 enemy = ExtResource("5_umvgx")
 enemy_num = 3
 enemy_spawn_delay = 2
@@ -55,6 +55,33 @@ time_start = 160
 time_end = 320
 enemy = ExtResource("6_0lvy5")
 enemy_num = 2
+enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_0lvy5"]
+script = ExtResource("3_dlabj")
+time_start = 150
+time_end = 220
+enemy = ExtResource("4_srmg5")
+enemy_num = 5
+enemy_spawn_delay = 2
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_gjjqh"]
+script = ExtResource("3_dlabj")
+time_start = 160
+time_end = 360
+enemy = ExtResource("5_umvgx")
+enemy_num = 5
+enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_p4bcs"]
+script = ExtResource("3_dlabj")
+time_start = 180
+time_end = 360
+enemy = ExtResource("6_0lvy5")
+enemy_num = 5
 enemy_spawn_delay = 3
 metadata/_custom_type_script = "uid://fqca6eefpksa"
 
@@ -163,7 +190,7 @@ position = Vector2(793, 786)
 
 [node name="EnemySpawner" parent="." unique_id=792942877 instance=ExtResource("2_5qq27")]
 z_index = 1
-spawns = Array[ExtResource("3_dlabj")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr"), SubResource("Resource_gb53w"), SubResource("Resource_grc0v"), SubResource("Resource_oosgn")])
+spawns = Array[ExtResource("3_dlabj")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr"), SubResource("Resource_gb53w"), SubResource("Resource_grc0v"), SubResource("Resource_oosgn"), SubResource("Resource_0lvy5"), SubResource("Resource_gjjqh"), SubResource("Resource_p4bcs")])
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=148254953]
 z_index = -1
@@ -177,7 +204,7 @@ player = NodePath("../Player")
 
 [node name="pause_menu" parent="WorldGUI" unique_id=1608591503 instance=ExtResource("7_m114p")]
 
-[node name="deathscreen" parent="WorldGUI" unique_id=609795518 groups=["Teste"] instance=ExtResource("8_71ii3")]
+[node name="deathscreen" parent="WorldGUI" unique_id=609795518 instance=ExtResource("8_71ii3")]
 visible = false
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2089122602]

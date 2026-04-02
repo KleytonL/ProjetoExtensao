@@ -9,9 +9,9 @@ func _ready():
 
 func pause():
 	show()
-	_restart_btn.grab_focus()
 	get_tree().paused = true
 	GameLogic.can_pause = false
+	_restart_btn.grab_focus()
 
 func resume():
 	hide()
@@ -32,5 +32,5 @@ func _on_exit_btn_focus_entered() -> void:
 
 func _on_exit_btn_pressed() -> void:
 	_click.play()
-	LoadingScreen.change_scene("res://scenes/menus/main_menu.tscn")
 	resume()
+	LoadingScreen.change_scene("res://scenes/menus/main_menu.tscn")

@@ -164,6 +164,66 @@ const UPGRADES = {
 		"type": "weapon",
 		"key": "boomerang"
 	},
+	"health1": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 5!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "health",
+		"value": 5
+	},
+	"health2": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 5!",
+		"level": "Level 2",
+		"prerequisite": ["health1"],
+		"type": "stats",
+		"key": "health",
+		"value": 5
+	},
+	"health3": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 5!",
+		"level": "Level 3",
+		"prerequisite": ["health2"],
+		"type": "stats",
+		"key": "health",
+		"value": 5
+	},
+	"health4": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 10!",
+		"level": "Level 4",
+		"prerequisite": ["health3"],
+		"type": "stats",
+		"key": "health",
+		"value": 10
+	},
+	"health5": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 10!",
+		"level": "Level 5",
+		"prerequisite": ["health4"],
+		"type": "stats",
+		"key": "health",
+		"value": 10
+	},
+	"health6": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 15!",
+		"level": "Level MAX",
+		"prerequisite": ["health5"],
+		"type": "stats",
+		"key": "health",
+		"value": 15
+	},
 	"speed1": {
 		"icon": ICON_PATH + "icon-speed.svg",
 		"displayname": "Velocidade",
@@ -239,7 +299,7 @@ const UPGRADES = {
 		"displayname": "Força",
 		"details": "Aumenta a força de ataque!",
 		"level": "Level 2",
-		"prerequisite": ["strength2"],
+		"prerequisite": ["strength1"],
 		"type": "stats",
 		"key": "strength",
 		"value": 1
@@ -249,7 +309,7 @@ const UPGRADES = {
 		"displayname": "Força",
 		"details": "Aumenta a força de ataque!",
 		"level": "Level 3",
-		"prerequisite": ["speed2"],
+		"prerequisite": ["strength2"],
 		"type": "stats",
 		"key": "strength",
 		"value": 1
@@ -403,66 +463,6 @@ const UPGRADES = {
 		"type": "stats",
 		"key": "projectile_size",
 		"value": 0.1
-	},
-	"health1": {
-		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
-		"details": "Cura e aumenta a sua vida total em 5!",
-		"level": "Level 1",
-		"prerequisite": [],
-		"type": "stats",
-		"key": "health",
-		"value": 5
-	},
-	"health2": {
-		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
-		"details": "Cura e aumenta a sua vida total em 5!",
-		"level": "Level 2",
-		"prerequisite": ["health1"],
-		"type": "stats",
-		"key": "health",
-		"value": 5
-	},
-	"health3": {
-		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
-		"details": "Cura e aumenta a sua vida total em 5!",
-		"level": "Level 3",
-		"prerequisite": ["health2"],
-		"type": "stats",
-		"key": "health",
-		"value": 5
-	},
-	"health4": {
-		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
-		"details": "Cura e aumenta a sua vida total em 10!",
-		"level": "Level 4",
-		"prerequisite": ["health3"],
-		"type": "stats",
-		"key": "health",
-		"value": 10
-	},
-	"health5": {
-		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
-		"details": "Cura e aumenta a sua vida total em 10!",
-		"level": "Level 5",
-		"prerequisite": ["health4"],
-		"type": "stats",
-		"key": "health",
-		"value": 10
-	},
-	"health6": {
-		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
-		"details": "Cura e aumenta a sua vida total em 15!",
-		"level": "Level MAX",
-		"prerequisite": ["health5"],
-		"type": "stats",
-		"key": "health",
-		"value": 15
 	},
 	"food": {
 		"icon": ICON_PATH + "icon-food.svg",
