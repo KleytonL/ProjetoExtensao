@@ -393,6 +393,7 @@ texture = ExtResource("3_dqkch")
 hframes = 4
 
 [node name="PlayerHitboxComponent" parent="Sprite2D" unique_id=1804852658 node_paths=PackedStringArray("camera", "freeze_component", "stats_component") instance=ExtResource("4_5y66v")]
+damage = 2
 camera = NodePath("../../Camera2D")
 freeze_component = NodePath("../../FrameFreezeComponent")
 stats_component = NodePath("../../StatsComponent")

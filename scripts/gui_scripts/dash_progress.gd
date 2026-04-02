@@ -13,4 +13,4 @@ func _process(_delta: float) -> void:
 	if self.value >= self.max_value:
 		GameLogic.can_dash = true
 		return
-	self.value += 0.1
+	self.value += 0.5

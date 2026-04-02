@@ -224,65 +224,245 @@ const UPGRADES = {
 		"key": "speed",
 		"value": 8
 	},
-	"strenght1": {
-		"icon": ICON_PATH + "icon-strenght.svg",
+	"strength1": {
+		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
 		"details": "Aumenta a força de ataque!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "stats",
-		"key": "strenght",
+		"key": "strength",
 		"value": 1
 	},
-	"strenght2": {
-		"icon": ICON_PATH + "icon-strenght.svg",
+	"strength2": {
+		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
 		"details": "Aumenta a força de ataque!",
 		"level": "Level 2",
-		"prerequisite": ["strenght2"],
+		"prerequisite": ["strength2"],
 		"type": "stats",
-		"key": "strenght",
+		"key": "strength",
 		"value": 1
 	},
-	"strenght3": {
-		"icon": ICON_PATH + "icon-strenght.svg",
+	"strength3": {
+		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
 		"details": "Aumenta a força de ataque!",
 		"level": "Level 3",
 		"prerequisite": ["speed2"],
 		"type": "stats",
-		"key": "strenght",
+		"key": "strength",
 		"value": 1
 	},
-	"strenght4": {
-		"icon": ICON_PATH + "icon-strenght.svg",
+	"strength4": {
+		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
 		"details": "Aumenta a força de ataque!",
 		"level": "Level 4",
-		"prerequisite": ["strenght3"],
+		"prerequisite": ["strength3"],
 		"type": "stats",
-		"key": "strenght",
+		"key": "strength",
 		"value": 1
 	},
-	"strenght5": {
-		"icon": ICON_PATH + "icon-strenght.svg",
+	"strength5": {
+		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
 		"details": "Aumenta a força de ataque!",
 		"level": "Level 5",
-		"prerequisite": ["strenght4"],
+		"prerequisite": ["strength4"],
 		"type": "stats",
-		"key": "strenght",
+		"key": "strength",
 		"value": 1
 	},
-	"strenght6": {
-		"icon": ICON_PATH + "icon-strenght.svg",
+	"strength6": {
+		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
 		"details": "Aumenta a força de ataque!",
 		"level": "Level MAX",
-		"prerequisite": ["strenght5"],
+		"prerequisite": ["strength5"],
 		"type": "stats",
-		"key": "strenght",
+		"key": "strength",
 		"value": 1
+	},
+	"projectile1": {
+		"icon": ICON_PATH + "icon-projectile.svg",
+		"displayname": "Projétil Adicional",
+		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "projectile",
+		"value": 1
+	},
+	"projectile2": {
+		"icon": ICON_PATH + "icon-projectile.svg",
+		"displayname": "Projétil Adicional",
+		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"level": "Level 2",
+		"prerequisite": ["projectile1"],
+		"type": "stats",
+		"key": "projectile",
+		"value": 1
+	},
+	"projectile3": {
+		"icon": ICON_PATH + "icon-projectile.svg",
+		"displayname": "Projétil Adicional",
+		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"level": "Level 3",
+		"prerequisite": ["projectile2"],
+		"type": "stats",
+		"key": "projectile",
+		"value": 1
+	},
+	"projectile4": {
+		"icon": ICON_PATH + "icon-projectile.svg",
+		"displayname": "Projétil Adicional",
+		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"level": "Level 4",
+		"prerequisite": ["projectile3"],
+		"type": "stats",
+		"key": "projectile",
+		"value": 1
+	},
+	"projectile5": {
+		"icon": ICON_PATH + "icon-projectile.svg",
+		"displayname": "Projétil Adicional",
+		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"level": "Level 5",
+		"prerequisite": ["projectile4"],
+		"type": "stats",
+		"key": "projectile",
+		"value": 1
+	},
+	"projectile6": {
+		"icon": ICON_PATH + "icon-projectile.svg",
+		"displayname": "Projétil Adicional",
+		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"level": "Level MAX",
+		"prerequisite": ["projectile5"],
+		"type": "stats",
+		"key": "projectile",
+		"value": 1
+	},
+	"projectile_size1": {
+		"icon": ICON_PATH + "icon-projectilesize.svg",
+		"displayname": "Projéteis Maiores",
+		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "projectile_size",
+		"value": 0.1
+	},
+	"projectile_size2": {
+		"icon": ICON_PATH + "icon-projectilesize.svg",
+		"displayname": "Projéteis Maiores",
+		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"level": "Level 2",
+		"prerequisite": ["projectile_size1"],
+		"type": "stats",
+		"key": "projectile_size",
+		"value": 0.1
+	},
+	"projectile_size3": {
+		"icon": ICON_PATH + "icon-projectilesize.svg",
+		"displayname": "Projéteis Maiores",
+		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"level": "Level 3",
+		"prerequisite": ["projectile_size2"],
+		"type": "stats",
+		"key": "projectile_size",
+		"value": 0.1
+	},
+	"projectile_size4": {
+		"icon": ICON_PATH + "icon-projectilesize.svg",
+		"displayname": "Projéteis Maiores",
+		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"level": "Level 4",
+		"prerequisite": ["projectile_size3"],
+		"type": "stats",
+		"key": "projectile_size",
+		"value": 0.1
+	},
+	"projectile_size5": {
+		"icon": ICON_PATH + "icon-projectilesize.svg",
+		"displayname": "Projéteis Maiores",
+		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"level": "Level 5",
+		"prerequisite": ["projectile_size4"],
+		"type": "stats",
+		"key": "projectile_size",
+		"value": 0.1
+	},
+	"projectile_size6": {
+		"icon": ICON_PATH + "icon-projectilesize.svg",
+		"displayname": "Projéteis Maiores",
+		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"level": "Level MAX",
+		"prerequisite": ["projectile_size5"],
+		"type": "stats",
+		"key": "projectile_size",
+		"value": 0.1
+	},
+	"health1": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 5!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "health",
+		"value": 5
+	},
+	"health2": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 5!",
+		"level": "Level 2",
+		"prerequisite": ["health1"],
+		"type": "stats",
+		"key": "health",
+		"value": 5
+	},
+	"health3": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 5!",
+		"level": "Level 3",
+		"prerequisite": ["health2"],
+		"type": "stats",
+		"key": "health",
+		"value": 5
+	},
+	"health4": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 10!",
+		"level": "Level 4",
+		"prerequisite": ["health3"],
+		"type": "stats",
+		"key": "health",
+		"value": 10
+	},
+	"health5": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 10!",
+		"level": "Level 5",
+		"prerequisite": ["health4"],
+		"type": "stats",
+		"key": "health",
+		"value": 10
+	},
+	"health6": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida Máxima",
+		"details": "Cura e aumenta a sua vida total em 15!",
+		"level": "Level MAX",
+		"prerequisite": ["health5"],
+		"type": "stats",
+		"key": "health",
+		"value": 15
 	},
 	"food": {
 		"icon": ICON_PATH + "icon-food.svg",
