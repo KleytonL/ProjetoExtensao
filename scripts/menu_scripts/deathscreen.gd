@@ -18,7 +18,6 @@ func resume():
 	get_tree().paused = false
 	GameLogic.can_pause = true
 
-
 func _on_restart_btn_focus_entered() -> void:
 	_hover.play()
 

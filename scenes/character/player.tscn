@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dbif6l4redi2d" path="res://scenes/misc/gui/experience_bar.tscn" id="22_p86hl"]
 [ext_resource type="PackedScene" uid="uid://cyq5gud1uv3gp" path="res://scenes/misc/gui/level_timer.tscn" id="25_71sfj"]
 [ext_resource type="PackedScene" uid="uid://ctxcex2lgbh43" path="res://scenes/misc/gui/dash_progress.tscn" id="27_8sb7f"]
+[ext_resource type="PackedScene" uid="uid://dwdfogcxudg71" path="res://scenes/misc/gui/item_grid.tscn" id="28_j01l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 16)
@@ -554,10 +555,6 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthBar" parent="GUI/Control" unique_id=1333183330 node_paths=PackedStringArray("health_component") instance=ExtResource("6_erpy8")]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.4
-anchor_bottom = 0.05925926
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 health_component = NodePath("../../../HealthComponent")
@@ -565,18 +562,18 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ExperienceBar" parent="GUI/Control" unique_id=507383564 node_paths=PackedStringArray("experience_component") instance=ExtResource("22_p86hl")]
 layout_mode = 1
-anchor_top = 0.044444446
-anchor_bottom = 0.1037037
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 6.0
+offset_right = 64.0
+offset_bottom = 13.999999
 experience_component = NodePath("../../../ExperienceComponent")
 
 [node name="DashProgress" parent="GUI/Control" unique_id=753568634 instance=ExtResource("27_8sb7f")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.09629629
-anchor_right = 0.06666667
-anchor_bottom = 0.21481481
-offset_right = 0.0
-offset_bottom = 0.0
+offset_top = 12.999999
+offset_bottom = 29.0
 step = 0.0
 metadata/_edit_use_anchors_ = true
 
@@ -587,6 +584,14 @@ anchor_top = 0.037037037
 anchor_right = 0.5375
 anchor_bottom = 0.08148148
 grow_horizontal = 2
+
+[node name="ItemGrid" parent="GUI/Control" unique_id=1964498297 instance=ExtResource("28_j01l2")]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 96.0
+offset_bottom = 45.0
+scale = Vector2(0.5, 0.5)
 
 [node name="UpgradePanel" parent="GUI/Control" unique_id=216387890 node_paths=PackedStringArray("freeze_component") instance=ExtResource("21_pygui")]
 layout_mode = 1

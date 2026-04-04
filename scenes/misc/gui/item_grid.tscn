@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dwdfogcxudg71"]
+
+[ext_resource type="Script" uid="uid://b6j3ipgu27urf" path="res://scripts/gui_scripts/item_grid.gd" id="1_nxky8"]
+
+[node name="ItemGrid" type="Control" unique_id=1964498297 groups=["ItemGrid"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 32.0
+script = ExtResource("1_nxky8")
+
+[node name="WeaponGrid" type="GridContainer" parent="." unique_id=1119930858]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 16.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
+
+[node name="StatsGrid" type="GridContainer" parent="." unique_id=1911498434]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 32.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5

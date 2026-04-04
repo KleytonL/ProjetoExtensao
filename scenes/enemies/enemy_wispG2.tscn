@@ -136,5 +136,10 @@ knockback_component = NodePath("../KnockbackComponent")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_graqp")
 
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1211685799]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=928287098]
 libraries/ = SubResource("AnimationLibrary_ymxtd")
+
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

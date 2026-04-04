@@ -1,7 +1,7 @@
 extends Node
 
-const ICON_PATH = "res://resources/icons/"
-const UPGRADES = {
+const ICON_PATH: String = "res://resources/icons/"
+const UPGRADES: Dictionary = {
 	"soulfire1": {
 		"icon": ICON_PATH + "icon-soulfire.svg",
 		"displayname": "Soulfire",
@@ -164,9 +164,63 @@ const UPGRADES = {
 		"type": "weapon",
 		"key": "boomerang"
 	},
+	"thunderblade1": {
+		"icon": ICON_PATH + "icon-thunderblade.svg",
+		"displayname": "Thunder Blade",
+		"details": "Uma lâmina elétrica cai sobre seus inimigos!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "weapon",
+		"key": "thunderblade"
+	},
+	"thunderblade2": {
+		"icon": ICON_PATH + "icon-thunderblade.svg",
+		"displayname": "Thunder Blade",
+		"details": "Uma lâmina elétrica cai sobre seus inimigos!",
+		"level": "Level 2",
+		"prerequisite": ["thunderblade1"],
+		"type": "weapon",
+		"key": "thunderblade"
+	},
+	"thunderblade3": {
+		"icon": ICON_PATH + "icon-thunderblade.svg",
+		"displayname": "Thunder Blade",
+		"details": "Uma lâmina elétrica cai sobre seus inimigos!",
+		"level": "Level 3",
+		"prerequisite": ["thunderblade2"],
+		"type": "weapon",
+		"key": "thunderblade"
+	},
+	"thunderblade4": {
+		"icon": ICON_PATH + "icon-thunderblade.svg",
+		"displayname": "Thunder Blade",
+		"details": "Uma lâmina elétrica cai sobre seus inimigos!",
+		"level": "Level 4",
+		"prerequisite": ["thunderblade3"],
+		"type": "weapon",
+		"key": "thunderblade"
+	},
+	"thunderblade5": {
+		"icon": ICON_PATH + "icon-thunderblade.svg",
+		"displayname": "Thunder Blade",
+		"details": "Uma lâmina elétrica cai sobre seus inimigos!",
+		"level": "Level 5",
+		"prerequisite": ["thunderblade4"],
+		"type": "weapon",
+		"key": "thunderblade"
+	},
+	"thunderblade6": {
+		"icon": ICON_PATH + "icon-thunderblade.svg",
+		"displayname": "Thunder Blade",
+		"details": "Uma lâmina elétrica cai sobre seus inimigos!",
+		"level": "Level MAX",
+		"prerequisite": ["thunderblade5"],
+		"type": "weapon",
+		"key": "thunderblade"
+	},
 	"health1": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
+		"displayname": "Vida Adicional",
 		"details": "Cura e aumenta a sua vida total em 5!",
 		"level": "Level 1",
 		"prerequisite": [],
@@ -176,7 +230,7 @@ const UPGRADES = {
 	},
 	"health2": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
+		"displayname": "Vida Adicional",
 		"details": "Cura e aumenta a sua vida total em 5!",
 		"level": "Level 2",
 		"prerequisite": ["health1"],
@@ -186,7 +240,7 @@ const UPGRADES = {
 	},
 	"health3": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
+		"displayname": "Vida Adicional",
 		"details": "Cura e aumenta a sua vida total em 5!",
 		"level": "Level 3",
 		"prerequisite": ["health2"],
@@ -196,7 +250,7 @@ const UPGRADES = {
 	},
 	"health4": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
+		"displayname": "Vida Adicional",
 		"details": "Cura e aumenta a sua vida total em 10!",
 		"level": "Level 4",
 		"prerequisite": ["health3"],
@@ -206,7 +260,7 @@ const UPGRADES = {
 	},
 	"health5": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
+		"displayname": "Vida Adicional",
 		"details": "Cura e aumenta a sua vida total em 10!",
 		"level": "Level 5",
 		"prerequisite": ["health4"],
@@ -216,7 +270,7 @@ const UPGRADES = {
 	},
 	"health6": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Máxima",
+		"displayname": "Vida Adicional",
 		"details": "Cura e aumenta a sua vida total em 15!",
 		"level": "Level MAX",
 		"prerequisite": ["health5"],

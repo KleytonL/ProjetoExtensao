@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://c2882ufqspcet"]
+
+[ext_resource type="Script" uid="uid://rielkcwgyl5r" path="res://scripts/weapon_scripts/thunder_blade_projectile.gd" id="1_bleqt"]
+[ext_resource type="Texture2D" uid="uid://se4kutbl2dp2" path="res://resources/spritesheets/spritesheet-thunderblade.svg" id="2_d1fo7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1fo7"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(112, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4jrj"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(128, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8l52"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(144, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdfr5"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(160, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej4b5"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(176, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_518iu"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(0, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yjri"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(16, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy55l"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(32, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rytlh"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(48, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_110o5"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(64, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2wf7"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(80, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vir3"]
+atlas = ExtResource("2_d1fo7")
+region = Rect2(96, 0, 16, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4jrj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1fo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4jrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8l52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdfr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej4b5")
+}],
+"loop": true,
+"name": &"on_ground_animation",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_518iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yjri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy55l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rytlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_110o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2wf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vir3")
+}],
+"loop": false,
+"name": &"spawn_animation",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8l52"]
+size = Vector2(8, 12)
+
+[node name="ThunderBladeProjectile" type="Area2D" unique_id=63505772]
+top_level = true
+z_index = 1
+scale = Vector2(0.75, 0.75)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_bleqt")
+damage = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=772072695]
+position = Vector2(0, -26)
+sprite_frames = SubResource("SpriteFrames_u4jrj")
+animation = &"spawn_animation"
+frame = 6
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2082931183]
+shape = SubResource("RectangleShape2D_v8l52")
+disabled = true
+
+[node name="DurationTimer" type="Timer" parent="." unique_id=2114466588]
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

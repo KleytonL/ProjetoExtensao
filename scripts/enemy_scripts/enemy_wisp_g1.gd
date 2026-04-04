@@ -13,3 +13,9 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+
+func _on_visibility_notifier_screen_entered() -> void:
+	sprite.visible = true
+
+func _on_visibility_notifier_screen_exited() -> void:
+	sprite.visible = false

@@ -1,13 +1,13 @@
 extends Node2D
-class_name WeaponSoulfire
+class_name WeaponThunderBlade
 
 var current_level: int = 1
 var projectile_quantity: int = 1
-var attack_speed: int = 3
+var attack_speed: int = 4
 
 @onready var attack_timer: Timer = $AttackTimer
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
-@onready var _soulfire = preload("res://scenes/character/soulfire_projectile.tscn")
+@onready var _thunder_blade = preload("res://scenes/character/thunder_blade_projectile.tscn")
 
 func _ready() -> void:
 	release_attack()
@@ -19,63 +19,45 @@ func release_attack() -> void:
 			attack_timer.start()
 
 func _on_attack_timer_timeout() -> void:
-	$SoulfireShotSFX.play()
+
+	$ThunderBladeSFX.play()
 	var attack_count = projectile_quantity
 	while attack_count > 0:
-		var instance: SoulfireProjectile = _soulfire.instantiate()
+		var instance: ThunderBladeProjectile = _thunder_blade.instantiate()
 		calculate_current_level(instance)
-		instance.position = global_position
-		instance.projectile_target = player.attack_range.get_random_target()
+		instance.position = player.attack_range.get_random_target()
 		player.add_child(instance)
 		attack_count -= 1
 
-func calculate_current_level(instance: SoulfireProjectile) -> void:
+func calculate_current_level(instance: ThunderBladeProjectile) -> void:
 	match current_level:
 		1:
-			instance.health = 1
-			instance.projectile_speed = 75
 			projectile_quantity = 1 + player.stats.bonus_projectile
-			attack_speed = 3
-			instance.damage = 5
-			instance.knockback = 10
+			attack_speed = 4
+			instance.damage = 1
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		2:
-			instance.health = 1
-			instance.projectile_speed = 75
 			projectile_quantity = 2 + player.stats.bonus_projectile
-			attack_speed = 3
-			instance.damage = 5
-			instance.knockback = 10
+			attack_speed = 4
+			instance.damage = 1
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		3:
-			instance.health = 2
-			instance.projectile_speed = 75
 			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 3
-			instance.damage = 5
-			instance.knockback = 10
+			instance.damage = 1
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		4:
-			instance.health = 2
-			instance.projectile_speed = 75
 			projectile_quantity = 3 + player.stats.bonus_projectile
 			attack_speed = 3
-			instance.damage = 5
-			instance.knockback = 10
+			instance.damage = 2
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		5:
-			instance.health = 2
-			instance.projectile_speed = 100
 			projectile_quantity = 3 + player.stats.bonus_projectile
 			attack_speed = 2
-			instance.damage = 5
-			instance.knockback = 10
+			instance.damage = 2
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		6: 
-			instance.health = 3
-			instance.projectile_speed = 100
 			projectile_quantity = 5 + player.stats.bonus_projectile
 			attack_speed = 2
-			instance.damage = 7
-			instance.knockback = 10
+			instance.damage = 3
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size

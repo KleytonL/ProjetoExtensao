@@ -98,7 +98,7 @@ _data = {
 &"pursuit_animation": SubResource("Animation_mm73v")
 }
 
-[node name="enemy_demon_hand" type="CharacterBody2D" unique_id=1646686987]
+[node name="enemy_demon_hand" type="CharacterBody2D" unique_id=1646686987 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_grmh3")
@@ -165,6 +165,8 @@ shape = SubResource("RectangleShape2D_7hehc")
 [node name="EnemyAttackRangeComponent" parent="." unique_id=61270051 instance=ExtResource("11_7hehc")]
 _range_radius = 70.0
 
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1427529315]
+
 [node name="AttackTimer" type="Timer" parent="." unique_id=1971665914 node_paths=PackedStringArray("state_machine", "attack_state", "attack_range_component")]
 wait_time = 6.0
 autostart = true
@@ -177,4 +179,6 @@ attack_range_component = NodePath("../EnemyAttackRangeComponent")
 root_node = NodePath("../Sprite2D")
 libraries/ = SubResource("AnimationLibrary_0prjj")
 
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]
 [connection signal="timeout" from="AttackTimer" to="AttackTimer" method="_on_timeout"]
