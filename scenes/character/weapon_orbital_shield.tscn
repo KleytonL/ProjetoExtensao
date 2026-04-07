@@ -22,9 +22,11 @@ script = ExtResource("1_egwxu")
 [node name="ShieldUpSFX" type="AudioStreamPlayer" parent="." unique_id=931437470]
 stream = SubResource("AudioStreamRandomizer_tx508")
 volume_db = -24.0
+bus = &"SoundEffects"
 
 [node name="ShieldDownSFX" type="AudioStreamPlayer" parent="." unique_id=230653877]
 stream = SubResource("AudioStreamRandomizer_xn2r7")
 volume_db = -24.0
+bus = &"SoundEffects"
 
 [connection signal="timeout" from="RechargeTimer" to="." method="_on_recharge_timer_timeout"]

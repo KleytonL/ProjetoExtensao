@@ -54,6 +54,22 @@ region = Rect2(48, 32, 48, 16)
 atlas = ExtResource("3_wu84c")
 region = Rect2(48, 32, 48, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng0o5"]
+atlas = ExtResource("3_wu84c")
+region = Rect2(0, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r73w"]
+atlas = ExtResource("3_wu84c")
+region = Rect2(96, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hnlc"]
+atlas = ExtResource("3_wu84c")
+region = Rect2(48, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50h1w"]
+atlas = ExtResource("3_wu84c")
+region = Rect2(48, 80, 48, 16)
+
 [node name="main_menu" type="Control" unique_id=1282874115]
 layout_mode = 3
 anchors_preset = 15
@@ -106,10 +122,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="play_btn" type="TextureButton" parent="VBoxContainer" unique_id=1670840545]
 layout_mode = 2
-focus_neighbor_top = NodePath("../cred_btn")
+focus_neighbor_top = NodePath("../exit_btn")
 focus_neighbor_bottom = NodePath("../config_btn")
 focus_next = NodePath("../config_btn")
-focus_previous = NodePath("../cred_btn")
+focus_previous = NodePath("../exit_btn")
 mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_5dd4i")
 texture_pressed = SubResource("AtlasTexture_flqon")
@@ -135,8 +151,8 @@ metadata/_edit_use_anchors_ = true
 [node name="cred_btn" type="TextureButton" parent="VBoxContainer" unique_id=999826929]
 layout_mode = 2
 focus_neighbor_top = NodePath("../config_btn")
-focus_neighbor_bottom = NodePath("../play_btn")
-focus_next = NodePath("../play_btn")
+focus_neighbor_bottom = NodePath("../exit_btn")
+focus_next = NodePath("../exit_btn")
 focus_previous = NodePath("../config_btn")
 mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_bqqt6")
@@ -146,11 +162,27 @@ texture_focused = SubResource("AtlasTexture_oa1go")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[node name="exit_btn" type="TextureButton" parent="VBoxContainer" unique_id=805822116]
+layout_mode = 2
+focus_neighbor_top = NodePath("../cred_btn")
+focus_neighbor_bottom = NodePath("../play_btn")
+focus_next = NodePath("../play_btn")
+focus_previous = NodePath("../cred_btn")
+mouse_filter = 2
+texture_normal = SubResource("AtlasTexture_ng0o5")
+texture_pressed = SubResource("AtlasTexture_8r73w")
+texture_hover = SubResource("AtlasTexture_1hnlc")
+texture_focused = SubResource("AtlasTexture_50h1w")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=990565000]
 stream = ExtResource("4_imvie")
+bus = &"SoundEffects"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1045478318]
 stream = ExtResource("5_ng0o5")
+bus = &"SoundEffects"
 
 [connection signal="focus_entered" from="VBoxContainer/play_btn" to="." method="_on_play_btn_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]
@@ -158,3 +190,5 @@ stream = ExtResource("5_ng0o5")
 [connection signal="pressed" from="VBoxContainer/config_btn" to="." method="_on_config_btn_pressed"]
 [connection signal="focus_entered" from="VBoxContainer/cred_btn" to="." method="_on_cred_btn_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/cred_btn" to="." method="_on_cred_btn_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/exit_btn" to="." method="_on_exit_btn_focus_entered"]
+[connection signal="pressed" from="VBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]

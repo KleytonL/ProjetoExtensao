@@ -180,3 +180,4 @@ process_mode = 3
 stream = SubResource("AudioStreamInteractive_gcc44")
 volume_db = -15.0
 autoplay = true
+bus = &"BackgroundMusic"

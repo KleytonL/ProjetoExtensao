@@ -27,9 +27,16 @@ func _on_config_btn_pressed() -> void:
 
 
 func _on_cred_btn_focus_entered() -> void:
-		_hover.play()
+	_hover.play()
 
 func _on_cred_btn_pressed() -> void:
 	_click.play()
 	LoadingScreen.change_scene("res://scenes/menus/credits_menu.tscn")
-	
+
+func _on_exit_btn_focus_entered() -> void:
+	_hover.play()
+
+
+func _on_exit_btn_pressed() -> void:
+	_click.play()
+	LoadingScreen.exit_game()

@@ -11,3 +11,8 @@ func reload() -> void:
 	await  $AnimationPlayer.animation_finished
 	get_tree().reload_current_scene()
 	$AnimationPlayer.play_backwards("transition")
+
+func exit_game() -> void:
+	$AnimationPlayer.play("transition")
+	await  $AnimationPlayer.animation_finished
+	get_tree().quit()

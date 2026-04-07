@@ -14,3 +14,4 @@ script = ExtResource("1_xtopx")
 stream = SubResource("AudioStreamRandomizer_c2rda")
 volume_db = -17.5
 pitch_scale = 5.0
+bus = &"SoundEffects"

@@ -14,3 +14,4 @@ script = ExtResource("1_yols5")
 stream = SubResource("AudioStreamRandomizer_ilb6t")
 volume_db = -17.5
 pitch_scale = 5.0
+bus = &"SoundEffects"

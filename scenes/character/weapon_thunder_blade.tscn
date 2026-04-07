@@ -16,5 +16,6 @@ script = ExtResource("1_g4cq3")
 [node name="ThunderBladeSFX" type="AudioStreamPlayer" parent="." unique_id=812510195]
 stream = SubResource("AudioStreamRandomizer_x0pc2")
 volume_db = -12.0
+bus = &"SoundEffects"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

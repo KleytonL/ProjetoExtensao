@@ -5,3 +5,4 @@
 [node name="menu_music" type="AudioStreamPlayer" unique_id=1826829580]
 stream = ExtResource("1_1dnjt")
 volume_db = -15.0
+bus = &"BackgroundMusic"

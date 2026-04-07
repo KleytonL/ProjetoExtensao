@@ -169,3 +169,4 @@ process_mode = 3
 stream = ExtResource("3_ibok7")
 volume_db = -15.0
 autoplay = true
+bus = &"BackgroundMusic"

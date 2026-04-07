@@ -62,3 +62,4 @@ script = ExtResource("2_nusba")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2073887446]
 stream = SubResource("AudioStreamRandomizer_g14j6")
 volume_db = -20.0
+bus = &"SoundEffects"

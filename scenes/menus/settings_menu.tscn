@@ -35,30 +35,46 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1254902, 0.08235294, 0.2, 1)
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1350881857]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1015033742]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = 10.0
+offset_right = 62.000046
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1015033742]
-layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="sfx_toggle" type="CheckButton" parent="PanelContainer/VBoxContainer" unique_id=27608373]
+[node name="sfx_toggle" type="CheckButton" parent="VBoxContainer" unique_id=27608373]
 layout_mode = 2
 mouse_filter = 2
+button_pressed = true
 text = "SFX"
 
-[node name="bgm_toggle" type="CheckButton" parent="PanelContainer/VBoxContainer" unique_id=734122690]
+[node name="bgm_toggle" type="CheckButton" parent="VBoxContainer" unique_id=734122690]
 layout_mode = 2
 mouse_filter = 2
+button_pressed = true
 text = "Musica"
 
-[node name="voltar_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=722768808]
+[node name="sfx_slider" type="HSlider" parent="VBoxContainer" unique_id=919789913]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="bgm_slider" type="HSlider" parent="VBoxContainer" unique_id=742600180]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="voltar_btn" type="TextureButton" parent="VBoxContainer" unique_id=722768808]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -70,9 +86,19 @@ texture_focused = SubResource("AtlasTexture_labj1")
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=986707458]
 stream = ExtResource("3_ojvp1")
+bus = &"SoundEffects"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=288502740]
 stream = ExtResource("4_da10i")
+bus = &"SoundEffects"
 
-[connection signal="focus_entered" from="PanelContainer/VBoxContainer/voltar_btn" to="." method="_on_voltar_btn_focus_entered"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/voltar_btn" to="." method="_on_voltar_btn_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/sfx_toggle" to="." method="_on_sfx_toggle_focus_entered"]
+[connection signal="toggled" from="VBoxContainer/sfx_toggle" to="." method="_on_sfx_toggle_toggled"]
+[connection signal="focus_entered" from="VBoxContainer/bgm_toggle" to="." method="_on_bgm_toggle_focus_entered"]
+[connection signal="toggled" from="VBoxContainer/bgm_toggle" to="." method="_on_bgm_toggle_toggled"]
+[connection signal="focus_entered" from="VBoxContainer/sfx_slider" to="." method="_on_sfx_slider_focus_entered"]
+[connection signal="value_changed" from="VBoxContainer/sfx_slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="focus_entered" from="VBoxContainer/bgm_slider" to="." method="_on_bgm_slider_focus_entered"]
+[connection signal="value_changed" from="VBoxContainer/bgm_slider" to="." method="_on_bgm_slider_value_changed"]
+[connection signal="focus_entered" from="VBoxContainer/voltar_btn" to="." method="_on_voltar_btn_focus_entered"]
+[connection signal="pressed" from="VBoxContainer/voltar_btn" to="." method="_on_voltar_btn_pressed"]

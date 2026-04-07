@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rielkcwgyl5r" path="res://scripts/weapon_scripts/thunder_blade_projectile.gd" id="1_bleqt"]
 [ext_resource type="Texture2D" uid="uid://se4kutbl2dp2" path="res://resources/spritesheets/spritesheet-thunderblade.svg" id="2_d1fo7"]
+[ext_resource type="PackedScene" uid="uid://cdbnx2nr22phy" path="res://scenes/misc/components/after_image_component.tscn" id="3_518iu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1fo7"]
 atlas = ExtResource("2_d1fo7")
@@ -122,6 +123,9 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2082931183]
 shape = SubResource("RectangleShape2D_v8l52")
 disabled = true
+
+[node name="AfterImageComponent" parent="." unique_id=730826247 node_paths=PackedStringArray("_sprite") instance=ExtResource("3_518iu")]
+_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="DurationTimer" type="Timer" parent="." unique_id=2114466588]
 autostart = true
