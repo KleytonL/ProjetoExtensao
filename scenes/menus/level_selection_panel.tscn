@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://ctfi3b6yy7yha"]
+
+[ext_resource type="Texture2D" uid="uid://684iewj323ni" path="res://resources/gui/upgrade-panel-background.svg" id="1_rkbqp"]
+[ext_resource type="Script" uid="uid://cjgya4qyy4l1h" path="res://scripts/menu_scripts/level_selection_panel.gd" id="2_rkbqp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dx5y6"]
+texture = ExtResource("1_rkbqp")
+
+[sub_resource type="Animation" id="Animation_dx5y6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [128.0]
+}
+
+[sub_resource type="Animation" id="Animation_ifrrh"]
+resource_name = "show_animation"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.0, 128.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [128.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfhnl"]
+_data = {
+&"RESET": SubResource("Animation_dx5y6"),
+&"show_animation": SubResource("Animation_ifrrh")
+}
+
+[node name="LevelSelectionPanel" type="Panel" unique_id=216387890]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(128, 135)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dx5y6")
+script = ExtResource("2_rkbqp")
+
+[node name="Label" type="Label" parent="." unique_id=1579986198]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40625
+anchor_top = 0.02962963
+anchor_right = 0.73437524
+anchor_bottom = 0.08888889
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 8
+text = "Selecione uma fase:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Grid" type="VBoxContainer" parent="." unique_id=529726740]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1953125
+anchor_top = 0.11851852
+anchor_right = 0.9453125
+anchor_bottom = 0.91851854
+
+[node name="level_one_button" type="Button" parent="Grid" unique_id=1931249617]
+layout_mode = 2
+text = "Fase 01"
+
+[node name="level_two_button" type="Button" parent="Grid" unique_id=1499693587]
+layout_mode = 2
+text = "Fase 02"
+
+[node name="level_three_button" type="Button" parent="Grid" unique_id=759717173]
+layout_mode = 2
+text = "Fase 03"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=775608018]
+libraries/ = SubResource("AnimationLibrary_gfhnl")
+
+[connection signal="pressed" from="Grid/level_one_button" to="." method="_on_level_one_button_pressed"]

@@ -9,6 +9,7 @@ class_name Player
 @export var sprite: Sprite2D
 
 func _ready():
+	GameLogic.run_reset()
 	state_machine.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:

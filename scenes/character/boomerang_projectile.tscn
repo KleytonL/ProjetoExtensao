@@ -79,7 +79,7 @@ autostart = true
 
 [node name="ThrowSFX" type="AudioStreamPlayer" parent="." unique_id=1838850250]
 stream = SubResource("AudioStreamPlaylist_j5o6x")
-volume_db = -8.0
+volume_db = -12.0
 autoplay = true
 bus = &"SoundEffects"
 

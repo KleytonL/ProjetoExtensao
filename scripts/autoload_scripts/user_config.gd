@@ -18,11 +18,11 @@ func load_config() -> void:
 	if err != OK:
 		return
 	
-	config.get_value("audio", "sfx_enabled", true)
-	config.get_value("audio", "bgm_enabled", true)
-	config.get_value("audio", "sfx_volume", 1.0)
-	config.get_value("audio", "bgm_volume", 1.0)
-	config.get_value("input", "input_map", {})
+	sfx_enabled = config.get_value("audio", "sfx_enabled", true)
+	bgm_enabled = config.get_value("audio", "bgm_enabled", true)
+	sfx_volume = config.get_value("audio", "sfx_volume", 1.0)
+	bgm_volume = config.get_value("audio", "bgm_volume", 1.0)
+	input_map = config.get_value("input", "input_map", {})
 
 func save_config() -> void:
 	var config = ConfigFile.new()

@@ -4,8 +4,10 @@ class_name ItemGrid
 var collected_upgrades: Array = []
 
 func update_grid(item: String) -> void:
-	var key = UpgradeDatabase.UPGRADES[item]["key"]
 	var type = UpgradeDatabase.UPGRADES[item]["type"]
+	if type == "consumable":
+		return
+	var key = UpgradeDatabase.UPGRADES[item]["key"]
 	if type != "item":
 		if not key in collected_upgrades:
 			var item_icon = TextureRect.new()

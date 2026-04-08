@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://3kbnfhcjhxk8"]
 
 [ext_resource type="PackedScene" uid="uid://c5qfijvh88uqm" path="res://scenes/character/player.tscn" id="1_kb7n0"]
-[ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/tilemaps/tilemapsheet.svg" id="2_twgus"]
+[ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/tilemaps/tilemap-level02.svg" id="2_twgus"]
 [ext_resource type="PackedScene" uid="uid://ccphn3uunk7c2" path="res://scenes/enemies/enemy_spawner.tscn" id="2_ve6tg"]
 [ext_resource type="Script" uid="uid://fqca6eefpksa" path="res://scripts/enemy_scripts/spawn_info.gd" id="3_38g5f"]
 [ext_resource type="AudioStream" uid="uid://cor0qo602ui8e" path="res://resources/audio/music/final-showdown.ogg" id="3_ibok7"]

@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://co76ffpgsfet0" path="res://scripts/enemy_scripts/enemy_attack_timer.gd" id="13_qy1n3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qwhs8"]
-radius = 3.0
+radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5scvu"]
 size = Vector2(12, 8)
@@ -163,7 +163,7 @@ knockback_component = NodePath("../KnockbackComponent")
 shape = SubResource("RectangleShape2D_7hehc")
 
 [node name="EnemyAttackRangeComponent" parent="." unique_id=61270051 instance=ExtResource("11_7hehc")]
-_range_radius = 70.0
+_range_radius = 150.0
 
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1427529315]
 

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="7_yac8a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_graqp"]
-radius = 3.0
+radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cw7i"]
 size = Vector2(6, 4)

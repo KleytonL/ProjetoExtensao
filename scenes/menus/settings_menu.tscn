@@ -56,17 +56,17 @@ mouse_filter = 2
 button_pressed = true
 text = "SFX"
 
-[node name="bgm_toggle" type="CheckButton" parent="VBoxContainer" unique_id=734122690]
-layout_mode = 2
-mouse_filter = 2
-button_pressed = true
-text = "Musica"
-
 [node name="sfx_slider" type="HSlider" parent="VBoxContainer" unique_id=919789913]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
+
+[node name="bgm_toggle" type="CheckButton" parent="VBoxContainer" unique_id=734122690]
+layout_mode = 2
+mouse_filter = 2
+button_pressed = true
+text = "Musica"
 
 [node name="bgm_slider" type="HSlider" parent="VBoxContainer" unique_id=742600180]
 layout_mode = 2
@@ -94,10 +94,10 @@ bus = &"SoundEffects"
 
 [connection signal="focus_entered" from="VBoxContainer/sfx_toggle" to="." method="_on_sfx_toggle_focus_entered"]
 [connection signal="toggled" from="VBoxContainer/sfx_toggle" to="." method="_on_sfx_toggle_toggled"]
-[connection signal="focus_entered" from="VBoxContainer/bgm_toggle" to="." method="_on_bgm_toggle_focus_entered"]
-[connection signal="toggled" from="VBoxContainer/bgm_toggle" to="." method="_on_bgm_toggle_toggled"]
 [connection signal="focus_entered" from="VBoxContainer/sfx_slider" to="." method="_on_sfx_slider_focus_entered"]
 [connection signal="value_changed" from="VBoxContainer/sfx_slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="focus_entered" from="VBoxContainer/bgm_toggle" to="." method="_on_bgm_toggle_focus_entered"]
+[connection signal="toggled" from="VBoxContainer/bgm_toggle" to="." method="_on_bgm_toggle_toggled"]
 [connection signal="focus_entered" from="VBoxContainer/bgm_slider" to="." method="_on_bgm_slider_focus_entered"]
 [connection signal="value_changed" from="VBoxContainer/bgm_slider" to="." method="_on_bgm_slider_value_changed"]
 [connection signal="focus_entered" from="VBoxContainer/voltar_btn" to="." method="_on_voltar_btn_focus_entered"]

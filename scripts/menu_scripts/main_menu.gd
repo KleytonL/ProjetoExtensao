@@ -15,7 +15,7 @@ func _on_play_btn_focus_entered() -> void:
 func _on_play_btn_pressed() -> void:
 	MenuMusic.stop()
 	_click.play()
-	LoadingScreen.change_scene("res://scenes/world/level_01.tscn")
+	LoadingScreen.change_scene("res://scenes/menus/game_hub.tscn")
 
 
 func _on_config_btn_focus_entered() -> void:

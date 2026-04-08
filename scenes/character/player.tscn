@@ -593,9 +593,8 @@ offset_right = 96.0
 offset_bottom = 45.0
 scale = Vector2(0.5, 0.5)
 
-[node name="UpgradePanel" parent="GUI/Control" unique_id=216387890 node_paths=PackedStringArray("freeze_component") instance=ExtResource("21_pygui")]
+[node name="UpgradePanel" parent="GUI/Control" unique_id=216387890 instance=ExtResource("21_pygui")]
 layout_mode = 1
-freeze_component = NodePath("../../../FrameFreezeComponent")
 
 [connection signal="update_healthbar" from="HealthComponent" to="GUI/Control/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="update_experiencebar" from="ExperienceComponent" to="GUI/Control/ExperienceBar" method="_on_experience_component_update_experiencebar"]
