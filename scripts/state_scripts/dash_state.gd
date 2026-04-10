@@ -10,8 +10,8 @@ class_name DashState
 var dash_speed: int = 50
 
 func enter() -> void:
-	super()
 	iframes_component.activate_iframes(1.5)
+	super()
 	calculate_movement()
 
 func exit() -> void:

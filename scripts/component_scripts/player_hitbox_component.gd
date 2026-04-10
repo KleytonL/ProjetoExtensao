@@ -1,11 +1,12 @@
 extends Area2D
 class_name PlayerHitboxComponent
 
-@export var damage: int
+@export var damage: float
+@export var force: float
 @export var camera: Camera2D
 @export var freeze_component: FrameFreezeComponent
 @export var stats_component: StatsComponent
-var _base_damage: int
+var _base_damage: float
 var direction: Vector2
 
 func _ready() -> void:

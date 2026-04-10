@@ -13,7 +13,6 @@ func _on_play_btn_focus_entered() -> void:
 	_hover.play()
 
 func _on_play_btn_pressed() -> void:
-	MenuMusic.stop()
 	_click.play()
 	LoadingScreen.change_scene("res://scenes/menus/game_hub.tscn")
 

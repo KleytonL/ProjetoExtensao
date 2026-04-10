@@ -95,10 +95,11 @@ shape = SubResource("CircleShape2D_graqp")
 [node name="StateMachine" parent="." unique_id=46313988 node_paths=PackedStringArray("initial_state") instance=ExtResource("7_re62y")]
 initial_state = NodePath("PursuitState")
 
-[node name="PursuitState" type="Node" parent="StateMachine" unique_id=1122450387]
+[node name="PursuitState" type="Node" parent="StateMachine" unique_id=1122450387 node_paths=PackedStringArray("death_state")]
 script = ExtResource("6_2wjjs")
+death_state = NodePath("../DeathState")
 animation_name = "pursuit_animation"
-move_speed = 10
+move_speed = 18
 metadata/_custom_type_script = "uid://b6wu7hresy3q6"
 
 [node name="HurtState" type="Node" parent="StateMachine" unique_id=1497239797 node_paths=PackedStringArray("idle_state", "knockback_component")]
@@ -114,15 +115,16 @@ metadata/_custom_type_script = "uid://bboq2cifjak1t"
 
 [node name="EnemyHealthComponent" parent="." unique_id=2004770144 node_paths=PackedStringArray("death_state") instance=ExtResource("7_5o3s1")]
 death_state = NodePath("../StateMachine/DeathState")
-max_health = 10
+max_health = 10.0
 
 [node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("4_re62y")]
 target = NodePath("..")
 hurt_state = NodePath("../StateMachine/HurtState")
-force = 20
+resistence = 1.35
 
 [node name="EnemyHitboxComponent" parent="." unique_id=1431613630 instance=ExtResource("5_eam0m")]
-damage = 5
+damage = 4
+force = 70.0
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="EnemyHitboxComponent" unique_id=1806173179]
 position = Vector2(0, 3)

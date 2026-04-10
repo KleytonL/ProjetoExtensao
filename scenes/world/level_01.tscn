@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://rtuwmx00d3gh"]
 
+[ext_resource type="Script" uid="uid://cnnu5812g6r7q" path="res://scripts/world_scripts/level_01.gd" id="1_0lvy5"]
 [ext_resource type="PackedScene" uid="uid://c5qfijvh88uqm" path="res://scenes/character/player.tscn" id="1_gb53w"]
 [ext_resource type="PackedScene" uid="uid://ccphn3uunk7c2" path="res://scenes/enemies/enemy_spawner.tscn" id="2_5qq27"]
 [ext_resource type="Script" uid="uid://fqca6eefpksa" path="res://scripts/enemy_scripts/spawn_info.gd" id="3_dlabj"]
@@ -12,27 +13,27 @@
 [ext_resource type="AudioStream" uid="uid://b8k7f842rrnu8" path="res://resources/audio/music/ive-got-your-back-intro.ogg" id="9_bt7bg"]
 [ext_resource type="AudioStream" uid="uid://c84pfv7750ami" path="res://resources/audio/music/ive-got-your-back-loop.ogg" id="10_wbwoo"]
 
-[sub_resource type="Resource" id="Resource_xl0gr"]
+[sub_resource type="Resource" id="Resource_q5onr"]
 script = ExtResource("3_dlabj")
 time_start = 5
+time_end = 45
+enemy = ExtResource("4_srmg5")
+enemy_num = 2
+enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_xl0gr"]
+script = ExtResource("3_dlabj")
+time_start = 35
 time_end = 90
 enemy = ExtResource("4_srmg5")
 enemy_num = 3
-enemy_spawn_delay = 2
-metadata/_custom_type_script = "uid://fqca6eefpksa"
-
-[sub_resource type="Resource" id="Resource_q5onr"]
-script = ExtResource("3_dlabj")
-time_start = 35
-time_end = 120
-enemy = ExtResource("5_umvgx")
-enemy_num = 2
-enemy_spawn_delay = 5
+enemy_spawn_delay = 1
 metadata/_custom_type_script = "uid://fqca6eefpksa"
 
 [sub_resource type="Resource" id="Resource_gb53w"]
 script = ExtResource("3_dlabj")
-time_start = 95
+time_start = 80
 time_end = 180
 enemy = ExtResource("4_srmg5")
 enemy_num = 4
@@ -41,16 +42,16 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 
 [sub_resource type="Resource" id="Resource_grc0v"]
 script = ExtResource("3_dlabj")
-time_start = 125
-time_end = 190
+time_start = 90
+time_end = 120
 enemy = ExtResource("5_umvgx")
-enemy_num = 3
-enemy_spawn_delay = 2
+enemy_num = 2
+enemy_spawn_delay = 4
 metadata/_custom_type_script = "uid://fqca6eefpksa"
 
 [sub_resource type="Resource" id="Resource_0lvy5"]
 script = ExtResource("3_dlabj")
-time_start = 185
+time_start = 175
 time_end = 240
 enemy = ExtResource("4_srmg5")
 enemy_num = 5
@@ -58,10 +59,10 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 
 [sub_resource type="Resource" id="Resource_gjjqh"]
 script = ExtResource("3_dlabj")
-time_start = 195
+time_start = 120
 time_end = 240
 enemy = ExtResource("5_umvgx")
-enemy_num = 5
+enemy_num = 3
 enemy_spawn_delay = 1
 metadata/_custom_type_script = "uid://fqca6eefpksa"
 
@@ -165,6 +166,7 @@ clip_1/stream = ExtResource("10_wbwoo")
 clip_1/auto_advance = 0
 
 [node name="level_01" type="Node2D" unique_id=335690595]
+script = ExtResource("1_0lvy5")
 
 [node name="Player" parent="." unique_id=492213405 instance=ExtResource("1_gb53w")]
 z_index = 1
@@ -172,7 +174,7 @@ position = Vector2(793, 786)
 
 [node name="EnemySpawner" parent="." unique_id=792942877 instance=ExtResource("2_5qq27")]
 z_index = 1
-spawns = Array[ExtResource("3_dlabj")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr"), SubResource("Resource_gb53w"), SubResource("Resource_grc0v"), SubResource("Resource_0lvy5"), SubResource("Resource_gjjqh"), SubResource("Resource_mon25")])
+spawns = Array[ExtResource("3_dlabj")]([SubResource("Resource_q5onr"), SubResource("Resource_xl0gr"), SubResource("Resource_gb53w"), SubResource("Resource_grc0v"), SubResource("Resource_0lvy5"), SubResource("Resource_gjjqh"), SubResource("Resource_mon25")])
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=148254953]
 z_index = -1
@@ -182,11 +184,15 @@ tile_set = SubResource("TileSet_k0juu")
 [node name="UpgradeController" parent="." unique_id=1010092608 node_paths=PackedStringArray("player") instance=ExtResource("7_5qq27")]
 player = NodePath("../Player")
 
+[node name="LevelTimer" type="Timer" parent="." unique_id=202775163]
+wait_time = 301.0
+autostart = true
+
 [node name="WorldGUI" type="CanvasLayer" parent="." unique_id=1579712698]
 
 [node name="pause_menu" parent="WorldGUI" unique_id=1608591503 instance=ExtResource("7_m114p")]
 
-[node name="deathscreen" parent="WorldGUI" unique_id=609795518 instance=ExtResource("8_71ii3")]
+[node name="death_screen" parent="WorldGUI" unique_id=609795518 instance=ExtResource("8_71ii3")]
 visible = false
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2089122602]
@@ -195,3 +201,5 @@ stream = SubResource("AudioStreamInteractive_e3hyu")
 volume_db = -16.0
 autoplay = true
 bus = &"BackgroundMusic"
+
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

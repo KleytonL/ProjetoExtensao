@@ -3,7 +3,7 @@ class_name WeaponSoulfire
 
 var current_level: int = 1
 var projectile_quantity: int = 1
-var attack_speed: int = 3
+var attack_speed: float = 3.0
 
 @onready var attack_timer: Timer = $AttackTimer
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
@@ -35,47 +35,41 @@ func calculate_current_level(instance: SoulfireProjectile) -> void:
 			instance.health = 1
 			instance.projectile_speed = 75
 			projectile_quantity = 1 + player.stats.bonus_projectile
-			attack_speed = 3
+			attack_speed = 3.0 - player.stats.bonus_attack_speed
 			instance.damage = 5
-			instance.knockback = 10
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		2:
 			instance.health = 1
 			instance.projectile_speed = 75
 			projectile_quantity = 2 + player.stats.bonus_projectile
-			attack_speed = 3
+			attack_speed = 3.0 - player.stats.bonus_attack_speed
 			instance.damage = 5
-			instance.knockback = 10
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		3:
 			instance.health = 2
 			instance.projectile_speed = 75
 			projectile_quantity = 2 + player.stats.bonus_projectile
-			attack_speed = 3
+			attack_speed = 3.0 - player.stats.bonus_attack_speed
 			instance.damage = 5
-			instance.knockback = 10
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		4:
 			instance.health = 2
 			instance.projectile_speed = 75
 			projectile_quantity = 3 + player.stats.bonus_projectile
-			attack_speed = 3
+			attack_speed = 3.0 - player.stats.bonus_attack_speed
 			instance.damage = 5
-			instance.knockback = 10
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		5:
 			instance.health = 2
 			instance.projectile_speed = 100
 			projectile_quantity = 3 + player.stats.bonus_projectile
-			attack_speed = 2
+			attack_speed = 2.5 - player.stats.bonus_attack_speed
 			instance.damage = 5
-			instance.knockback = 10
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		6: 
 			instance.health = 3
 			instance.projectile_speed = 100
 			projectile_quantity = 5 + player.stats.bonus_projectile
-			attack_speed = 2
+			attack_speed = 2.5 - player.stats.bonus_attack_speed
 			instance.damage = 7
-			instance.knockback = 10
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bytbswmoyxiyt"]
+
+[ext_resource type="Script" uid="uid://ui1bo8y5ttx1" path="res://scripts/crate.gd" id="1_aofd6"]
+[ext_resource type="Texture2D" uid="uid://p5m5krduk320" path="res://resources/spritesheets/sprite-crate.svg" id="1_plfh0"]
+[ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="3_jydau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aofd6"]
+size = Vector2(16, 16)
+
+[node name="Crate" type="Area2D" unique_id=636269227 node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_aofd6")
+health_component = NodePath("EnemyHealthComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=188212508]
+texture = ExtResource("1_plfh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2085702581]
+shape = SubResource("RectangleShape2D_aofd6")
+
+[node name="EnemyHealthComponent" parent="." unique_id=2004770144 instance=ExtResource("3_jydau")]
+max_health = 4.0

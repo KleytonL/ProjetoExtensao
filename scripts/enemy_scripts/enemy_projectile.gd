@@ -1,9 +1,7 @@
 extends EnemyHitboxComponent
 class_name EnemyProjectile
 
-var projectile_speed: int
-var knockback: int
-
+var projectile_speed: int = 23
 var projectile_angle: Vector2 = Vector2.ZERO
 var projectile_target: Vector2 = Vector2.ZERO
 
@@ -27,3 +25,10 @@ func _on_duration_timer_timeout() -> void:
 	tween.play()
 	await tween.finished
 	queue_free()
+
+func _on_area_entered(area: Area2D) -> void:
+	super(area)
+	if area is ShieldOrb:
+		$AfterImageComponent.stop()
+		await get_tree().create_timer(0.5).timeout
+		queue_free()

@@ -70,7 +70,8 @@ scale = Vector2(0.1, 0.1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_lnuoc")
-damage = 12
+damage = 8
+force = 80.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=928672125]
 sprite_frames = SubResource("SpriteFrames_5bqbt")

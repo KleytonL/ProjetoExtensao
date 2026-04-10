@@ -21,3 +21,8 @@ func get_player_position() -> Vector2:
 	if in_range:
 		return _player.global_position
 	return Vector2.ZERO
+
+func get_player() -> Player:
+	if in_range:
+		return _player
+	return null

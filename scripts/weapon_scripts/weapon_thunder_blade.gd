@@ -3,7 +3,7 @@ class_name WeaponThunderBlade
 
 var current_level: int = 1
 var projectile_quantity: int = 1
-var attack_speed: int = 4
+var attack_speed: float = 4.0
 
 @onready var attack_timer: Timer = $AttackTimer
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
@@ -33,31 +33,31 @@ func calculate_current_level(instance: ThunderBladeProjectile) -> void:
 	match current_level:
 		1:
 			projectile_quantity = 1 + player.stats.bonus_projectile
-			attack_speed = 4
-			instance.damage = 1
+			attack_speed = 3.5 - player.stats.bonus_attack_speed
+			instance.damage = 1.0
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		2:
 			projectile_quantity = 2 + player.stats.bonus_projectile
-			attack_speed = 4
-			instance.damage = 1
+			attack_speed = 3.0 - player.stats.bonus_attack_speed
+			instance.damage = 1.0
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		3:
 			projectile_quantity = 2 + player.stats.bonus_projectile
-			attack_speed = 3
-			instance.damage = 1
+			attack_speed = 3.0 - player.stats.bonus_attack_speed
+			instance.damage = 2.0
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		4:
-			projectile_quantity = 3 + player.stats.bonus_projectile
-			attack_speed = 3
-			instance.damage = 2
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
+			projectile_quantity = 4 + player.stats.bonus_projectile
+			attack_speed = 2.0 - player.stats.bonus_attack_speed
+			instance.damage = 2.0
+			instance.projectile_size = 1.05 * player.stats.bonus_projectile_size
 		5:
-			projectile_quantity = 3 + player.stats.bonus_projectile
-			attack_speed = 2
-			instance.damage = 2
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
+			projectile_quantity = 4 + player.stats.bonus_projectile
+			attack_speed = 2.0 - player.stats.bonus_attack_speed
+			instance.damage = 2.5
+			instance.projectile_size = 1.05 * player.stats.bonus_projectile_size
 		6: 
-			projectile_quantity = 5 + player.stats.bonus_projectile
-			attack_speed = 2
-			instance.damage = 3
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
+			projectile_quantity = 6 + player.stats.bonus_projectile
+			attack_speed = 1.5 - player.stats.bonus_attack_speed
+			instance.damage = 2.5
+			instance.projectile_size = 1.05 * player.stats.bonus_projectile_size

@@ -2,7 +2,7 @@ extends TextureProgressBar
 class_name DashProgress
 
 func _ready() -> void:
-	self.max_value = 3.5
+	self.max_value = 5.0
 	self.value = max_value
 
 func update_progress() -> void:

@@ -3,7 +3,7 @@ class_name OrbitalShield
 
 var current_level: int = 1
 var orb_quantity: int = 1
-var recharge_speed: int = 4
+var recharge_speed: float = 4.0
 var current_active: int = 0
 
 @onready var recharge_timer: Timer = $RechargeTimer
@@ -43,53 +43,47 @@ func calculate_current_level(instance: ShieldOrb) -> void:
 			instance.damage = 1
 			instance.duration = 3
 			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
-			recharge_speed = 4
+			recharge_speed = 4.0 - player.stats.bonus_attack_speed
 			orb_quantity = 1 + player.stats.bonus_projectile
-			instance.knockback = 15
 			instance.rotation_speed = 1.5
 			instance.orbit_radius = 25
 		2:
 			instance.damage = 2
 			instance.duration = 3
 			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
-			recharge_speed = 4
+			recharge_speed = 4.0 - player.stats.bonus_attack_speed
 			orb_quantity = 2 + player.stats.bonus_projectile
-			instance.knockback = 15
 			instance.rotation_speed = 1.5
 			instance.orbit_radius = 25
 		3:
 			instance.damage = 2
 			instance.duration = 5
 			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
-			recharge_speed = 4
+			recharge_speed = 4.0 - player.stats.bonus_attack_speed
 			orb_quantity = 2 + player.stats.bonus_projectile
-			instance.knockback = 20
 			instance.rotation_speed = 1.75
 			instance.orbit_radius = 25
 		4:
 			instance.damage = 3
 			instance.duration = 5
 			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
-			recharge_speed = 3
+			recharge_speed = 3.5 - player.stats.bonus_attack_speed
 			orb_quantity = 3 + player.stats.bonus_projectile
-			instance.knockback = 20
 			instance.rotation_speed = 1.75
 			instance.orbit_radius = 25
 		5:
 			instance.damage = 3
 			instance.duration = 7
 			instance.orb_size = 1.0 * player.stats.bonus_projectile_size
-			recharge_speed = 3
+			recharge_speed = 3.5 - player.stats.bonus_attack_speed
 			orb_quantity = 3 + player.stats.bonus_projectile
-			instance.knockback = 20
 			instance.rotation_speed = 2
 			instance.orbit_radius = 30
 		6:
 			instance.damage = 4
 			instance.duration = 7
 			instance.orb_size = 1.2 * player.stats.bonus_projectile_size
-			recharge_speed = 2
+			recharge_speed = 3.0 - player.stats.bonus_attack_speed
 			orb_quantity = 4 + player.stats.bonus_projectile
-			instance.knockback = 25
 			instance.rotation_speed = 2.5
 			instance.orbit_radius = 30

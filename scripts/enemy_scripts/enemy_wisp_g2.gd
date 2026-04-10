@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name EnemyWispG2
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animations: AnimationPlayer = $AnimationPlayer

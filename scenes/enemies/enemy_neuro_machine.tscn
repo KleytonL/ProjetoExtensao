@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cg5qyp2g6dcht"]
+
+[ext_resource type="Script" uid="uid://cklfkogfqtvlj" path="res://scripts/enemy_scripts/enemy_neuro_machine.gd" id="1_akxq1"]
+[ext_resource type="Texture2D" uid="uid://bjg1b53dlduv" path="res://icon.svg" id="1_h0af3"]
+[ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="2_5fsyg"]
+[ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="3_akxq1"]
+[ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="3_wn4mt"]
+[ext_resource type="Script" uid="uid://b6wu7hresy3q6" path="res://scripts/state_scripts/pursuit_state.gd" id="4_i1cyj"]
+[ext_resource type="Script" uid="uid://ccwg7amauu6kk" path="res://scripts/state_scripts/hurt_state.gd" id="5_01qi1"]
+[ext_resource type="Script" uid="uid://ctfg1rmiyqsf1" path="res://scripts/state_scripts/enemy_attack_state.gd" id="6_d1hqb"]
+[ext_resource type="Script" uid="uid://bboq2cifjak1t" path="res://scripts/state_scripts/death_state.gd" id="7_mmfks"]
+[ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="8_d1hqb"]
+[ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="9_mmfks"]
+[ext_resource type="PackedScene" uid="uid://cbc7kfxxvc578" path="res://scenes/misc/components/enemy_attack_range_component.tscn" id="12_cu6dl"]
+[ext_resource type="Script" uid="uid://co76ffpgsfet0" path="res://scripts/enemy_scripts/enemy_attack_timer.gd" id="12_mmfks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wn4mt"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uki0x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hu1fn"]
+
+[sub_resource type="Animation" id="Animation_ixta4"]
+resource_name = "attack_animation"
+
+[sub_resource type="Animation" id="Animation_cu6dl"]
+resource_name = "pursuit_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ixta4"]
+_data = {
+&"attack_animation": SubResource("Animation_ixta4"),
+&"pursuit_animation": SubResource("Animation_cu6dl")
+}
+
+[node name="enemy_neuro_machine" type="CharacterBody2D" unique_id=746985614 groups=["Enemy"]]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_akxq1")
+experience = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1774206338]
+texture = ExtResource("1_h0af3")
+
+[node name="OtherCollisions" type="CollisionShape2D" parent="." unique_id=1063604853]
+shape = SubResource("CircleShape2D_wn4mt")
+
+[node name="StateMachine" parent="." unique_id=46313988 node_paths=PackedStringArray("initial_state") instance=ExtResource("3_wn4mt")]
+initial_state = NodePath("PursuitState")
+
+[node name="PursuitState" type="Node" parent="StateMachine" unique_id=1760188712]
+script = ExtResource("4_i1cyj")
+animation_name = "pursuit_animation"
+move_speed = 10
+metadata/_custom_type_script = "uid://b6wu7hresy3q6"
+
+[node name="HurtState" type="Node" parent="StateMachine" unique_id=629128281 node_paths=PackedStringArray("idle_state", "knockback_component")]
+script = ExtResource("5_01qi1")
+idle_state = NodePath("../PursuitState")
+knockback_component = NodePath("../../KnockbackComponent")
+metadata/_custom_type_script = "uid://ccwg7amauu6kk"
+
+[node name="EnemyAttackState" type="Node" parent="StateMachine" unique_id=1269053900 node_paths=PackedStringArray("attack_range", "pursuit_state", "knockback_component")]
+script = ExtResource("6_d1hqb")
+attack_range = NodePath("../../EnemyAttackRangeComponent")
+pursuit_state = NodePath("../PursuitState")
+knockback_component = NodePath("../../KnockbackComponent")
+animation_name = "attack_animation"
+move_speed = 0
+metadata/_custom_type_script = "uid://ctfg1rmiyqsf1"
+
+[node name="DeathState" type="Node" parent="StateMachine" unique_id=1157458812]
+script = ExtResource("7_mmfks")
+metadata/_custom_type_script = "uid://bboq2cifjak1t"
+
+[node name="EnemyHealthComponent" parent="." unique_id=2004770144 node_paths=PackedStringArray("death_state") instance=ExtResource("8_d1hqb")]
+death_state = NodePath("../StateMachine/DeathState")
+max_health = 25.0
+
+[node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("9_mmfks")]
+target = NodePath("..")
+hurt_state = NodePath("../StateMachine/HurtState")
+resistence = 5.0
+
+[node name="EnemyHitboxComponent" parent="." unique_id=1431613630 instance=ExtResource("2_5fsyg")]
+damage = 5
+force = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitboxComponent" unique_id=486345270]
+shape = SubResource("CircleShape2D_uki0x")
+
+[node name="EnemyHurtboxComponent" parent="." unique_id=442173391 node_paths=PackedStringArray("health_component", "knockback_component") instance=ExtResource("3_akxq1")]
+health_component = NodePath("../EnemyHealthComponent")
+knockback_component = NodePath("../KnockbackComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=908297476]
+shape = SubResource("CircleShape2D_hu1fn")
+
+[node name="EnemyAttackRangeComponent" parent="." unique_id=61270051 instance=ExtResource("12_cu6dl")]
+_range_radius = 1500.0
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=789792787 node_paths=PackedStringArray("state_machine", "attack_state", "attack_range_component")]
+wait_time = 10.0
+autostart = true
+script = ExtResource("12_mmfks")
+state_machine = NodePath("../StateMachine")
+attack_state = NodePath("../StateMachine/EnemyAttackState")
+attack_range_component = NodePath("../EnemyAttackRangeComponent")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=252692911]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1950316023]
+libraries/ = SubResource("AnimationLibrary_ixta4")
+
+[connection signal="timeout" from="AttackTimer" to="AttackTimer" method="_on_timeout"]
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

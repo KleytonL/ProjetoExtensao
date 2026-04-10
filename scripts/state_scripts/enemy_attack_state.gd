@@ -5,7 +5,8 @@ class_name EnemyAttackState
 @export var pursuit_state: PursuitState
 @export var knockback_component: KnockbackComponent
 
-@onready var attack_projectile = preload("res://scenes/enemies/enemy_projectile.tscn")
+@onready var _attack_projectile = preload("res://scenes/enemies/enemy_projectile.tscn")
+@onready var _neury = preload("res://scenes/enemies/enemy_neury_projectile.tscn")
 
 func enter() -> void:
 	super()
@@ -23,12 +24,19 @@ func process_physics(_delta: float) -> State:
 	return null
 
 func release_attack() -> void:
-	var projectile: EnemyProjectile = attack_projectile.instantiate()
-	var target: Vector2 = attack_range.get_player_position()
-	var direction: Vector2 = parent.global_position.direction_to(target)
-	projectile.position = parent.global_position + direction * 8
-	projectile.projectile_target = target
-	knockback_component.apply_knockback_only(target)
-	projectile.projectile_speed = 30
-	projectile.knockback = 5
-	get_tree().current_scene.add_child(projectile)
+	var projectile
+	var direction: Vector2 = parent.global_position.direction_to(attack_range.get_player_position())
+	
+	if parent is EnemyDemonHand:
+		projectile = _attack_projectile.instantiate()
+		projectile.projectile_target = attack_range.get_player_position()
+		projectile.position = parent.global_position + direction * 8
+		get_tree().current_scene.add_child(projectile)
+	
+	if parent is EnemyNeuroMachine:
+		var neury_count = 2
+		for i in neury_count:
+			projectile = _neury.instantiate()
+			projectile.projectile_target = attack_range.get_player()
+			projectile.position = parent.global_position + direction * (8 * i)
+			get_tree().current_scene.add_child(projectile)

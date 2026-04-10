@@ -394,7 +394,8 @@ texture = ExtResource("3_dqkch")
 hframes = 4
 
 [node name="PlayerHitboxComponent" parent="Sprite2D" unique_id=1804852658 node_paths=PackedStringArray("camera", "freeze_component", "stats_component") instance=ExtResource("4_5y66v")]
-damage = 2
+damage = 2.0
+force = 30.0
 camera = NodePath("../../Camera2D")
 freeze_component = NodePath("../../FrameFreezeComponent")
 stats_component = NodePath("../../StatsComponent")
@@ -405,6 +406,10 @@ shape = SubResource("RectangleShape2D_qhqgy")
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1511141511 groups=["camera"]]
+limit_left = 0
+limit_top = 0
+limit_right = 1600
+limit_bottom = 1600
 position_smoothing_speed = 20.0
 script = ExtResource("5_uicah")
 
@@ -499,7 +504,6 @@ freeze_component = NodePath("../FrameFreezeComponent")
 [node name="KnockbackComponent" parent="." unique_id=422348709 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("6_5y66v")]
 target = NodePath("..")
 hurt_state = NodePath("../StateMachine/HurtState")
-force = 50
 
 [node name="StatsComponent" parent="." unique_id=204472306 instance=ExtResource("18_8w16m")]
 
@@ -593,8 +597,9 @@ offset_right = 96.0
 offset_bottom = 45.0
 scale = Vector2(0.5, 0.5)
 
-[node name="UpgradePanel" parent="GUI/Control" unique_id=216387890 instance=ExtResource("21_pygui")]
+[node name="UpgradePanel" parent="GUI/Control" unique_id=216387890 node_paths=PackedStringArray("freeze_component") instance=ExtResource("21_pygui")]
 layout_mode = 1
+freeze_component = NodePath("../../../FrameFreezeComponent")
 
 [connection signal="update_healthbar" from="HealthComponent" to="GUI/Control/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="update_experiencebar" from="ExperienceComponent" to="GUI/Control/ExperienceBar" method="_on_experience_component_update_experiencebar"]

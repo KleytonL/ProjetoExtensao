@@ -140,3 +140,5 @@ text = "Fase 03"
 libraries/ = SubResource("AnimationLibrary_gfhnl")
 
 [connection signal="pressed" from="Grid/level_one_button" to="." method="_on_level_one_button_pressed"]
+[connection signal="pressed" from="Grid/level_two_button" to="." method="_on_level_two_button_pressed"]
+[connection signal="pressed" from="Grid/level_three_button" to="." method="_on_level_three_button_pressed"]

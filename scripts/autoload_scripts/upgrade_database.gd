@@ -104,7 +104,7 @@ const UPGRADES: Dictionary = {
 	"shield6": {
 		"icon": ICON_PATH + "icon-orbitalshield.svg",
 		"displayname": "Escudo Orbital",
-		"details": "Adiciona mais um escudo adicional, aumenta o dano, tamanho, repulsão, velocidade de rotação e reduz tempo de recarga.",
+		"details": "Adiciona mais um escudo adicional, aumenta o dano, velocidade de rotação e reduz tempo de recarga.",
 		"level": "Level MAX",
 		"prerequisite": ["shield5"],
 		"type": "weapon",
@@ -220,7 +220,7 @@ const UPGRADES: Dictionary = {
 	},
 	"health1": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Adicional",
+		"displayname": "Vida Máxima",
 		"details": "Cura e aumenta a sua vida total em 5!",
 		"level": "Level 1",
 		"prerequisite": [],
@@ -230,7 +230,7 @@ const UPGRADES: Dictionary = {
 	},
 	"health2": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Adicional",
+		"displayname": "Vida Máxima",
 		"details": "Cura e aumenta a sua vida total em 5!",
 		"level": "Level 2",
 		"prerequisite": ["health1"],
@@ -240,7 +240,7 @@ const UPGRADES: Dictionary = {
 	},
 	"health3": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Adicional",
+		"displayname": "Vida Máxima",
 		"details": "Cura e aumenta a sua vida total em 5!",
 		"level": "Level 3",
 		"prerequisite": ["health2"],
@@ -250,7 +250,7 @@ const UPGRADES: Dictionary = {
 	},
 	"health4": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Adicional",
+		"displayname": "Vida Máxima",
 		"details": "Cura e aumenta a sua vida total em 10!",
 		"level": "Level 4",
 		"prerequisite": ["health3"],
@@ -260,7 +260,7 @@ const UPGRADES: Dictionary = {
 	},
 	"health5": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Adicional",
+		"displayname": "Vida Máxima",
 		"details": "Cura e aumenta a sua vida total em 10!",
 		"level": "Level 5",
 		"prerequisite": ["health4"],
@@ -270,7 +270,7 @@ const UPGRADES: Dictionary = {
 	},
 	"health6": {
 		"icon": ICON_PATH + "icon-health.svg",
-		"displayname": "Vida Adicional",
+		"displayname": "Vida Máxima",
 		"details": "Cura e aumenta a sua vida total em 15!",
 		"level": "Level MAX",
 		"prerequisite": ["health5"],
@@ -341,67 +341,67 @@ const UPGRADES: Dictionary = {
 	"strength1": {
 		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
-		"details": "Aumenta a força de ataque!",
+		"details": "Aumenta a força do ataque corpo a corpo!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "stats",
 		"key": "strength",
-		"value": 1
+		"value": 0.5
 	},
 	"strength2": {
 		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
-		"details": "Aumenta a força de ataque!",
+		"details": "Aumenta a força do ataque corpo a corpo!",
 		"level": "Level 2",
 		"prerequisite": ["strength1"],
 		"type": "stats",
 		"key": "strength",
-		"value": 1
+		"value": 0.5
 	},
 	"strength3": {
 		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
-		"details": "Aumenta a força de ataque!",
+		"details": "Aumenta a força do ataque corpo a corpo!",
 		"level": "Level 3",
 		"prerequisite": ["strength2"],
 		"type": "stats",
 		"key": "strength",
-		"value": 1
+		"value": 0.5
 	},
 	"strength4": {
 		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
-		"details": "Aumenta a força de ataque!",
+		"details": "Aumenta a força do ataque corpo a corpo!",
 		"level": "Level 4",
 		"prerequisite": ["strength3"],
 		"type": "stats",
 		"key": "strength",
-		"value": 1
+		"value": 0.5
 	},
 	"strength5": {
 		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
-		"details": "Aumenta a força de ataque!",
+		"details": "Aumenta a força do ataque corpo a corpo!",
 		"level": "Level 5",
 		"prerequisite": ["strength4"],
 		"type": "stats",
 		"key": "strength",
-		"value": 1
+		"value": 0.5
 	},
 	"strength6": {
 		"icon": ICON_PATH + "icon-strength.svg",
 		"displayname": "Força",
-		"details": "Aumenta a força de ataque!",
+		"details": "Aumenta a força do ataque corpo a corpo ao máximo!",
 		"level": "Level MAX",
 		"prerequisite": ["strength5"],
 		"type": "stats",
 		"key": "strength",
-		"value": 1
+		"value": 0.5
 	},
 	"projectile1": {
 		"icon": ICON_PATH + "icon-projectile.svg",
-		"displayname": "Projétil Adicional",
-		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"displayname": "Ataque Adicional",
+		"details": "Adiciona um ataque a mais em todas as armas!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "stats",
@@ -410,8 +410,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile2": {
 		"icon": ICON_PATH + "icon-projectile.svg",
-		"displayname": "Projétil Adicional",
-		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"displayname": "Ataque Adicional",
+		"details": "Adiciona um ataque a mais em todas as armas!",
 		"level": "Level 2",
 		"prerequisite": ["projectile1"],
 		"type": "stats",
@@ -420,8 +420,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile3": {
 		"icon": ICON_PATH + "icon-projectile.svg",
-		"displayname": "Projétil Adicional",
-		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"displayname": "Ataque Adicional",
+		"details": "Adiciona um ataque a mais em todas as armas!",
 		"level": "Level 3",
 		"prerequisite": ["projectile2"],
 		"type": "stats",
@@ -430,8 +430,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile4": {
 		"icon": ICON_PATH + "icon-projectile.svg",
-		"displayname": "Projétil Adicional",
-		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"displayname": "Ataque Adicional",
+		"details": "Adiciona um ataque a mais em todas as armas!",
 		"level": "Level 4",
 		"prerequisite": ["projectile3"],
 		"type": "stats",
@@ -440,8 +440,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile5": {
 		"icon": ICON_PATH + "icon-projectile.svg",
-		"displayname": "Projétil Adicional",
-		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"displayname": "Ataque Adicional",
+		"details": "Adiciona um ataque a mais em todas as armas!",
 		"level": "Level 5",
 		"prerequisite": ["projectile4"],
 		"type": "stats",
@@ -450,8 +450,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile6": {
 		"icon": ICON_PATH + "icon-projectile.svg",
-		"displayname": "Projétil Adicional",
-		"details": "Adiciona um projétil a mais em todos os ataques!",
+		"displayname": "Ataque Adicional",
+		"details": "Adiciona um ataque a mais em todas as armas!",
 		"level": "Level MAX",
 		"prerequisite": ["projectile5"],
 		"type": "stats",
@@ -460,8 +460,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile_size1": {
 		"icon": ICON_PATH + "icon-projectilesize.svg",
-		"displayname": "Projéteis Maiores",
-		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"displayname": "Ataques Maiores",
+		"details": "Aumenta o tamanho de todas as armas!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "stats",
@@ -470,8 +470,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile_size2": {
 		"icon": ICON_PATH + "icon-projectilesize.svg",
-		"displayname": "Projéteis Maiores",
-		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"displayname": "Ataques Maiores",
+		"details": "Aumenta o tamanho de todas as armas!",
 		"level": "Level 2",
 		"prerequisite": ["projectile_size1"],
 		"type": "stats",
@@ -480,8 +480,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile_size3": {
 		"icon": ICON_PATH + "icon-projectilesize.svg",
-		"displayname": "Projéteis Maiores",
-		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"displayname": "Ataques Maiores",
+		"details": "Aumenta o tamanho de todas as armas!",
 		"level": "Level 3",
 		"prerequisite": ["projectile_size2"],
 		"type": "stats",
@@ -490,8 +490,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile_size4": {
 		"icon": ICON_PATH + "icon-projectilesize.svg",
-		"displayname": "Projéteis Maiores",
-		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"displayname": "Ataques Maiores",
+		"details": "Aumenta o tamanho de todas as armas!",
 		"level": "Level 4",
 		"prerequisite": ["projectile_size3"],
 		"type": "stats",
@@ -500,8 +500,8 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile_size5": {
 		"icon": ICON_PATH + "icon-projectilesize.svg",
-		"displayname": "Projéteis Maiores",
-		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"displayname": "Ataques Maiores",
+		"details": "Aumenta o tamanho de todas as armas!",
 		"level": "Level 5",
 		"prerequisite": ["projectile_size4"],
 		"type": "stats",
@@ -510,19 +510,79 @@ const UPGRADES: Dictionary = {
 	},
 	"projectile_size6": {
 		"icon": ICON_PATH + "icon-projectilesize.svg",
-		"displayname": "Projéteis Maiores",
-		"details": "Aumenta o tamanho dos projéteis de todos os ataques!",
+		"displayname": "Ataques Maiores",
+		"details": "Aumenta o tamanho de todas as armas ao máximo!",
 		"level": "Level MAX",
 		"prerequisite": ["projectile_size5"],
 		"type": "stats",
 		"key": "projectile_size",
 		"value": 0.1
 	},
+	"attack_speed1": {
+		"icon": ICON_PATH + "icon-attackspeed.svg",
+		"displayname": "Velocidade de Ataque",
+		"details": "Aumenta a velocidade de ataque de todos as armas!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "attack_speed",
+		"value": 0.1
+	},
+	"attack_speed2": {
+		"icon": ICON_PATH + "icon-attackspeed.svg",
+		"displayname": "Velocidade de Ataque",
+		"details": "Aumenta a velocidade de ataque de todos as armas!",
+		"level": "Level 2",
+		"prerequisite": ["attack_speed1"],
+		"type": "stats",
+		"key": "attack_speed",
+		"value": 0.1
+	},
+	"attack_speed3": {
+		"icon": ICON_PATH + "icon-attackspeed.svg",
+		"displayname": "Velocidade de Ataque",
+		"details": "Aumenta a velocidade de ataque de todos as armas!",
+		"level": "Level 3",
+		"prerequisite": ["attack_speed2"],
+		"type": "stats",
+		"key": "attack_speed",
+		"value": 0.1
+	},
+	"attack_speed4": {
+		"icon": ICON_PATH + "icon-attackspeed.svg",
+		"displayname": "Velocidade de Ataque",
+		"details": "Aumenta a velocidade de ataque de todos as armas!",
+		"level": "Level 4",
+		"prerequisite": ["attack_speed3"],
+		"type": "stats",
+		"key": "attack_speed",
+		"value": 0.1
+	},
+	"attack_speed5": {
+		"icon": ICON_PATH + "icon-attackspeed.svg",
+		"displayname": "Velocidade de Ataque",
+		"details": "Aumenta a velocidade de ataque de todos as armas!",
+		"level": "Level 5",
+		"prerequisite": ["attack_speed4"],
+		"type": "stats",
+		"key": "attack_speed",
+		"value": 0.1
+	},
+	"attack_speed6": {
+		"icon": ICON_PATH + "icon-attackspeed.svg",
+		"displayname": "Velocidade de Ataque",
+		"details": "Aumenta a velocidade de ataque de todos as armas ao máximo!",
+		"level": "Level MAX",
+		"prerequisite": ["attack_speed5"],
+		"type": "stats",
+		"key": "attack_speed",
+		"value": 0.1
+	},
 	"food": {
 		"icon": ICON_PATH + "icon-food.svg",
 		"displayname": "Refeição",
 		"details": "Restaura 10 de vida!",
-		"level": "~",
+		"level": "Consumível",
 		"prerequisite": [],
 		"type": "consumable",
 		"value": 10

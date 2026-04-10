@@ -8,7 +8,7 @@ var time: int = 0
 func _on_timer_timeout() -> void:
 	time += 1
 	
-	if get_tree().get_node_count_in_group("Enemy") >= 200:
+	if get_tree().get_node_count_in_group("Enemy") >= 250:
 		return
 	
 	for enemy in spawns:

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://3r7jdi80t4ig"]
+
+[ext_resource type="Script" uid="uid://cgoo5hc73h3i6" path="res://scripts/enemy_scripts/enemy_neury_projectile.gd" id="1_chjkn"]
+[ext_resource type="Texture2D" uid="uid://bjg1b53dlduv" path="res://icon.svg" id="2_h72x4"]
+[ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="3_h72x4"]
+[ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="3_lvnvo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpw6g"]
+radius = 4.0
+
+[node name="EnemyNeuryProjectile" type="Area2D" unique_id=1259867587 groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_chjkn")
+damage = 1
+force = 2.5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1980348115]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_h72x4")
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="." unique_id=753819677]
+shape = SubResource("CircleShape2D_cpw6g")
+
+[node name="EnemyHealthComponent" parent="." unique_id=2004770144 instance=ExtResource("3_lvnvo")]
+max_health = 0.5
+
+[node name="EnemyHurtboxComponent" parent="." unique_id=442173391 node_paths=PackedStringArray("health_component") instance=ExtResource("3_h72x4")]
+health_component = NodePath("../EnemyHealthComponent")
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=505442030]
+shape = SubResource("CircleShape2D_cpw6g")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

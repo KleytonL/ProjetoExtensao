@@ -26,6 +26,7 @@ func _on_pull_range_area_entered(area: Area2D) -> void:
 		area.target = self
 
 func _on_collect_range_area_entered(area: Area2D) -> void:
-	if area.is_in_group("collectables"):
-		var exp_value = area.collect()
-		$ExperienceComponent.calculate_exp(exp_value)
+	if area is Experience:
+		$ExperienceComponent.calculate_exp(area.collect())
+	if area is Beef:
+		$HealthComponent.update_health(area.collect())

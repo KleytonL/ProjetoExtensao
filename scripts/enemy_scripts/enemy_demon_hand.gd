@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name EnemyDemonHand
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animations: AnimationPlayer = $AnimationPlayer

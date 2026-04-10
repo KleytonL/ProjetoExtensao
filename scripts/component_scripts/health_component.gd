@@ -27,6 +27,8 @@ func damage(attack: int) -> void:
 
 func update_health(value: int) -> void:
 	health += value
+	if health > max_health:
+		health = max_health
 	emit_signal("update_healthbar")
 
 func update_max_health() -> void:
