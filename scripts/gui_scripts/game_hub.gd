@@ -9,10 +9,13 @@ func _ready() -> void:
 
 func _on_level_btn_focus_entered() -> void:
 	_hover.play()
-	#$LevelSelectionPanel.on_focus()
+	$LevelSelectionPanel.on_focus()
+	$MetaShopPanel.out_of_focus()
 
 func _on_shop_btn_focus_entered() -> void:
 	_hover.play()
+	$MetaShopPanel.on_focus()
+	$LevelSelectionPanel.out_of_focus()
 
 func _on_voltar_btn_focus_entered() -> void:
 	_hover.play()

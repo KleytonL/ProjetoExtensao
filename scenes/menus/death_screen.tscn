@@ -5,29 +5,29 @@
 [ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="3_yx70j"]
 [ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="4_cwqsg"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylnw1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_poffl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eye5d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_omtrp"]
 atlas = ExtResource("2_omtrp")
 region = Rect2(0, 64, 48, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke8wd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx70j"]
 atlas = ExtResource("2_omtrp")
 region = Rect2(96, 64, 48, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hgqth"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwqsg"]
 atlas = ExtResource("2_omtrp")
 region = Rect2(48, 64, 48, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uurjc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i30a"]
 atlas = ExtResource("2_omtrp")
 region = Rect2(0, 80, 48, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1dwg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_37gmi"]
 atlas = ExtResource("2_omtrp")
 region = Rect2(96, 80, 48, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t1dl8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd6nj"]
 atlas = ExtResource("2_omtrp")
 region = Rect2(48, 80, 48, 16)
 
@@ -50,35 +50,57 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0.47058824)
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1419294847]
+[node name="InfoLabel" type="Label" parent="." unique_id=1873390539]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.5
+offset_top = 24.0
+offset_right = 49.5
+offset_bottom = 75.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 6
+text = "Fase Concluída!
+Essencias coletadas:
+Fase: 100
+5% XP * Inimigos Derrotados:
+0 * 0
+Total = 0"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=742110211]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 86.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ylnw1")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_poffl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=712033016]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1085932285]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="restart_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=2023860156]
+[node name="restart_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=262812515]
 layout_mode = 2
 mouse_filter = 2
-texture_normal = SubResource("AtlasTexture_eye5d")
-texture_pressed = SubResource("AtlasTexture_ke8wd")
-texture_hover = SubResource("AtlasTexture_hgqth")
-texture_focused = SubResource("AtlasTexture_hgqth")
+texture_normal = SubResource("AtlasTexture_omtrp")
+texture_pressed = SubResource("AtlasTexture_yx70j")
+texture_hover = SubResource("AtlasTexture_cwqsg")
+texture_focused = SubResource("AtlasTexture_cwqsg")
 
-[node name="exit_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=286395758]
+[node name="exit_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=1567353149]
 layout_mode = 2
 mouse_filter = 2
-texture_normal = SubResource("AtlasTexture_uurjc")
-texture_pressed = SubResource("AtlasTexture_l1dwg")
-texture_hover = SubResource("AtlasTexture_t1dl8")
-texture_focused = SubResource("AtlasTexture_t1dl8")
+texture_normal = SubResource("AtlasTexture_3i30a")
+texture_pressed = SubResource("AtlasTexture_37gmi")
+texture_hover = SubResource("AtlasTexture_hd6nj")
+texture_focused = SubResource("AtlasTexture_hd6nj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1417233335]
 

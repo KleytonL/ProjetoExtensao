@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cdeejbt1ln8fh" path="res://scripts/gui_scripts/game_hub.gd" id="1_fyxmq"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/gui/spritesheet-ui.svg" id="1_gbrnv"]
 [ext_resource type="PackedScene" uid="uid://ctfi3b6yy7yha" path="res://scenes/menus/level_selection_panel.tscn" id="2_8mg56"]
+[ext_resource type="PackedScene" uid="uid://vb5gwi0rlfft" path="res://scenes/menus/meta_shop_panel.tscn" id="3_0g3y7"]
 [ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="3_tn3rt"]
 [ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="4_8mg56"]
 
@@ -41,6 +42,13 @@ grow_vertical = 2
 color = Color(0.1254902, 0.08235294, 0.2, 1)
 
 [node name="LevelSelectionPanel" parent="." unique_id=216387890 instance=ExtResource("2_8mg56")]
+layout_mode = 1
+anchors_preset = 1
+anchor_bottom = 0.0
+offset_bottom = 135.0
+grow_vertical = 1
+
+[node name="MetaShopPanel" parent="." unique_id=990845972 instance=ExtResource("3_0g3y7")]
 layout_mode = 1
 anchors_preset = 1
 anchor_bottom = 0.0

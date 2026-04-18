@@ -1,6 +1,7 @@
 extends Node
 
 const ICON_PATH: String = "res://resources/icons/"
+
 const UPGRADES: Dictionary = {
 	"soulfire1": {
 		"icon": ICON_PATH + "icon-soulfire.svg",
@@ -586,5 +587,43 @@ const UPGRADES: Dictionary = {
 		"prerequisite": [],
 		"type": "consumable",
 		"value": 10
+	}
+}
+
+const SHOP: Dictionary = {
+	"bonus_health": {
+		"icon": ICON_PATH + "icon-health.svg",
+		"displayname": "Vida",
+		"price": [100, 200, 350, 500, 750, 1000],
+		"value": 10,
+		"max_level": 5
+	},
+	"bonus_speed": {
+		"icon": ICON_PATH + "icon-speed.svg",
+		"displayname": "Velocidade",
+		"price": [100, 200, 350, 500, 750, 1000],
+		"value": 1,
+		"max_level": 5
+	},
+	"bonus_size": {
+		"icon": ICON_PATH + "icon-projectilesize.svg",
+		"displayname": "Tamanho",
+		"price": [100, 200, 350, 500, 750, 1000],
+		"value": 0.05,
+		"max_level": 5
+	},
+	"bonus_strength": {
+		"icon": ICON_PATH + "icon-strength.svg",
+		"displayname": "Força",
+		"price": [100, 200, 350, 500, 750, 1000],
+		"value": 0.25,
+		"max_level": 5
+	},
+	"bonus_level": {
+		"icon": ICON_PATH + "icon-soulfire.svg",
+		"displayname": "Level",
+		"price": [5000],
+		"value": 1,
+		"max_level": 1
 	}
 }

@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://dqkksmie0yu3m"]
+
+[ext_resource type="Script" uid="uid://b3rn61sfpi83n" path="res://scripts/menu_scripts/victory_screen.gd" id="1_jhqcx"]
+[ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/gui/spritesheet-ui.svg" id="2_uk0h0"]
+[ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="3_yg54c"]
+[ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="4_ewew8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uk0h0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mufjf"]
+atlas = ExtResource("2_uk0h0")
+region = Rect2(0, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts3wv"]
+atlas = ExtResource("2_uk0h0")
+region = Rect2(96, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12rht"]
+atlas = ExtResource("2_uk0h0")
+region = Rect2(48, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a67s2"]
+atlas = ExtResource("2_uk0h0")
+region = Rect2(0, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6vah"]
+atlas = ExtResource("2_uk0h0")
+region = Rect2(96, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g45pb"]
+atlas = ExtResource("2_uk0h0")
+region = Rect2(48, 80, 48, 16)
+
+[node name="VictoryScreen" type="Control" unique_id=1201519697]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jhqcx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=603629446]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.6370607, 0.38474265, 0.47058824)
+
+[node name="InfoLabel" type="Label" parent="." unique_id=1193698802]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_top = 24.0
+offset_right = 48.0
+offset_bottom = 75.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 6
+text = "Fase Concluída!
+Essencias coletadas:
+Fase: 100
+5% XP * Inimigos Derrotados:
+0 * 0
+Total = 0"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1690753488]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uk0h0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1183830361]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="restart_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=1491664105]
+layout_mode = 2
+mouse_filter = 2
+texture_normal = SubResource("AtlasTexture_mufjf")
+texture_pressed = SubResource("AtlasTexture_ts3wv")
+texture_hover = SubResource("AtlasTexture_12rht")
+texture_focused = SubResource("AtlasTexture_12rht")
+
+[node name="exit_btn" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=1139178260]
+layout_mode = 2
+mouse_filter = 2
+texture_normal = SubResource("AtlasTexture_a67s2")
+texture_pressed = SubResource("AtlasTexture_f6vah")
+texture_hover = SubResource("AtlasTexture_g45pb")
+texture_focused = SubResource("AtlasTexture_g45pb")
+
+[node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=2055229654]
+stream = ExtResource("3_yg54c")
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=15783945]
+stream = ExtResource("4_ewew8")
+
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/restart_btn" to="." method="_on_restart_btn_focus_entered"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/exit_btn" to="." method="_on_exit_btn_focus_entered"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]

@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bfxjwf6qwtwm5"]
+
+[ext_resource type="Texture2D" uid="uid://c3p7cv8o6fvj7" path="res://resources/spritesheets/spritesheet-misc.svg" id="1_pkenl"]
+[ext_resource type="Script" uid="uid://dlvov2su2nd7x" path="res://scripts/misc_scripts/magnetic_gem.gd" id="1_uu675"]
+[ext_resource type="AudioStream" uid="uid://blajctsb5xs3g" path="res://resources/audio/sfx/coin.ogg" id="2_uu675"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7xpp"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu675"]
+atlas = ExtResource("1_pkenl")
+region = Rect2(32, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vdl7"]
+atlas = ExtResource("1_pkenl")
+region = Rect2(40, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pu21"]
+atlas = ExtResource("1_pkenl")
+region = Rect2(32, 40, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2kkj"]
+atlas = ExtResource("1_pkenl")
+region = Rect2(40, 40, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1da8"]
+atlas = ExtResource("1_pkenl")
+region = Rect2(48, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bhmc"]
+atlas = ExtResource("1_pkenl")
+region = Rect2(56, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_443xr"]
+atlas = ExtResource("1_pkenl")
+region = Rect2(48, 40, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lin6"]
+atlas = ExtResource("1_pkenl")
+region = Rect2(56, 40, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_it6gf"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_uu675")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vdl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pu21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2kkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1da8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bhmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_443xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lin6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iudx8"]
+random_pitch = 1.4983071
+streams_count = 1
+stream_0/stream = ExtResource("2_uu675")
+
+[node name="MagneticGem" type="Area2D" unique_id=1520030826 groups=["collectables"]]
+z_index = -1
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_uu675")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=529618415]
+shape = SubResource("CircleShape2D_p7xpp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=124963276]
+sprite_frames = SubResource("SpriteFrames_it6gf")
+autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2113238956]
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_iudx8")
+volume_db = -22.5
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

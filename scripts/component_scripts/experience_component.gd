@@ -4,14 +4,16 @@ class_name ExperienceComponent
 @export var upgrade_panel: UpgradePanel
 @export var freeze_component: FrameFreezeComponent
 
-var level = 1
-var experience = 0
-var collected_experience = 0
+var level: int = 1
+var experience: int = 0
+var collected_experience: int = 0
+var total_experience: int = 0
 
 signal update_experiencebar
 
 func calculate_exp(exp_value: int = 0):
 	collected_experience += exp_value
+	total_experience += collected_experience
 	while true:
 		var exp_required = exp_capacity()
 		if experience + collected_experience >= exp_required:

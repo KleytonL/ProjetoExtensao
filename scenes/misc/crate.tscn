@@ -1,11 +1,56 @@
 [gd_scene format=3 uid="uid://bytbswmoyxiyt"]
 
-[ext_resource type="Script" uid="uid://ui1bo8y5ttx1" path="res://scripts/crate.gd" id="1_aofd6"]
-[ext_resource type="Texture2D" uid="uid://p5m5krduk320" path="res://resources/spritesheets/sprite-crate.svg" id="1_plfh0"]
+[ext_resource type="Script" uid="uid://ui1bo8y5ttx1" path="res://scripts/misc_scripts/crate.gd" id="1_aofd6"]
+[ext_resource type="Texture2D" uid="uid://c3p7cv8o6fvj7" path="res://resources/spritesheets/spritesheet-misc.svg" id="2_jydau"]
 [ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="3_jydau"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jydau"]
+load_path = "res://.godot/imported/spritesheet-misc.svg-8ca4d8bebc93c8833da82730a6f04cbc.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aofd6"]
 size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jydau"]
+atlas = ExtResource("2_jydau")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="Animation" id="Animation_jydau"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fp64x"]
+resource_name = "shake_animation"
+length = 0.15
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.5, 0.25), Vector2(-0.5, -0.25), Vector2(0.4, -0.1), Vector2(-0.4, 0.1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3hya"]
+_data = {
+&"RESET": SubResource("Animation_jydau"),
+&"shake_animation": SubResource("Animation_fp64x")
+}
 
 [node name="Crate" type="Area2D" unique_id=636269227 node_paths=PackedStringArray("health_component")]
 collision_layer = 2
@@ -14,10 +59,33 @@ script = ExtResource("1_aofd6")
 health_component = NodePath("EnemyHealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=188212508]
-texture = ExtResource("1_plfh0")
+texture = SubResource("CompressedTexture2D_jydau")
+hframes = 5
+vframes = 3
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2085702581]
 shape = SubResource("RectangleShape2D_aofd6")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=851278219]
+emitting = false
+amount = 20
+texture = SubResource("AtlasTexture_jydau")
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(0, -1)
+spread = 80.0
+gravity = Vector2(0, 98)
+initial_velocity_min = 32.0
+initial_velocity_max = 48.0
+angular_velocity_min = 360.0
+angular_velocity_max = 480.0
+scale_amount_min = 0.1
+scale_amount_max = 0.4
+
 [node name="EnemyHealthComponent" parent="." unique_id=2004770144 instance=ExtResource("3_jydau")]
 max_health = 4.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1311355666]
+libraries/ = SubResource("AnimationLibrary_o3hya")

@@ -4,6 +4,7 @@ class_name Player
 @export var animations: AnimationPlayer
 @export var state_machine: StateMachine
 @export var attack_range: AttackRangeComponent
+@export var experience: ExperienceComponent
 @export var stats: StatsComponent
 @export var health: HealthComponent
 @export var sprite: Sprite2D
@@ -27,6 +28,11 @@ func _on_pull_range_area_entered(area: Area2D) -> void:
 
 func _on_collect_range_area_entered(area: Area2D) -> void:
 	if area is Experience:
-		$ExperienceComponent.calculate_exp(area.collect())
+		experience.calculate_exp(area.collect())
+	if area is Essence:
+		SaveManager.essences_collected += area.collect()
+		SaveManager.save()
+	if area is MagneticGem:
+		area.collect()
 	if area is Beef:
 		$HealthComponent.update_health(area.collect())

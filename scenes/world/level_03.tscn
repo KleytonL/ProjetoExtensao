@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://3kbnfhcjhxk8"]
 
 [ext_resource type="PackedScene" uid="uid://c5qfijvh88uqm" path="res://scenes/character/player.tscn" id="1_kb7n0"]
+[ext_resource type="Script" uid="uid://cqntsifxcxdcc" path="res://scripts/world_scripts/level_03.gd" id="1_w4b21"]
 [ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/tilemaps/tilemap-level02.svg" id="2_twgus"]
 [ext_resource type="PackedScene" uid="uid://ccphn3uunk7c2" path="res://scenes/enemies/enemy_spawner.tscn" id="2_ve6tg"]
 [ext_resource type="Script" uid="uid://fqca6eefpksa" path="res://scripts/enemy_scripts/spawn_info.gd" id="3_38g5f"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cq2hne6jxythc" path="res://scenes/enemies/enemy_wispG1.tscn" id="4_w4b21"]
 [ext_resource type="PackedScene" uid="uid://dqgu5pr8xhjh5" path="res://scenes/enemies/enemy_wispG2.tscn" id="5_1uqly"]
 [ext_resource type="PackedScene" uid="uid://n3t27wesrn06" path="res://scenes/misc/upgrade_controller.tscn" id="8_38g5f"]
+[ext_resource type="PackedScene" uid="uid://dqkksmie0yu3m" path="res://scenes/menus/victory_screen.tscn" id="12_1uqly"]
 
 [sub_resource type="Resource" id="Resource_xl0gr"]
 script = ExtResource("3_38g5f")
@@ -161,6 +163,7 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_nf6h4")
 
 [node name="level_03" type="Node2D" unique_id=1697435405]
+script = ExtResource("1_w4b21")
 
 [node name="Player" parent="." unique_id=1155197298 instance=ExtResource("1_kb7n0")]
 position = Vector2(861, 765)
@@ -182,6 +185,9 @@ player = NodePath("../Player")
 [node name="pause_menu" parent="WorldGUI" unique_id=1511462678 instance=ExtResource("3_pn24w")]
 
 [node name="deathscreen" parent="WorldGUI" unique_id=1999397955 groups=["Teste"] instance=ExtResource("4_fxgxc")]
+visible = false
+
+[node name="VictoryScreen" parent="WorldGUI" unique_id=1201519697 instance=ExtResource("12_1uqly")]
 visible = false
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=877512946]

@@ -1,8 +1,8 @@
 extends Area2D
 class_name PlayerHitboxComponent
 
-@export var damage: float
-@export var force: float
+@export var damage: float = 2.0
+@export var force: float = 30.0
 @export var camera: Camera2D
 @export var freeze_component: FrameFreezeComponent
 @export var stats_component: StatsComponent

@@ -10,6 +10,9 @@ var bonus_projectile_size: float = 1.0
 
 signal update_stats
 
+func _ready() -> void:
+	apply_meta_upgrade()
+
 func apply_stat_upgrade(data: Dictionary) -> void:
 	match data["key"]:
 		"health":
@@ -25,3 +28,24 @@ func apply_stat_upgrade(data: Dictionary) -> void:
 			bonus_attack_speed += data["value"]
 		"projectile_size":
 			bonus_projectile_size += data["value"]
+
+func apply_meta_upgrade() -> void:
+	for i in SaveManager.meta_upgrades:
+		var level = SaveManager.meta_upgrades[i]["level"]
+		
+		if level == 0:
+			continue
+		
+		var value = SaveManager.meta_upgrades[i]["value"]
+		match i:
+			"bonus_health":
+				bonus_health += value
+				emit_signal("update_stats")
+			"bonus_speed":
+				bonus_speed += value
+			"bonus_size":
+				bonus_projectile_size += value
+			"bonus_strength":
+				bonus_damage += value
+			"bonus_level":
+				print(value)

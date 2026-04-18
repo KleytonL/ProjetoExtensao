@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://df7ff6u76jghh" path="res://scenes/misc/components/player_hitbox_component.tscn" id="4_5y66v"]
 [ext_resource type="PackedScene" uid="uid://chl33m4knqv6" path="res://scenes/misc/components/health_component.tscn" id="4_erpy8"]
 [ext_resource type="PackedScene" uid="uid://c3a6he0woet82" path="res://scenes/misc/components/player_hurtbox_component.tscn" id="4_wmtbp"]
-[ext_resource type="Script" uid="uid://clp37uetyig6d" path="res://scripts/camera_shake.gd" id="5_uicah"]
+[ext_resource type="Script" uid="uid://clp37uetyig6d" path="res://scripts/component_scripts/camera_shake.gd" id="5_uicah"]
 [ext_resource type="PackedScene" uid="uid://da3s2yvg5mkfm" path="res://scenes/misc/components/knockback_component.tscn" id="6_5y66v"]
 [ext_resource type="PackedScene" uid="uid://43nfrubuu2kq" path="res://scenes/misc/gui/health_bar.tscn" id="6_erpy8"]
 [ext_resource type="Script" uid="uid://ccwg7amauu6kk" path="res://scripts/state_scripts/hurt_state.gd" id="9_7r6u0"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dbif6l4redi2d" path="res://scenes/misc/gui/experience_bar.tscn" id="22_p86hl"]
 [ext_resource type="PackedScene" uid="uid://cyq5gud1uv3gp" path="res://scenes/misc/gui/level_timer.tscn" id="25_71sfj"]
 [ext_resource type="PackedScene" uid="uid://ctxcex2lgbh43" path="res://scenes/misc/gui/dash_progress.tscn" id="27_8sb7f"]
+[ext_resource type="PackedScene" uid="uid://d23d2wnu770ps" path="res://scenes/misc/gui/level_enemies_defeated.tscn" id="28_2w14l"]
 [ext_resource type="PackedScene" uid="uid://dwdfogcxudg71" path="res://scenes/misc/gui/item_grid.tscn" id="28_j01l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
@@ -372,12 +373,13 @@ _data = {
 &"move_animation": SubResource("Animation_dqkch")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1155197298 node_paths=PackedStringArray("animations", "state_machine", "attack_range", "stats", "health", "sprite") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1155197298 node_paths=PackedStringArray("animations", "state_machine", "attack_range", "experience", "stats", "health", "sprite") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_onrkg")
 animations = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
 attack_range = NodePath("AttackRangeComponent")
+experience = NodePath("ExperienceComponent")
 stats = NodePath("StatsComponent")
 health = NodePath("HealthComponent")
 sprite = NodePath("Sprite2D")
@@ -394,8 +396,6 @@ texture = ExtResource("3_dqkch")
 hframes = 4
 
 [node name="PlayerHitboxComponent" parent="Sprite2D" unique_id=1804852658 node_paths=PackedStringArray("camera", "freeze_component", "stats_component") instance=ExtResource("4_5y66v")]
-damage = 2.0
-force = 30.0
 camera = NodePath("../../Camera2D")
 freeze_component = NodePath("../../FrameFreezeComponent")
 stats_component = NodePath("../../StatsComponent")
@@ -588,6 +588,13 @@ anchor_top = 0.037037037
 anchor_right = 0.5375
 anchor_bottom = 0.08148148
 grow_horizontal = 2
+
+[node name="LevelEnemiesDefeated" parent="GUI/Control" unique_id=2008297747 instance=ExtResource("28_2w14l")]
+layout_mode = 1
+offset_left = -10.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 15.0
 
 [node name="ItemGrid" parent="GUI/Control" unique_id=1964498297 instance=ExtResource("28_j01l2")]
 layout_mode = 0

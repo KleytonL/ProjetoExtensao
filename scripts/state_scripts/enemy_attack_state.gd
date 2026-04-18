@@ -3,7 +3,7 @@ class_name EnemyAttackState
 
 @export var attack_range: EnemyAttackRangeComponent
 @export var pursuit_state: PursuitState
-@export var knockback_component: KnockbackComponent
+@export var await_time: float
 
 @onready var _attack_projectile = preload("res://scenes/enemies/enemy_projectile.tscn")
 @onready var _neury = preload("res://scenes/enemies/enemy_neury_projectile.tscn")
@@ -11,9 +11,8 @@ class_name EnemyAttackState
 func enter() -> void:
 	super()
 	parent.velocity = Vector2.ZERO
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(await_time).timeout
 	release_attack()
-	parent.velocity = knockback_component.knockback
 
 func exit() -> void:
 	$"../../AttackTimer".start()
@@ -34,9 +33,12 @@ func release_attack() -> void:
 		get_tree().current_scene.add_child(projectile)
 	
 	if parent is EnemyNeuroMachine:
-		var neury_count = 2
-		for i in neury_count:
+		var perpendicular = Vector2(-direction.y, direction.x)
+		var offset = [perpendicular, -perpendicular]
+		for i in 2:
+			await get_tree().create_timer(0.25 * i).timeout
 			projectile = _neury.instantiate()
 			projectile.projectile_target = attack_range.get_player()
-			projectile.position = parent.global_position + direction * (8 * i)
+			projectile.position = parent.global_position + offset[i] * 8
+			projectile.projectile_spawn_direction = offset[i]
 			get_tree().current_scene.add_child(projectile)

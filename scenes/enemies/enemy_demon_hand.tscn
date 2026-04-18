@@ -132,12 +132,11 @@ metadata/_custom_type_script = "uid://ccwg7amauu6kk"
 script = ExtResource("5_5scvu")
 metadata/_custom_type_script = "uid://bboq2cifjak1t"
 
-[node name="EnemyAttackState" type="Node" parent="StateMachine" unique_id=1128119571 node_paths=PackedStringArray("attack_range", "pursuit_state", "knockback_component")]
+[node name="EnemyAttackState" type="Node" parent="StateMachine" unique_id=1128119571 node_paths=PackedStringArray("attack_range", "pursuit_state")]
 script = ExtResource("7_oxe1r")
 attack_range = NodePath("../../EnemyAttackRangeComponent")
 pursuit_state = NodePath("../PursuitState")
-knockback_component = NodePath("../../KnockbackComponent")
-projectile_speed = 22
+await_time = 1.0
 animation_name = "attacking_animation"
 move_speed = 0
 metadata/_custom_type_script = "uid://ctfg1rmiyqsf1"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ctetjlnjyi1ie"]
 
-[ext_resource type="Script" uid="uid://n0011oxbgdbn" path="res://scripts/beef.gd" id="1_3pisj"]
-[ext_resource type="Texture2D" uid="uid://bscvt4jq40xe3" path="res://resources/spritesheets/spritesheet-beef.svg" id="2_3pisj"]
+[ext_resource type="Script" uid="uid://n0011oxbgdbn" path="res://scripts/misc_scripts/beef.gd" id="1_3pisj"]
+[ext_resource type="Texture2D" uid="uid://c3p7cv8o6fvj7" path="res://resources/spritesheets/spritesheet-misc.svg" id="2_3pisj"]
 [ext_resource type="AudioStream" uid="uid://blajctsb5xs3g" path="res://resources/audio/sfx/coin.ogg" id="2_g4uuh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4uuh"]
@@ -23,14 +23,6 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("2_3pisj")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1j8i"]
-atlas = ExtResource("2_3pisj")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7nufu"]
-atlas = ExtResource("2_3pisj")
-region = Rect2(80, 0, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_b4tti"]
 animations = [{
 "frames": [{
@@ -44,16 +36,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_w7nmj")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sqj6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hyk8")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_voexy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l1j8i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7nufu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"floating_animation",
 "speed": 5.0
 }]
 
@@ -74,8 +66,9 @@ shape = SubResource("CircleShape2D_g4uuh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1140860374]
 sprite_frames = SubResource("SpriteFrames_b4tti")
-autoplay = "default"
-frame_progress = 0.3191705
+animation = &"floating_animation"
+autoplay = "floating_animation"
+frame_progress = 0.9934137
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2128071378]
 process_mode = 3

@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c1kbped141h63" path="res://scenes/menus/death_screen.tscn" id="8_71ii3"]
 [ext_resource type="AudioStream" uid="uid://b8k7f842rrnu8" path="res://resources/audio/music/ive-got-your-back-intro.ogg" id="9_bt7bg"]
 [ext_resource type="AudioStream" uid="uid://c84pfv7750ami" path="res://resources/audio/music/ive-got-your-back-loop.ogg" id="10_wbwoo"]
+[ext_resource type="PackedScene" uid="uid://dqkksmie0yu3m" path="res://scenes/menus/victory_screen.tscn" id="11_grc0v"]
 
 [sub_resource type="Resource" id="Resource_q5onr"]
 script = ExtResource("3_dlabj")
@@ -69,7 +70,7 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 [sub_resource type="Resource" id="Resource_mon25"]
 script = ExtResource("3_dlabj")
 time_start = 235
-time_end = 300
+time_end = 295
 enemy = ExtResource("5_umvgx")
 enemy_num = 6
 metadata/_custom_type_script = "uid://fqca6eefpksa"
@@ -184,6 +185,9 @@ tile_set = SubResource("TileSet_k0juu")
 [node name="UpgradeController" parent="." unique_id=1010092608 node_paths=PackedStringArray("player") instance=ExtResource("7_5qq27")]
 player = NodePath("../Player")
 
+[node name="CrateTimer" type="Timer" parent="." unique_id=1633023762]
+wait_time = 60.0
+
 [node name="LevelTimer" type="Timer" parent="." unique_id=202775163]
 wait_time = 301.0
 autostart = true
@@ -195,6 +199,9 @@ autostart = true
 [node name="death_screen" parent="WorldGUI" unique_id=609795518 instance=ExtResource("8_71ii3")]
 visible = false
 
+[node name="VictoryScreen" parent="WorldGUI" unique_id=1201519697 instance=ExtResource("11_grc0v")]
+visible = false
+
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2089122602]
 process_mode = 3
 stream = SubResource("AudioStreamInteractive_e3hyu")
@@ -202,4 +209,5 @@ volume_db = -16.0
 autoplay = true
 bus = &"BackgroundMusic"
 
+[connection signal="timeout" from="CrateTimer" to="." method="_on_crate_timer_timeout"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

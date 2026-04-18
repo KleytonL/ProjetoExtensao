@@ -1,4 +1,5 @@
 extends Control
+class_name VictoryScreen
 
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
 @onready var _restart_btn: TextureButton = $PanelContainer/VBoxContainer/restart_btn
@@ -8,26 +9,28 @@ extends Control
 func _ready():
 	hide()
 
-func calculate_essences() -> int:
+func calculate_essences(world_level: int) -> int:
+	var level_essences: int = 100 * world_level
 	var converted_exp: int = _player.experience.total_experience * 0.01
 	var converted_kill: int = GameLogic.enemies_defeated * 0.05
-	var essences = (converted_exp * converted_kill) / 2
+	var essences = level_essences + (converted_exp * converted_kill)
 	$InfoLabel.text = str(
-		"Você Perdeu!
+		"Fase Concluída!
 		Essencias coletadas:
-		0.5% XP * 2.5% Kill Bonus:
+		Bonus de fase:", level_essences, "
+		1% XP * 5% Kill Bonus:
 		",
 		converted_exp ," * ", converted_kill,"
 		Total = ", essences
 		)
 	return essences
 
-func pause():
+func pause(level: int = 1):
 	show()
 	get_tree().paused = true
 	GameLogic.can_pause = false
 	_restart_btn.grab_focus()
-	SaveManager.essences_collected += calculate_essences()
+	SaveManager.essences_collected += calculate_essences(level)
 	SaveManager.save()
 
 func resume():

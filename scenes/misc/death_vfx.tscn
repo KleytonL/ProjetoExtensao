@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgb6eh8k0el10"]
 
 [ext_resource type="Texture2D" uid="uid://yrifnafnhsmp" path="res://resources/spritesheets/spritesheet-enemydeath.svg" id="1_xkhdd"]
-[ext_resource type="Script" uid="uid://c5dm1r420cc58" path="res://scripts/death_vfx.gd" id="2_nusba"]
+[ext_resource type="Script" uid="uid://c5dm1r420cc58" path="res://scripts/misc_scripts/death_vfx.gd" id="2_nusba"]
 [ext_resource type="AudioStream" uid="uid://chl28uamx1kui" path="res://resources/audio/sfx/hurt.ogg" id="3_yhw75"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58fhb"]

@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bswcdob0ackwf"]
+
+[ext_resource type="Script" uid="uid://78pw84igmf8c" path="res://scripts/misc_scripts/essence.gd" id="1_sf2gu"]
+[ext_resource type="Texture2D" uid="uid://oyrc3tib8g7e" path="res://resources/spritesheets/spritesheet-misc.svg" id="2_hhvtt"]
+[ext_resource type="Script" uid="uid://dljxh1home3kw" path="res://scripts/misc_scripts/trail.gd" id="3_8ro1d"]
+[ext_resource type="AudioStream" uid="uid://blajctsb5xs3g" path="res://resources/audio/sfx/coin.ogg" id="3_eg53u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eg53u"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg53u"]
+atlas = ExtResource("2_hhvtt")
+region = Rect2(64, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ro1d"]
+atlas = ExtResource("2_hhvtt")
+region = Rect2(72, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr4w8"]
+atlas = ExtResource("2_hhvtt")
+region = Rect2(64, 40, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owi6a"]
+atlas = ExtResource("2_hhvtt")
+region = Rect2(72, 40, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2frf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg53u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ro1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr4w8")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_owi6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr4w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ro1d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="Curve" id="Curve_8ro1d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ro1d"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("3_eg53u")
+
+[node name="Essence" type="Area2D" unique_id=1664356907 groups=["collectables"]]
+scale = Vector2(0.35, 0.35)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_sf2gu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=113951515]
+shape = SubResource("CircleShape2D_eg53u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1071035887]
+sprite_frames = SubResource("SpriteFrames_e2frf")
+autoplay = "default"
+frame_progress = 0.19502921
+
+[node name="Trail" type="Line2D" parent="." unique_id=1330795796]
+top_level = true
+width = 0.75
+width_curve = SubResource("Curve_8ro1d")
+script = ExtResource("3_8ro1d")
+length = 50
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=103813385]
+stream = SubResource("AudioStreamRandomizer_8ro1d")
+volume_db = -15.0
+pitch_scale = 5.0
