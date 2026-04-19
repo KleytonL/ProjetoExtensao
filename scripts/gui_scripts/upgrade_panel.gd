@@ -9,6 +9,8 @@ var max_options: int = 3
 @onready var _grid: VBoxContainer = $Grid
 @onready var _item_options = preload("res://scenes/misc/gui/item_option.tscn")
 
+signal panel_closed
+
 func level_up():
 	$AnimationPlayer.play("show_animation")
 	GameLogic.can_pause = false
@@ -88,6 +90,8 @@ func close_and_save(item) -> void:
 	
 	upgrade_options.clear()
 	GameLogic.upgrades_collected.append(item)
+	
+	emit_signal("panel_closed")
 	
 	self.visible = false
 	get_tree().paused = false

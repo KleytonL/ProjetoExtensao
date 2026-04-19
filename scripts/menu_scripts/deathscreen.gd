@@ -9,16 +9,19 @@ func _ready():
 	hide()
 
 func calculate_essences() -> int:
+	var level_essences = GameLogic.holding_essences
+	@warning_ignore("narrowing_conversion")
 	var converted_exp: int = _player.experience.total_experience * 0.01
+	@warning_ignore("narrowing_conversion")
 	var converted_kill: int = GameLogic.enemies_defeated * 0.05
-	var essences = (converted_exp * converted_kill) / 2
+	@warning_ignore("integer_division")
+	var essences = level_essences + (converted_exp * converted_kill) / 2
 	$InfoLabel.text = str(
 		"Você Perdeu!
-		Essencias coletadas:
-		0.5% XP * 2.5% Kill Bonus:
-		",
-		converted_exp ," * ", converted_kill,"
-		Total = ", essences
+		- Essências -
+		50% Adquiridas: ", GameLogic.holding_essences,"
+		0.5% XP: ", converted_exp," * 2.5% Kill Bonus: ", converted_kill,"
+		Total: ", essences
 		)
 	return essences
 

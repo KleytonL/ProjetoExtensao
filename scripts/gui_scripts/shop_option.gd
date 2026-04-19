@@ -17,7 +17,7 @@ func _ready() -> void:
 	update_values()
 
 func update_values() -> void:
-	var current_level = SaveManager.meta_upgrades[item]["level"]
+	var current_level: int = SaveManager.meta_upgrades[item]["level"]
 	$LevelLabel.text = str(current_level, "/", UpgradeDatabase.SHOP[item]["max_level"])
 	$PriceLabel.text = str(UpgradeDatabase.SHOP[item]["price"][current_level],"E")
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d23d2wnu770ps"]
 
-[ext_resource type="Texture2D" uid="uid://bjg1b53dlduv" path="res://icon.svg" id="1_mh5xb"]
 [ext_resource type="Script" uid="uid://c1dw0ldw5gbhc" path="res://scripts/gui_scripts/level_enemies_defeated.gd" id="1_xc7tt"]
+[ext_resource type="Texture2D" uid="uid://p1wrtpurx2a5" path="res://resources/icons/icon_enemy_defeated.svg" id="2_xc7tt"]
 
 [node name="LevelEnemiesDefeated" type="Label" unique_id=2008297747]
 anchors_preset = 1
@@ -17,5 +17,5 @@ script = ExtResource("1_xc7tt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190790897]
 position = Vector2(-16, 5)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_mh5xb")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xc7tt")

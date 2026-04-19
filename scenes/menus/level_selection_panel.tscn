@@ -2,9 +2,59 @@
 
 [ext_resource type="Texture2D" uid="uid://684iewj323ni" path="res://resources/gui/upgrade-panel-background.svg" id="1_rkbqp"]
 [ext_resource type="Script" uid="uid://cjgya4qyy4l1h" path="res://scripts/menu_scripts/level_selection_panel.gd" id="2_rkbqp"]
+[ext_resource type="Texture2D" uid="uid://brajuybgvwnmv" path="res://resources/gui/level_selection.svg" id="3_2wbk4"]
+[ext_resource type="Texture2D" uid="uid://fusc52x2vwss" path="res://resources/tilemaps/tilemap-level01.svg" id="4_67mj3"]
+[ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="4_ue01d"]
+[ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="5_67mj3"]
+[ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/tilemaps/tilemap-level02.svg" id="5_mtei6"]
+[ext_resource type="Texture2D" uid="uid://p1wrtpurx2a5" path="res://resources/icons/icon_enemy_defeated.svg" id="6_v1x53"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dx5y6"]
 texture = ExtResource("1_rkbqp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8glw"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue01d"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67mj3"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 32, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk51m"]
+atlas = ExtResource("4_67mj3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wbk4"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtei6"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1x53"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 32, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdsko"]
+atlas = ExtResource("5_mtei6")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhct3"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_363pq"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw4n2"]
+atlas = ExtResource("3_2wbk4")
+region = Rect2(0, 32, 96, 32)
 
 [sub_resource type="Animation" id="Animation_dx5y6"]
 length = 0.001
@@ -124,21 +174,196 @@ anchor_top = 0.11851852
 anchor_right = 0.9453125
 anchor_bottom = 0.91851854
 
-[node name="level_one_button" type="Button" parent="Grid" unique_id=1931249617]
+[node name="level_one_button" type="TextureButton" parent="Grid" unique_id=1785218811]
 layout_mode = 2
-text = "Fase 01"
+texture_normal = SubResource("AtlasTexture_u8glw")
+texture_pressed = SubResource("AtlasTexture_ue01d")
+texture_focused = SubResource("AtlasTexture_67mj3")
 
-[node name="level_two_button" type="Button" parent="Grid" unique_id=1499693587]
-layout_mode = 2
-text = "Fase 02"
+[node name="Sprite2D" type="Sprite2D" parent="Grid/level_one_button" unique_id=1880133494]
+position = Vector2(18, 15)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_qk51m")
 
-[node name="level_three_button" type="Button" parent="Grid" unique_id=759717173]
+[node name="NameLabel" type="Label" parent="Grid/level_one_button" unique_id=1697905005]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 3.0
+offset_right = -31.0
+offset_bottom = 11.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "Bosque"
+
+[node name="TimeLabel" type="Label" parent="Grid/level_one_button" unique_id=764298774]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = 13.0
+offset_right = -8.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 6
+text = "5:00"
+
+[node name="DiffLabel" type="Label" parent="Grid/level_one_button" unique_id=1761984443]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 13.0
+offset_right = -41.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 6
+text = "Fácil"
+
+[node name="RewardsLabel" type="Label" parent="Grid/level_one_button" unique_id=1632229112]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 21.0
+offset_right = -17.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 4
+text = "Desbloqueia: Torre"
+
+[node name="level_two_button" type="TextureButton" parent="Grid" unique_id=261152513]
 layout_mode = 2
-text = "Fase 03"
+texture_normal = SubResource("AtlasTexture_2wbk4")
+texture_pressed = SubResource("AtlasTexture_mtei6")
+texture_focused = SubResource("AtlasTexture_v1x53")
+
+[node name="Sprite2D" type="Sprite2D" parent="Grid/level_two_button" unique_id=1433483454]
+position = Vector2(18, 15)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_tdsko")
+
+[node name="NameLabel" type="Label" parent="Grid/level_two_button" unique_id=86239841]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 3.0
+offset_right = -31.0
+offset_bottom = 11.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "Torre"
+
+[node name="TimeLabel" type="Label" parent="Grid/level_two_button" unique_id=578525075]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = 13.0
+offset_right = -8.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 6
+text = "7:00"
+
+[node name="DiffLabel" type="Label" parent="Grid/level_two_button" unique_id=1954782894]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 13.0
+offset_right = -41.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 6
+text = "Médio"
+
+[node name="RewardsLabel" type="Label" parent="Grid/level_two_button" unique_id=213399505]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 21.0
+offset_right = -17.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 4
+text = "Desbloqueia: ???"
+
+[node name="level_three_button" type="TextureButton" parent="Grid" unique_id=1937409025]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_yhct3")
+texture_pressed = SubResource("AtlasTexture_363pq")
+texture_focused = SubResource("AtlasTexture_pw4n2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Grid/level_three_button" unique_id=1922177900]
+position = Vector2(18, 15)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_v1x53")
+
+[node name="NameLabel" type="Label" parent="Grid/level_three_button" unique_id=1116421569]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 3.0
+offset_right = -31.0
+offset_bottom = 11.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "???"
+
+[node name="TimeLabel" type="Label" parent="Grid/level_three_button" unique_id=1567410963]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = 13.0
+offset_right = -8.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 6
+text = "10:00"
+
+[node name="DiffLabel" type="Label" parent="Grid/level_three_button" unique_id=1542215221]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 13.0
+offset_right = -34.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 6
+text = "Díficil"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=775608018]
 libraries/ = SubResource("AnimationLibrary_gfhnl")
 
+[node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=1845120353]
+stream = ExtResource("4_ue01d")
+bus = &"SoundEffects"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1244452582]
+stream = ExtResource("5_67mj3")
+bus = &"SoundEffects"
+
+[connection signal="focus_entered" from="Grid/level_one_button" to="." method="_on_level_one_button_focus_entered"]
 [connection signal="pressed" from="Grid/level_one_button" to="." method="_on_level_one_button_pressed"]
+[connection signal="focus_entered" from="Grid/level_two_button" to="." method="_on_level_two_button_focus_entered"]
 [connection signal="pressed" from="Grid/level_two_button" to="." method="_on_level_two_button_pressed"]
+[connection signal="focus_entered" from="Grid/level_three_button" to="." method="_on_level_three_button_focus_entered"]
 [connection signal="pressed" from="Grid/level_three_button" to="." method="_on_level_three_button_pressed"]

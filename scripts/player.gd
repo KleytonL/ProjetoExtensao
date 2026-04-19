@@ -30,8 +30,7 @@ func _on_collect_range_area_entered(area: Area2D) -> void:
 	if area is Experience:
 		experience.calculate_exp(area.collect())
 	if area is Essence:
-		SaveManager.essences_collected += area.collect()
-		SaveManager.save()
+		GameLogic.holding_essences += area.collect()
 	if area is MagneticGem:
 		area.collect()
 	if area is Beef:

@@ -8,12 +8,19 @@ var level: int = 1
 var experience: int = 0
 var collected_experience: int = 0
 var total_experience: int = 0
+var is_upgrading: bool = false
 
 signal update_experiencebar
 
 func calculate_exp(exp_value: int = 0):
 	collected_experience += exp_value
 	total_experience += collected_experience
+	
+	if is_upgrading:
+		return
+	
+	is_upgrading = true
+	
 	while true:
 		var exp_required = exp_capacity()
 		if experience + collected_experience >= exp_required:
@@ -25,10 +32,13 @@ func calculate_exp(exp_value: int = 0):
 				await freeze_component.freeze_finished
 			await get_tree().process_frame
 			upgrade_panel.level_up()
+			await upgrade_panel.panel_closed
 		else:
 			experience += collected_experience
 			collected_experience = 0
 			break
+	
+	is_upgrading = false
 	emit_signal("update_experiencebar")
 
 func exp_capacity():

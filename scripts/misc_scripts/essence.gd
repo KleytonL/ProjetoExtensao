@@ -1,7 +1,7 @@
 extends Area2D
 class_name Essence
 
-@export var value = 50
+@export var value = 25
 
 @onready var _sfx = $AudioStreamPlayer
 

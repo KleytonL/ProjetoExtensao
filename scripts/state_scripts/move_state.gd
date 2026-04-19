@@ -17,22 +17,24 @@ func process_input(_event: InputEvent) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
-	var direction_x := Input.get_axis("ui_left", "ui_right")
-	var direction_y := Input.get_axis("ui_up", "ui_down")
+	var direction_x: float = Input.get_axis("ui_left", "ui_right")
+	var direction_y: float = Input.get_axis("ui_up", "ui_down")
 	
-	if direction_x:
-		parent.velocity.x = direction_x * (move_speed + stats_component.bonus_speed)
+	var direction: Vector2 = Vector2(direction_x, direction_y).normalized()
+	
+	if direction.x:
+		parent.velocity.x = direction.x * (move_speed + stats_component.bonus_speed)
 		parent.sprite.scale.x = -1 if parent.velocity.x < 0 else 1
 	else:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, 200 * _delta)
 	
-	if direction_y:
-		parent.velocity.y = direction_y * (move_speed + stats_component.bonus_speed)
+	if direction.y:
+		parent.velocity.y = direction.y * (move_speed + stats_component.bonus_speed)
 	else:
 		parent.velocity.y = move_toward(parent.velocity.y, 0, 200 * _delta)
 	parent.move_and_slide()
 	
-	if !direction_x and !direction_y:
+	if !direction.x and !direction.y:
 		if parent.velocity == Vector2.ZERO:
 			return idle_state
 	

@@ -35,10 +35,15 @@ func _ready() -> void:
 func load_save() -> void:
 	if not FileAccess.file_exists(PATH):
 		return
+	
+#	if FileAccess.file_exists(PATH):
+#		DirAccess.remove_absolute(PATH)
+#		return
+	
 	var file = FileAccess.open(PATH, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
 	if data:
-		levels_unlocked = data.get("levels_unlocked", [1])
+		levels_unlocked.assign(data.get("levels_unlocked", [1]))
 		essences_collected = data.get("essences_collected", 0)
 		meta_upgrades = data.get("meta_upgrades", {})
 		weapons_capacity = data.get("weapons_capacity", 2)

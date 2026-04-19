@@ -13,6 +13,7 @@ func _ready() -> void:
 func on_focus() -> void:
 	if focused:
 		return
+	self.visible = true
 	$AnimationPlayer.play("show_animation")
 	focused = true
 	for i in _grid.get_children():
@@ -25,6 +26,7 @@ func out_of_focus() -> void:
 	focused = false
 	for i in _grid.get_children():
 		i.disabled = true
+	self.visible = false
 
 func populate_grid() -> void:
 	for i in UpgradeDatabase.SHOP:

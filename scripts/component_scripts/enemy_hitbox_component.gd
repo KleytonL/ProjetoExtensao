@@ -8,4 +8,6 @@ var direction: Vector2
 func _on_area_entered(area: Area2D) -> void:
 	direction = (area.global_position - get_parent().global_position).normalized()
 	if area is PlayerHurtboxComponent:
+		if not area.monitorable:
+			return
 		area.damage(self)

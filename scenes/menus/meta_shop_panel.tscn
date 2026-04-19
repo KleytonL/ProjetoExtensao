@@ -92,6 +92,7 @@ _data = {
 }
 
 [node name="MetaShopPanel" type="Panel" unique_id=216387890 groups=["ShopPanel"]]
+visible = false
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(128, 135)
 anchors_preset = 11
