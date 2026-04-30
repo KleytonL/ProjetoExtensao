@@ -18,8 +18,14 @@ func _ready() -> void:
 
 func update_values() -> void:
 	var current_level: int = SaveManager.meta_upgrades[item]["level"]
+	var max_level: int = UpgradeDatabase.SHOP[item]["max_level"]
+	
 	$LevelLabel.text = str(current_level, "/", UpgradeDatabase.SHOP[item]["max_level"])
-	$PriceLabel.text = str(UpgradeDatabase.SHOP[item]["price"][current_level],"E")
+	
+	if current_level >= max_level:
+		$PriceLabel.text = "MAX"
+	else:
+		$PriceLabel.text = str(UpgradeDatabase.SHOP[item]["price"][current_level],"E")
 
 func _on_focus_entered() -> void:
 	_hover.play()
