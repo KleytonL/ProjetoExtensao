@@ -2,7 +2,7 @@ extends Panel
 class_name MetaShopPanel
 
 var focused: bool = false
-@onready var _grid: GridContainer = $Grid
+@onready var _grid: GridContainer = $ScrollContainer/Grid
 @onready var _label: Label = $Label
 @onready var _shop_options = preload("res://scenes/misc/gui/shop_option.tscn")
 

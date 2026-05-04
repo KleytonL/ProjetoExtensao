@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://vb5gwi0rlfft"]
 
-[ext_resource type="Texture2D" uid="uid://684iewj323ni" path="res://resources/gui/upgrade-panel-background.svg" id="1_y0sax"]
+[ext_resource type="Texture2D" uid="uid://detowumj65pxa" path="res://resources/gui/gamehub-panel.svg" id="1_coevd"]
 [ext_resource type="Script" uid="uid://dohtycs2ey0no" path="res://scripts/menu_scripts/meta_shop_panel.gd" id="2_4a0p3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dx5y6"]
-texture = ExtResource("1_y0sax")
+texture = ExtResource("1_coevd")
 
 [sub_resource type="Animation" id="Animation_dx5y6"]
 length = 0.001
@@ -92,7 +92,6 @@ _data = {
 }
 
 [node name="MetaShopPanel" type="Panel" unique_id=216387890 groups=["ShopPanel"]]
-visible = false
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(128, 135)
 anchors_preset = 11
@@ -108,27 +107,26 @@ script = ExtResource("2_4a0p3")
 [node name="Label" type="Label" parent="." unique_id=1579986198]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25800002
+anchor_left = 0.375
 anchor_top = 0.02962963
-anchor_right = 0.883
-anchor_bottom = 0.089
-offset_left = 18.975998
-offset_right = -19.023972
-offset_bottom = -0.015000343
+anchor_right = 0.75
+anchor_bottom = 0.08888889
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 8
 text = "Essências:"
 metadata/_edit_use_anchors_ = true
 
-[node name="Grid" type="GridContainer" parent="." unique_id=152320818]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.140625
-anchor_top = 0.11851852
-anchor_right = 0.984375
-anchor_bottom = 0.91851854
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1745822265]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 18.0
+offset_right = 124.0
+offset_bottom = 130.0
+
+[node name="Grid" type="GridContainer" parent="ScrollContainer" unique_id=152320818]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
 columns = 3
 metadata/_edit_use_anchors_ = true
 

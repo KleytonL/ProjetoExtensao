@@ -18,6 +18,8 @@ func check_overlaps() -> void:
 	if active:
 		return
 	await get_tree().process_frame
+	if hurtbox_component.monitoring == false:
+		return
 	for area in hurtbox_component.get_overlapping_areas():
 		if area is EnemyHitboxComponent:
 			hurtbox_component.damage(area)

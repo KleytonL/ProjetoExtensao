@@ -1,10 +1,18 @@
 [gd_scene format=3 uid="uid://b4pnfm2se76gt"]
 
-[ext_resource type="Texture2D" uid="uid://21biigsqfqc5" path="res://resources/gui/dash-progressbar-progress.svg" id="1_h2g3k"]
-[ext_resource type="Texture2D" uid="uid://b2myia3ccech7" path="res://resources/gui/dash-progressbar-under.svg" id="1_iv3qn"]
+[ext_resource type="Texture2D" uid="uid://b1wvypwu5p3qp" path="res://resources/gui/shop-option.svg" id="1_h2g3k"]
 [ext_resource type="Script" uid="uid://ddmr3f3335ten" path="res://scripts/gui_scripts/shop_option.gd" id="2_uv47p"]
 [ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="3_h2g3k"]
+[ext_resource type="Texture2D" uid="uid://bi5ubdqrn3bt0" path="res://resources/icons/icon-soulfire.svg" id="3_iv3qn"]
 [ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="4_iv3qn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv3qn"]
+atlas = ExtResource("1_h2g3k")
+region = Rect2(0, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2g3k"]
+atlas = ExtResource("1_h2g3k")
+region = Rect2(36, 0, 36, 48)
 
 [node name="ShopOption" type="TextureButton" unique_id=1823375544]
 custom_minimum_size = Vector2(36, 48)
@@ -13,8 +21,8 @@ anchor_right = 0.6163333
 anchor_bottom = 1.1702592
 offset_right = -111.92
 offset_bottom = -109.985
-texture_normal = ExtResource("1_iv3qn")
-texture_focused = ExtResource("1_h2g3k")
+texture_normal = SubResource("AtlasTexture_iv3qn")
+texture_focused = SubResource("AtlasTexture_h2g3k")
 stretch_mode = 0
 script = ExtResource("2_uv47p")
 metadata/_edit_use_anchors_ = true
@@ -23,27 +31,32 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_top = 6.0
-offset_right = -36.0
-offset_bottom = 6.0
-scale = Vector2(2, 2)
+offset_left = 6.0
+offset_top = 11.0
+offset_right = -14.0
+offset_bottom = 27.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_iv3qn")
 metadata/_edit_use_anchors_ = true
 
 [node name="NameLabel" type="Label" parent="." unique_id=16207691]
 layout_mode = 1
 anchors_preset = -1
-offset_right = 35.0
-offset_bottom = 4.0
-theme_override_font_sizes/font_size = 4
+offset_left = -5.0
+offset_top = 2.0
+offset_right = 40.0
+offset_bottom = 7.0
+theme_override_font_sizes/font_size = 5
 text = "Nome do Upgrade"
+horizontal_alignment = 1
 
 [node name="LevelLabel" type="Label" parent="." unique_id=181738371]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 25.0
-offset_top = 38.0
-offset_right = 32.0
-offset_bottom = 42.0
+offset_left = 26.0
+offset_top = 40.0
+offset_right = 33.0
+offset_bottom = 44.0
 theme_override_font_sizes/font_size = 4
 text = "0/5"
 horizontal_alignment = 2
@@ -52,9 +65,12 @@ metadata/_edit_use_anchors_ = true
 [node name="PriceLabel" type="Label" parent="." unique_id=1489658244]
 layout_mode = 1
 anchors_preset = -1
-offset_top = 37.0
-offset_right = 5.0
-offset_bottom = 41.0
+anchor_left = 0.027777778
+anchor_right = 0.027777778
+offset_left = 1.0
+offset_top = 40.0
+offset_right = 8.0
+offset_bottom = 44.0
 theme_override_font_sizes/font_size = 4
 text = "50E"
 metadata/_edit_use_anchors_ = true
