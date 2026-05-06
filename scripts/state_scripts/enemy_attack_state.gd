@@ -8,13 +8,18 @@ class_name EnemyAttackState
 @onready var _attack_projectile = preload("res://scenes/enemies/enemy_projectile.tscn")
 @onready var _neury = preload("res://scenes/enemies/enemy_neury_projectile.tscn")
 
+var cached_target: Vector2
+
 func enter() -> void:
 	super()
+	parent.is_attacking = true
 	parent.velocity = Vector2.ZERO
+	cached_target = attack_range.get_player_position()
 	await get_tree().create_timer(await_time).timeout
 	release_attack()
 
 func exit() -> void:
+	parent.is_attacking = false
 	$"../../AttackTimer".start()
 
 func process_physics(_delta: float) -> State:

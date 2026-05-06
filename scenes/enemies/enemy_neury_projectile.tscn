@@ -1,9 +1,55 @@
 [gd_scene format=3 uid="uid://3r7jdi80t4ig"]
 
 [ext_resource type="Script" uid="uid://cgoo5hc73h3i6" path="res://scripts/enemy_scripts/enemy_neury_projectile.gd" id="1_chjkn"]
-[ext_resource type="Texture2D" uid="uid://bjg1b53dlduv" path="res://icon.svg" id="2_h72x4"]
+[ext_resource type="Texture2D" uid="uid://8sm20whlw0u7" path="res://resources/spritesheets/spritesheet-neury.svg" id="2_lvnvo"]
 [ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="3_h72x4"]
 [ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="3_lvnvo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rljv2"]
+atlas = ExtResource("2_lvnvo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y77oj"]
+atlas = ExtResource("2_lvnvo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bjgn"]
+atlas = ExtResource("2_lvnvo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ofoj"]
+atlas = ExtResource("2_lvnvo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4brg"]
+atlas = ExtResource("2_lvnvo")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_st7mv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rljv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y77oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bjgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ofoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4brg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2quf"]
+size = Vector2(8, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpw6g"]
 radius = 4.0
@@ -16,12 +62,14 @@ script = ExtResource("1_chjkn")
 damage = 1
 force = 2.5
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1980348115]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_h72x4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1460557630]
+sprite_frames = SubResource("SpriteFrames_st7mv")
+autoplay = "default"
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="." unique_id=753819677]
-shape = SubResource("CircleShape2D_cpw6g")
+rotation = 0.62831855
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_s2quf")
 
 [node name="EnemyHealthComponent" parent="." unique_id=2004770144 instance=ExtResource("3_lvnvo")]
 max_health = 7.5

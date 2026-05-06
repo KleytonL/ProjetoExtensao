@@ -59,6 +59,7 @@ grow_vertical = 2
 color = Color(0.1254902, 0.08235294, 0.2, 1)
 
 [node name="LevelSelectionPanel" parent="." unique_id=216387890 instance=ExtResource("2_8mg56")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_bottom = 0.0
@@ -66,6 +67,7 @@ offset_bottom = 135.0
 grow_vertical = 1
 
 [node name="MetaShopPanel" parent="." unique_id=990845972 instance=ExtResource("3_0g3y7")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_bottom = 0.0

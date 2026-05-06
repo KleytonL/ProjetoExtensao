@@ -6,6 +6,8 @@ class_name EnemyDemonHand
 @onready var sprite: Sprite2D = $Sprite2D
 @export var experience: int
 
+var is_attacking: bool
+
 func _ready() -> void:
 	state_machine.init(self)
 

@@ -4,7 +4,7 @@ class_name AttackStateTwo
 func process_physics(_delta: float) -> State:
 	var time = parent.animations.current_animation_position
 	if time > 0.2:
-		parent.velocity = Vector2(attack_leap*1.35, 0) if parent.sprite.scale.x == 1 else Vector2(-attack_leap*1.35, 0)
+		parent.velocity = attack_direction * ATTACK_LEAP * 1.35
 		input_window = true
 	
 	if not parent.animations.is_playing():

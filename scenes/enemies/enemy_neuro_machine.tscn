@@ -163,7 +163,7 @@ shape = SubResource("CircleShape2D_hu1fn")
 _range_radius = 1500.0
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=789792787 node_paths=PackedStringArray("state_machine", "attack_state", "attack_range_component")]
-wait_time = 10.0
+wait_time = 2.0
 autostart = true
 script = ExtResource("12_mmfks")
 state_machine = NodePath("../StateMachine")

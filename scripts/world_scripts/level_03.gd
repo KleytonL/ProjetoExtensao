@@ -14,3 +14,7 @@ func spawn_crates() -> void:
 		new_crate.global_position = Vector2(x_pos, y_pos)
 		add_child(new_crate)
 		current_crates += 1
+	$CrateTimer.start()
+
+func _on_crate_timer_timeout() -> void:
+	spawn_crates()

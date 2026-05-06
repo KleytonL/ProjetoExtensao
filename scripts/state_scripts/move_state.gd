@@ -24,7 +24,7 @@ func process_physics(_delta: float) -> State:
 	
 	if direction.x:
 		parent.velocity.x = direction.x * (move_speed + stats_component.bonus_speed)
-		parent.sprite.scale.x = -1 if parent.velocity.x < 0 else 1
+		parent.sprite.flip_h = true if parent.velocity.x < 0 else false
 	else:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, 200 * _delta)
 	

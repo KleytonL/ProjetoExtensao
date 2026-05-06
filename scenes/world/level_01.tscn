@@ -187,6 +187,7 @@ player = NodePath("../Player")
 
 [node name="CrateTimer" type="Timer" parent="." unique_id=1633023762]
 wait_time = 60.0
+autostart = true
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=202775163]
 wait_time = 301.0
