@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cll2ewbaqkiko"]
+
+[ext_resource type="Script" uid="uid://c2q4meqmnqkwo" path="res://scripts/gui_scripts/damage_number.gd" id="1_qdmp7"]
+
+[node name="DamageNumber" type="Node2D" unique_id=659641098]
+script = ExtResource("1_qdmp7")
+
+[node name="Damage" type="Label" parent="." unique_id=1145576724]
+z_index = 50
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 4
