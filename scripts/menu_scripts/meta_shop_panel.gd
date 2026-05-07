@@ -54,5 +54,12 @@ func handle_purchase(item: String) -> void:
 	SaveManager.essences_collected -= price
 	SaveManager.meta_upgrades[item]["level"] += 1
 	SaveManager.meta_upgrades[item]["value"] += UpgradeDatabase.SHOP[item]["value"]
+
+	match item:
+		"bonus_weapon":
+			SaveManager.weapons_capacity += 1
+		"bonus_stat":
+			SaveManager.stats_capacity += 1
+	
 	SaveManager.save()
 	update_values()

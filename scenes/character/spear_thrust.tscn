@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dssfytxy5a0be"]
+
+[ext_resource type="Script" uid="uid://b7g4uiiha3tr1" path="res://scripts/weapon_scripts/spear_thrust.gd" id="1_c6i17"]
+[ext_resource type="Texture2D" uid="uid://xwf4k7goe608" path="res://resources/spritesheets/spritesheet-spear.svg" id="2_daw0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daw0d"]
+size = Vector2(48, 8)
+
+[node name="SpearThrust" type="Area2D" unique_id=1827746148]
+scale = Vector2(0.1, 0.1)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_c6i17")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=412520141]
+texture = ExtResource("2_daw0d")
+offset = Vector2(16, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=551712254]
+position = Vector2(16, -16)
+rotation = -0.7853982
+shape = SubResource("RectangleShape2D_daw0d")
+
+[node name="DurationTimer" type="Timer" parent="." unique_id=499986919]
+wait_time = 3.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

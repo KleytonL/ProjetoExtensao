@@ -170,7 +170,7 @@ _range_radius = 75.0
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1427529315]
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1971665914 node_paths=PackedStringArray("state_machine", "attack_state", "attack_range_component")]
-wait_time = 6.0
+wait_time = 5.0
 autostart = true
 script = ExtResource("13_qy1n3")
 state_machine = NodePath("../StateMachine")

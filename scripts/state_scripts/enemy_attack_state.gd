@@ -42,6 +42,8 @@ func release_attack() -> void:
 		var offset = [perpendicular, -perpendicular]
 		for i in 2:
 			await get_tree().create_timer(0.25 * i).timeout
+			if attack_range.get_player() == null:
+				break
 			projectile = _neury.instantiate()
 			projectile.projectile_target = attack_range.get_player()
 			projectile.position = parent.global_position + offset[i] * 8

@@ -21,7 +21,19 @@ var meta_upgrades: Dictionary = {
 		"level": 0,
 		"value": 0
 	},
+	"bonus_attackspeed": {
+		"level": 0,
+		"value": 0
+	},
 	"bonus_level": {
+		"level": 0,
+		"value": 0
+	},
+	"bonus_weapon": {
+		"level": 0,
+		"value": 0
+	},
+	"bonus_stat": {
 		"level": 0,
 		"value": 0
 	}
@@ -36,9 +48,9 @@ func load_save() -> void:
 	if not FileAccess.file_exists(PATH):
 		return
 	
-#	if FileAccess.file_exists(PATH):
-#		DirAccess.remove_absolute(PATH)
-#		return
+	if FileAccess.file_exists(PATH):
+		DirAccess.remove_absolute(PATH)
+		return
 	
 	var file = FileAccess.open(PATH, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())

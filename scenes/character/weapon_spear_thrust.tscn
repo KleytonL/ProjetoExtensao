@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cqoapeordkldb"]
+
+[ext_resource type="Script" uid="uid://4dlxcqeopc42" path="res://scripts/weapon_scripts/weapon_spear_thrust.gd" id="1_ld6wm"]
+
+[node name="WeaponSpearThrust" type="Node2D" unique_id=1950633611]
+script = ExtResource("1_ld6wm")
+
+[node name="RechargeTimer" type="Timer" parent="." unique_id=1211716097]
+
+[connection signal="timeout" from="RechargeTimer" to="." method="_on_recharge_timer_timeout"]

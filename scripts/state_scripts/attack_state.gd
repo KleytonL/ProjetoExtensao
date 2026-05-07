@@ -35,7 +35,7 @@ func apply_attack_direction() -> Vector2:
 	var input: Vector2 = Vector2(h, v)
 
 	if input == Vector2.ZERO:
-		return Vector2(sign(parent.sprite.scale.x), 0)
+		return Vector2(-1 if parent.sprite.flip_h else 1, 0)
 
 	var angle: float = snappedf(input.angle(), PI / 4)
 	return Vector2.from_angle(angle).normalized()

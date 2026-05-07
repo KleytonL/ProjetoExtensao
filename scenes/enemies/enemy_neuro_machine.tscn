@@ -160,10 +160,14 @@ knockback_component = NodePath("../KnockbackComponent")
 shape = SubResource("CircleShape2D_hu1fn")
 
 [node name="EnemyAttackRangeComponent" parent="." unique_id=61270051 instance=ExtResource("12_cu6dl")]
-_range_radius = 1500.0
+_range_radius = 150.0
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=789792787 node_paths=PackedStringArray("state_machine", "attack_state", "attack_range_component")]
+<<<<<<< Updated upstream
 wait_time = 2.0
+=======
+wait_time = 7.0
+>>>>>>> Stashed changes
 autostart = true
 script = ExtResource("12_mmfks")
 state_machine = NodePath("../StateMachine")

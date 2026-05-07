@@ -219,6 +219,60 @@ const UPGRADES: Dictionary = {
 		"type": "weapon",
 		"key": "thunderblade"
 	},
+	"spearthrust1": {
+		"icon": ICON_PATH + "icon-spear.svg",
+		"displayname": "Estocada",
+		"details": "Dispara um projétil flamejante!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "weapon",
+		"key": "spear"
+	},
+	"spearthrust2": {
+		"icon": ICON_PATH + "icon-spear.svg",
+		"displayname": "Estocada",
+		"details": "Dispara mais um projétil adicional.",
+		"level": "Level 2",
+		"prerequisite": ["spearthrust1"],
+		"type": "weapon",
+		"key": "spear"
+	},
+	"spearthrust3": {
+		"icon": ICON_PATH + "icon-spear.svg",
+		"displayname": "Estocada",
+		"details": "Cada soulfire pode acertar até dois inimigos.",
+		"level": "Level 3",
+		"prerequisite": ["spearthrust2"],
+		"type": "weapon",
+		"key": "spear"
+	},
+	"spearthrust4": {
+		"icon": ICON_PATH + "icon-spear.svg",
+		"displayname": "Estocada",
+		"details": "Dispara mais um projétil adicional.",
+		"level": "Level 4",
+		"prerequisite": ["spearthrust3"],
+		"type": "weapon",
+		"key": "spear"
+	},
+	"spearthrust5": {
+		"icon": ICON_PATH + "icon-spear.svzg",
+		"displayname": "Estocada",
+		"details": "Aumenta velocidade e cadência de disparo.",
+		"level": "Level 5",
+		"prerequisite": ["spearthrust4"],
+		"type": "weapon",
+		"key": "spear"
+	},
+	"spearthrust6": {
+		"icon": ICON_PATH + "icon-spear.svg",
+		"displayname": "Estocada",
+		"details": "Aumenta o dano em dois e pode acertar até três inimigos.",
+		"level": "Level MAX",
+		"prerequisite": ["spearthrust5"],
+		"type": "weapon",
+		"key": "spear"
+	},
 	"health1": {
 		"icon": ICON_PATH + "icon-health.svg",
 		"displayname": "Vida Máxima",
@@ -618,6 +672,27 @@ const SHOP: Dictionary = {
 		"price": [200, 350, 500, 750, 1000],
 		"value": 0.25,
 		"max_level": 5
+	},
+	"bonus_attackspeed": {
+		"icon": ICON_PATH + "icon-attackspeed.svg",
+		"displayname": "AtkSpeed",
+		"price": [200, 350, 500, 750, 1000],
+		"value": 0.05,
+		"max_level": 5
+	},
+	"bonus_weapon": {
+		"icon": ICON_PATH + "icon-extraweaponslot.svg",
+		"displayname": "SlotArma",
+		"price": [2500, 3000],
+		"value": 1,
+		"max_level": 2
+	},
+	"bonus_stat": {
+		"icon": ICON_PATH + "icon-extrastatslot.svg",
+		"displayname": "SlotStats",
+		"price": [1000, 2500, 3000],
+		"value": 1,
+		"max_level": 3
 	},
 	"bonus_level": {
 		"icon": ICON_PATH + "icon-extralevel.svg",
