@@ -36,6 +36,7 @@ func pause(level: int = 1):
 
 func resume():
 	hide()
+	Engine.time_scale = 1.0
 	get_tree().paused = false
 	GameLogic.can_pause = true
 
@@ -43,14 +44,14 @@ func _on_restart_btn_focus_entered() -> void:
 	_hover.play()
 
 func _on_restart_btn_pressed() -> void:
-	_click.play()
 	resume()
+	_click.play()
 	LoadingScreen.reload()
 
 func _on_exit_btn_focus_entered() -> void:
 	_hover.play()
 
 func _on_exit_btn_pressed() -> void:
-	_click.play()
 	resume()
+	_click.play()
 	LoadingScreen.change_scene("res://scenes/menus/game_hub.tscn")

@@ -26,7 +26,7 @@ func damage(attack: PlayerHitboxComponent) -> void:
 
 func spawn_damage_number(attack: PlayerHitboxComponent) -> void:
 	var number: DamageNumber = damage_number.instantiate()
-	var offset: Vector2 = Vector2(randf_range(-6, 6), randf_range(-12, -12))
+	var offset: Vector2 = Vector2(randf_range(-6, 6), randf_range(-12, 12))
 	
 	number.position = owner.global_position + offset
 	

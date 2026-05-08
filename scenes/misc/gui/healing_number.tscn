@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://0o7a6p6uiaqc"]
+
+[ext_resource type="Script" uid="uid://c3gbtgjk02rxj" path="res://scripts/gui_scripts/healing_number.gd" id="1_i1atc"]
+
+[node name="HealingNumber" type="Node2D" unique_id=2146916660]
+script = ExtResource("1_i1atc")
+
+[node name="Heal" type="Label" parent="." unique_id=1507349367]
+z_index = 10
+offset_right = 40.0
+offset_bottom = 15.0

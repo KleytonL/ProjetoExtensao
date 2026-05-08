@@ -7,9 +7,10 @@ const COLOR: Color = Color("fff")
 const CRIT: Color = Color("0ce6f2")
 
 func setup(amount: float, is_crit: bool = false) -> void:
-	_label.text = str(int(amount)) if fmod(amount, 1.0) == 0.0 else str(amount)
+	_label.text = str(int(amount)) if fmod(amount, 1.0) == 0.0 else "%.2f"%amount
 	_label.add_theme_color_override("font_color", CRIT if is_crit else COLOR)
-	
+	if "." in _label.text:
+		_label.text.rstrip("0").rstrip(".")
 	if is_crit:
 		_label.text += "!"
 	

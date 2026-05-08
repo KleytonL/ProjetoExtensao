@@ -10,6 +10,7 @@ class_name PlayerHitboxComponent
 @export var apply_damage_bonus: bool
 var _base_damage: float
 var direction: Vector2
+var can_vamp: bool
 var is_crit: bool
 
 func _ready() -> void:
@@ -31,10 +32,17 @@ func _on_area_entered(area: Area2D) -> void:
 			if is_crit:
 				damage *= stats_component.bonus_crit_multiplier
 			
+			
 			@warning_ignore("narrowing_conversion")
 			var vamp: int = damage * stats_component.bonus_vampirism
-			if vamp > 0:
-				health_component.update_health(vamp)
+			if vamp < 1:
+				can_vamp = randf() < vamp * 0.25
+				if can_vamp:
+					health_component.update_health(1)
+			else:
+				can_vamp = randf() < 0.25
+				if can_vamp:
+					health_component.update_health(floor(vamp))
 			
 		if freeze_component:
 			freeze_component.activate(0.01, 0.5)

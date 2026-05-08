@@ -222,7 +222,7 @@ const UPGRADES: Dictionary = {
 	"spearthrust1": {
 		"icon": ICON_PATH + "icon-spear.svg",
 		"displayname": "Estocada",
-		"details": "Dispara um projétil flamejante!",
+		"details": "Use uma lança para se proteger!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "weapon",
@@ -231,7 +231,7 @@ const UPGRADES: Dictionary = {
 	"spearthrust2": {
 		"icon": ICON_PATH + "icon-spear.svg",
 		"displayname": "Estocada",
-		"details": "Dispara mais um projétil adicional.",
+		"details": "Use uma lança para se proteger!",
 		"level": "Level 2",
 		"prerequisite": ["spearthrust1"],
 		"type": "weapon",
@@ -240,7 +240,7 @@ const UPGRADES: Dictionary = {
 	"spearthrust3": {
 		"icon": ICON_PATH + "icon-spear.svg",
 		"displayname": "Estocada",
-		"details": "Cada soulfire pode acertar até dois inimigos.",
+		"details": "Use uma lança para se proteger",
 		"level": "Level 3",
 		"prerequisite": ["spearthrust2"],
 		"type": "weapon",
@@ -249,7 +249,7 @@ const UPGRADES: Dictionary = {
 	"spearthrust4": {
 		"icon": ICON_PATH + "icon-spear.svg",
 		"displayname": "Estocada",
-		"details": "Dispara mais um projétil adicional.",
+		"details": "Use uma lança para se proteger",
 		"level": "Level 4",
 		"prerequisite": ["spearthrust3"],
 		"type": "weapon",
@@ -258,7 +258,7 @@ const UPGRADES: Dictionary = {
 	"spearthrust5": {
 		"icon": ICON_PATH + "icon-spear.svzg",
 		"displayname": "Estocada",
-		"details": "Aumenta velocidade e cadência de disparo.",
+		"details": "Use uma lança para se proteger",
 		"level": "Level 5",
 		"prerequisite": ["spearthrust4"],
 		"type": "weapon",
@@ -267,7 +267,7 @@ const UPGRADES: Dictionary = {
 	"spearthrust6": {
 		"icon": ICON_PATH + "icon-spear.svg",
 		"displayname": "Estocada",
-		"details": "Aumenta o dano em dois e pode acertar até três inimigos.",
+		"details": "Use uma lança para se proteger",
 		"level": "Level MAX",
 		"prerequisite": ["spearthrust5"],
 		"type": "weapon",
@@ -332,6 +332,66 @@ const UPGRADES: Dictionary = {
 		"type": "stats",
 		"key": "health",
 		"value": 15
+	},
+	"defense1": {
+		"icon": ICON_PATH + "icon-armor.svg",
+		"displayname": "Armadura",
+		"details": "Diminui o dano causado em 3%!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "defense",
+		"value": 0.03
+	},
+	"defense2": {
+		"icon": ICON_PATH + "icon-armor.svg",
+		"displayname": "Armadura",
+		"details": "Diminui o dano causado em 3%!",
+		"level": "Level 2",
+		"prerequisite": ["defense1"],
+		"type": "stats",
+		"key": "defense",
+		"value": 0.03
+	},
+	"defense3": {
+		"icon": ICON_PATH + "icon-armor.svg",
+		"displayname": "Armadura",
+		"details": "Diminui o dano causado em 3%!",
+		"level": "Level 3",
+		"prerequisite": ["defense2"],
+		"type": "stats",
+		"key": "defense",
+		"value": 0.03
+	},
+	"defense4": {
+		"icon": ICON_PATH + "icon-armor.svg",
+		"displayname": "Armadura",
+		"details": "Diminui o dano causado em 3%!",
+		"level": "Level 4",
+		"prerequisite": ["defense3"],
+		"type": "stats",
+		"key": "defense",
+		"value": 0.03
+	},
+	"defense5": {
+		"icon": ICON_PATH + "icon-armor.svg",
+		"displayname": "Armadura",
+		"details": "Diminui o dano causado em 3%!",
+		"level": "Level 5",
+		"prerequisite": ["defense4"],
+		"type": "stats",
+		"key": "defense",
+		"value": 0.03
+	},
+	"defense6": {
+		"icon": ICON_PATH + "icon-armor.svg",
+		"displayname": "Armadura",
+		"details": "Diminui o dano causado em 4%!",
+		"level": "Level MAX",
+		"prerequisite": ["defense5"],
+		"type": "stats",
+		"key": "defense",
+		"value": 0.04
 	},
 	"speed1": {
 		"icon": ICON_PATH + "icon-speed.svg",
@@ -514,64 +574,64 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"vampirism1": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-vampirism.svg",
 		"displayname": "Vampirismo",
-		"details": "Aumenta a chance de crítico em 5%!",
+		"details": "Aumenta a cura do vampirismo em 3%!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "stats",
 		"key": "vampirism",
-		"value": 0.08
+		"value": 0.03
 	},
 	"vampirism2": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-vampirism.svg",
 		"displayname": "Vampirismo",
-		"details": "Aumenta a chance de crítico em 5%!",
+		"details": "Aumenta a cura do vampirismo em 3%!",
 		"level": "Level 2",
 		"prerequisite": ["vampirism1"],
 		"type": "stats",
 		"key": "vampirism",
-		"value": 0.08
+		"value": 0.03
 	},
 	"vampirism3": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-vampirism.svg",
 		"displayname": "Vampirismo",
-		"details": "Aumenta a chance de crítico em 5%!",
+		"details": "Aumenta a cura do vampirismo em 3%!",
 		"level": "Level 3",
 		"prerequisite": ["vampirism2"],
 		"type": "stats",
 		"key": "vampirism",
-		"value": 0.08
+		"value": 0.03
 	},
 	"vampirism4": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-vampirism.svg",
 		"displayname": "Vampirismo",
-		"details": "Aumenta a chance de crítico em 5%!",
+		"details": "Aumenta a cura do vampirismo em 3%!",
 		"level": "Level 4",
 		"prerequisite": ["vampirism3"],
 		"type": "stats",
 		"key": "vampirism",
-		"value": 0.08
+		"value": 0.03
 	},
 	"vampirism5": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-vampirism.svg",
 		"displayname": "Vampirismo",
-		"details": "Aumenta a chance de crítico em 5%!",
+		"details": "Aumenta a cura do vampirismo em 3%!",
 		"level": "Level 5",
 		"prerequisite": ["vampirism4"],
 		"type": "stats",
 		"key": "vampirism",
-		"value": 0.08
+		"value": 0.03
 	},
 	"vampirism6": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-vampirism.svg",
 		"displayname": "Vampirismo",
-		"details": "Aumenta a chance de crítico em 5%!",
+		"details": "Aumenta a cura do vampirismo em 4%!",
 		"level": "Level MAX",
 		"prerequisite": ["vampirism5"],
 		"type": "stats",
 		"key": "vampirism",
-		"value": 0.08
+		"value": 0.04
 	},
 	"projectile1": {
 		"icon": ICON_PATH + "icon-projectile.svg",
@@ -772,6 +832,13 @@ const SHOP: Dictionary = {
 		"value": 10,
 		"max_level": 5
 	},
+	"bonus_defense": {
+		"icon": ICON_PATH + "icon-armor.svg",
+		"displayname": "Armadura",
+		"price": [200, 350, 500, 750, 1000],
+		"value": 0.01,
+		"max_level": 5
+	},
 	"bonus_speed": {
 		"icon": ICON_PATH + "icon-speed.svg",
 		"displayname": "Velocidade",
@@ -808,10 +875,10 @@ const SHOP: Dictionary = {
 		"max_level": 5
 	},
 	"bonus_vampirism": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-vampirism.svg",
 		"displayname": "Vampirismo",
 		"price": [200, 350, 500, 750, 1000],
-		"value": 0.08,
+		"value": 0.01,
 		"max_level": 5
 	},
 	"bonus_weapon": {

@@ -5,6 +5,8 @@ class_name GameHub
 @onready var _click: AudioStreamPlayer = $ClickSFX
 
 func _ready() -> void:
+	if !MenuMusic.playing:
+		MenuMusic.play()
 	$level_btn.grab_focus()
 
 func _on_level_btn_focus_entered() -> void:

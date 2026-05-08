@@ -2,7 +2,7 @@ extends Node
 class_name StatsComponent
 
 var bonus_health: int = 0
-var bonus_defense: int = 0
+var bonus_defense: float = 0
 var bonus_speed: float = 0
 var bonus_damage: float = 0
 var bonus_crit_chance: float = 0.0
@@ -53,6 +53,8 @@ func apply_meta_upgrade() -> void:
 			"bonus_health":
 				bonus_health += value
 				emit_signal("update_stats")
+			"bonus_defense":
+				bonus_defense += value
 			"bonus_speed":
 				bonus_speed += value
 			"bonus_crit_chance":

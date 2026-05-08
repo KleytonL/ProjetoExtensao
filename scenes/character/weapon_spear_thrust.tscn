@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://cqoapeordkldb"]
 
 [ext_resource type="Script" uid="uid://4dlxcqeopc42" path="res://scripts/weapon_scripts/weapon_spear_thrust.gd" id="1_ld6wm"]
+[ext_resource type="AudioStream" uid="uid://b0r7rtnv2ombi" path="res://resources/audio/sfx/weapon/spear_thrust.wav" id="2_4506c"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2ad5p"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("2_4506c")
 
 [node name="WeaponSpearThrust" type="Node2D" unique_id=1950633611]
 script = ExtResource("1_ld6wm")
+
+[node name="ThrustSFX" type="AudioStreamPlayer" parent="." unique_id=294520950]
+stream = SubResource("AudioStreamRandomizer_2ad5p")
+volume_db = -12.0
 
 [node name="RechargeTimer" type="Timer" parent="." unique_id=1211716097]
 

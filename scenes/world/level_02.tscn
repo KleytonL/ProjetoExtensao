@@ -11,8 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cq2hne6jxythc" path="res://scenes/enemies/enemy_wispG1.tscn" id="4_dc68i"]
 [ext_resource type="PackedScene" uid="uid://c1kbped141h63" path="res://scenes/menus/death_screen.tscn" id="4_hive2"]
 [ext_resource type="PackedScene" uid="uid://dqgu5pr8xhjh5" path="res://scenes/enemies/enemy_wispG2.tscn" id="5_xve4t"]
-[ext_resource type="PackedScene" uid="uid://cyqmvtlg4kc0r" path="res://scenes/enemies/enemy_demon_hand.tscn" id="6_8phuj"]
-[ext_resource type="PackedScene" uid="uid://cg5qyp2g6dcht" path="res://scenes/enemies/enemy_neuro_machine.tscn" id="8_xve4t"]
+[ext_resource type="PackedScene" uid="uid://cyqmvtlg4kc0r" path="res://scenes/enemies/enemy_demon_hand.tscn" id="8_xve4t"]
 [ext_resource type="PackedScene" uid="uid://n3t27wesrn06" path="res://scenes/misc/upgrade_controller.tscn" id="9_xve4t"]
 [ext_resource type="PackedScene" uid="uid://dqkksmie0yu3m" path="res://scenes/menus/victory_screen.tscn" id="13_8phuj"]
 
@@ -64,7 +63,7 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 script = ExtResource("3_ec1tj")
 time_start = 160
 time_end = 210
-enemy = ExtResource("6_8phuj")
+enemy = ExtResource("8_xve4t")
 enemy_num = 1
 enemy_spawn_delay = 5
 metadata/_custom_type_script = "uid://fqca6eefpksa"
@@ -81,7 +80,7 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 script = ExtResource("3_ec1tj")
 time_start = 220
 time_end = 280
-enemy = ExtResource("6_8phuj")
+enemy = ExtResource("8_xve4t")
 enemy_num = 2
 enemy_spawn_delay = 4
 metadata/_custom_type_script = "uid://fqca6eefpksa"
@@ -107,7 +106,7 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 script = ExtResource("3_ec1tj")
 time_start = 300
 time_end = 420
-enemy = ExtResource("6_8phuj")
+enemy = ExtResource("8_xve4t")
 enemy_num = 3
 enemy_spawn_delay = 2
 metadata/_custom_type_script = "uid://fqca6eefpksa"
