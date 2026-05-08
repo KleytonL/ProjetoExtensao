@@ -16,7 +16,8 @@ func _ready() -> void:
 	health = max_health
 
 func damage(attack: int) -> void:
-	health -= attack
+	@warning_ignore("narrowing_conversion")
+	health -= attack * (1.0 - stats_component.bonus_defense)
 	$sfx_damage.play()
 	emit_signal("update_healthbar")
 	if health <= 0:

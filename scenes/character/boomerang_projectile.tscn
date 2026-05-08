@@ -61,7 +61,6 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_bjvdw")
 after_image_component = NodePath("AfterImageComponent")
-damage = 2.0
 force = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=69873020]

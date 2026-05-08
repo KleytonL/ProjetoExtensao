@@ -7,6 +7,7 @@ var knockback: int
 var spear_size: float
 
 func _ready() -> void:
+	super()
 	var tween = create_tween()
 	position = Vector2(8, 0).rotated(angle)
 	rotation = angle + deg_to_rad(45)

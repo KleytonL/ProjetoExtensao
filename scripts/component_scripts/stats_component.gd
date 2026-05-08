@@ -2,8 +2,12 @@ extends Node
 class_name StatsComponent
 
 var bonus_health: int = 0
+var bonus_defense: int = 0
 var bonus_speed: float = 0
 var bonus_damage: float = 0
+var bonus_crit_chance: float = 0.0
+var bonus_crit_multiplier: float = 1.5
+var bonus_vampirism: float = 0.0
 var bonus_projectile: int = 0
 var bonus_attack_speed: float = 0.0
 var bonus_projectile_size: float = 1.0
@@ -18,10 +22,18 @@ func apply_stat_upgrade(data: Dictionary) -> void:
 		"health":
 			bonus_health += data["value"]
 			emit_signal("update_stats")
+		"defense":
+			bonus_defense += data["value"]
+		"vampirism":
+			bonus_vampirism += data["value"]
 		"speed":
 			bonus_speed += data["value"]
 		"strength":
 			bonus_damage += data["value"]
+		"crit_chance":
+			bonus_crit_chance += data["value"]
+		"crit_multiplier":
+			bonus_crit_multiplier += data["value"]
 		"projectile":
 			bonus_projectile += data["value"]
 		"attack_speed":
@@ -43,9 +55,11 @@ func apply_meta_upgrade() -> void:
 				emit_signal("update_stats")
 			"bonus_speed":
 				bonus_speed += value
+			"bonus_crit_chance":
+				bonus_crit_chance += value
+			"bonus_vampirism":
+				bonus_vampirism += value
 			"bonus_size":
 				bonus_projectile_size += value
 			"bonus_strength":
 				bonus_damage += value
-			"bonus_level":
-				print(value)

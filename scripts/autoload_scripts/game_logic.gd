@@ -1,5 +1,6 @@
 extends Node
 
+var player: Player
 var can_pause: bool = true
 var can_dash: bool = true
 var max_weapons: int = 2
@@ -14,3 +15,4 @@ func run_reset() -> void:
 	max_stats = SaveManager.stats_capacity
 	enemies_defeated = 0
 	holding_essences = 0
+	player = get_tree().get_first_node_in_group("Player")

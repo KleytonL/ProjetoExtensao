@@ -4,6 +4,7 @@ class_name ThunderBladeProjectile
 var projectile_size: float
 
 func _ready() -> void:
+	super()
 	$AnimatedSprite2D.play("spawn_animation")
 	$AfterImageComponent.start(0.05, 0.2)
 	await $AnimatedSprite2D.animation_finished

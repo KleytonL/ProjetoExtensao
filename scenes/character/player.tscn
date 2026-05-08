@@ -389,10 +389,12 @@ texture = ExtResource("2_g2els")
 hframes = 6
 vframes = 6
 
-[node name="PlayerHitboxComponent" parent="Sprite2D" unique_id=1804852658 node_paths=PackedStringArray("camera", "freeze_component", "stats_component") instance=ExtResource("4_5y66v")]
+[node name="PlayerHitboxComponent" parent="Sprite2D" unique_id=1804852658 node_paths=PackedStringArray("camera", "freeze_component", "stats_component", "health_component") instance=ExtResource("4_5y66v")]
 camera = NodePath("../../Camera2D")
 freeze_component = NodePath("../../FrameFreezeComponent")
 stats_component = NodePath("../../StatsComponent")
+health_component = NodePath("../../HealthComponent")
+apply_damage_bonus = true
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="Sprite2D/PlayerHitboxComponent" unique_id=1707922413]
 position = Vector2(12, 0)

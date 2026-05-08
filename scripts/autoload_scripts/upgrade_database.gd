@@ -453,6 +453,126 @@ const UPGRADES: Dictionary = {
 		"key": "strength",
 		"value": 0.5
 	},
+	"crit_chance1": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Crítico",
+		"details": "Permite você causar dano crítico!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "crit_chance",
+		"value": 0.05
+	},
+	"crit_chance2": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Crítico",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 2",
+		"prerequisite": ["crit_chance1"],
+		"type": "stats",
+		"key": "crit_chance",
+		"value": 0.05
+	},
+	"crit_chance3": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Crítico",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 3",
+		"prerequisite": ["crit_chance2"],
+		"type": "stats",
+		"key": "crit_chance",
+		"value": 0.05
+	},
+	"crit_chance4": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Crítico",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 4",
+		"prerequisite": ["crit_chance3"],
+		"type": "stats",
+		"key": "crit_chance",
+		"value": 0.05
+	},
+	"crit_chance5": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Crítico",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 5",
+		"prerequisite": ["crit_chance4"],
+		"type": "stats",
+		"key": "crit_chance",
+		"value": 0.05
+	},
+	"crit_chance6": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Crítico",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level MAX",
+		"prerequisite": ["crit_chance5"],
+		"type": "stats",
+		"key": "crit_chance",
+		"value": 0.05
+	},
+	"vampirism1": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Vampirismo",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "vampirism",
+		"value": 0.08
+	},
+	"vampirism2": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Vampirismo",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 2",
+		"prerequisite": ["vampirism1"],
+		"type": "stats",
+		"key": "vampirism",
+		"value": 0.08
+	},
+	"vampirism3": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Vampirismo",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 3",
+		"prerequisite": ["vampirism2"],
+		"type": "stats",
+		"key": "vampirism",
+		"value": 0.08
+	},
+	"vampirism4": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Vampirismo",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 4",
+		"prerequisite": ["vampirism3"],
+		"type": "stats",
+		"key": "vampirism",
+		"value": 0.08
+	},
+	"vampirism5": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Vampirismo",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level 5",
+		"prerequisite": ["vampirism4"],
+		"type": "stats",
+		"key": "vampirism",
+		"value": 0.08
+	},
+	"vampirism6": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Vampirismo",
+		"details": "Aumenta a chance de crítico em 5%!",
+		"level": "Level MAX",
+		"prerequisite": ["vampirism5"],
+		"type": "stats",
+		"key": "vampirism",
+		"value": 0.08
+	},
 	"projectile1": {
 		"icon": ICON_PATH + "icon-projectile.svg",
 		"displayname": "Ataque Adicional",
@@ -678,6 +798,20 @@ const SHOP: Dictionary = {
 		"displayname": "AtkSpeed",
 		"price": [200, 350, 500, 750, 1000],
 		"value": 0.05,
+		"max_level": 5
+	},
+	"bonus_crit_chance": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "CritChance",
+		"price": [200, 350, 500, 750, 1000],
+		"value": 0.01,
+		"max_level": 5
+	},
+	"bonus_vampirism": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Vampirismo",
+		"price": [200, 350, 500, 750, 1000],
+		"value": 0.08,
 		"max_level": 5
 	},
 	"bonus_weapon": {

@@ -13,6 +13,7 @@ var orbit_radius: int = 25
 signal on_orb_duration_timeout
 
 func _ready() -> void:
+	super()
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1, 1) * orb_size, 0.5).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()

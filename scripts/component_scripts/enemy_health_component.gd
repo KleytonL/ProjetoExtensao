@@ -10,8 +10,8 @@ var health: float
 func _ready() -> void:
 	health = max_health
 
-func damage(attack: float) -> void:
-	health -= attack
+func damage(attack: PlayerHitboxComponent) -> void:
+	health -= attack.damage
 	$sfx_damage.play()
 	
 	spawn_damage_number(attack)
@@ -24,11 +24,11 @@ func damage(attack: float) -> void:
 		else: 
 			$"../StateMachine".change_state(death_state)
 
-func spawn_damage_number(amount: float) -> void:
+func spawn_damage_number(attack: PlayerHitboxComponent) -> void:
 	var number: DamageNumber = damage_number.instantiate()
 	var offset: Vector2 = Vector2(randf_range(-6, 6), randf_range(-12, -12))
 	
 	number.position = owner.global_position + offset
 	
 	get_tree().current_scene.add_child(number)
-	number.setup(amount)
+	number.setup(attack.damage, attack.is_crit)

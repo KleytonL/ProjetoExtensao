@@ -10,6 +10,7 @@ var projectile_angle: Vector2 = Vector2.ZERO
 var projectile_target: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	super()
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1, 1) * projectile_size, 0.75).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()

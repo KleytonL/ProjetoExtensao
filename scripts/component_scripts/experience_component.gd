@@ -14,8 +14,8 @@ signal update_experiencebar
 
 func _ready() -> void:
 	if SaveManager.meta_upgrades["bonus_level"]["level"] != 0:
-		level += 1
 		await get_tree().create_timer(2.0).timeout
+		level += 1
 		upgrade_panel.level_up()
 
 func calculate_exp(exp_value: int = 0):

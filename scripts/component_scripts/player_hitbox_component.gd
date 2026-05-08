@@ -6,19 +6,40 @@ class_name PlayerHitboxComponent
 @export var camera: Camera2D
 @export var freeze_component: FrameFreezeComponent
 @export var stats_component: StatsComponent
+@export var health_component: HealthComponent
+@export var apply_damage_bonus: bool
 var _base_damage: float
 var direction: Vector2
+var is_crit: bool
 
 func _ready() -> void:
 	_base_damage = damage
+	if not stats_component:
+		stats_component = GameLogic.player.stats
+	if not health_component:
+		health_component = GameLogic.player.health
 
 func _on_area_entered(area: Area2D) -> void:
 	direction = (area.global_position - get_parent().global_position).normalized()
+	
 	if area is EnemyHurtboxComponent:
 		if stats_component:
-			damage = _base_damage + stats_component.bonus_damage 
+			if apply_damage_bonus:
+				damage = _base_damage + stats_component.bonus_damage
+			
+			is_crit = randf() < stats_component.bonus_crit_chance
+			if is_crit:
+				damage *= stats_component.bonus_crit_multiplier
+			
+			@warning_ignore("narrowing_conversion")
+			var vamp: int = damage * stats_component.bonus_vampirism
+			if vamp > 0:
+				health_component.update_health(vamp)
+			
 		if freeze_component:
 			freeze_component.activate(0.01, 0.5)
+			
 		if camera:
 			camera.shake_camera()
+			
 		area.damage(self)
