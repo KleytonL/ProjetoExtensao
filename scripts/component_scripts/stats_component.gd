@@ -34,6 +34,8 @@ func apply_stat_upgrade(data: Dictionary) -> void:
 			bonus_crit_chance += data["value"]
 		"crit_multiplier":
 			bonus_crit_multiplier += data["value"]
+		"crit_multiplier":
+			bonus_crit_multiplier += data["value"]
 		"projectile":
 			bonus_projectile += data["value"]
 		"attack_speed":
@@ -59,6 +61,8 @@ func apply_meta_upgrade() -> void:
 				bonus_speed += value
 			"bonus_crit_chance":
 				bonus_crit_chance += value
+			"bonus_crit_multiplier":
+				bonus_crit_multiplier += value
 			"bonus_vampirism":
 				bonus_vampirism += value
 			"bonus_size":

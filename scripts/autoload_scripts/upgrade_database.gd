@@ -219,6 +219,60 @@ const UPGRADES: Dictionary = {
 		"type": "weapon",
 		"key": "thunderblade"
 	},
+	"blazing1": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Blazing Ground",
+		"details": "Faça o chão queimar!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "weapon",
+		"key": "blazing"
+	},
+	"blazing2": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Blazing Ground",
+		"details": "Faça o chão queimar!",
+		"level": "Level 2",
+		"prerequisite": ["blazing1"],
+		"type": "weapon",
+		"key": "blazing"
+	},
+	"blazing3": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Blazing Ground",
+		"details": "Faça o chão queimar!",
+		"level": "Level 3",
+		"prerequisite": ["blazing2"],
+		"type": "weapon",
+		"key": "blazing"
+	},
+	"blazing4": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Blazing Ground",
+		"details": "Faça o chão queimar!",
+		"level": "Level 4",
+		"prerequisite": ["blazing3"],
+		"type": "weapon",
+		"key": "blazing"
+	},
+	"blazing5": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Blazing Ground",
+		"details": "Faça o chão queimar!",
+		"level": "Level 5",
+		"prerequisite": ["blazing4"],
+		"type": "weapon",
+		"key": "blazing"
+	},
+	"blazing6": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Blazing Ground",
+		"details": "Faça o chão queimar!",
+		"level": "Level MAX",
+		"prerequisite": ["blazing5"],
+		"type": "weapon",
+		"key": "blazing"
+	},
 	"spearthrust1": {
 		"icon": ICON_PATH + "icon-spear.svg",
 		"displayname": "Estocada",
@@ -565,12 +619,72 @@ const UPGRADES: Dictionary = {
 	},
 	"crit_chance6": {
 		"icon": ICON_PATH + "icon-crit.svg",
-		"displayname": "Crítico",
+		"displayname": "Chance de Crítico",
 		"details": "Aumenta a chance de crítico em 5%!",
 		"level": "Level MAX",
 		"prerequisite": ["crit_chance5"],
 		"type": "stats",
 		"key": "crit_chance",
+		"value": 0.05
+	},
+	"crit_multiplier1": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Multip. de Crítico",
+		"details": "Aumenta o seu dano crítico em 5%!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "crit_multiplier",
+		"value": 0.05
+	},
+	"crit_multiplier2": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Multip. de Crítico",
+		"details": "Aumenta o seu multiplicador em 5%!",
+		"level": "Level 2",
+		"prerequisite": ["crit_multiplier1"],
+		"type": "stats",
+		"key": "crit_multiplier",
+		"value": 0.05
+	},
+	"crit_multiplier3": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Multip. de Crítico",
+		"details": "Aumenta o seu multiplicador em 5%!",
+		"level": "Level 3",
+		"prerequisite": ["crit_multiplier2"],
+		"type": "stats",
+		"key": "crit_multiplier",
+		"value": 0.05
+	},
+	"crit_multiplier4": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Multip. de Crítico",
+		"details": "Aumenta o seu multiplicador em 5%!",
+		"level": "Level 4",
+		"prerequisite": ["crit_multiplier3"],
+		"type": "stats",
+		"key": "crit_multiplier",
+		"value": 0.05
+	},
+	"crit_multiplier5": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Multip. de Crítico",
+		"details": "Aumenta o seu multiplicador em 5%!",
+		"level": "Level 5",
+		"prerequisite": ["crit_multiplier4"],
+		"type": "stats",
+		"key": "crit_multiplier",
+		"value": 0.05
+	},
+	"crit_multiplie6": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "Multip. de Crítico",
+		"details": "Aumenta o seu multiplicador em 5%!",
+		"level": "Level MAX",
+		"prerequisite": ["crit_multiplier5"],
+		"type": "stats",
+		"key": "crit_multiplier",
 		"value": 0.05
 	},
 	"vampirism1": {
@@ -872,6 +986,13 @@ const SHOP: Dictionary = {
 		"displayname": "CritChance",
 		"price": [200, 350, 500, 750, 1000],
 		"value": 0.01,
+		"max_level": 5
+	},
+	"bonus_crit_multiplier": {
+		"icon": ICON_PATH + "icon-crit.svg",
+		"displayname": "CritMult",
+		"price": [200, 350, 500, 750, 1000],
+		"value": 0.04,
 		"max_level": 5
 	},
 	"bonus_vampirism": {

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dbvdx4p2ky05g"]
+
+[ext_resource type="Script" uid="uid://dp6x5k0ljkaac" path="res://scripts/weapon_scripts/weapon_blazing_ground.gd" id="1_ev5n8"]
+
+[node name="WeaponBlazingGround" type="Node2D" unique_id=90626198]
+script = ExtResource("1_ev5n8")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=2101694110]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

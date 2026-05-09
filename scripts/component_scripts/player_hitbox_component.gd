@@ -25,16 +25,17 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	if area is EnemyHurtboxComponent:
 		if stats_component:
+			var calculated_damage: float = _base_damage
 			if apply_damage_bonus:
-				damage = _base_damage + stats_component.bonus_damage
+				calculated_damage += stats_component.bonus_damage
 			
 			is_crit = randf() < stats_component.bonus_crit_chance
 			if is_crit:
-				damage *= stats_component.bonus_crit_multiplier
+				calculated_damage *= stats_component.bonus_crit_multiplier
 			
 			
 			@warning_ignore("narrowing_conversion")
-			var vamp: int = damage * stats_component.bonus_vampirism
+			var vamp: int = calculated_damage * stats_component.bonus_vampirism
 			if vamp < 1:
 				can_vamp = randf() < vamp * 0.25
 				if can_vamp:
@@ -43,6 +44,8 @@ func _on_area_entered(area: Area2D) -> void:
 				can_vamp = randf() < 0.25
 				if can_vamp:
 					health_component.update_health(floor(vamp))
+			
+			damage = calculated_damage
 			
 		if freeze_component:
 			freeze_component.activate(0.01, 0.5)

@@ -33,6 +33,10 @@ var meta_upgrades: Dictionary = {
 		"level": 0,
 		"value": 0
 	},
+	"bonus_crit_multiplier": {
+		"level": 0,
+		"value": 0
+	},
 	"bonus_vampirism": {
 		"level": 0,
 		"value": 0

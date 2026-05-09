@@ -18,8 +18,6 @@ func _ready() -> void:
 	health = max_health
 
 func damage(attack: int) -> void:
-	print(stats_component.bonus_defense)
-	print(max(1, floor(attack * (1.0 - stats_component.bonus_defense))))
 	@warning_ignore("narrowing_conversion")
 	health -= max(1, floor(attack * (1.0 - stats_component.bonus_defense)))
 	$sfx_damage.play()
