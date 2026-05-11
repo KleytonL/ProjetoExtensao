@@ -26,7 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://kc7a0gpr4mx4" path="res://scenes/misc/components/attack_range_component.tscn" id="20_okkwj"]
 [ext_resource type="PackedScene" uid="uid://xd64r25wko58" path="res://scenes/misc/gui/upgrade_panel.tscn" id="21_pygui"]
 [ext_resource type="PackedScene" uid="uid://dbif6l4redi2d" path="res://scenes/misc/gui/experience_bar.tscn" id="22_p86hl"]
+[ext_resource type="Script" uid="uid://cahliajv0878m" path="res://scripts/component_scripts/pull_range.gd" id="24_k0yad"]
 [ext_resource type="PackedScene" uid="uid://cyq5gud1uv3gp" path="res://scenes/misc/gui/level_timer.tscn" id="25_71sfj"]
+[ext_resource type="Script" uid="uid://2cikwq38ejhi" path="res://scripts/component_scripts/collect_range.gd" id="25_d2pdv"]
 [ext_resource type="PackedScene" uid="uid://ctxcex2lgbh43" path="res://scenes/misc/gui/dash_progress.tscn" id="27_8sb7f"]
 [ext_resource type="PackedScene" uid="uid://d23d2wnu770ps" path="res://scenes/misc/gui/level_enemies_defeated.tscn" id="28_2w14l"]
 [ext_resource type="PackedScene" uid="uid://dwdfogcxudg71" path="res://scenes/misc/gui/item_grid.tscn" id="28_j01l2"]
@@ -530,16 +532,21 @@ collision_layer = 2
 collision_mask = 2
 range_radius = 100.0
 
-[node name="PullRange" type="Area2D" parent="." unique_id=2037866254]
+[node name="PullRange" type="Area2D" parent="." unique_id=2037866254 node_paths=PackedStringArray("stats_component")]
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("24_k0yad")
+stats_component = NodePath("../StatsComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PullRange" unique_id=961783433]
 shape = SubResource("CircleShape2D_qhqgy")
 
-[node name="CollectRange" type="Area2D" parent="." unique_id=43664321]
+[node name="CollectRange" type="Area2D" parent="." unique_id=43664321 node_paths=PackedStringArray("experience", "health_component")]
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("25_d2pdv")
+experience = NodePath("../ExperienceComponent")
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectRange" unique_id=1273212571]
 shape = SubResource("CircleShape2D_g2els")
@@ -612,5 +619,5 @@ freeze_component = NodePath("../../../FrameFreezeComponent")
 
 [connection signal="update_healthbar" from="HealthComponent" to="GUI/Control/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="update_experiencebar" from="ExperienceComponent" to="GUI/Control/ExperienceBar" method="_on_experience_component_update_experiencebar"]
-[connection signal="area_entered" from="PullRange" to="." method="_on_pull_range_area_entered"]
-[connection signal="area_entered" from="CollectRange" to="." method="_on_collect_range_area_entered"]
+[connection signal="area_entered" from="PullRange" to="PullRange" method="_on_area_entered"]
+[connection signal="area_entered" from="CollectRange" to="CollectRange" method="_on_area_entered"]

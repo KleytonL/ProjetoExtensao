@@ -22,7 +22,6 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_busql")
 
 [node name="TickTimer" type="Timer" parent="." unique_id=1998362031]
-wait_time = 0.5
 autostart = true
 
 [node name="DurationTimer" type="Timer" parent="." unique_id=829585258]

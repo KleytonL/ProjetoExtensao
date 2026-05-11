@@ -9,6 +9,7 @@ var _upgrades: Dictionary = {
 	"boomerang": preload("res://scenes/character/weapon_boomerang.tscn"),
 	"thunderblade": preload("res://scenes/character/weapon_thunder_blade.tscn"),
 	"blazing": preload("res://scenes/character/weapon_blazing_ground.tscn"),
+	"radiance": preload("res://scenes/character/weapon_radiance.tscn"),
 	"spear": preload("res://scenes/character/weapon_spear_thrust.tscn")
 }
 

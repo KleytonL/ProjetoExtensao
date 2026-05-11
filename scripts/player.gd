@@ -21,17 +21,3 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-
-func _on_pull_range_area_entered(area: Area2D) -> void:
-	if area.is_in_group("collectables"):
-		area.target = self
-
-func _on_collect_range_area_entered(area: Area2D) -> void:
-	if area is Experience:
-		experience.calculate_exp(area.collect())
-	if area is Essence:
-		GameLogic.holding_essences += area.collect()
-	if area is MagneticGem:
-		area.collect()
-	if area is Beef:
-		$HealthComponent.update_health(area.collect())

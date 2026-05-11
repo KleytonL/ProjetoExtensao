@@ -273,6 +273,60 @@ const UPGRADES: Dictionary = {
 		"type": "weapon",
 		"key": "blazing"
 	},
+	"radiance1": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Radiância",
+		"details": "Inimigos próximos recebem dano!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "weapon",
+		"key": "radiance"
+	},
+	"radiance2": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Radiância",
+		"details": "Inimigos próximos recebem dano!",
+		"level": "Level 2",
+		"prerequisite": ["radiance1"],
+		"type": "weapon",
+		"key": "radiance"
+	},
+	"radiance3": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Radiância",
+		"details": "Inimigos próximos recebem dano!",
+		"level": "Level 3",
+		"prerequisite": ["radiance2"],
+		"type": "weapon",
+		"key": "radiance"
+	},
+	"radiance4": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Radiância",
+		"details": "Inimigos próximos recebem dano!",
+		"level": "Level 4",
+		"prerequisite": ["radiance3"],
+		"type": "weapon",
+		"key": "radiance"
+	},
+	"radiance5": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Radiância",
+		"details": "Inimigos próximos recebem dano!",
+		"level": "Level 5",
+		"prerequisite": ["radiance4"],
+		"type": "weapon",
+		"key": "radiance"
+	},
+	"radiance6": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Radiância",
+		"details": "Inimigos próximos recebem dano!",
+		"level": "Level MAX",
+		"prerequisite": ["radiance5"],
+		"type": "weapon",
+		"key": "radiance"
+	},
 	"spearthrust1": {
 		"icon": ICON_PATH + "icon-spear.svg",
 		"displayname": "Estocada",
@@ -927,6 +981,66 @@ const UPGRADES: Dictionary = {
 		"key": "attack_speed",
 		"value": 0.1
 	},
+	"collect_area_size1": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Alcance de coleta",
+		"details": "Aumenta o alcance da coleta de XP em 5%!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "stats",
+		"key": "collect_area_size",
+		"value": 0.1
+	},
+	"collect_area_size2": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Alcance de coleta",
+		"details": "Aumenta o alcance da coleta de XP em 5%!",
+		"level": "Level 2",
+		"prerequisite": ["collect_area_size1"],
+		"type": "stats",
+		"key": "collect_area_size",
+		"value": 0.1
+	},
+	"collect_area_size3": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Alcance de coleta",
+		"details": "Aumenta o alcance da coleta de XP em 5%!",
+		"level": "Level 3",
+		"prerequisite": ["collect_area_size2"],
+		"type": "stats",
+		"key": "collect_area_size",
+		"value": 0.1
+	},
+	"collect_area_size4": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Alcance de coleta",
+		"details": "Aumenta o alcance da coleta de XP em 5%!",
+		"level": "Level 4",
+		"prerequisite": ["collect_area_size3"],
+		"type": "stats",
+		"key": "collect_area_size",
+		"value": 0.1
+	},
+	"collect_area_size5": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Alcance de coleta",
+		"details": "Aumenta o alcance da coleta de XP em 5%!",
+		"level": "Level 5",
+		"prerequisite": ["collect_area_size4"],
+		"type": "stats",
+		"key": "collect_area_size",
+		"value": 0.1
+	},
+	"collect_area_size6": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Alcance de coleta",
+		"details": "Aumenta o alcance da coleta de XP em 5%!",
+		"level": "Level MAX",
+		"prerequisite": ["collect_area_size5"],
+		"type": "stats",
+		"key": "collect_area_size",
+		"value": 0.1
+	},
 	"food": {
 		"icon": ICON_PATH + "icon-food.svg",
 		"displayname": "Refeição",
@@ -963,6 +1077,13 @@ const SHOP: Dictionary = {
 	"bonus_size": {
 		"icon": ICON_PATH + "icon-projectilesize.svg",
 		"displayname": "Tamanho",
+		"price": [200, 350, 500, 750, 1000],
+		"value": 0.05,
+		"max_level": 5
+	},
+	"bonus_area_size": {
+		"icon": ICON_PATH + "icon-food.svg",
+		"displayname": "Alcance",
 		"price": [200, 350, 500, 750, 1000],
 		"value": 0.05,
 		"max_level": 5

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dln2kcpm6ge4g"]
+
+[ext_resource type="Script" uid="uid://dhrk3t0g2v7ww" path="res://scripts/weapon_scripts/weapon_radiance.gd" id="1_qdvtf"]
+
+[node name="WeaponRadiance" type="Node2D" unique_id=1807796518]
+script = ExtResource("1_qdvtf")

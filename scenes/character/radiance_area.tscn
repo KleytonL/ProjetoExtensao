@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://c00wwfhwtasvo"]
+
+[ext_resource type="Script" uid="uid://cp1brpxls5lc3" path="res://scripts/weapon_scripts/radiance_area.gd" id="1_cn8iq"]
+[ext_resource type="Texture2D" uid="uid://uhsg3hnpfeyk" path="res://resources/spritesheets/spritesheet-radiance.svg" id="2_f6664"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3hrg"]
+radius = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ijp"]
+atlas = ExtResource("2_f6664")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vksdy"]
+atlas = ExtResource("2_f6664")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jigx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ijp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vksdy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="RadianceArea" type="Area2D" unique_id=1422186468]
+z_index = -1
+scale = Vector2(0.1, 0.1)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_cn8iq")
+force = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=855357254]
+shape = SubResource("CircleShape2D_q3hrg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166914038]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_3jigx")
+autoplay = "default"
+frame_progress = 0.032654878
+
+[node name="TickTimer" type="Timer" parent="." unique_id=1843954141]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

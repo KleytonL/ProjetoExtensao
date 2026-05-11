@@ -3,7 +3,7 @@ extends Node
 const PATH: String = "user://save_data.json"
 
 var levels_unlocked: Array[int] = [1]
-var essences_collected: int = 0
+var essences_collected: int = 10000
 var meta_upgrades: Dictionary = {
 	"bonus_health": {
 		"level": 0,
@@ -18,6 +18,10 @@ var meta_upgrades: Dictionary = {
 		"value": 0
 	},
 	"bonus_size": {
+		"level": 0,
+		"value": 0
+	},
+	"bonus_area_size": {
 		"level": 0,
 		"value": 0
 	},
@@ -64,9 +68,9 @@ func load_save() -> void:
 	if not FileAccess.file_exists(PATH):
 		return
 	
-#	if FileAccess.file_exists(PATH):
-#		DirAccess.remove_absolute(PATH)
-#		return
+	if FileAccess.file_exists(PATH):
+		DirAccess.remove_absolute(PATH)
+		return
 	
 	var file = FileAccess.open(PATH, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
