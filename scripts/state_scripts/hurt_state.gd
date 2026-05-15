@@ -20,7 +20,7 @@ func process_input(_event: InputEvent) -> State:
 
 func process_physics(_delta: float) -> State:
 	if iframes_component:
-		iframes_component.activate_iframes(0.75)
+		iframes_component.activate_iframes(1)
 
 	if parent.velocity == Vector2.ZERO:
 		return idle_state
