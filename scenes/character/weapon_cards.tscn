@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dgsj6wfufiaje"]
+
+[ext_resource type="Script" uid="uid://ctrmvyyn1usdp" path="res://scripts/weapon_scripts/weapon_cards.gd" id="1_0ekey"]
+
+[node name="WeaponCards" type="Node2D" unique_id=145132002]
+script = ExtResource("1_0ekey")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=937142407]
+wait_time = 5.0
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

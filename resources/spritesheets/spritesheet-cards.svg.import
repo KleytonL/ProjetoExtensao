@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clrifdoef6lvc"
-path="res://.godot/imported/icon-crit.svg-093b48aca26274a35ab945fd81e6fc0e.ctex"
+uid="uid://f7ok5q44k6ft"
+path="res://.godot/imported/spritesheet-cards.svg-43f8d0cd7b6662ec57e3adb3407b63f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/icons/icon-crit.svg"
-dest_files=["res://.godot/imported/icon-crit.svg-093b48aca26274a35ab945fd81e6fc0e.ctex"]
+source_file="res://resources/spritesheets/spritesheet-cards.svg"
+dest_files=["res://.godot/imported/spritesheet-cards.svg-43f8d0cd7b6662ec57e3adb3407b63f2.ctex"]
 
 [params]
 

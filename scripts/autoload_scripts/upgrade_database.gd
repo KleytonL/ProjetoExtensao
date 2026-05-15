@@ -220,7 +220,7 @@ const UPGRADES: Dictionary = {
 		"key": "thunderblade"
 	},
 	"blazing1": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-blazingground.svg",
 		"displayname": "Blazing Ground",
 		"details": "Faça o chão queimar!",
 		"level": "Level 1",
@@ -229,7 +229,7 @@ const UPGRADES: Dictionary = {
 		"key": "blazing"
 	},
 	"blazing2": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-blazingground.svg",
 		"displayname": "Blazing Ground",
 		"details": "Faça o chão queimar!",
 		"level": "Level 2",
@@ -238,7 +238,7 @@ const UPGRADES: Dictionary = {
 		"key": "blazing"
 	},
 	"blazing3": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-blazingground.svg",
 		"displayname": "Blazing Ground",
 		"details": "Faça o chão queimar!",
 		"level": "Level 3",
@@ -247,7 +247,7 @@ const UPGRADES: Dictionary = {
 		"key": "blazing"
 	},
 	"blazing4": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-blazingground.svg",
 		"displayname": "Blazing Ground",
 		"details": "Faça o chão queimar!",
 		"level": "Level 4",
@@ -256,7 +256,7 @@ const UPGRADES: Dictionary = {
 		"key": "blazing"
 	},
 	"blazing5": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-blazingground.svg",
 		"displayname": "Blazing Ground",
 		"details": "Faça o chão queimar!",
 		"level": "Level 5",
@@ -265,7 +265,7 @@ const UPGRADES: Dictionary = {
 		"key": "blazing"
 	},
 	"blazing6": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-blazingground.svg",
 		"displayname": "Blazing Ground",
 		"details": "Faça o chão queimar!",
 		"level": "Level MAX",
@@ -274,7 +274,7 @@ const UPGRADES: Dictionary = {
 		"key": "blazing"
 	},
 	"radiance1": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-radiance.svg",
 		"displayname": "Radiância",
 		"details": "Inimigos próximos recebem dano!",
 		"level": "Level 1",
@@ -283,7 +283,7 @@ const UPGRADES: Dictionary = {
 		"key": "radiance"
 	},
 	"radiance2": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-radiance.svg",
 		"displayname": "Radiância",
 		"details": "Inimigos próximos recebem dano!",
 		"level": "Level 2",
@@ -292,7 +292,7 @@ const UPGRADES: Dictionary = {
 		"key": "radiance"
 	},
 	"radiance3": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-radiance.svg",
 		"displayname": "Radiância",
 		"details": "Inimigos próximos recebem dano!",
 		"level": "Level 3",
@@ -301,7 +301,7 @@ const UPGRADES: Dictionary = {
 		"key": "radiance"
 	},
 	"radiance4": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-radiance.svg",
 		"displayname": "Radiância",
 		"details": "Inimigos próximos recebem dano!",
 		"level": "Level 4",
@@ -310,7 +310,7 @@ const UPGRADES: Dictionary = {
 		"key": "radiance"
 	},
 	"radiance5": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-radiance.svg",
 		"displayname": "Radiância",
 		"details": "Inimigos próximos recebem dano!",
 		"level": "Level 5",
@@ -319,7 +319,7 @@ const UPGRADES: Dictionary = {
 		"key": "radiance"
 	},
 	"radiance6": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-radiance.svg",
 		"displayname": "Radiância",
 		"details": "Inimigos próximos recebem dano!",
 		"level": "Level MAX",
@@ -380,6 +380,60 @@ const UPGRADES: Dictionary = {
 		"prerequisite": ["spearthrust5"],
 		"type": "weapon",
 		"key": "spear"
+	},
+	"cards1": {
+		"icon": ICON_PATH + "icon-cards.svg",
+		"displayname": "Cartas",
+		"details": "Arremesse uma rajada de cartas!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "weapon",
+		"key": "cards"
+	},
+	"cards2": {
+		"icon": ICON_PATH + "icon-cards.svg",
+		"displayname": "Cartas",
+		"details": "Arremesse uma rajada de cartas!",
+		"level": "Level 2",
+		"prerequisite": ["cards1"],
+		"type": "weapon",
+		"key": "cards"
+	},
+	"cards3": {
+		"icon": ICON_PATH + "icon-cards.svg",
+		"displayname": "Cartas",
+		"details": "Arremesse uma rajada de cartas!",
+		"level": "Level 3",
+		"prerequisite": ["cards2"],
+		"type": "weapon",
+		"key": "cards"
+	},
+	"cards4": {
+		"icon": ICON_PATH + "icon-cards.svg",
+		"displayname": "Cartas",
+		"details": "Arremesse uma rajada de cartas!",
+		"level": "Level 4",
+		"prerequisite": ["cards3"],
+		"type": "weapon",
+		"key": "cards"
+	},
+	"cards5": {
+		"icon": ICON_PATH + "icon-cards.svg",
+		"displayname": "Cartas",
+		"details": "Arremesse uma rajada de cartas!",
+		"level": "Level 5",
+		"prerequisite": ["cards4"],
+		"type": "weapon",
+		"key": "cards"
+	},
+	"cards6": {
+		"icon": ICON_PATH + "icon-cards.svg",
+		"displayname": "Cartas",
+		"details": "Arremesse uma rajada de cartas!",
+		"level": "Level MAX",
+		"prerequisite": ["cards5"],
+		"type": "weapon",
+		"key": "cards"
 	},
 	"health1": {
 		"icon": ICON_PATH + "icon-health.svg",
@@ -622,9 +676,9 @@ const UPGRADES: Dictionary = {
 		"value": 0.5
 	},
 	"crit_chance1": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-chance.svg",
 		"displayname": "Crítico",
-		"details": "Permite você causar dano crítico!",
+		"details": "Aumenta a chance de crítico em 5%!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "stats",
@@ -632,7 +686,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_chance2": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-chance.svg",
 		"displayname": "Crítico",
 		"details": "Aumenta a chance de crítico em 5%!",
 		"level": "Level 2",
@@ -642,7 +696,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_chance3": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-chance.svg",
 		"displayname": "Crítico",
 		"details": "Aumenta a chance de crítico em 5%!",
 		"level": "Level 3",
@@ -652,7 +706,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_chance4": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-chance.svg",
 		"displayname": "Crítico",
 		"details": "Aumenta a chance de crítico em 5%!",
 		"level": "Level 4",
@@ -662,7 +716,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_chance5": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-chance.svg",
 		"displayname": "Crítico",
 		"details": "Aumenta a chance de crítico em 5%!",
 		"level": "Level 5",
@@ -672,7 +726,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_chance6": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-chance.svg",
 		"displayname": "Chance de Crítico",
 		"details": "Aumenta a chance de crítico em 5%!",
 		"level": "Level MAX",
@@ -682,7 +736,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_multiplier1": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-multiplier.svg",
 		"displayname": "Multip. de Crítico",
 		"details": "Aumenta o seu dano crítico em 5%!",
 		"level": "Level 1",
@@ -692,7 +746,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_multiplier2": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-multiplier.svg",
 		"displayname": "Multip. de Crítico",
 		"details": "Aumenta o seu multiplicador em 5%!",
 		"level": "Level 2",
@@ -702,7 +756,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_multiplier3": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-multiplier.svg",
 		"displayname": "Multip. de Crítico",
 		"details": "Aumenta o seu multiplicador em 5%!",
 		"level": "Level 3",
@@ -712,7 +766,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_multiplier4": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-multiplier.svg",
 		"displayname": "Multip. de Crítico",
 		"details": "Aumenta o seu multiplicador em 5%!",
 		"level": "Level 4",
@@ -722,7 +776,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_multiplier5": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-multiplier.svg",
 		"displayname": "Multip. de Crítico",
 		"details": "Aumenta o seu multiplicador em 5%!",
 		"level": "Level 5",
@@ -732,7 +786,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.05
 	},
 	"crit_multiplie6": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-multiplier.svg",
 		"displayname": "Multip. de Crítico",
 		"details": "Aumenta o seu multiplicador em 5%!",
 		"level": "Level MAX",
@@ -982,7 +1036,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.1
 	},
 	"collect_area_size1": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-collect-area.svg",
 		"displayname": "Alcance de coleta",
 		"details": "Aumenta o alcance da coleta de XP em 5%!",
 		"level": "Level 1",
@@ -992,7 +1046,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.1
 	},
 	"collect_area_size2": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-collect-area.svg",
 		"displayname": "Alcance de coleta",
 		"details": "Aumenta o alcance da coleta de XP em 5%!",
 		"level": "Level 2",
@@ -1002,7 +1056,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.1
 	},
 	"collect_area_size3": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-collect-area.svg",
 		"displayname": "Alcance de coleta",
 		"details": "Aumenta o alcance da coleta de XP em 5%!",
 		"level": "Level 3",
@@ -1012,7 +1066,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.1
 	},
 	"collect_area_size4": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-collect-area.svg",
 		"displayname": "Alcance de coleta",
 		"details": "Aumenta o alcance da coleta de XP em 5%!",
 		"level": "Level 4",
@@ -1022,7 +1076,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.1
 	},
 	"collect_area_size5": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-collect-area.svg",
 		"displayname": "Alcance de coleta",
 		"details": "Aumenta o alcance da coleta de XP em 5%!",
 		"level": "Level 5",
@@ -1032,7 +1086,7 @@ const UPGRADES: Dictionary = {
 		"value": 0.1
 	},
 	"collect_area_size6": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-collect-area.svg",
 		"displayname": "Alcance de coleta",
 		"details": "Aumenta o alcance da coleta de XP em 5%!",
 		"level": "Level MAX",
@@ -1082,7 +1136,7 @@ const SHOP: Dictionary = {
 		"max_level": 5
 	},
 	"bonus_area_size": {
-		"icon": ICON_PATH + "icon-food.svg",
+		"icon": ICON_PATH + "icon-collect-area.svg",
 		"displayname": "Alcance",
 		"price": [200, 350, 500, 750, 1000],
 		"value": 0.05,
@@ -1103,14 +1157,14 @@ const SHOP: Dictionary = {
 		"max_level": 5
 	},
 	"bonus_crit_chance": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-chance.svg",
 		"displayname": "CritChance",
 		"price": [200, 350, 500, 750, 1000],
 		"value": 0.01,
 		"max_level": 5
 	},
 	"bonus_crit_multiplier": {
-		"icon": ICON_PATH + "icon-crit.svg",
+		"icon": ICON_PATH + "icon-crit-multiplier.svg",
 		"displayname": "CritMult",
 		"price": [200, 350, 500, 750, 1000],
 		"value": 0.04,

@@ -3,7 +3,7 @@ extends Node
 const PATH: String = "user://save_data.json"
 
 var levels_unlocked: Array[int] = [1]
-var essences_collected: int = 10000
+var essences_collected: int = 0
 var meta_upgrades: Dictionary = {
 	"bonus_health": {
 		"level": 0,
