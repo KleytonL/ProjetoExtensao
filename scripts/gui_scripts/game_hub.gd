@@ -3,11 +3,21 @@ class_name GameHub
 
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
+var is_mobile: bool = false
 
 func _ready() -> void:
 	Engine.time_scale = 1.0
+	if OS.has_feature("web"):
+		is_mobile = JavaScriptBridge.eval("navigator.maxTouchPoints > 0")
+	
 	if !MenuMusic.playing:
 		MenuMusic.play()
+	
+	if is_mobile:
+		for b in $VBoxContainer.get_children():
+			b.mouse_filter = MOUSE_FILTER_STOP
+		return
+	
 	$level_btn.grab_focus()
 
 func _on_level_btn_focus_entered() -> void:

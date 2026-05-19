@@ -15,4 +15,7 @@ func reload() -> void:
 func exit_game() -> void:
 	$AnimationPlayer.play("transition")
 	await  $AnimationPlayer.animation_finished
-	get_tree().quit()
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("window.close()")
+	else:
+		get_tree().quit()
