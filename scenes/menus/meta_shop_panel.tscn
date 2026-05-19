@@ -6,6 +6,78 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dx5y6"]
 texture = ExtResource("1_coevd")
 
+[sub_resource type="ImageTexture" id="ImageTexture_coevd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_coevd"]
+load_path = "res://.godot/imported/scroll-grabber.svg-07f919ddc1b212c192ad14f19c8a43f1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d6mib"]
+texture = SubResource("CompressedTexture2D_coevd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18wu2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeoog"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6mib"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5lo6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_coevd"]
+VScrollBar/icons/decrement = SubResource("ImageTexture_coevd")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_coevd")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_coevd")
+VScrollBar/icons/increment = SubResource("ImageTexture_coevd")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_coevd")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_coevd")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_d6mib")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_18wu2")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_yeoog")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_d6mib")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_b5lo6")
+
 [sub_resource type="Animation" id="Animation_dx5y6"]
 length = 0.001
 tracks/0/type = "value"
@@ -122,6 +194,7 @@ offset_left = 8.0
 offset_top = 18.0
 offset_right = 124.0
 offset_bottom = 130.0
+theme = SubResource("Theme_coevd")
 follow_focus = true
 horizontal_scroll_mode = 0
 

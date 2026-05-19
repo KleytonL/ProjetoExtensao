@@ -5,6 +5,7 @@ extends Control
 @onready var _click: AudioStreamPlayer = $ClickSFX
 
 func _ready() -> void:
+	Engine.time_scale = 1.0
 	if !MenuMusic.playing:
 		MenuMusic.play()
 	_start_btn.grab_focus()

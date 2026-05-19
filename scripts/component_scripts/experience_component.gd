@@ -37,6 +37,8 @@ func calculate_exp(exp_value: int = 0):
 				freeze_component.fade_in_freeze(0.01, 0.25)
 				await freeze_component.freeze_finished
 			await get_tree().process_frame
+			if GameLogic.is_dead:
+				return
 			upgrade_panel.level_up()
 			await upgrade_panel.panel_closed
 		else:

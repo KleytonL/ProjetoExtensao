@@ -555,6 +555,7 @@ shape = SubResource("CircleShape2D_g2els")
 libraries/ = SubResource("AnimationLibrary_y4r1p")
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=2019851261]
+layer = 0
 
 [node name="Control" type="Control" parent="GUI" unique_id=2098064748]
 layout_mode = 3

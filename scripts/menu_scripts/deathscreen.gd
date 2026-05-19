@@ -7,6 +7,7 @@ extends Control
 
 func _ready():
 	hide()
+	GameLogic.is_dead = false
 
 func calculate_essences() -> int:
 	var level_essences = GameLogic.holding_essences
@@ -29,6 +30,7 @@ func pause():
 	show()
 	get_tree().paused = true
 	GameLogic.can_pause = false
+	GameLogic.is_dead = true
 	_restart_btn.grab_focus()
 	SaveManager.essences_collected += calculate_essences()
 	SaveManager.save()
