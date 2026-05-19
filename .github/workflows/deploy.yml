@@ -23,14 +23,10 @@ jobs:
           cache: true
 
       - name: Copiar coi-serviceworker
-        run: cp coi-serviceworker.min.js build/web/
-
-      - name: Aplicar patch no index.html
-        run: |
-          sed -i 's|<head>|<head><script src="coi-serviceworker.min.js"></script>|' build/web/index.html
+        run: cp coi-serviceworker.min.js $GITHUB_WORKSPACE/build/web/
 
       - name: Deploy para GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: build/web
+          folder: $GITHUB_WORKSPACE/build/web
