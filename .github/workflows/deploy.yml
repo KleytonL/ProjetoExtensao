@@ -22,6 +22,15 @@ jobs:
           relative_project_path: ./
           cache: true
 
+      - name: Diagnostico - onde estao os arquivos
+        run: |
+          echo "=== GITHUB_WORKSPACE ==="
+          ls -la $GITHUB_WORKSPACE
+          echo "=== Procurando index.html ==="
+          find / -name "index.html" 2>/dev/null
+          echo "=== Procurando arquivos .pck ==="
+          find / -name "*.pck" 2>/dev/null
+
       - name: Copiar coi-serviceworker
         run: cp coi-serviceworker.min.js $GITHUB_WORKSPACE/build/web/
 
