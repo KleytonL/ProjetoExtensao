@@ -596,6 +596,56 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="MobileControls" type="Control" parent="GUI/Control" unique_id=6486913]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+
+[node name="Joystick" parent="GUI/Control/MobileControls" unique_id=1657593308 instance=ExtResource("33_rwgw8")]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(35, 100)
+
+[node name="ActionButtons" type="Control" parent="GUI/Control/MobileControls" unique_id=773070768]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+mouse_filter = 1
+
+[node name="AttackButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=964604135]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(-35, 80)
+scale = Vector2(0.75, 0.75)
+texture_normal = SubResource("AtlasTexture_kg8dr")
+texture_pressed = SubResource("AtlasTexture_7hprq")
+shape = SubResource("RectangleShape2D_kg8dr")
+action = "ui_attack"
+
+[node name="DashButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=683041510]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(-65, 100)
+scale = Vector2(0.75, 0.75)
+texture_normal = SubResource("AtlasTexture_2y0bl")
+texture_pressed = SubResource("AtlasTexture_yo76r")
+shape = SubResource("RectangleShape2D_kg8dr")
+action = "ui_dash"
+
+[node name="PauseButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=424843530]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(-20, 16)
+scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_igsco")
+texture_pressed = SubResource("AtlasTexture_1ce5c")
+shape = SubResource("RectangleShape2D_kg8dr")
+action = "ui_pause"
+
 [node name="HealthBar" parent="GUI/Control" unique_id=1333183330 node_paths=PackedStringArray("health_component") instance=ExtResource("6_erpy8")]
 layout_mode = 1
 anchors_preset = -1
@@ -651,52 +701,6 @@ scale = Vector2(0.5, 0.5)
 [node name="UpgradePanel" parent="GUI/Control" unique_id=216387890 node_paths=PackedStringArray("freeze_component") instance=ExtResource("21_pygui")]
 layout_mode = 1
 freeze_component = NodePath("../../../FrameFreezeComponent")
-
-[node name="MobileControls" type="Control" parent="GUI/Control" unique_id=6486913]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-mouse_filter = 1
-
-[node name="Joystick" parent="GUI/Control/MobileControls" unique_id=1657593308 instance=ExtResource("33_rwgw8")]
-position = Vector2(35, 100)
-
-[node name="ActionButtons" type="Control" parent="GUI/Control/MobileControls" unique_id=773070768]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-mouse_filter = 1
-
-[node name="AttackButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=964604135]
-position = Vector2(-35, 80)
-scale = Vector2(0.75, 0.75)
-texture_normal = SubResource("AtlasTexture_kg8dr")
-texture_pressed = SubResource("AtlasTexture_7hprq")
-shape = SubResource("RectangleShape2D_kg8dr")
-action = "ui_attack"
-
-[node name="DashButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=683041510]
-position = Vector2(-65, 100)
-scale = Vector2(0.75, 0.75)
-texture_normal = SubResource("AtlasTexture_2y0bl")
-texture_pressed = SubResource("AtlasTexture_yo76r")
-shape = SubResource("RectangleShape2D_kg8dr")
-action = "ui_dash"
-
-[node name="PauseButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=424843530]
-position = Vector2(-20, 16)
-scale = Vector2(0.5, 0.5)
-texture_normal = SubResource("AtlasTexture_igsco")
-texture_pressed = SubResource("AtlasTexture_1ce5c")
-shape = SubResource("RectangleShape2D_kg8dr")
-action = "ui_pause"
 
 [connection signal="update_healthbar" from="HealthComponent" to="GUI/Control/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="update_experiencebar" from="ExperienceComponent" to="GUI/Control/ExperienceBar" method="_on_experience_component_update_experiencebar"]
