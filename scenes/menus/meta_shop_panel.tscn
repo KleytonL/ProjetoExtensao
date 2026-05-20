@@ -14,30 +14,6 @@ load_path = "res://.godot/imported/scroll-grabber.svg-07f919ddc1b212c192ad14f19c
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d6mib"]
 texture = SubResource("CompressedTexture2D_coevd")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18wu2"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeoog"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.75, 0.75, 0.75, 0.75)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 6
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6mib"]
 content_margin_left = 4.0
 content_margin_right = 4.0
@@ -73,8 +49,8 @@ VScrollBar/icons/increment = SubResource("ImageTexture_coevd")
 VScrollBar/icons/increment_highlight = SubResource("ImageTexture_coevd")
 VScrollBar/icons/increment_pressed = SubResource("ImageTexture_coevd")
 VScrollBar/styles/grabber = SubResource("StyleBoxTexture_d6mib")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_18wu2")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_yeoog")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_d6mib")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_d6mib")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_d6mib")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_b5lo6")
 

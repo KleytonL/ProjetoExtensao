@@ -25,5 +25,5 @@ func get_random_target() -> Vector2:
 func get_random_position() -> Vector2:
 	var screen_size: Vector2 = get_viewport().get_visible_rect().size / 2
 	var screen_center: Vector2 = get_viewport().get_camera_2d().get_screen_center_position()
-	var random_pos: Vector2 = Vector2(randf_range(-screen_size.x, screen_size.x), randf_range(-screen_size.y, screen_size.y))
+	var random_pos: Vector2 = Vector2(randf_range(-screen_size.x, screen_size.x), randf_range(-screen_size.y, screen_size.y)) * 0.6
 	return screen_center + random_pos

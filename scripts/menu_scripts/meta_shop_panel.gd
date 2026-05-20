@@ -30,8 +30,10 @@ func out_of_focus() -> void:
 
 func populate_grid() -> void:
 	for i in UpgradeDatabase.SHOP:
-		var option_choice = _shop_options.instantiate()
+		var option_choice: TextureButton = _shop_options.instantiate()
 		option_choice.item = i
+		if UserConfig.is_mobile:
+			option_choice.mouse_filter = MOUSE_FILTER_STOP
 		_grid.add_child(option_choice)
 
 func update_values() -> void:

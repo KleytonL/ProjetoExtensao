@@ -29,6 +29,7 @@ animations = [{
 }]
 
 [node name="RadianceArea" type="Area2D" unique_id=1422186468]
+modulate = Color(1, 1, 1, 0.47058824)
 z_index = -1
 scale = Vector2(0.1, 0.1)
 collision_layer = 2

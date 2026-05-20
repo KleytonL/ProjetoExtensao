@@ -22,7 +22,6 @@ func process_physics(_delta: float) -> State:
 		if Input.get_axis("ui_left", "ui_right") or Input.get_axis("ui_up", "ui_down"):
 			return move_state
 		return idle_state
-	
 	parent.move_and_slide()
 	return null
 
@@ -35,6 +34,6 @@ func calculate_movement() -> void:
 	var direction: Vector2 = Vector2(direction_x, direction_y).normalized()
 	
 	if !direction.x and !direction.y:
-		parent.velocity = Vector2(dash_speed*3, 0) if parent.sprite.scale.x == 1 else Vector2(-dash_speed*3, 0)
+		parent.velocity = Vector2(-dash_speed*3, 0) if parent.sprite.flip_h else Vector2(dash_speed*3, 0)
 	elif direction.x or direction.y:
 		parent.velocity = Vector2(direction.x * (dash_speed * 2.5), direction.y * (dash_speed * 2.5))

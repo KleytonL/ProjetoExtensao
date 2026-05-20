@@ -1,11 +1,15 @@
 extends Control
 
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
+@onready var _btn_container : VBoxContainer = $PanelContainer/VBoxContainer
 @onready var _restart_btn: TextureButton = $PanelContainer/VBoxContainer/restart_btn
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
 
 func _ready():
+	if UserConfig.is_mobile:
+		for b in _btn_container.get_children():
+			b.mouse_filter = MOUSE_FILTER_STOP
 	hide()
 	GameLogic.is_dead = false
 

@@ -1,10 +1,14 @@
 extends Control
 
 @onready var _resume_btn : TextureButton = $PanelContainer/VBoxContainer/resume_btn
+@onready var _btn_container : VBoxContainer = $PanelContainer/VBoxContainer
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
 
 func _ready():
+	if UserConfig.is_mobile:
+		for b in _btn_container.get_children():
+			b.mouse_filter = MOUSE_FILTER_STOP
 	hide()
 
 func resume():

@@ -87,7 +87,10 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../voltar_btn")
 focus_neighbor_bottom = NodePath("../shop_btn")
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_3086l")
+texture_pressed = SubResource("AtlasTexture_lkju2")
+texture_hover = SubResource("AtlasTexture_lkju2")
 texture_focused = SubResource("AtlasTexture_lkju2")
 
 [node name="shop_btn" type="TextureButton" parent="." unique_id=862277827]
@@ -103,7 +106,10 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../level_btn")
 focus_neighbor_bottom = NodePath("../voltar_btn")
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_qcwfc")
+texture_pressed = SubResource("AtlasTexture_w4x1m")
+texture_hover = SubResource("AtlasTexture_w4x1m")
 texture_focused = SubResource("AtlasTexture_w4x1m")
 
 [node name="voltar_btn" type="TextureButton" parent="." unique_id=1683050788]
@@ -119,6 +125,7 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../shop_btn")
 focus_neighbor_bottom = NodePath("../level_btn")
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_fyxmq")
 texture_pressed = SubResource("AtlasTexture_ga8wb")
 texture_hover = SubResource("AtlasTexture_gbrnv")

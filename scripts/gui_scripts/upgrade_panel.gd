@@ -21,8 +21,14 @@ func level_up():
 		option_choice.item = get_random_item()
 		_grid.add_child(option_choice)
 	
-	_grid.get_child(0).grab_focus()
 	get_tree().paused = true
+	
+	if UserConfig.is_mobile:
+		for b in _grid.get_children():
+			b.mouse_filter = MOUSE_FILTER_STOP
+		return
+	
+	_grid.get_child(0).grab_focus()
 
 func get_random_item():
 	var weapons_collected: int = count_by_type("weapon")

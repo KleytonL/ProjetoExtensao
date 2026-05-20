@@ -10,6 +10,8 @@ class_name Player
 @export var sprite: Sprite2D
 
 func _ready():
+	if UserConfig.is_mobile:
+		$GUI/Control/MobileControls.visible = true
 	GameLogic.run_reset()
 	state_machine.init(self)
 

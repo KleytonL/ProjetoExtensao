@@ -5,6 +5,9 @@ var focused: bool = false
 @onready var _grid: VBoxContainer = $Grid
 
 func _ready() -> void:
+	if UserConfig.is_mobile:
+		for b in _grid.get_children():
+			b.mouse_filter = MOUSE_FILTER_STOP
 	if 2 not in SaveManager.levels_unlocked:
 		$Grid/level_two_button.focus_mode = FOCUS_NONE
 		$Grid/level_two_button.modulate = Color(0.5, 0.5, 0.5, 1.0)

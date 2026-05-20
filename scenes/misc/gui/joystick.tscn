@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cmfmkqjh2hgib"]
+
+[ext_resource type="Script" uid="uid://b1qe4wqljl4n0" path="res://scripts/gui_scripts/joystick.gd" id="1_rnve2"]
+[ext_resource type="Script" uid="uid://b3pd5ka1jo2d8" path="res://scripts/gui_scripts/joystick_knob.gd" id="2_83rvk"]
+[ext_resource type="Texture2D" uid="uid://vi4gm1sq0hkx" path="res://resources/gui/mobile-ui.svg" id="2_c4cvb"]
+
+[node name="Joystick" type="Node2D" unique_id=1657593308]
+script = ExtResource("1_rnve2")
+
+[node name="Ring" type="Sprite2D" parent="." unique_id=1297462031]
+texture = ExtResource("2_c4cvb")
+hframes = 2
+vframes = 4
+
+[node name="Knob" type="Sprite2D" parent="." unique_id=419353355]
+texture = ExtResource("2_c4cvb")
+hframes = 2
+vframes = 4
+frame = 1
+script = ExtResource("2_83rvk")
+
+[node name="Button" type="Button" parent="." unique_id=2033385534]
+modulate = Color(1, 1, 1, 0)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="button_down" from="Button" to="Knob" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="Knob" method="_on_button_button_up"]

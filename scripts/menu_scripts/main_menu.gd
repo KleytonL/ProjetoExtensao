@@ -4,21 +4,16 @@ extends Control
 @onready var _exit_btn: TextureButton = $VBoxContainer/exit_btn
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
-var is_mobile: bool = false
-var is_pwa: bool = false
 
 func _ready() -> void:
 	Engine.time_scale = 1.0
-	if OS.has_feature("web"):
-		is_mobile = JavaScriptBridge.eval("navigator.maxTouchPoints > 0")
-		is_pwa = JavaScriptBridge.eval("window.matchMedia('(display-mode: standalone)').matches")
 	
 	if !MenuMusic.playing:
 		MenuMusic.play()
 	
-	_exit_btn.visible = is_pwa
+	_exit_btn.visible = UserConfig.is_pwa
 	
-	if is_mobile:
+	if UserConfig.is_mobile:
 		for b in $VBoxContainer.get_children():
 			b.mouse_filter = MOUSE_FILTER_STOP
 		return

@@ -183,8 +183,10 @@ offset_bottom = -0.005004883
 
 [node name="level_one_button" type="TextureButton" parent="Grid" unique_id=1785218811]
 layout_mode = 2
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_u8glw")
 texture_pressed = SubResource("AtlasTexture_ue01d")
+texture_hover = SubResource("AtlasTexture_67mj3")
 texture_focused = SubResource("AtlasTexture_67mj3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Grid/level_one_button" unique_id=1880133494]
@@ -246,8 +248,10 @@ text = "Desbloqueia: Torre"
 
 [node name="level_two_button" type="TextureButton" parent="Grid" unique_id=261152513]
 layout_mode = 2
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_2wbk4")
 texture_pressed = SubResource("AtlasTexture_mtei6")
+texture_hover = SubResource("AtlasTexture_v1x53")
 texture_focused = SubResource("AtlasTexture_v1x53")
 
 [node name="Sprite2D" type="Sprite2D" parent="Grid/level_two_button" unique_id=1433483454]
@@ -309,8 +313,10 @@ text = "Desbloqueia: ???"
 
 [node name="level_three_button" type="TextureButton" parent="Grid" unique_id=1937409025]
 layout_mode = 2
+mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_yhct3")
 texture_pressed = SubResource("AtlasTexture_363pq")
+texture_hover = SubResource("AtlasTexture_v1x53")
 texture_focused = SubResource("AtlasTexture_pw4n2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Grid/level_three_button" unique_id=1922177900]

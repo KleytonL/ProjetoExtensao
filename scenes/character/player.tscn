@@ -32,6 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://ctxcex2lgbh43" path="res://scenes/misc/gui/dash_progress.tscn" id="27_8sb7f"]
 [ext_resource type="PackedScene" uid="uid://d23d2wnu770ps" path="res://scenes/misc/gui/level_enemies_defeated.tscn" id="28_2w14l"]
 [ext_resource type="PackedScene" uid="uid://dwdfogcxudg71" path="res://scenes/misc/gui/item_grid.tscn" id="28_j01l2"]
+[ext_resource type="PackedScene" uid="uid://cmfmkqjh2hgib" path="res://scenes/misc/gui/joystick.tscn" id="33_rwgw8"]
+[ext_resource type="Texture2D" uid="uid://vi4gm1sq0hkx" path="res://resources/gui/mobile-ui.svg" id="34_kg8dr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 16)
@@ -375,6 +377,33 @@ _data = {
 &"move_animation": SubResource("Animation_dqkch")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg8dr"]
+atlas = ExtResource("34_kg8dr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hprq"]
+atlas = ExtResource("34_kg8dr")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg8dr"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y0bl"]
+atlas = ExtResource("34_kg8dr")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo76r"]
+atlas = ExtResource("34_kg8dr")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igsco"]
+atlas = ExtResource("34_kg8dr")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ce5c"]
+atlas = ExtResource("34_kg8dr")
+region = Rect2(32, 96, 32, 32)
+
 [node name="Player" type="CharacterBody2D" unique_id=1155197298 node_paths=PackedStringArray("animations", "state_machine", "attack_range", "experience", "stats", "health", "sprite") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_onrkg")
@@ -564,6 +593,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" parent="GUI/Control" unique_id=1333183330 node_paths=PackedStringArray("health_component") instance=ExtResource("6_erpy8")]
@@ -598,6 +628,8 @@ anchor_top = 0.037037037
 anchor_right = 0.5375
 anchor_bottom = 0.08148148
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 
 [node name="LevelEnemiesDefeated" parent="GUI/Control" unique_id=2008297747 instance=ExtResource("28_2w14l")]
 layout_mode = 1
@@ -605,6 +637,8 @@ offset_left = -10.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = 15.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 
 [node name="ItemGrid" parent="GUI/Control" unique_id=1964498297 instance=ExtResource("28_j01l2")]
 layout_mode = 0
@@ -617,6 +651,52 @@ scale = Vector2(0.5, 0.5)
 [node name="UpgradePanel" parent="GUI/Control" unique_id=216387890 node_paths=PackedStringArray("freeze_component") instance=ExtResource("21_pygui")]
 layout_mode = 1
 freeze_component = NodePath("../../../FrameFreezeComponent")
+
+[node name="MobileControls" type="Control" parent="GUI/Control" unique_id=6486913]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+
+[node name="Joystick" parent="GUI/Control/MobileControls" unique_id=1657593308 instance=ExtResource("33_rwgw8")]
+position = Vector2(35, 100)
+
+[node name="ActionButtons" type="Control" parent="GUI/Control/MobileControls" unique_id=773070768]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+mouse_filter = 1
+
+[node name="AttackButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=964604135]
+position = Vector2(-35, 80)
+scale = Vector2(0.75, 0.75)
+texture_normal = SubResource("AtlasTexture_kg8dr")
+texture_pressed = SubResource("AtlasTexture_7hprq")
+shape = SubResource("RectangleShape2D_kg8dr")
+action = "ui_attack"
+
+[node name="DashButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=683041510]
+position = Vector2(-65, 100)
+scale = Vector2(0.75, 0.75)
+texture_normal = SubResource("AtlasTexture_2y0bl")
+texture_pressed = SubResource("AtlasTexture_yo76r")
+shape = SubResource("RectangleShape2D_kg8dr")
+action = "ui_dash"
+
+[node name="PauseButton" type="TouchScreenButton" parent="GUI/Control/MobileControls/ActionButtons" unique_id=424843530]
+position = Vector2(-20, 16)
+scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_igsco")
+texture_pressed = SubResource("AtlasTexture_1ce5c")
+shape = SubResource("RectangleShape2D_kg8dr")
+action = "ui_pause"
 
 [connection signal="update_healthbar" from="HealthComponent" to="GUI/Control/HealthBar" method="_on_health_component_update_healthbar"]
 [connection signal="update_experiencebar" from="ExperienceComponent" to="GUI/Control/ExperienceBar" method="_on_experience_component_update_experiencebar"]

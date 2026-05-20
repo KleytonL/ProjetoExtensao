@@ -15,4 +15,8 @@ func _on_tick_timer_timeout() -> void:
 		_on_area_entered(area)
 
 func _on_duration_timer_timeout() -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2(0.1, 0.1), 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.play()
+	await tween.finished
 	queue_free()

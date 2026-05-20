@@ -24,6 +24,8 @@ func _set_popup(is_crit: bool) -> void:
 	var duration: float = 0.7 if is_crit else 0.5
 	
 	var tween: Tween = create_tween()
-	tween.tween_property(_label, "scale", Vector2(1.0, 1.0), 0.35).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(_label, "scale", Vector2(1.0, 1.0), 0.35).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween.set_parallel()
+	tween.tween_property(_label, "rotation", 0, 0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
 	await get_tree().create_timer(duration).timeout
 	queue_free()

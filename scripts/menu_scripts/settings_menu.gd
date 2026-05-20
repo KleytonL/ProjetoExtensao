@@ -1,5 +1,6 @@
 extends Control
 
+@onready var _btn_container : VBoxContainer = $VBoxContainer
 @onready var _voltar_btn: TextureButton = $VBoxContainer/voltar_btn
 @onready var sfx_toggle: CheckButton = $VBoxContainer/sfx_toggle
 @onready var bgm_toggle: CheckButton = $VBoxContainer/bgm_toggle
@@ -13,6 +14,12 @@ func _ready() -> void:
 	bgm_toggle.button_pressed = UserConfig.bgm_enabled
 	sfx_slider.value = UserConfig.sfx_volume
 	bgm_slider.value = UserConfig.bgm_volume
+	
+	if UserConfig.is_mobile:
+		for b in _btn_container.get_children():
+			b.mouse_filter = MOUSE_FILTER_STOP
+		return
+	
 	_voltar_btn.grab_focus()
 
 func _on_sfx_toggle_focus_entered() -> void:

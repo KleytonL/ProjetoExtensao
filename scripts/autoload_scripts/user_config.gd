@@ -8,7 +8,13 @@ var sfx_volume: float = 1.0
 var bgm_volume: float = 1.0
 var input_map: Dictionary = {}
 
+var is_mobile: bool = false
+var is_pwa: bool = false
+
 func _ready() -> void:
+	if OS.has_feature("web"):
+		is_mobile = JavaScriptBridge.eval("navigator.maxTouchPoints > 0")
+		is_pwa = JavaScriptBridge.eval("window.matchMedia('(display-mode: standalone)').matches")
 	load_config()
 	apply_audio()
 

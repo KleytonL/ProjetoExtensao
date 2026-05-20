@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bm0mdomcycmjh"]
 
 [ext_resource type="Script" uid="uid://86abdhq0o7r4" path="res://scripts/weapon_scripts/blazing_ground.gd" id="1_cnybf"]
-[ext_resource type="Texture2D" uid="uid://bjg1b53dlduv" path="res://icon.svg" id="2_busql"]
+[ext_resource type="Texture2D" uid="uid://cgj11bdcw2xhj" path="res://resources/spritesheets/sprite-blazingarea.svg" id="2_busql"]
+[ext_resource type="Texture2D" uid="uid://bo4vgduac87ax" path="res://resources/spritesheets/sprite-fire.svg" id="3_et2ey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnybf"]
 radius = 32.0
@@ -16,10 +17,27 @@ script = ExtResource("1_cnybf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471668288]
 shape = SubResource("CircleShape2D_cnybf")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=113939119]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.35, 0.35)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1828581054]
+modulate = Color(1, 1, 1, 0.49019608)
+scale = Vector2(2, 2)
 texture = ExtResource("2_busql")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=705729909]
+amount = 64
+texture = ExtResource("3_et2ey")
+lifetime = 0.6
+randomness = 1.0
+lifetime_randomness = 0.25
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 36.0
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 45.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
 
 [node name="TickTimer" type="Timer" parent="." unique_id=1998362031]
 autostart = true
