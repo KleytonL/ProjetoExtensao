@@ -21,7 +21,15 @@ func level_up():
 		option_choice.item = get_random_item()
 		_grid.add_child(option_choice)
 	
+	for i in _grid.get_children():
+		i.disabled = true
+	
 	get_tree().paused = true
+	
+	await $AnimationPlayer.animation_finished
+	
+	for i in _grid.get_children():
+		i.disabled = false
 	
 	if UserConfig.is_mobile:
 		for b in _grid.get_children():

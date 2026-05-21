@@ -49,7 +49,6 @@ func _on_restart_btn_focus_entered() -> void:
 
 func _on_restart_btn_pressed() -> void:
 	_click.play()
-	resume()
 	LoadingScreen.reload()
 
 func _on_exit_btn_focus_entered() -> void:
