@@ -2,6 +2,7 @@ extends Node
 
 const PATH: String = "user://save_data.json"
 
+var first_time_player: bool = true
 var levels_unlocked: Array[int] = [1]
 var essences_collected: int = 0
 var meta_upgrades: Dictionary = {
@@ -75,6 +76,7 @@ func load_save() -> void:
 	var file = FileAccess.open(PATH, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
 	if data:
+		first_time_player = data.get("first_time_player", true)
 		levels_unlocked.assign(data.get("levels_unlocked", [1]))
 		essences_collected = data.get("essences_collected", 0)
 		meta_upgrades = data.get("meta_upgrades", {})
@@ -86,6 +88,7 @@ func save() -> void:
 	file.store_string(
 		JSON.stringify(
 			{
+			"first_time_player": first_time_player,
 			"levels_unlocked": levels_unlocked,
 			"essences_collected": essences_collected,
 			"meta_upgrades": meta_upgrades,

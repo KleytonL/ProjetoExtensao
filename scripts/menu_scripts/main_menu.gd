@@ -13,6 +13,11 @@ func _ready() -> void:
 	
 	_exit_btn.visible = UserConfig.is_pwa
 	
+	if SaveManager.first_time_player:
+		await $TutorialPanel.panel_closed
+		SaveManager.first_time_player = false
+		SaveManager.save()
+	
 	if UserConfig.is_mobile:
 		for b in $VBoxContainer.get_children():
 			b.mouse_filter = MOUSE_FILTER_STOP

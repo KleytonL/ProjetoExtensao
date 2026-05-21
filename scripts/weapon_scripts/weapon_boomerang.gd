@@ -71,4 +71,4 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			projectile_quantity = 3 + player.stats.bonus_projectile
 			attack_speed = 6.0 - player.stats.bonus_attack_speed
 			instance.damage = 3
-			instance.projectile_size = 1.1 * player.stats.bonus_projectile_size
+			instance.projectile_size = 1.05 * player.stats.bonus_projectile_size

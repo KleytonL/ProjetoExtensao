@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/gui/spritesheet-ui.svg" id="3_wu84c"]
 [ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="4_imvie"]
 [ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="5_ng0o5"]
+[ext_resource type="PackedScene" uid="uid://c6rl6tybamxic" path="res://scenes/menus/tutorial_panel.tscn" id="6_ng0o5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
 atlas = ExtResource("3_wu84c")
@@ -183,6 +184,9 @@ bus = &"SoundEffects"
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1045478318]
 stream = ExtResource("5_ng0o5")
 bus = &"SoundEffects"
+
+[node name="TutorialPanel" parent="." unique_id=1044957469 instance=ExtResource("6_ng0o5")]
+layout_mode = 1
 
 [connection signal="focus_entered" from="VBoxContainer/play_btn" to="." method="_on_play_btn_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]

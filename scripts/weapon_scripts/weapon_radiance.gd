@@ -32,26 +32,26 @@ func update_radiance_instance() -> void:
 func calculate_current_level(instance: Radiance) -> void:
 	match current_level:
 		1:
-			instance.damage = 0.5
+			instance.damage = 1.0
 			instance.tick_speed = 1.5 - player.stats.bonus_attack_speed
 			instance.area_size = 1.0 * player.stats.bonus_projectile_size
 		2:
-			instance.damage = 0.5
+			instance.damage = 1.25
 			instance.tick_speed = 1.4 - player.stats.bonus_attack_speed
 			instance.area_size = 1.05 * player.stats.bonus_projectile_size
 		3:
-			instance.damage = 1.0
+			instance.damage = 1.5
 			instance.tick_speed = 1.3 - player.stats.bonus_attack_speed
 			instance.area_size = 1.1 * player.stats.bonus_projectile_size
 		4:
-			instance.damage = 1.0
+			instance.damage = 1.75
 			instance.tick_speed = 1.2 - player.stats.bonus_attack_speed
 			instance.area_size = 1.25 * player.stats.bonus_projectile_size
 		5:
-			instance.damage = 1.5
+			instance.damage = 2.0
 			instance.tick_speed = 1.1 - player.stats.bonus_attack_speed
 			instance.area_size = 1.25 * player.stats.bonus_projectile_size
 		6:
-			instance.damage = 1.5
+			instance.damage = 2.5
 			instance.tick_speed = 1.0 - player.stats.bonus_attack_speed
 			instance.area_size = 1.3 * player.stats.bonus_projectile_size

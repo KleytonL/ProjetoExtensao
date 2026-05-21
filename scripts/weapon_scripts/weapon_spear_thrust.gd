@@ -31,38 +31,38 @@ func _on_recharge_timer_timeout() -> void:
 func calculate_current_level(instance: SpearThrust) -> void:
 	match current_level:
 		1:
-			instance.damage = 1
+			instance.damage = 1.5
 			instance.duration = 0.5
 			instance.spear_size = 0.75 * player.stats.bonus_projectile_size
 			recharge_speed = 6.0 - player.stats.bonus_attack_speed
 			spear_quantity = 1 + player.stats.bonus_projectile
 		2:
-			instance.damage = 1
+			instance.damage = 1.5
 			instance.duration = 0.5
 			instance.spear_size = 0.85 * player.stats.bonus_projectile_size
 			recharge_speed = 6.0 - player.stats.bonus_attack_speed
-			spear_quantity = 1 + player.stats.bonus_projectile
+			spear_quantity = 2 + player.stats.bonus_projectile
 		3:
-			instance.damage = 1.5
-			instance.duration = 1.0
+			instance.damage = 2
+			instance.duration = 0.75
 			instance.spear_size = 1.0 * player.stats.bonus_projectile_size
 			recharge_speed = 6.0 - player.stats.bonus_attack_speed
 			spear_quantity = 2 + player.stats.bonus_projectile
 		4:
-			instance.damage = 1.5
+			instance.damage = 2
+			instance.duration = 0.75
+			instance.spear_size = 1.0 * player.stats.bonus_projectile_size
+			recharge_speed = 4.5 - player.stats.bonus_attack_speed
+			spear_quantity = 3 + player.stats.bonus_projectile
+		5:
+			instance.damage = 3
 			instance.duration = 1.0
 			instance.spear_size = 1.0 * player.stats.bonus_projectile_size
 			recharge_speed = 4.5 - player.stats.bonus_attack_speed
-			spear_quantity = 2 + player.stats.bonus_projectile
-		5:
-			instance.damage = 3
-			instance.duration = 1.5
-			instance.spear_size = 1.0 * player.stats.bonus_projectile_size
-			recharge_speed = 4.5 - player.stats.bonus_attack_speed
-			spear_quantity = 2 + player.stats.bonus_projectile
+			spear_quantity = 3 + player.stats.bonus_projectile
 		6:
-			instance.damage = 3
-			instance.duration = 1.5
+			instance.damage = 4
+			instance.duration = 1.0
 			instance.spear_size = 1.1 * player.stats.bonus_projectile_size
 			recharge_speed = 4.0 - player.stats.bonus_attack_speed
-			spear_quantity = 3 + player.stats.bonus_projectile
+			spear_quantity = 4 + player.stats.bonus_projectile

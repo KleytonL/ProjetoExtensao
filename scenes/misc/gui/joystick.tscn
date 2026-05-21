@@ -21,10 +21,10 @@ script = ExtResource("2_83rvk")
 
 [node name="Button" type="Button" parent="." unique_id=2033385534]
 modulate = Color(1, 1, 1, 0)
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 
 [connection signal="button_down" from="Button" to="Knob" method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="Knob" method="_on_button_button_up"]

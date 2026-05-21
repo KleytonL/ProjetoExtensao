@@ -35,9 +35,9 @@ func _on_attack_timer_timeout() -> void:
 func calculate_current_level(instance: CardProjectile) -> void:
 	match current_level:
 		1:
-			instance.health = 2
+			instance.health = 1
 			instance.projectile_speed = 75
-			projectile_quantity = 3 + player.stats.bonus_projectile
+			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 3.0 - player.stats.bonus_attack_speed
 			instance.damage = 1
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
@@ -46,33 +46,33 @@ func calculate_current_level(instance: CardProjectile) -> void:
 			instance.projectile_speed = 75
 			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 3.0 - player.stats.bonus_attack_speed
-			instance.damage = 1
+			instance.damage = 1.5
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		3:
 			instance.health = 2
 			instance.projectile_speed = 75
-			projectile_quantity = 2 + player.stats.bonus_projectile
-			attack_speed = 3.0 - player.stats.bonus_attack_speed
-			instance.damage = 1
+			projectile_quantity = 3 + player.stats.bonus_projectile
+			attack_speed = 2.75 - player.stats.bonus_attack_speed
+			instance.damage = 3
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		4:
-			instance.health = 2
+			instance.health = 3
 			instance.projectile_speed = 75
 			projectile_quantity = 3 + player.stats.bonus_projectile
-			attack_speed = 3.0 - player.stats.bonus_attack_speed
-			instance.damage = 1
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
+			attack_speed = 2.75 - player.stats.bonus_attack_speed
+			instance.damage = 3
+			instance.projectile_size = 1.01 * player.stats.bonus_projectile_size
 		5:
-			instance.health = 2
-			instance.projectile_speed = 100
-			projectile_quantity = 3 + player.stats.bonus_projectile
-			attack_speed = 2.5 - player.stats.bonus_attack_speed
-			instance.damage = 1
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
-		6: 
 			instance.health = 3
 			instance.projectile_speed = 100
-			projectile_quantity = 5 + player.stats.bonus_projectile
+			projectile_quantity = 4 + player.stats.bonus_projectile
 			attack_speed = 2.5 - player.stats.bonus_attack_speed
-			instance.damage = 7
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
+			instance.damage = 4
+			instance.projectile_size = 1.01 * player.stats.bonus_projectile_size
+		6: 
+			instance.health = 5
+			instance.projectile_speed = 100
+			projectile_quantity = 4 + player.stats.bonus_projectile
+			attack_speed = 2.0 - player.stats.bonus_attack_speed
+			instance.damage = 4
+			instance.projectile_size = 1.01 * player.stats.bonus_projectile_size

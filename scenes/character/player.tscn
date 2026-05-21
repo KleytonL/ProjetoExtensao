@@ -665,6 +665,7 @@ mouse_filter = 1
 
 [node name="Joystick" parent="GUI/Control/MobileControls" unique_id=1657593308 instance=ExtResource("33_rwgw8")]
 position = Vector2(35, 100)
+scale = Vector2(1.5, 1.5)
 
 [node name="ActionButtons" type="Control" parent="GUI/Control/MobileControls" unique_id=773070768]
 layout_mode = 1
