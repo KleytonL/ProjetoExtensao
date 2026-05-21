@@ -132,6 +132,14 @@ texture_pressed = SubResource("AtlasTexture_ga8wb")
 texture_hover = SubResource("AtlasTexture_gbrnv")
 texture_focused = SubResource("AtlasTexture_tn3rt")
 
+[node name="TutorialPanel" parent="." unique_id=1044957469 instance=ExtResource("8_3086l")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=1425537415]
 stream = ExtResource("3_tn3rt")
 bus = &"SoundEffects"
@@ -139,9 +147,6 @@ bus = &"SoundEffects"
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=104244330]
 stream = ExtResource("4_8mg56")
 bus = &"SoundEffects"
-
-[node name="TutorialPanel" parent="." unique_id=1044957469 instance=ExtResource("8_3086l")]
-layout_mode = 1
 
 [connection signal="focus_entered" from="level_btn" to="." method="_on_level_btn_focus_entered"]
 [connection signal="focus_exited" from="level_btn" to="." method="_on_level_btn_focus_exited"]
