@@ -38,25 +38,25 @@ func calculate_current_level(instance: BlazingGround) -> void:
 		2:
 			area_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 8.5 - player.stats.bonus_attack_speed
-			instance.damage = 1
+			instance.damage = 1.5
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		3:
 			area_quantity = 2 + player.stats.bonus_projectile
-			attack_speed = 8.5 - player.stats.bonus_attack_speed
-			instance.damage = 1.5
+			attack_speed = 7 - player.stats.bonus_attack_speed
+			instance.damage = 2
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		4:
 			area_quantity = 3 + player.stats.bonus_projectile
-			attack_speed = 8.5 - player.stats.bonus_attack_speed
-			instance.damage = 1.5
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
+			attack_speed = 5.5 - player.stats.bonus_attack_speed
+			instance.damage = 2
+			instance.projectile_size = 1.05 * player.stats.bonus_projectile_size
 		5:
 			area_quantity = 3 + player.stats.bonus_projectile
-			attack_speed = 2.5 - player.stats.bonus_attack_speed
-			instance.damage = 2
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
+			attack_speed = 5.5 - player.stats.bonus_attack_speed
+			instance.damage = 2.5
+			instance.projectile_size = 1.05 * player.stats.bonus_projectile_size
 		6: 
-			area_quantity = 5 + player.stats.bonus_projectile
-			attack_speed = 2.5 - player.stats.bonus_attack_speed
-			instance.damage = 2
-			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
+			area_quantity = 3 + player.stats.bonus_projectile
+			attack_speed = 4 - player.stats.bonus_attack_speed
+			instance.damage = 2.5
+			instance.projectile_size = 1.05 * player.stats.bonus_projectile_size

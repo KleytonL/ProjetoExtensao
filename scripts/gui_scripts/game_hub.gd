@@ -14,6 +14,7 @@ func _ready() -> void:
 		for b in self.get_children():
 			if b is TextureButton:
 				b.mouse_filter = MOUSE_FILTER_STOP
+		_on_level_btn_focus_entered()
 		return
 	
 	$level_btn.grab_focus()
