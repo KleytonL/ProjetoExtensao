@@ -10,6 +10,7 @@ func _ready() -> void:
 	if SaveManager.first_time_player:
 		self.visible = true
 		_animation.play("default_animation")
+		await _animation.animation_finished
 		is_active = true
 
 func _process(_delta: float) -> void:

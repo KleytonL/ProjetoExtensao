@@ -2,39 +2,44 @@ extends Control
 class_name VictoryScreen
 
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
-@onready var _restart_btn: TextureButton = $PanelContainer/VBoxContainer/restart_btn
-@onready var _btn_container : VBoxContainer = $PanelContainer/VBoxContainer
+@onready var _restart_btn: TextureButton = $PanelContainer/HBoxContainer/restart_btn
+@onready var _btn_container : HBoxContainer = $PanelContainer/HBoxContainer
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
 
 func _ready():
-	if UserConfig.is_mobile:
-		for b in _btn_container.get_children():
-			b.mouse_filter = MOUSE_FILTER_STOP
 	hide()
 
 func calculate_essences(world_level: int) -> int:
-	var level_essences: int = GameLogic.holding_essences + (100 * world_level)
+	var level_base: int = 150 * world_level
+	var level_essences: int = GameLogic.holding_essences
 	@warning_ignore("narrowing_conversion")
-	var converted_exp: int = _player.experience.total_experience * 0.01
+	var converted_exp: int = _player.experience.total_experience * 0.5
 	@warning_ignore("narrowing_conversion")
-	var converted_kill: int = GameLogic.enemies_defeated * 0.05
-	var essences = level_essences + (converted_exp * converted_kill)
-	$InfoLabel.text = str(
-		"Fase Concluída!
-		 - Essências -
-		Bonus de fase: ", level_essences, "
-		Adquiridas: ", GameLogic.holding_essences,"
-		1% XP: ", converted_exp ," * 5% Kill Bonus: ", converted_kill,"
-		Total: ", essences
+	var converted_kill: int = GameLogic.enemies_defeated * 1.5
+	var essences = level_essences + converted_exp + converted_kill
+	$PanelContainer/Sprite2D/InfoText.text = str(
+		"[center][b]Você Venceu![/b][/center]\n",
+		"[center]- Essências -[/center]\n",
+		"\nBonus de vitória: ", level_base, "\n",
+		"Adquiridas: ", level_essences, "\n",
+		"Bônus XP (x0.5): ", converted_exp, "\n",
+		"Bônus Kills (x1.5): ", converted_kill, "\n",
+		"[center][b]Total: ", essences, "\n",
+		"\nPontuação: ", GameLogic.current_score, "[/b][/center]"
 		)
 	return essences
 
 func pause(level: int = 1):
 	show()
+	$AnimationPlayer.play("victory_animation")
 	get_tree().paused = true
 	GameLogic.can_pause = false
-	_restart_btn.grab_focus()
+	if UserConfig.is_mobile:
+		for b in _btn_container.get_children():
+			b.mouse_filter = MOUSE_FILTER_STOP
+	else:
+		_restart_btn.grab_focus()
 	SaveManager.essences_collected += calculate_essences(level)
 	SaveManager.save()
 

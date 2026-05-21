@@ -1,41 +1,47 @@
 extends Control
 
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
-@onready var _btn_container : VBoxContainer = $PanelContainer/VBoxContainer
-@onready var _restart_btn: TextureButton = $PanelContainer/VBoxContainer/restart_btn
+@onready var _btn_container : HBoxContainer = $PanelContainer/HBoxContainer
+@onready var _restart_btn: TextureButton = $PanelContainer/HBoxContainer/restart_btn
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
 
 func _ready():
-	if UserConfig.is_mobile:
-		for b in _btn_container.get_children():
-			b.mouse_filter = MOUSE_FILTER_STOP
 	hide()
 	GameLogic.is_dead = false
 
 func calculate_essences() -> int:
+	var level_base: int = 50
 	var level_essences = GameLogic.holding_essences
 	@warning_ignore("narrowing_conversion")
-	var converted_exp: int = _player.experience.total_experience * 0.01
+	var converted_exp: int = _player.experience.total_experience * 0.25
 	@warning_ignore("narrowing_conversion")
-	var converted_kill: int = GameLogic.enemies_defeated * 0.05
+	var converted_kill: int = GameLogic.enemies_defeated
 	@warning_ignore("integer_division")
-	var essences = level_essences + (converted_exp * converted_kill) / 2
-	$InfoLabel.text = str(
-		"Você Perdeu!
-		- Essências -
-		50% Adquiridas: ", GameLogic.holding_essences,"
-		0.5% XP: ", converted_exp," * 2.5% Kill Bonus: ", converted_kill,"
-		Total: ", essences
+	var essences = level_base + level_essences + converted_exp + converted_kill
+	$PanelContainer/Sprite2D/InfoText.text = str(
+		"[center][b]Você Perdeu![/b][/center]\n",
+		"[center]- Essências -[/center]\n",
+		"\nBonus de derrota: ", level_base, "\n",
+		"Adquiridas: ", level_essences, "\n",
+		"Bônus XP (x0.25): ", converted_exp, "\n",
+		"Bônus Kills (x1.0): ", converted_kill, "\n",
+		"[center][b]Total: ", essences, "\n",
+		"\nPontuação: ", GameLogic.current_score, "[/b][/center]"
 		)
 	return essences
 
 func pause():
 	show()
+	$AnimationPlayer.play("lose_animation")
 	get_tree().paused = true
 	GameLogic.can_pause = false
 	GameLogic.is_dead = true
-	_restart_btn.grab_focus()
+	if UserConfig.is_mobile:
+		for b in _btn_container.get_children():
+			b.mouse_filter = MOUSE_FILTER_STOP
+	else:
+		_restart_btn.grab_focus()
 	SaveManager.essences_collected += calculate_essences()
 	SaveManager.save()
 

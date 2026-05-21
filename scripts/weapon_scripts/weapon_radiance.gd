@@ -4,7 +4,6 @@ class_name WeaponRadiance
 var current_level: int = 1 :
 	set(value):
 		current_level = value
-		print(current_level)
 		if is_node_ready():
 			update_radiance_instance()
 

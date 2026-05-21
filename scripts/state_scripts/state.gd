@@ -2,7 +2,7 @@ extends Node
 class_name State
 
 @export var animation_name: String
-@export var move_speed: int = 25
+@export var move_speed: int = 28
 
 var parent: CharacterBody2D
 var state_machine: StateMachine

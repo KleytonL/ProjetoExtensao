@@ -4,7 +4,8 @@ class_name EnemyNeuroMachine
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animations: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
-@export var experience: int
+@export var experience: int = 8
+@export var score_given: int = 80
 
 var is_attacking: bool
 
@@ -22,3 +23,6 @@ func _on_visibility_notifier_screen_entered() -> void:
 
 func _on_visibility_notifier_screen_exited() -> void:
 	sprite.visible = false
+
+func _on_lifetime_timer_timeout() -> void:
+	call_deferred("queue_free")

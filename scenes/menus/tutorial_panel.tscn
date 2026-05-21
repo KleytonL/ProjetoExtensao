@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c6rl6tybamxic"]
 
 [ext_resource type="Script" uid="uid://bobf5xtcmggcm" path="res://scripts/gui_scripts/tutorial_panel.gd" id="1_wfh02"]
-[ext_resource type="Texture2D" uid="uid://b5wcsrvv8i4yk" path="res://resources/gui/tutorial-panel.svg" id="1_yhuso"]
+[ext_resource type="Texture2D" uid="uid://b5wcsrvv8i4yk" path="res://resources/gui/center-panel.svg" id="1_yhuso"]
 [ext_resource type="Texture2D" uid="uid://e64w233ka3ow" path="res://resources/gui/tutorial-buttons.svg" id="2_nsaqf"]
 [ext_resource type="Texture2D" uid="uid://ncrgpoebctbv" path="res://resources/spritesheets/spritesheet-hayato.svg" id="3_6js7l"]
 [ext_resource type="Texture2D" uid="uid://cjd2wolu70se" path="res://resources/spritesheets/spritesheet-wisp-g1.svg" id="4_3jsi6"]
 [ext_resource type="Texture2D" uid="uid://c3p7cv8o6fvj7" path="res://resources/spritesheets/spritesheet-misc.svg" id="5_bdwsl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wfh02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6js7l"]
 atlas = ExtResource("2_nsaqf")
@@ -18,7 +20,7 @@ region = Rect2(16, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_bdwsl"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_6js7l")
 }, {
 "duration": 1.0,
@@ -127,7 +129,7 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_57brr"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.25,
 "texture": SubResource("AtlasTexture_wfh02")
 }, {
 "duration": 1.0,
@@ -268,6 +270,18 @@ region = Rect2(16, 16, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_wfh02"]
 animations = [{
 "frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_nsaqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdwsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsaqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdwsl")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nsaqf")
 }, {
@@ -276,7 +290,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r5j2m"]
@@ -901,7 +915,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("PanelContainer/Sprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -930,7 +944,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("PanelContainer/Sprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -950,8 +964,7 @@ _data = {
 size = Vector2(150, 150)
 
 [node name="TutorialPanel" type="Control" unique_id=1044957469]
-visible = false
-z_index = 3
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -970,12 +983,21 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.1254902, 0.08235294, 0.2, 0.49019608)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=45720294]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=62414091]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wfh02")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer" unique_id=45720294]
 position = Vector2(120, 67.5)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("1_yhuso")
 
-[node name="TitleLabel" type="Label" parent="Sprite2D" unique_id=1140023291]
+[node name="TitleLabel" type="Label" parent="PanelContainer/Sprite2D" unique_id=1140023291]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -987,13 +1009,13 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 12
 text = "Tutorial"
 
-[node name="ZKey" type="AnimatedSprite2D" parent="Sprite2D" unique_id=461859549]
+[node name="ZKey" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=461859549]
 position = Vector2(-50, -36)
 sprite_frames = SubResource("SpriteFrames_bdwsl")
 autoplay = "default"
 frame_progress = 0.09267321
 
-[node name="ZKeyLabel" type="Label" parent="Sprite2D" unique_id=708619408]
+[node name="ZKeyLabel" type="Label" parent="PanelContainer/Sprite2D" unique_id=708619408]
 offset_left = -40.0
 offset_top = -40.0
 offset_right = -8.0
@@ -1001,50 +1023,50 @@ offset_bottom = -34.0
 theme_override_font_sizes/font_size = 6
 text = "Confirmar"
 
-[node name="DashDemo" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1363496929]
+[node name="DashDemo" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=1363496929]
 position = Vector2(-26, -18)
 sprite_frames = SubResource("SpriteFrames_eqxih")
 autoplay = "default"
 frame_progress = 0.35256866
 
-[node name="XKey" type="AnimatedSprite2D" parent="Sprite2D" unique_id=611855472]
+[node name="XKey" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=611855472]
 position = Vector2(-50, -18)
 sprite_frames = SubResource("SpriteFrames_57brr")
 autoplay = "default"
 frame_progress = 0.59582055
 
-[node name="AttackDemo" type="AnimatedSprite2D" parent="Sprite2D" unique_id=906760854]
+[node name="AttackDemo" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=906760854]
 position = Vector2(-26, 0)
 sprite_frames = SubResource("SpriteFrames_iuhea")
 autoplay = "default"
 frame_progress = 0.04624014
 
-[node name="CKey" type="AnimatedSprite2D" parent="Sprite2D" unique_id=2130191785]
+[node name="CKey" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=2130191785]
 position = Vector2(-50, 0)
 sprite_frames = SubResource("SpriteFrames_wfh02")
 autoplay = "default"
 frame_progress = 0.23957959
 
-[node name="MoveDemo" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1694568154]
+[node name="MoveDemo" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=1694568154]
 position = Vector2(-26, 18)
 sprite_frames = SubResource("SpriteFrames_vop8l")
 autoplay = "default"
 frame_progress = 0.052232493
 
-[node name="ArrowKeys" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1112657057]
+[node name="ArrowKeys" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=1112657057]
 position = Vector2(-50, 18)
 sprite_frames = SubResource("SpriteFrames_k8y8r")
 autoplay = "default"
 frame = 6
 frame_progress = 0.815614
 
-[node name="PauseKey" type="AnimatedSprite2D" parent="Sprite2D" unique_id=2142416010]
+[node name="PauseKey" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=2142416010]
 position = Vector2(-50, 36)
 sprite_frames = SubResource("SpriteFrames_hpirx")
 autoplay = "default"
 frame_progress = 0.3707404
 
-[node name="PauseKeyLabel" type="Label" parent="Sprite2D" unique_id=1906041657]
+[node name="PauseKeyLabel" type="Label" parent="PanelContainer/Sprite2D" unique_id=1906041657]
 offset_left = -36.0
 offset_top = 32.0
 offset_right = -15.0
@@ -1052,12 +1074,12 @@ offset_bottom = 38.0
 theme_override_font_sizes/font_size = 6
 text = "Pausar"
 
-[node name="Division" type="Line2D" parent="Sprite2D" unique_id=1125158240]
+[node name="Division" type="Line2D" parent="PanelContainer/Sprite2D" unique_id=1125158240]
 position = Vector2(-50, 52)
 points = PackedVector2Array(45, -96, 45, -5)
 width = 1.0
 
-[node name="H2PLabel" type="Label" parent="Sprite2D" unique_id=346933162]
+[node name="H2PLabel" type="Label" parent="PanelContainer/Sprite2D" unique_id=346933162]
 offset_left = 4.0
 offset_top = -42.0
 offset_right = 56.0
@@ -1065,7 +1087,7 @@ offset_bottom = -34.0
 theme_override_font_sizes/font_size = 8
 text = "Como Jogar:"
 
-[node name="EnemyText" type="RichTextLabel" parent="Sprite2D" unique_id=899777177]
+[node name="EnemyText" type="RichTextLabel" parent="PanelContainer/Sprite2D" unique_id=899777177]
 offset_left = -3.0
 offset_top = -32.0
 offset_right = 62.0
@@ -1073,32 +1095,32 @@ offset_bottom = -18.0
 theme_override_font_sizes/normal_font_size = 4
 text = "Destrua seus inimigos para coletar XP, subir de nível e se tornar mais forte!"
 
-[node name="WispDemo" type="AnimatedSprite2D" parent="Sprite2D" unique_id=12609392]
+[node name="WispDemo" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=12609392]
 position = Vector2(9, -12.5)
 sprite_frames = SubResource("SpriteFrames_ghxba")
 autoplay = "default"
 
-[node name="XPDemo" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1733593361]
+[node name="XPDemo" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=1733593361]
 position = Vector2(22, -12.5)
 sprite_frames = SubResource("SpriteFrames_g4rvn")
 autoplay = "default"
 
-[node name="XPDemo2" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1949245983]
+[node name="XPDemo2" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=1949245983]
 position = Vector2(32, -12.5)
 sprite_frames = SubResource("SpriteFrames_fq2s3")
 autoplay = "default"
 
-[node name="XPDemo3" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1967901599]
+[node name="XPDemo3" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=1967901599]
 position = Vector2(41, -12.5)
 sprite_frames = SubResource("SpriteFrames_4qv7h")
 autoplay = "default"
 
-[node name="MagnetDemo" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1672559701]
+[node name="MagnetDemo" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=1672559701]
 position = Vector2(50, -12.5)
 sprite_frames = SubResource("SpriteFrames_3ed2j")
 autoplay = "default"
 
-[node name="LevelText" type="RichTextLabel" parent="Sprite2D" unique_id=1073620666]
+[node name="LevelText" type="RichTextLabel" parent="PanelContainer/Sprite2D" unique_id=1073620666]
 offset_left = -3.0
 offset_top = -7.5
 offset_right = 62.0
@@ -1106,22 +1128,23 @@ offset_bottom = 10.5
 theme_override_font_sizes/normal_font_size = 4
 text = "Cada fase possui um tempo para ser finalizada. Desbloqueie novas fases concluíndo a fase anterior!"
 
-[node name="CrateDemo" type="Sprite2D" parent="Sprite2D" unique_id=420880729]
+[node name="CrateDemo" type="Sprite2D" parent="PanelContainer/Sprite2D" unique_id=420880729]
 position = Vector2(8, 18)
 scale = Vector2(0.85, 0.85)
 texture = SubResource("AtlasTexture_gre53")
 
-[node name="EssenceDemo" type="AnimatedSprite2D" parent="Sprite2D" unique_id=500136016]
+[node name="EssenceDemo" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=500136016]
 position = Vector2(28, 18)
 sprite_frames = SubResource("SpriteFrames_gre53")
 autoplay = "default"
 
-[node name="FoodDemo" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1676391817]
+[node name="FoodDemo" type="AnimatedSprite2D" parent="PanelContainer/Sprite2D" unique_id=1676391817]
 position = Vector2(48, 18)
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_373go")
+autoplay = "default"
 
-[node name="MetaText" type="RichTextLabel" parent="Sprite2D" unique_id=102304597]
+[node name="MetaText" type="RichTextLabel" parent="PanelContainer/Sprite2D" unique_id=102304597]
 offset_left = -3.0
 offset_top = 25.5
 offset_right = 62.0
@@ -1129,7 +1152,7 @@ offset_bottom = 43.5
 theme_override_font_sizes/normal_font_size = 4
 text = "Colete essências concluíndo fases ou adquirindo-as quebrando caixas espalhadas pelos mapas!"
 
-[node name="ContinueLabel" type="Label" parent="Sprite2D" unique_id=1816490738]
+[node name="ContinueLabel" type="Label" parent="PanelContainer/Sprite2D" unique_id=1816490738]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

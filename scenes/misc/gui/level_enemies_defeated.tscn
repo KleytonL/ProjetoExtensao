@@ -16,6 +16,6 @@ horizontal_alignment = 2
 script = ExtResource("1_xc7tt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190790897]
-position = Vector2(-16, 5)
+position = Vector2(-12, 5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_xc7tt")

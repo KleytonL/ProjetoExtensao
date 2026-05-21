@@ -200,7 +200,7 @@ autostart = true
 [node name="death_screen" parent="WorldGUI" unique_id=609795518 instance=ExtResource("8_71ii3")]
 visible = false
 
-[node name="VictoryScreen" parent="WorldGUI" unique_id=1201519697 instance=ExtResource("11_grc0v")]
+[node name="victory_screen" parent="WorldGUI" unique_id=1201519697 instance=ExtResource("11_grc0v")]
 visible = false
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2089122602]

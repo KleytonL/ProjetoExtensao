@@ -10,6 +10,11 @@ func _ready() -> void:
 	if !MenuMusic.playing:
 		MenuMusic.play()
 	
+	if SaveManager.first_time_player:
+		await $TutorialPanel.panel_closed
+		SaveManager.first_time_player = false
+		SaveManager.save()
+	
 	if UserConfig.is_mobile:
 		for b in self.get_children():
 			if b is TextureButton:

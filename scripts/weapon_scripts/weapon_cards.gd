@@ -19,7 +19,6 @@ func release_attack() -> void:
 			attack_timer.start()
 
 func _on_attack_timer_timeout() -> void:
-#	$SoulfireShotSFX.play()
 	var attack_count = projectile_quantity
 	while attack_count > 0:
 		await get_tree().create_timer(0.1).timeout
@@ -30,6 +29,7 @@ func _on_attack_timer_timeout() -> void:
 		instance.sprite_color = attack_color
 		instance.projectile_target = player.attack_range.get_random_target() 
 		player.add_child(instance)
+		$ThrowSFX.play()
 		attack_count -= 1
 
 func calculate_current_level(instance: CardProjectile) -> void:

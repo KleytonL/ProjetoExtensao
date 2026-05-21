@@ -31,4 +31,4 @@ func victory_condition(enemies) -> void:
 	else:
 		SaveManager.set_weapons(3)
 		SaveManager.unlock_level(2)
-		$WorldGUI/VictoryScreen.pause()
+		$WorldGUI/victory_screen.pause()

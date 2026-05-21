@@ -7,6 +7,7 @@ class_name DeathState
 
 func enter() -> void:
 	GameLogic.enemies_defeated += 1
+	GameLogic.current_score += parent.score_given
 	var new_vfx = death_vfx.instantiate()
 	new_vfx.global_position = parent.global_position
 	parent.get_parent().call_deferred("add_child", new_vfx)

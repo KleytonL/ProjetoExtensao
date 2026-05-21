@@ -81,7 +81,6 @@ _data = {
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_pfldh")
-experience = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1332708801]
 texture = ExtResource("2_pfldh")
@@ -136,10 +135,15 @@ knockback_component = NodePath("../KnockbackComponent")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_graqp")
 
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=1748433137]
+wait_time = 60.0
+autostart = true
+
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=719814791]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=689970815]
 libraries/ = SubResource("AnimationLibrary_ymxtd")
 
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
 [connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

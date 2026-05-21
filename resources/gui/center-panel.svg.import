@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5wcsrvv8i4yk"
-path="res://.godot/imported/tutorial-panel.svg-57493177ac925459ba983b308f101747.ctex"
+path="res://.godot/imported/center-panel.svg-aa3986c29098dccb72905d36943df327.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/gui/tutorial-panel.svg"
-dest_files=["res://.godot/imported/tutorial-panel.svg-57493177ac925459ba983b308f101747.ctex"]
+source_file="res://resources/gui/center-panel.svg"
+dest_files=["res://.godot/imported/center-panel.svg-aa3986c29098dccb72905d36943df327.ctex"]
 
 [params]
 

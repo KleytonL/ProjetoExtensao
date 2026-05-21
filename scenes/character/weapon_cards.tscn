@@ -1,11 +1,27 @@
 [gd_scene format=3 uid="uid://dgsj6wfufiaje"]
 
 [ext_resource type="Script" uid="uid://ctrmvyyn1usdp" path="res://scripts/weapon_scripts/weapon_cards.gd" id="1_0ekey"]
+[ext_resource type="AudioStream" uid="uid://dlr243ihwf5s" path="res://resources/audio/sfx/weapon/card_draw_1.wav" id="2_f35dq"]
+[ext_resource type="AudioStream" uid="uid://qitgi0n4o0qu" path="res://resources/audio/sfx/weapon/card_draw_2.wav" id="3_kris5"]
+[ext_resource type="AudioStream" uid="uid://bv1inrrm05evq" path="res://resources/audio/sfx/weapon/card_draw_3.wav" id="4_ixcvo"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3clj3"]
+random_pitch = 1.3348398
+streams_count = 3
+stream_0/stream = ExtResource("2_f35dq")
+stream_1/stream = ExtResource("3_kris5")
+stream_2/stream = ExtResource("4_ixcvo")
 
 [node name="WeaponCards" type="Node2D" unique_id=145132002]
 script = ExtResource("1_0ekey")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=937142407]
 wait_time = 5.0
+
+[node name="ThrowSFX" type="AudioStreamPlayer" parent="." unique_id=1130128732]
+stream = SubResource("AudioStreamRandomizer_3clj3")
+volume_db = -12.0
+pitch_scale = 2.0
+max_polyphony = 5
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

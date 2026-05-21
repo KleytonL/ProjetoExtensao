@@ -30,4 +30,4 @@ func victory_condition(enemies) -> void:
 		$LevelTimer.start(1.0)
 	else:
 		SaveManager.unlock_level(3)
-		$WorldGUI/VictoryScreen.pause(2)
+		$WorldGUI/victory_screen.pause(2)
