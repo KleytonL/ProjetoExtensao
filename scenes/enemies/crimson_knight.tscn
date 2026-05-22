@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://dvrwlv57fhw2o"]
+
+[ext_resource type="Script" uid="uid://xwqspoj5d5ha" path="res://scripts/enemy_scripts/crimson_knight.gd" id="1_02wy6"]
+[ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="1_hsxsb"]
+[ext_resource type="Script" uid="uid://b6wu7hresy3q6" path="res://scripts/state_scripts/pursuit_state.gd" id="2_76nof"]
+[ext_resource type="Texture2D" uid="uid://ncrgpoebctbv" path="res://resources/spritesheets/spritesheet-hayato.svg" id="2_t11r7"]
+[ext_resource type="Script" uid="uid://ccwg7amauu6kk" path="res://scripts/state_scripts/hurt_state.gd" id="3_ly1my"]
+[ext_resource type="Script" uid="uid://bboq2cifjak1t" path="res://scripts/state_scripts/death_state.gd" id="4_02wy6"]
+[ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="5_ly1my"]
+[ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="6_02wy6"]
+[ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="6_bkn8d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t11r7"]
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02wy6"]
+size = Vector2(30, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly1my"]
+size = Vector2(25, 40)
+
+[sub_resource type="Animation" id="Animation_t11r7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_wu6mx"]
+resource_name = "pursuit_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ispqv"]
+_data = {
+&"RESET": SubResource("Animation_t11r7"),
+&"pursuit_animation": SubResource("Animation_wu6mx")
+}
+
+[node name="crimson_knight" type="CharacterBody2D" unique_id=1747432106 groups=["Enemy"]]
+script = ExtResource("1_02wy6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117362953]
+scale = Vector2(3, 3)
+texture = ExtResource("2_t11r7")
+hframes = 6
+vframes = 6
+frame = 6
+
+[node name="OtherCollisions" type="CollisionShape2D" parent="." unique_id=693213036]
+shape = SubResource("CircleShape2D_t11r7")
+
+[node name="StateMachine" parent="." unique_id=46313988 node_paths=PackedStringArray("initial_state") instance=ExtResource("1_hsxsb")]
+initial_state = NodePath("PursuitState")
+
+[node name="PursuitState" type="Node" parent="StateMachine" unique_id=1912754459]
+script = ExtResource("2_76nof")
+animation_name = "pursuit_animation"
+move_speed = 20
+metadata/_custom_type_script = "uid://b6wu7hresy3q6"
+
+[node name="HurtState" type="Node" parent="StateMachine" unique_id=700612265 node_paths=PackedStringArray("move_state")]
+script = ExtResource("3_ly1my")
+move_state = NodePath("../PursuitState")
+animation_name = "hurt_animation"
+metadata/_custom_type_script = "uid://ccwg7amauu6kk"
+
+[node name="DeathState" type="Node" parent="StateMachine" unique_id=225389466]
+script = ExtResource("4_02wy6")
+metadata/_custom_type_script = "uid://bboq2cifjak1t"
+
+[node name="EnemyHealthComponent" parent="." unique_id=2004770144 node_paths=PackedStringArray("death_state") instance=ExtResource("6_bkn8d")]
+death_state = NodePath("../StateMachine/DeathState")
+max_health = 100.0
+
+[node name="EnemyHitboxComponent" parent="." unique_id=1431613630 instance=ExtResource("6_02wy6")]
+damage = 10
+force = 25.0
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="EnemyHitboxComponent" unique_id=891383999]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_02wy6")
+
+[node name="EnemyHurtboxComponent" parent="." unique_id=442173391 node_paths=PackedStringArray("health_component") instance=ExtResource("5_ly1my")]
+health_component = NodePath("../EnemyHealthComponent")
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=2013215432]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ly1my")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1579658723]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=692889205]
+libraries/ = SubResource("AnimationLibrary_ispqv")
+
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

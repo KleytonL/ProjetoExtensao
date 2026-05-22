@@ -1,0 +1,23 @@
+extends CharacterBody2D
+class_name CrimsonKnight
+
+@onready var state_machine: StateMachine = $StateMachine
+@onready var animations: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
+@export var experience: int = 100
+@export var score_given: int = 500
+
+func _ready() -> void:
+	state_machine.init(self)
+
+func _physics_process(delta: float) -> void:
+	state_machine.process_physics(delta)
+
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
+
+func _on_visibility_notifier_screen_entered() -> void:
+	sprite.visible = true
+
+func _on_visibility_notifier_screen_exited() -> void:
+	sprite.visible = false

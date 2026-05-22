@@ -2,8 +2,8 @@ extends Control
 class_name VictoryScreen
 
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
-@onready var _restart_btn: TextureButton = $PanelContainer/HBoxContainer/restart_btn
-@onready var _btn_container : HBoxContainer = $PanelContainer/HBoxContainer
+@onready var _restart_btn: TextureButton = $PanelContainer/Sprite2D/HBoxContainer/restart_btn
+@onready var _btn_container : HBoxContainer = $PanelContainer/Sprite2D/HBoxContainer
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
 

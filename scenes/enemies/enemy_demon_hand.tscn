@@ -175,7 +175,7 @@ attack_state = NodePath("../StateMachine/EnemyAttackState")
 attack_range_component = NodePath("../EnemyAttackRangeComponent")
 
 [node name="LifetimeTimer" type="Timer" parent="." unique_id=1774347682]
-wait_time = 75.0
+wait_time = 45.0
 autostart = true
 
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1427529315]

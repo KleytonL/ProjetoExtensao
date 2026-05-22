@@ -48,6 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(120, 67.5)
 script = ExtResource("1_fyxmq")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=89293765]
@@ -134,11 +135,15 @@ texture_focused = SubResource("AtlasTexture_tn3rt")
 
 [node name="TutorialPanel" parent="." unique_id=1044957469 instance=ExtResource("8_3086l")]
 layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -67.5
+offset_right = -120.0
+offset_bottom = -67.5
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=1425537415]
 stream = ExtResource("3_tn3rt")

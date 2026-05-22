@@ -70,7 +70,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 86)]
+"values": [Vector2(120, 67.5)]
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ewew8"]
@@ -120,8 +120,8 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.75, 0.76, 0.77, 0.78, 0.78999996, 1.25, 1.26, 1.27, 1.28, 1.29, 1.75, 1.76, 1.77, 1.78, 1.79),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 86), Vector2(5, 86), Vector2(-3, 88), Vector2(2, 84), Vector2(0, 86), Vector2(0, 86), Vector2(5, 86), Vector2(-3, 88), Vector2(2, 84), Vector2(0, 86), Vector2(0, 86), Vector2(5, 86), Vector2(-3, 88), Vector2(2, 84), Vector2(0, 86)]
+"update": 1,
+"values": [Vector2(120, 67.5), Vector2(125, 69), Vector2(117, 65), Vector2(122, 68), Vector2(120, 67.5), Vector2(120, 67.5), Vector2(125, 69), Vector2(117, 65), Vector2(122, 68), Vector2(120, 67.5), Vector2(120, 67.5), Vector2(125, 69), Vector2(117, 65), Vector2(122, 68), Vector2(120, 67.5)]
 }
 tracks/3/type = "audio"
 tracks/3/imported = false
@@ -176,6 +176,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(120, 67.5)
 script = ExtResource("1_jhqcx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=603629446]
@@ -189,19 +190,17 @@ color = Color(0.6156863, 0.85882354, 0, 0)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1690753488]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 86.0
-offset_bottom = -0.00018310547
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(120, -25)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uk0h0")
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer" unique_id=825046014]
-position = Vector2(120, -18.5)
 texture = ExtResource("2_yg54c")
 
 [node name="InfoText" type="RichTextLabel" parent="PanelContainer/Sprite2D" unique_id=1729876686]
@@ -218,7 +217,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/normal_font_size = 6
 theme_override_font_sizes/bold_font_size = 8
 bbcode_enabled = true
-text = "[center][b]Você Perdeu![/b][/center]
+text = "[center][b]Você Venceu![/b][/center]
 [center]- Essências -[/center]
 
 Bonus de vitória: level_base
@@ -228,13 +227,16 @@ Bônus Kills (x1.0): converted_kill
 [center][b]Total: essences[/b][/center]"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1250385917]
-layout_mode = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Sprite2D" unique_id=1250385917]
+offset_left = -52.0
+offset_top = 34.5
+offset_right = 52.0
+offset_bottom = 50.5
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="restart_btn" type="TextureButton" parent="PanelContainer/HBoxContainer" unique_id=1491664105]
+[node name="restart_btn" type="TextureButton" parent="PanelContainer/Sprite2D/HBoxContainer" unique_id=1491664105]
 layout_mode = 2
 mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_mufjf")
@@ -242,7 +244,7 @@ texture_pressed = SubResource("AtlasTexture_ts3wv")
 texture_hover = SubResource("AtlasTexture_12rht")
 texture_focused = SubResource("AtlasTexture_12rht")
 
-[node name="exit_btn" type="TextureButton" parent="PanelContainer/HBoxContainer" unique_id=1139178260]
+[node name="exit_btn" type="TextureButton" parent="PanelContainer/Sprite2D/HBoxContainer" unique_id=1139178260]
 layout_mode = 2
 mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_a67s2")
@@ -269,7 +271,7 @@ volume_db = -8.0
 max_polyphony = 3
 bus = &"SoundEffects"
 
-[connection signal="focus_entered" from="PanelContainer/HBoxContainer/restart_btn" to="." method="_on_restart_btn_focus_entered"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
-[connection signal="focus_entered" from="PanelContainer/HBoxContainer/exit_btn" to="." method="_on_exit_btn_focus_entered"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]
+[connection signal="focus_entered" from="PanelContainer/Sprite2D/HBoxContainer/restart_btn" to="." method="_on_restart_btn_focus_entered"]
+[connection signal="pressed" from="PanelContainer/Sprite2D/HBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="focus_entered" from="PanelContainer/Sprite2D/HBoxContainer/exit_btn" to="." method="_on_exit_btn_focus_entered"]
+[connection signal="pressed" from="PanelContainer/Sprite2D/HBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]

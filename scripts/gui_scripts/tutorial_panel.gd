@@ -18,4 +18,5 @@ func _process(_delta: float) -> void:
 		_animation.play_backwards("default_animation")
 		await _animation.animation_finished
 		self.visible = false
+		$TouchScreenButton.process_mode = Node.PROCESS_MODE_DISABLED
 		emit_signal("panel_closed")

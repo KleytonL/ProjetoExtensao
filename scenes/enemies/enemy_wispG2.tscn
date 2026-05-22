@@ -137,7 +137,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_graqp")
 
 [node name="LifetimeTimer" type="Timer" parent="." unique_id=623327095]
-wait_time = 60.0
+wait_time = 30.0
 autostart = true
 
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1211685799]
