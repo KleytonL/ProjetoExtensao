@@ -33,15 +33,17 @@ func _on_area_entered(area: Area2D) -> void:
 			if is_crit:
 				calculated_damage *= stats_component.bonus_crit_multiplier
 			
-			
-			@warning_ignore("narrowing_conversion")
-			var vamp: int = calculated_damage * stats_component.bonus_vampirism
+			var vamp: float = calculated_damage * stats_component.bonus_vampirism
+			print("bonus_vamp: ",stats_component.bonus_vampirism)
+			print("vamp: ", vamp)
 			if vamp < 1:
 				can_vamp = randf() < vamp * 0.25
+				print("can_vamp (", vamp * 0.25, "%): ", can_vamp)
 				if can_vamp:
 					health_component.update_health(1)
 			else:
 				can_vamp = randf() < 0.25
+				print("can_vamp (25%): ", can_vamp)
 				if can_vamp:
 					health_component.update_health(floor(vamp))
 			

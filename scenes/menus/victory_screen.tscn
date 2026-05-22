@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://b5wcsrvv8i4yk" path="res://resources/gui/center-panel.svg" id="2_yg54c"]
 [ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="3_yg54c"]
 [ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="4_ewew8"]
-[ext_resource type="AudioStream" uid="uid://tctp86sge42j" path="res://resources/audio/sfx/win.wav" id="6_ewew8"]
 [ext_resource type="AudioStream" uid="uid://bsq0u15n5nf43" path="res://resources/audio/sfx/impact.wav" id="6_mufjf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mufjf"]
@@ -76,11 +75,6 @@ random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("6_mufjf")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mufjf"]
-random_pitch = 1.0594631
-streams_count = 1
-stream_0/stream = ExtResource("6_ewew8")
-
 [sub_resource type="Animation" id="Animation_yg54c"]
 resource_name = "victory_animation"
 length = 3.0
@@ -144,21 +138,6 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.75, 1.25, 1.75)
 }
 tracks/3/use_blend = true
-tracks/4/type = "audio"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("VictorySFX")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_mufjf")
-}],
-"times": PackedFloat32Array(1.75)
-}
-tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ewew8"]
 _data = {
@@ -275,11 +254,6 @@ stream = ExtResource("4_ewew8")
 volume_db = -8.0
 pitch_scale = 0.75
 bus = &"SoundEffects"
-
-[node name="VictorySFX" type="AudioStreamPlayer" parent="." unique_id=1629428208]
-volume_db = -8.0
-max_polyphony = 3
-bus = &"BackgroundMusic"
 
 [connection signal="focus_entered" from="CenterContainer/TextureRect/HBoxContainer/restart_btn" to="." method="_on_restart_btn_focus_entered"]
 [connection signal="pressed" from="CenterContainer/TextureRect/HBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]

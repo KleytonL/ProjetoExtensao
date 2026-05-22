@@ -44,6 +44,8 @@ func pause():
 		_restart_btn.grab_focus()
 	SaveManager.essences_collected += calculate_essences()
 	SaveManager.save()
+	AudioServer.playback_speed_scale = 0.5
+	$"../../BGM".play(12)
 
 func resume():
 	hide()

@@ -24,7 +24,7 @@ func damage(attack: int) -> void:
 	emit_signal("update_healthbar")
 	if health <= 0:
 		if freeze_component:
-			freeze_component.on_death_freeze(0.01, 0.35)
+			freeze_component.run_ending_freeze(0.01, 0.35)
 			await freeze_component.freeze_finished
 		death.pause()
 
