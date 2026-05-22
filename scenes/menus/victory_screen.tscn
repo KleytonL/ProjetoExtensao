@@ -8,8 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://tctp86sge42j" path="res://resources/audio/sfx/win.wav" id="6_ewew8"]
 [ext_resource type="AudioStream" uid="uid://bsq0u15n5nf43" path="res://resources/audio/sfx/impact.wav" id="6_mufjf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uk0h0"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mufjf"]
 atlas = ExtResource("2_uk0h0")
 region = Rect2(0, 64, 48, 16)
@@ -51,7 +49,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:scale")
+tracks/1/path = NodePath("CenterContainer:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -63,7 +61,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PanelContainer:position")
+tracks/2/path = NodePath("CenterContainer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -102,7 +100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:scale")
+tracks/1/path = NodePath("CenterContainer:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,14 +112,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PanelContainer:position")
+tracks/2/path = NodePath("CenterContainer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.75, 0.76, 0.77, 0.78, 0.78999996, 1.25, 1.26, 1.27, 1.28, 1.29, 1.75, 1.76, 1.77, 1.78, 1.79),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(120, 67.5), Vector2(125, 69), Vector2(117, 65), Vector2(122, 68), Vector2(120, 67.5), Vector2(120, 67.5), Vector2(125, 69), Vector2(117, 65), Vector2(122, 68), Vector2(120, 67.5), Vector2(120, 67.5), Vector2(125, 69), Vector2(117, 65), Vector2(122, 68), Vector2(120, 67.5)]
+"values": [Vector2(0, 0), Vector2(5, 2), Vector2(-3, -2), Vector2(2, 1.5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 2), Vector2(-3, -2), Vector2(2, 1.5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 2), Vector2(-3, -2), Vector2(2, 1.5), Vector2(0, 0)]
 }
 tracks/3/type = "audio"
 tracks/3/imported = false
@@ -188,29 +186,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.6156863, 0.85882354, 0, 0)
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1690753488]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1341708884]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 67.5
+offset_right = 120.0
+offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
-theme_override_styles/panel = SubResource("StyleBoxEmpty_uk0h0")
+pivot_offset = Vector2(120, 67.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="PanelContainer" unique_id=825046014]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=733008327]
+layout_mode = 2
 texture = ExtResource("2_yg54c")
 
-[node name="InfoText" type="RichTextLabel" parent="PanelContainer/Sprite2D" unique_id=1729876686]
+[node name="InfoText" type="RichTextLabel" parent="CenterContainer/TextureRect" unique_id=1729876686]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -114.0
-offset_top = -60.0
-offset_right = -14.0
-offset_bottom = 30.0
+offset_left = -50.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 94.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -227,16 +229,24 @@ Bônus Kills (x1.0): converted_kill
 [center][b]Total: essences[/b][/center]"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Sprite2D" unique_id=1250385917]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/TextureRect" unique_id=1250385917]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -52.0
-offset_top = 34.5
+offset_top = -23.0
 offset_right = 52.0
-offset_bottom = 50.5
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="restart_btn" type="TextureButton" parent="PanelContainer/Sprite2D/HBoxContainer" unique_id=1491664105]
+[node name="restart_btn" type="TextureButton" parent="CenterContainer/TextureRect/HBoxContainer" unique_id=1491664105]
 layout_mode = 2
 mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_mufjf")
@@ -244,7 +254,7 @@ texture_pressed = SubResource("AtlasTexture_ts3wv")
 texture_hover = SubResource("AtlasTexture_12rht")
 texture_focused = SubResource("AtlasTexture_12rht")
 
-[node name="exit_btn" type="TextureButton" parent="PanelContainer/Sprite2D/HBoxContainer" unique_id=1139178260]
+[node name="exit_btn" type="TextureButton" parent="CenterContainer/TextureRect/HBoxContainer" unique_id=1139178260]
 layout_mode = 2
 mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_a67s2")
@@ -262,16 +272,16 @@ stream = ExtResource("3_yg54c")
 stream = ExtResource("4_ewew8")
 
 [node name="CrunchSFX" type="AudioStreamPlayer" parent="." unique_id=1439341599]
-volume_db = -18.0
+volume_db = -8.0
 pitch_scale = 0.75
-bus = &"BackgroundMusic"
+bus = &"SoundEffects"
 
 [node name="VictorySFX" type="AudioStreamPlayer" parent="." unique_id=1629428208]
 volume_db = -8.0
 max_polyphony = 3
-bus = &"SoundEffects"
+bus = &"BackgroundMusic"
 
-[connection signal="focus_entered" from="PanelContainer/Sprite2D/HBoxContainer/restart_btn" to="." method="_on_restart_btn_focus_entered"]
-[connection signal="pressed" from="PanelContainer/Sprite2D/HBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
-[connection signal="focus_entered" from="PanelContainer/Sprite2D/HBoxContainer/exit_btn" to="." method="_on_exit_btn_focus_entered"]
-[connection signal="pressed" from="PanelContainer/Sprite2D/HBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]
+[connection signal="focus_entered" from="CenterContainer/TextureRect/HBoxContainer/restart_btn" to="." method="_on_restart_btn_focus_entered"]
+[connection signal="pressed" from="CenterContainer/TextureRect/HBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="focus_entered" from="CenterContainer/TextureRect/HBoxContainer/exit_btn" to="." method="_on_exit_btn_focus_entered"]
+[connection signal="pressed" from="CenterContainer/TextureRect/HBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]

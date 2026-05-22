@@ -4,7 +4,6 @@ class_name DeathState
 @onready var experience = preload("res://scenes/misc/experience.tscn")
 @onready var death_vfx = preload("res://scenes/misc/death_vfx.tscn")
 
-
 func enter() -> void:
 	GameLogic.enemies_defeated += 1
 	GameLogic.current_score += parent.score_given
@@ -16,4 +15,6 @@ func enter() -> void:
 		new_exp.global_position = parent.global_position
 		new_exp.value = parent.experience
 		parent.get_parent().call_deferred("add_child", new_exp)
+		if parent is CrimsonKnight:
+			parent.owner.victory_condition()
 	parent.queue_free()

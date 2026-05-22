@@ -563,7 +563,7 @@ const UPGRADES: Dictionary = {
 		"prerequisite": [],
 		"type": "stats",
 		"key": "speed",
-		"value": 2
+		"value": 1
 	},
 	"speed2": {
 		"icon": ICON_PATH + "icon-speed.svg",
@@ -573,7 +573,7 @@ const UPGRADES: Dictionary = {
 		"prerequisite": ["speed1"],
 		"type": "stats",
 		"key": "speed",
-		"value": 3
+		"value": 1
 	},
 	"speed3": {
 		"icon": ICON_PATH + "icon-speed.svg",
@@ -583,7 +583,7 @@ const UPGRADES: Dictionary = {
 		"prerequisite": ["speed2"],
 		"type": "stats",
 		"key": "speed",
-		"value": 3
+		"value": 2
 	},
 	"speed4": {
 		"icon": ICON_PATH + "icon-speed.svg",
@@ -593,7 +593,7 @@ const UPGRADES: Dictionary = {
 		"prerequisite": ["speed3"],
 		"type": "stats",
 		"key": "speed",
-		"value": 4
+		"value": 2
 	},
 	"speed5": {
 		"icon": ICON_PATH + "icon-speed.svg",
@@ -603,7 +603,7 @@ const UPGRADES: Dictionary = {
 		"prerequisite": ["speed4"],
 		"type": "stats",
 		"key": "speed",
-		"value": 5
+		"value": 3
 	},
 	"speed6": {
 		"icon": ICON_PATH + "icon-speed.svg",
@@ -613,7 +613,7 @@ const UPGRADES: Dictionary = {
 		"prerequisite": ["speed5"],
 		"type": "stats",
 		"key": "speed",
-		"value": 8
+		"value": 3
 	},
 	"strength1": {
 		"icon": ICON_PATH + "icon-strength.svg",

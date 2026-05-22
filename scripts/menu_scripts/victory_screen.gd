@@ -2,8 +2,8 @@ extends Control
 class_name VictoryScreen
 
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
-@onready var _restart_btn: TextureButton = $PanelContainer/Sprite2D/HBoxContainer/restart_btn
-@onready var _btn_container : HBoxContainer = $PanelContainer/Sprite2D/HBoxContainer
+@onready var _restart_btn: TextureButton = $CenterContainer/TextureRect/HBoxContainer/restart_btn
+@onready var _btn_container : HBoxContainer = $CenterContainer/TextureRect/HBoxContainer
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
 
@@ -18,7 +18,7 @@ func calculate_essences(world_level: int) -> int:
 	@warning_ignore("narrowing_conversion")
 	var converted_kill: int = GameLogic.enemies_defeated * 1.5
 	var essences = level_essences + converted_exp + converted_kill
-	$PanelContainer/Sprite2D/InfoText.text = str(
+	$CenterContainer/TextureRect/InfoText.text = str(
 		"[center][b]Você Venceu![/b][/center]\n",
 		"[center]- Essências -[/center]\n",
 		"\nBonus de vitória: ", level_base, "\n",

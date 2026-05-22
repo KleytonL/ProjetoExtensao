@@ -1,8 +1,8 @@
 extends Control
 
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
-@onready var _btn_container : HBoxContainer = $PanelContainer/Sprite2D/HBoxContainer
-@onready var _restart_btn: TextureButton = $PanelContainer/Sprite2D/HBoxContainer/restart_btn
+@onready var _btn_container : HBoxContainer = $CenterContainer/TextureRect/HBoxContainer
+@onready var _restart_btn: TextureButton = $CenterContainer/TextureRect/HBoxContainer/restart_btn
 @onready var _hover: AudioStreamPlayer = $HoverSFX
 @onready var _click: AudioStreamPlayer = $ClickSFX
 
@@ -19,7 +19,7 @@ func calculate_essences() -> int:
 	var converted_kill: int = GameLogic.enemies_defeated
 	@warning_ignore("integer_division")
 	var essences = level_base + level_essences + converted_exp + converted_kill
-	$PanelContainer/Sprite2D/InfoText.text = str(
+	$CenterContainer/TextureRect/InfoText.text = str(
 		"[center][b]Você Perdeu![/b][/center]\n",
 		"[center]- Essências -[/center]\n",
 		"\nBonus de derrota: ", level_base, "\n",

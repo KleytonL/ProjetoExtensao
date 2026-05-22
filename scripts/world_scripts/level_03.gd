@@ -18,3 +18,6 @@ func spawn_crates() -> void:
 
 func _on_crate_timer_timeout() -> void:
 	spawn_crates()
+
+func victory_condition() -> void:
+	$WorldGUI/victory_screen.pause(3)

@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cyqmvtlg4kc0r" path="res://scenes/enemies/enemy_demon_hand.tscn" id="4_twgus"]
 [ext_resource type="PackedScene" uid="uid://cq2hne6jxythc" path="res://scenes/enemies/enemy_wispG1.tscn" id="4_w4b21"]
 [ext_resource type="PackedScene" uid="uid://dqgu5pr8xhjh5" path="res://scenes/enemies/enemy_wispG2.tscn" id="5_1uqly"]
+[ext_resource type="PackedScene" uid="uid://cg5qyp2g6dcht" path="res://scenes/enemies/enemy_neuro_machine.tscn" id="8_2sxgy"]
+[ext_resource type="PackedScene" uid="uid://dvrwlv57fhw2o" path="res://scenes/enemies/enemy_crimson_knight.tscn" id="8_2to6q"]
 [ext_resource type="PackedScene" uid="uid://n3t27wesrn06" path="res://scenes/misc/upgrade_controller.tscn" id="8_38g5f"]
 [ext_resource type="PackedScene" uid="uid://dqkksmie0yu3m" path="res://scenes/menus/victory_screen.tscn" id="12_1uqly"]
 
@@ -73,6 +75,40 @@ time_end = 420
 enemy = ExtResource("4_twgus")
 enemy_num = 3
 enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_lx0py"]
+script = ExtResource("3_38g5f")
+time_start = 380
+time_end = 500
+enemy = ExtResource("8_2sxgy")
+enemy_num = 1
+enemy_spawn_delay = 10
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_f6k7g"]
+script = ExtResource("3_38g5f")
+time_start = 460
+time_end = 560
+enemy = ExtResource("5_1uqly")
+enemy_num = 7
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_2sxgy"]
+script = ExtResource("3_38g5f")
+time_start = 460
+time_end = 580
+enemy = ExtResource("4_twgus")
+enemy_num = 2
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://fqca6eefpksa"
+
+[sub_resource type="Resource" id="Resource_2to6q"]
+script = ExtResource("3_38g5f")
+time_start = 600
+time_end = 601
+enemy = ExtResource("8_2to6q")
+enemy_num = 1
 metadata/_custom_type_script = "uid://fqca6eefpksa"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nf6h4"]
@@ -170,7 +206,7 @@ position = Vector2(861, 765)
 
 [node name="EnemySpawner" parent="." unique_id=572601747 instance=ExtResource("2_ve6tg")]
 z_index = 1
-spawns = Array[ExtResource("3_38g5f")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr"), SubResource("Resource_gb53w"), SubResource("Resource_grc0v"), SubResource("Resource_ve6tg"), SubResource("Resource_38g5f"), SubResource("Resource_w4b21")])
+spawns = Array[ExtResource("3_38g5f")]([SubResource("Resource_xl0gr"), SubResource("Resource_q5onr"), SubResource("Resource_gb53w"), SubResource("Resource_grc0v"), SubResource("Resource_ve6tg"), SubResource("Resource_38g5f"), SubResource("Resource_w4b21"), SubResource("Resource_lx0py"), SubResource("Resource_f6k7g"), SubResource("Resource_2sxgy"), SubResource("Resource_2to6q")])
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1382133417]
 z_index = -1
@@ -191,7 +227,7 @@ autostart = true
 [node name="deathscreen" parent="WorldGUI" unique_id=1999397955 groups=["Teste"] instance=ExtResource("4_fxgxc")]
 visible = false
 
-[node name="VictoryScreen" parent="WorldGUI" unique_id=1201519697 instance=ExtResource("12_1uqly")]
+[node name="victory_screen" parent="WorldGUI" unique_id=1201519697 instance=ExtResource("12_1uqly")]
 visible = false
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=877512946]
