@@ -10,7 +10,7 @@ var projectile_angle: Vector2 = Vector2.ZERO
 var projectile_target: Vector2 = Vector2.ZERO
 
 var bounces_left: int
-var damage_multiplier: float = 1.1
+var damage_multiplier: float = 1.5
 var hit_enemies: Array = []
 
 func _ready() -> void:
@@ -20,7 +20,6 @@ func _ready() -> void:
 	tween.tween_property(self, "scale", Vector2(0.3, 0.3) * projectile_size, 0.75).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
 	projectile_angle = global_position.direction_to(projectile_target)
-	rotation = projectile_angle.angle() + deg_to_rad(45)
 
 func _physics_process(delta: float) -> void:
 	position += projectile_angle * projectile_speed * delta
@@ -53,4 +52,3 @@ func bounce(last_target: CharacterBody2D) -> void:
 		queue_free()
 		return
 	projectile_angle = global_position.direction_to(best_target.global_position)
-	rotation = projectile_angle.angle() + deg_to_rad(45)

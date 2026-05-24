@@ -4,7 +4,7 @@ const PATH: String = "user://save_data.json"
 
 var first_time_player: bool = true
 var levels_unlocked: Array[int] = [1]
-var essences_collected: int = 5000
+var essences_collected: int = 0
 var meta_upgrades: Dictionary = {
 	"bonus_health": {
 		"level": 0,
@@ -69,9 +69,9 @@ func load_save() -> void:
 	if not FileAccess.file_exists(PATH):
 		return
 	
-	if FileAccess.file_exists(PATH):
-		DirAccess.remove_absolute(PATH)
-		return
+#	if FileAccess.file_exists(PATH):
+#		DirAccess.remove_absolute(PATH)
+#		return
 	
 	var file = FileAccess.open(PATH, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
