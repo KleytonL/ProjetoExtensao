@@ -11,7 +11,8 @@ var _upgrades: Dictionary = {
 	"blazing": preload("res://scenes/character/weapon_blazing_ground.tscn"),
 	"radiance": preload("res://scenes/character/weapon_radiance.tscn"),
 	"spear": preload("res://scenes/character/weapon_spear_thrust.tscn"),
-	"cards": preload("res://scenes/character/weapon_cards.tscn")
+	"cards": preload("res://scenes/character/weapon_cards.tscn"),
+	"marble": preload("res://scenes/character/weapon_marble.tscn")
 }
 
 var _active: Dictionary = {}

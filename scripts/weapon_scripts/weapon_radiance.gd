@@ -12,6 +12,7 @@ var radiance_instance: Radiance
 @onready var _radiance = preload("res://scenes/character/radiance_area.tscn")
 
 func _ready() -> void:
+	player.stats.update_stats.connect(update_radiance_instance)
 	release_attack()
 
 func release_attack() -> void:

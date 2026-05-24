@@ -46,7 +46,6 @@ func calculate_vector() -> void:
 		get_parent().position_vector.y = (global_position.y - get_parent().global_position.y)/max_length
 	else:
 		get_parent().position_vector.y = 0.0
-	
 
 func _on_button_button_down() -> void:
 	pressing = true

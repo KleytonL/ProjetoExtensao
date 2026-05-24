@@ -435,6 +435,60 @@ const UPGRADES: Dictionary = {
 		"type": "weapon",
 		"key": "cards"
 	},
+	"marble1": {
+		"icon": ICON_PATH + "icon-marble.svg",
+		"displayname": "Gude",
+		"details": "Arremesse uma bolinha de gude!",
+		"level": "Level 1",
+		"prerequisite": [],
+		"type": "weapon",
+		"key": "marble"
+	},
+	"marble2": {
+		"icon": ICON_PATH + "icon-marble.svg",
+		"displayname": "Gude",
+		"details": "Arremesse uma bolinha de gude!",
+		"level": "Level 2",
+		"prerequisite": ["marble1"],
+		"type": "weapon",
+		"key": "marble"
+	},
+	"marble3": {
+		"icon": ICON_PATH + "icon-marble.svg",
+		"displayname": "Gude",
+		"details": "Arremesse uma bolinha de gude!",
+		"level": "Level 3",
+		"prerequisite": ["marble2"],
+		"type": "weapon",
+		"key": "marble"
+	},
+	"marble4": {
+		"icon": ICON_PATH + "icon-marble.svg",
+		"displayname": "Gude",
+		"details": "Arremesse uma bolinha de gude!",
+		"level": "Level 4",
+		"prerequisite": ["marble3"],
+		"type": "weapon",
+		"key": "marble"
+	},
+	"marble5": {
+		"icon": ICON_PATH + "icon-marble.svg",
+		"displayname": "Gude",
+		"details": "Arremesse uma bolinha de gude!",
+		"level": "Level 5",
+		"prerequisite": ["marble4"],
+		"type": "weapon",
+		"key": "marble"
+	},
+	"marble6": {
+		"icon": ICON_PATH + "icon-marble.svg",
+		"displayname": "Gude",
+		"details": "Arremesse uma bolinha de gude!",
+		"level": "Level MAX",
+		"prerequisite": ["marble5"],
+		"type": "weapon",
+		"key": "marble"
+	},
 	"health1": {
 		"icon": ICON_PATH + "icon-health.svg",
 		"displayname": "Vida Máxima",

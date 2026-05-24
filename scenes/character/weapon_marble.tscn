@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bv66ucy353pwo"]
+
+[ext_resource type="Script" uid="uid://d3ujtuo5acd0u" path="res://scripts/weapon_scripts/weapon_marble.gd" id="1_6l6bo"]
+
+[node name="WeaponMarble" type="Node2D" unique_id=1546326409]
+script = ExtResource("1_6l6bo")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1360204184]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

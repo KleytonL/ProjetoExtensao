@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://mxd8tta45at5"]
+
+[ext_resource type="Script" uid="uid://cbbbfarjct0op" path="res://scripts/weapon_scripts/marble_projectile.gd" id="1_vmftk"]
+[ext_resource type="Texture2D" uid="uid://bbd4koktkmkkx" path="res://resources/spritesheets/spritesheet-marble.svg" id="2_igy3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdooi"]
+atlas = ExtResource("2_igy3y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag3f2"]
+atlas = ExtResource("2_igy3y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywsry"]
+atlas = ExtResource("2_igy3y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6peb"]
+atlas = ExtResource("2_igy3y")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewb65"]
+atlas = ExtResource("2_igy3y")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6sri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdooi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag3f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywsry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6peb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewb65")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igy3y"]
+radius = 7.0
+
+[node name="MarbleProjectile" type="Area2D" unique_id=1644192790]
+scale = Vector2(0.1, 0.1)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vmftk")
+force = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2114872497]
+sprite_frames = SubResource("SpriteFrames_h6sri")
+autoplay = "default"
+frame_progress = 0.89687854
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1963748592]
+shape = SubResource("CircleShape2D_igy3y")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

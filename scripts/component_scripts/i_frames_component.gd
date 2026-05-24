@@ -11,6 +11,7 @@ func activate_iframes(time: float) -> void:
 	await get_tree().create_timer(time).timeout
 	hurtbox_component.monitorable = true
 	hurtbox_component.monitoring = true
+	hurtbox_component.hit_frame = false
 	active = false
 	check_overlaps()
 

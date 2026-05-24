@@ -105,9 +105,10 @@ func close_and_save(item) -> void:
 	upgrade_options.clear()
 	GameLogic.upgrades_collected.append(item)
 	
-	emit_signal("panel_closed")
-	
 	self.visible = false
 	get_tree().paused = false
 	freeze_component.fade_out_freeze(0.1, 0.5)
+	$"../MobileControls/Joystick".reset()
 	GameLogic.can_pause = true
+	
+	emit_signal("panel_closed")

@@ -4,7 +4,7 @@ const PATH: String = "user://save_data.json"
 
 var first_time_player: bool = true
 var levels_unlocked: Array[int] = [1]
-var essences_collected: int = 0
+var essences_collected: int = 5000
 var meta_upgrades: Dictionary = {
 	"bonus_health": {
 		"level": 0,

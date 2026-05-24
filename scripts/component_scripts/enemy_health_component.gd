@@ -7,12 +7,17 @@ const damage_number = preload("res://scenes/misc/gui/damage_number.tscn")
 @export var max_health: float
 var health: float
 
+static var played_frame: int = -1
+
 func _ready() -> void:
 	health = max_health
 
 func damage(attack: PlayerHitboxComponent) -> void:
 	health -= attack.damage
-	$sfx_damage.play()
+	
+	if Engine.get_process_frames() != played_frame:
+		played_frame = Engine.get_process_frames()
+		$sfx_damage.play()
 	
 	spawn_damage_number(attack)
 	

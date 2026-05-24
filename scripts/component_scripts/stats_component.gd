@@ -71,6 +71,7 @@ func apply_meta_upgrade() -> void:
 				bonus_vampirism += value
 			"bonus_size":
 				bonus_projectile_size += value
+				emit_signal("update_stats")
 			"bonus_area_size":
 				bonus_collect_area_size += value
 				emit_signal("update_stats")

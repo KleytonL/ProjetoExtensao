@@ -17,3 +17,7 @@ func _inject_input(action: String, strength: float) -> void:
 	event.pressed = strength > 0
 	event.strength = strength
 	Input.parse_input_event(event)
+
+func reset() -> void:
+	$Knob.pressing = false
+	$Knob.touch_index = -1
