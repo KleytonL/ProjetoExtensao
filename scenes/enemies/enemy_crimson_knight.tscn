@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvrwlv57fhw2o"]
 
-[ext_resource type="Script" path="res://scripts/enemy_scripts/crimson_knight.gd" id="1_5n8us"]
+[ext_resource type="Script" uid="uid://xwqspoj5d5ha" path="res://scripts/enemy_scripts/crimson_knight.gd" id="1_5n8us"]
 [ext_resource type="Texture2D" uid="uid://ncrgpoebctbv" path="res://resources/spritesheets/spritesheet-hayato.svg" id="2_7chpn"]
 [ext_resource type="PackedScene" uid="uid://boi6m5upehpyw" path="res://scenes/misc/states/state_machine.tscn" id="3_xblos"]
 [ext_resource type="Script" uid="uid://b6wu7hresy3q6" path="res://scripts/state_scripts/pursuit_state.gd" id="4_a416l"]

@@ -139,7 +139,7 @@ death_state = NodePath("../StateMachine/DeathState")
 max_health = 15.0
 
 [node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("8_5scvu")]
-target = NodePath("")
+target = NodePath("..")
 hurt_state = NodePath("../StateMachine/HurtState")
 resistence = 1.1
 

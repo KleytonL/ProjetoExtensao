@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 [audio]
 
+buses/default_bus_layout="uid://bvrx7x63mfkca"
 general/default_playback_type.web=0
 
 [autoload]
@@ -32,6 +33,7 @@ UpgradeDatabase="*uid://bsw7i8fsnghi0"
 LoadingScreen="*uid://bsdmmmyvjiu8"
 UserConfig="*uid://cgmfctbjuqk0o"
 SaveManager="*uid://rwqieuut518t"
+SpatialHash="*uid://bt1xf526672eo"
 
 [display]
 

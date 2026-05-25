@@ -20,9 +20,13 @@ func _process(delta: float) -> void:
 
 func _on_visibility_notifier_screen_entered() -> void:
 	sprite.visible = true
+	set_physics_process(true)
+	$StateMachine/PursuitState.set_process(true)
 
 func _on_visibility_notifier_screen_exited() -> void:
 	sprite.visible = false
+	set_physics_process(false)
+	$StateMachine/PursuitState.set_process(false)
 
 func _on_lifetime_timer_timeout() -> void:
 	call_deferred("queue_free")
