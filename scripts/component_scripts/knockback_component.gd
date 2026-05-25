@@ -1,7 +1,7 @@
 extends Node
 class_name KnockbackComponent
 
-@export var target: CharacterBody2D
+@export var target: Node
 @export var hurt_state: State
 @export var resistence: float = 1.0
 var knockback: Vector2

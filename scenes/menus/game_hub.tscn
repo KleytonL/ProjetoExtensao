@@ -25,6 +25,22 @@ region = Rect2(0, 32, 96, 32)
 atlas = ExtResource("4_lkju2")
 region = Rect2(96, 32, 96, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg5ut"]
+atlas = ExtResource("4_lkju2")
+region = Rect2(0, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk4bt"]
+atlas = ExtResource("4_lkju2")
+region = Rect2(96, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k07x2"]
+atlas = ExtResource("4_lkju2")
+region = Rect2(96, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djm6u"]
+atlas = ExtResource("4_lkju2")
+region = Rect2(96, 64, 96, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyxmq"]
 atlas = ExtResource("1_gbrnv")
 region = Rect2(0, 96, 48, 16)
@@ -82,9 +98,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -8.0
-offset_top = 16.0
+offset_top = 4.0
 offset_right = -151.99998
-offset_bottom = -87.0
+offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../voltar_btn")
@@ -101,31 +117,50 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -8.0
-offset_top = 56.0
+offset_top = 40.0
 offset_right = -152.0
-offset_bottom = -47.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../level_btn")
-focus_neighbor_bottom = NodePath("../voltar_btn")
+focus_neighbor_bottom = NodePath("../tutorial_btn")
 mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_qcwfc")
 texture_pressed = SubResource("AtlasTexture_w4x1m")
 texture_hover = SubResource("AtlasTexture_w4x1m")
 texture_focused = SubResource("AtlasTexture_w4x1m")
 
+[node name="tutorial_btn" type="TextureButton" parent="." unique_id=81439203]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = 76.0
+offset_right = -192.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../shop_btn")
+focus_neighbor_bottom = NodePath("../voltar_btn")
+mouse_filter = 2
+texture_normal = SubResource("AtlasTexture_kg5ut")
+texture_pressed = SubResource("AtlasTexture_uk4bt")
+texture_hover = SubResource("AtlasTexture_k07x2")
+texture_focused = SubResource("AtlasTexture_djm6u")
+
 [node name="voltar_btn" type="TextureButton" parent="." unique_id=1683050788]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 100.0
-offset_right = -177.0
-offset_bottom = -19.0
+offset_left = 13.0
+offset_top = 113.0
+offset_right = -179.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_top = NodePath("../shop_btn")
+focus_neighbor_top = NodePath("../tutorial_btn")
 focus_neighbor_bottom = NodePath("../level_btn")
 mouse_filter = 2
 texture_normal = SubResource("AtlasTexture_fyxmq")
@@ -149,5 +184,8 @@ layout_mode = 1
 [connection signal="focus_exited" from="level_btn" to="." method="_on_level_btn_focus_exited"]
 [connection signal="focus_entered" from="shop_btn" to="." method="_on_shop_btn_focus_entered"]
 [connection signal="focus_exited" from="shop_btn" to="." method="_on_shop_btn_focus_exited"]
+[connection signal="focus_entered" from="tutorial_btn" to="." method="_on_tutorial_btn_focus_entered"]
+[connection signal="focus_exited" from="tutorial_btn" to="." method="_on_tutorial_btn_focus_exited"]
+[connection signal="pressed" from="tutorial_btn" to="." method="_on_tutorial_btn_pressed"]
 [connection signal="focus_entered" from="voltar_btn" to="." method="_on_voltar_btn_focus_entered"]
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]

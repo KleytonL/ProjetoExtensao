@@ -42,6 +42,18 @@ func _on_shop_btn_focus_entered() -> void:
 func _on_shop_btn_focus_exited() -> void:
 	unfocus_tween($shop_btn)
 
+func _on_tutorial_btn_pressed() -> void:
+	$tutorial_btn.release_focus()
+	$TutorialPanel.show_tutorial()
+	await $TutorialPanel.panel_closed
+	$tutorial_btn.grab_focus()
+
+func _on_tutorial_btn_focus_entered() -> void:
+	_hover.play()
+	on_focus_tween($tutorial_btn)
+
+func _on_tutorial_btn_focus_exited() -> void:
+	unfocus_tween($tutorial_btn)
 
 func _on_voltar_btn_focus_entered() -> void:
 	_hover.play()
@@ -52,12 +64,12 @@ func _on_voltar_btn_pressed() -> void:
 
 func on_focus_tween(button: TextureButton) -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(button, "position", Vector2(0, button.position.y), 0.25)
+	tween.tween_property(button, "position", Vector2(0 if button != $tutorial_btn else -32, button.position.y), 0.25)
 	tween.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
 
 func unfocus_tween(button: TextureButton) -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(button, "position", Vector2(-8, button.position.y), 0.25)
+	tween.tween_property(button, "position", Vector2(-8 if button != $tutorial_btn else -48, button.position.y), 0.25)
 	tween.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()

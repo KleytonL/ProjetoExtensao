@@ -4,7 +4,7 @@ class_name StateMachine
 @export var initial_state: State
 var current_state: State
 
-func init(parent: CharacterBody2D) -> void:
+func init(parent: Node) -> void:
 	for child in get_children():
 		if child is State:
 			child.parent = parent

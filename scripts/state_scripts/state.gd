@@ -4,7 +4,7 @@ class_name State
 @export var animation_name: String
 @export var move_speed: int = 26
 
-var parent: CharacterBody2D
+var parent: Node
 var state_machine: StateMachine
 
 func enter() -> void:

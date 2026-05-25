@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 class_name EnemyWispG1
 
 @onready var state_machine: StateMachine = $StateMachine

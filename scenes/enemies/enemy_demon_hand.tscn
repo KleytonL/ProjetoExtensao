@@ -14,9 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cbc7kfxxvc578" path="res://scenes/misc/components/enemy_attack_range_component.tscn" id="11_7hehc"]
 [ext_resource type="Script" uid="uid://co76ffpgsfet0" path="res://scripts/enemy_scripts/enemy_attack_timer.gd" id="13_qy1n3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qwhs8"]
-radius = 7.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5scvu"]
 size = Vector2(12, 8)
 
@@ -98,7 +95,7 @@ _data = {
 &"pursuit_animation": SubResource("Animation_mm73v")
 }
 
-[node name="enemy_demon_hand" type="CharacterBody2D" unique_id=1646686987 groups=["Enemy"]]
+[node name="enemy_demon_hand" type="Area2D" unique_id=746060201 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_grmh3")
@@ -107,9 +104,6 @@ script = ExtResource("1_grmh3")
 texture = ExtResource("1_qwhs8")
 hframes = 4
 vframes = 4
-
-[node name="OtherCollisions" type="CollisionShape2D" parent="." unique_id=1486452780]
-shape = SubResource("CircleShape2D_qwhs8")
 
 [node name="StateMachine" parent="." unique_id=46313988 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_hadc6")]
 initial_state = NodePath("PursuitState")
@@ -145,7 +139,7 @@ death_state = NodePath("../StateMachine/DeathState")
 max_health = 15.0
 
 [node name="KnockbackComponent" parent="." unique_id=1174748749 node_paths=PackedStringArray("target", "hurt_state") instance=ExtResource("8_5scvu")]
-target = NodePath("..")
+target = NodePath("")
 hurt_state = NodePath("../StateMachine/HurtState")
 resistence = 1.1
 

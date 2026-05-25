@@ -8,15 +8,20 @@ var _in_range: Array = []
 func _ready() -> void:
 	_collision.shape.radius = range_radius
 
-func _on_body_entered(body: Node2D) -> void:
-	if not _in_range.has(body):
-		_in_range.append(body)
+func _on_area_entered(area: Area2D) -> void:
+	if area is EnemyHurtboxComponent:
+		var enemy = area.owner
+		if not _in_range.has(enemy):
+			_in_range.append(enemy)
 
-func _on_body_exited(body: Node2D) -> void:
-	if _in_range.has(body):
-		_in_range.erase(body)
+func _on_area_exited(area: Area2D) -> void:
+	if area is EnemyHurtboxComponent:
+		var enemy = area.owner
+		if _in_range.has(enemy):
+			_in_range.erase(enemy)
 
 func get_random_target() -> Vector2:
+	_in_range = _in_range.filter(func(e): return is_instance_valid(e))
 	if _in_range.size() > 0:
 		return _in_range.pick_random().global_position
 	else:

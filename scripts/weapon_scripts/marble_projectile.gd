@@ -10,7 +10,7 @@ var projectile_angle: Vector2 = Vector2.ZERO
 var projectile_target: Vector2 = Vector2.ZERO
 
 var bounces_left: int
-var damage_multiplier: float = 1.5
+var damage_multiplier: float = 1.25
 var hit_enemies: Array = []
 
 func _ready() -> void:
@@ -34,7 +34,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			queue_free()
 		health -= 1
-		damage += damage_multiplier
+		_base_damage *= damage_multiplier
 		bounce(enemy)
 
 func bounce(last_target: CharacterBody2D) -> void:
@@ -52,3 +52,7 @@ func bounce(last_target: CharacterBody2D) -> void:
 		queue_free()
 		return
 	projectile_angle = global_position.direction_to(best_target.global_position)
+
+
+func _on_duration_timer_timeout() -> void:
+	queue_free()
