@@ -2,13 +2,20 @@ extends Node
 class_name iFramesComponent
 
 @export var hurtbox_component: PlayerHurtboxComponent
+var remaining_time: float = 0.0
 var active: bool
 
 func activate_iframes(time: float) -> void:
+	if time > remaining_time:
+		remaining_time = time
+	if active:
+		return
 	active = true
 	hurtbox_component.monitorable = false
 	hurtbox_component.monitoring = false
-	await get_tree().create_timer(time).timeout
+	while remaining_time > 0:
+		await  get_tree().process_frame
+		remaining_time -= get_process_delta_time()
 	hurtbox_component.monitorable = true
 	hurtbox_component.monitoring = true
 	hurtbox_component.hit_frame = false

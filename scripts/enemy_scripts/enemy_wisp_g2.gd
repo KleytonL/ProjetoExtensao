@@ -6,6 +6,7 @@ class_name EnemyWispG2
 @onready var sprite: Sprite2D = $Sprite2D
 @export var experience: int = 3
 @export var score_given: int = 25
+var is_visible_on_screen: bool = true
 
 func _ready() -> void:
 	state_machine.init(self)
@@ -19,11 +20,13 @@ func _process(delta: float) -> void:
 func _on_visibility_notifier_screen_entered() -> void:
 	sprite.visible = true
 	set_physics_process(true)
+	is_visible_on_screen = true
 	$StateMachine/PursuitState.set_process(true)
 
 func _on_visibility_notifier_screen_exited() -> void:
 	sprite.visible = false
 	set_physics_process(false)
+	is_visible_on_screen = false
 	$StateMachine/PursuitState.set_process(false)
 
 func _on_lifetime_timer_timeout() -> void:

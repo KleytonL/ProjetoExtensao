@@ -6,6 +6,8 @@ var _grid: Dictionary = {}
 func _process(_delta: float) -> void:
 	_grid.clear()
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		if not enemy.is_visible_on_screen:
+			continue
 		var cell = _to_cell(enemy.global_position)
 		if not _grid.has(cell):
 			_grid[cell] = []

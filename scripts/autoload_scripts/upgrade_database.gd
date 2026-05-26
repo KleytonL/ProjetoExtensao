@@ -364,7 +364,7 @@ const UPGRADES: Dictionary = {
 		"key": "spear"
 	},
 	"spearthrust5": {
-		"icon": ICON_PATH + "icon-spear.svzg",
+		"icon": ICON_PATH + "icon-spear.svg",
 		"displayname": "Estocada",
 		"details": "Use uma lança para se proteger",
 		"level": "Level 5",

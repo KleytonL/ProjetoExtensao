@@ -13,7 +13,7 @@ script = ExtResource("1_ld6wm")
 
 [node name="ThrustSFX" type="AudioStreamPlayer" parent="." unique_id=294520950]
 stream = SubResource("AudioStreamRandomizer_2ad5p")
-volume_db = -12.0
+volume_db = -18.0
 
 [node name="RechargeTimer" type="Timer" parent="." unique_id=1211716097]
 
