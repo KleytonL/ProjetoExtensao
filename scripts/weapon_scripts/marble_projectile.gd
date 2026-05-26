@@ -37,8 +37,8 @@ func _on_area_entered(area: Area2D) -> void:
 		_base_damage *= damage_multiplier
 		bounce(enemy)
 
-func bounce(last_target: CharacterBody2D) -> void:
-	var best_target: CharacterBody2D = null
+func bounce(last_target: Area2D) -> void:
+	var best_target: Area2D = null
 	var best_distance: float = INF
 	
 	for area in get_tree().get_nodes_in_group("Enemy"):

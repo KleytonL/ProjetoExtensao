@@ -13,13 +13,14 @@ var cached_target: Vector2
 func enter() -> void:
 	super()
 	parent.is_attacking = true
-	parent.velocity = Vector2.ZERO
+	$"../PursuitState".set_process(false)
 	cached_target = attack_range.get_player_position()
 	await get_tree().create_timer(await_time).timeout
 	release_attack()
 
 func exit() -> void:
 	parent.is_attacking = false
+	$"../PursuitState".set_process(true)
 	$"../../AttackTimer".start()
 
 func process_physics(_delta: float) -> State:

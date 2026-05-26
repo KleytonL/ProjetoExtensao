@@ -74,3 +74,4 @@ frame_progress = 0.9934137
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_3pisj")
 volume_db = -22.5
+bus = &"SoundEffects"

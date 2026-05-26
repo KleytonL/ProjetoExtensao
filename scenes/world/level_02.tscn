@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c5qfijvh88uqm" path="res://scenes/character/player.tscn" id="1_tmsl0"]
 [ext_resource type="PackedScene" uid="uid://ccphn3uunk7c2" path="res://scenes/enemies/enemy_spawner.tscn" id="2_g6taw"]
 [ext_resource type="Texture2D" uid="uid://chlu7j7enuxu6" path="res://resources/tilemaps/tilemap-level02.svg" id="2_gcc44"]
-[ext_resource type="AudioStream" uid="uid://dclnda68b3643" path="res://resources/audio/music/battle-mage-intro.mp3" id="2_h6qlu"]
 [ext_resource type="Script" uid="uid://fqca6eefpksa" path="res://scripts/enemy_scripts/spawn_info.gd" id="3_ec1tj"]
-[ext_resource type="AudioStream" uid="uid://bki8oxk3w5l7y" path="res://resources/audio/music/battle-mage-loop.mp3" id="3_gcc44"]
 [ext_resource type="PackedScene" uid="uid://cdeic8y778515" path="res://scenes/menus/pause_menu.tscn" id="3_qpp3u"]
 [ext_resource type="PackedScene" uid="uid://cq2hne6jxythc" path="res://scenes/enemies/enemy_wispG1.tscn" id="4_dc68i"]
 [ext_resource type="PackedScene" uid="uid://c1kbped141h63" path="res://scenes/menus/death_screen.tscn" id="4_hive2"]
@@ -14,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cyqmvtlg4kc0r" path="res://scenes/enemies/enemy_demon_hand.tscn" id="8_xve4t"]
 [ext_resource type="PackedScene" uid="uid://n3t27wesrn06" path="res://scenes/misc/upgrade_controller.tscn" id="9_xve4t"]
 [ext_resource type="PackedScene" uid="uid://dqkksmie0yu3m" path="res://scenes/menus/victory_screen.tscn" id="13_8phuj"]
+[ext_resource type="AudioStream" uid="uid://dmyteg88g4axv" path="res://resources/audio/music/battle-mage-intro.ogg" id="13_xve4t"]
+[ext_resource type="AudioStream" uid="uid://bt0otq7qdbd8u" path="res://resources/audio/music/battle-mage-loop.ogg" id="14_8phuj"]
 
 [sub_resource type="Resource" id="Resource_xl0gr"]
 script = ExtResource("3_ec1tj")
@@ -201,11 +201,11 @@ sources/3 = SubResource("TileSetAtlasSource_rvsee")
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gcc44"]
 clip_count = 2
 clip_0/name = &"Intro"
-clip_0/stream = ExtResource("2_h6qlu")
+clip_0/stream = ExtResource("13_xve4t")
 clip_0/auto_advance = 1
 clip_0/next_clip = 1
 clip_1/name = &"MainLoop"
-clip_1/stream = ExtResource("3_gcc44")
+clip_1/stream = ExtResource("14_8phuj")
 clip_1/auto_advance = 0
 
 [node name="level_02" type="Node2D" unique_id=510613254]

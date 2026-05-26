@@ -95,9 +95,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=2101460689]
 stream = ExtResource("4_dyi16")
+bus = &"SoundEffects"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=879980808]
 stream = ExtResource("5_ftc8p")
+bus = &"SoundEffects"
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

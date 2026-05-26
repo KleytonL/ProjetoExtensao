@@ -174,9 +174,11 @@ texture_focused = SubResource("AtlasTexture_urgkg")
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=677511507]
 stream = ExtResource("5_325oc")
+bus = &"SoundEffects"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=721412431]
 stream = ExtResource("6_wywfy")
+bus = &"SoundEffects"
 
 [connection signal="focus_entered" from="voltar_btn" to="." method="_on_voltar_btn_focus_entered"]
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]

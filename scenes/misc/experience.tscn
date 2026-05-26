@@ -216,5 +216,6 @@ autoplay = "exp_blue"
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_iudx8")
 volume_db = -22.5
+bus = &"SoundEffects"
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

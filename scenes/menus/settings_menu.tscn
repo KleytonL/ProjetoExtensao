@@ -1,9 +1,64 @@
 [gd_scene format=3 uid="uid://c1233ebhfucmc"]
 
 [ext_resource type="Script" uid="uid://dama3cjmi5xso" path="res://scripts/menu_scripts/settings_menu.gd" id="1_7i3iu"]
+[ext_resource type="Texture2D" uid="uid://c8xwncnqv4hv7" path="res://resources/gui/settings-ui.svg" id="2_da10i"]
 [ext_resource type="Texture2D" uid="uid://bom6cot5rwiai" path="res://resources/gui/spritesheet-ui.svg" id="2_s2d1y"]
 [ext_resource type="AudioStream" uid="uid://dtuf6fo14jo4f" path="res://resources/audio/sfx/hover.ogg" id="3_ojvp1"]
 [ext_resource type="AudioStream" uid="uid://bkjce8g6l5kn4" path="res://resources/audio/sfx/select.ogg" id="4_da10i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kffdn"]
+atlas = ExtResource("2_da10i")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnuys"]
+atlas = ExtResource("2_da10i")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoonq"]
+atlas = ExtResource("2_da10i")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da10i"]
+atlas = ExtResource("2_da10i")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjfif"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1254902, 0.20784314, 0.38431373, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjfif"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kffdn"]
+bg_color = Color(0, 0.59607846, 0.85882354, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcc4n"]
+atlas = ExtResource("2_da10i")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muhwa"]
+atlas = ExtResource("2_da10i")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjfif"]
+atlas = ExtResource("2_da10i")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_da10i"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1254902, 0.20784314, 0.38431373, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kffdn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnuys"]
+bg_color = Color(0, 0.59607846, 0.85882354, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wswnh"]
 atlas = ExtResource("2_s2d1y")
@@ -53,12 +108,19 @@ size_flags_vertical = 4
 [node name="sfx_toggle" type="CheckButton" parent="VBoxContainer" unique_id=27608373]
 layout_mode = 2
 mouse_filter = 2
+theme_override_icons/checked = SubResource("AtlasTexture_kffdn")
+theme_override_icons/unchecked = SubResource("AtlasTexture_qnuys")
 button_pressed = true
-text = "SFX"
+text = "Efeitos"
 
 [node name="sfx_slider" type="HSlider" parent="VBoxContainer" unique_id=919789913]
 layout_mode = 2
 mouse_filter = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_eoonq")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_da10i")
+theme_override_styles/slider = SubResource("StyleBoxFlat_jjfif")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_jjfif")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_kffdn")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -66,12 +128,19 @@ value = 1.0
 [node name="bgm_toggle" type="CheckButton" parent="VBoxContainer" unique_id=734122690]
 layout_mode = 2
 mouse_filter = 2
+theme_override_icons/checked = SubResource("AtlasTexture_mcc4n")
+theme_override_icons/unchecked = SubResource("AtlasTexture_muhwa")
 button_pressed = true
 text = "Musica"
 
 [node name="bgm_slider" type="HSlider" parent="VBoxContainer" unique_id=742600180]
 layout_mode = 2
 mouse_filter = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_jjfif")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_da10i")
+theme_override_styles/slider = SubResource("StyleBoxFlat_da10i")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_kffdn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qnuys")
 max_value = 1.0
 step = 0.05
 value = 1.0

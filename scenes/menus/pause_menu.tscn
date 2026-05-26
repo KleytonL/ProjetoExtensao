@@ -109,9 +109,11 @@ texture_focused = SubResource("AtlasTexture_knqa7")
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=1717572582]
 stream = ExtResource("3_gsnt3")
+bus = &"SoundEffects"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=309157316]
 stream = ExtResource("4_2wrho")
+bus = &"SoundEffects"
 
 [connection signal="focus_entered" from="PanelContainer/VBoxContainer/resume_btn" to="." method="_on_resume_btn_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/resume_btn" to="." method="_on_resume_btn_pressed"]

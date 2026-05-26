@@ -8,12 +8,16 @@ class_name Crate
 var min_essence: int = 1
 var max_essence: int = 5
 var magnet_chance: float = 0.25
+var can_break: bool = true
 
 func damage(attack: PlayerHitboxComponent) -> void:
+	if !can_break:
+		return
 	super(attack)
 	$AnimationPlayer.play("shake_animation")
 
 func destroy() -> void:
+	can_break = false
 	set_deferred("monitorable", false)
 	$Sprite2D.visible = false
 	$CPUParticles2D.restart()

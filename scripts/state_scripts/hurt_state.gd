@@ -29,7 +29,7 @@ func process_physics(delta: float) -> State:
 		parent.move_and_slide()
 	else:
 		parent.position += knockback_component.knockback * delta
-		knockback_component.knockback = knockback_component.knockback.lerp(Vector2.ZERO, delta * knockback_component.resistence * 4.5)
+		knockback_component.knockback = knockback_component.knockback.lerp(Vector2.ZERO, delta * 3.5)
 		if knockback_component.knockback.length() < 1.0:
 			knockback_component.knockback = Vector2.ZERO
 			return idle_state

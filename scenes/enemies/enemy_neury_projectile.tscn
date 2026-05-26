@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="3_h72x4"]
 [ext_resource type="PackedScene" uid="uid://dy8175vwe6r4u" path="res://scenes/misc/components/enemy_health_component.tscn" id="3_lvnvo"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2quf"]
+size = Vector2(8, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rljv2"]
 atlas = ExtResource("2_lvnvo")
 region = Rect2(0, 0, 16, 16)
@@ -48,9 +51,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2quf"]
-size = Vector2(8, 16)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpw6g"]
 radius = 4.0
 
@@ -62,22 +62,23 @@ script = ExtResource("1_chjkn")
 damage = 1
 force = 2.5
 
+[node name="HitboxCollision" type="CollisionShape2D" parent="." unique_id=753819677]
+rotation = 0.6283185
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_s2quf")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1460557630]
 sprite_frames = SubResource("SpriteFrames_st7mv")
 autoplay = "default"
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="." unique_id=753819677]
-rotation = 0.62831855
-scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_s2quf")
-
-[node name="EnemyHealthComponent" parent="." unique_id=2004770144 instance=ExtResource("3_lvnvo")]
-max_health = 7.5
-
 [node name="EnemyHurtboxComponent" parent="." unique_id=442173391 node_paths=PackedStringArray("health_component") instance=ExtResource("3_h72x4")]
+scale = Vector2(0.99999994, 0.99999994)
 health_component = NodePath("../EnemyHealthComponent")
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=505442030]
 shape = SubResource("CircleShape2D_cpw6g")
+
+[node name="EnemyHealthComponent" parent="." unique_id=2004770144 instance=ExtResource("3_lvnvo")]
+max_health = 7.5
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

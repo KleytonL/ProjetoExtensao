@@ -246,9 +246,11 @@ libraries/ = SubResource("AnimationLibrary_ewew8")
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=2055229654]
 stream = ExtResource("3_yg54c")
+bus = &"SoundEffects"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=15783945]
 stream = ExtResource("4_ewew8")
+bus = &"SoundEffects"
 
 [node name="CrunchSFX" type="AudioStreamPlayer" parent="." unique_id=1439341599]
 volume_db = -8.0

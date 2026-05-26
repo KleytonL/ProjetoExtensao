@@ -5,6 +5,7 @@ var projectile_speed: int = 45
 var projectile_target: Player
 var projectile_direction: Vector2 = Vector2.ZERO
 var projectile_spawn_direction: Vector2 = Vector2.ZERO
+var is_visible_on_screen: bool = false
 var can_pursuit: bool = false
 
 func _ready() -> void:
