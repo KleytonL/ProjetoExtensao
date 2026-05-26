@@ -16,7 +16,7 @@ print("Hello world")
 ```
 ### Nosso Time
 
-Kleyton Luiz: https://github.com/KleytonL  [![My Skills](https://skillicons.dev/icons?i=github)](https://skillicons.dev)
+Kleyton Luiz: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/KleytonL)
 
 Fernando Bersellini: https://github.com/FernandoBersellini  
 
