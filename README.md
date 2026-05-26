@@ -1,20 +1,22 @@
 # Projeto de extensão: Hayato Training Ground
 Link para o portfólio: https://kleytonl.github.io/PortifolioExtensao/  
 Link para o jogo: https://kleytonl.github.io/ProjetoExtensao/
-## Sobre este projeto
-Este repositório se trata de um projeto de extensão desenvolvido para a instituição de ensino UniFil. É um jogo desenvolvido com a engine Godot.
+## Sobre o projeto
+Este repositório se trata de um projeto de extensão desenvolvido para o Centro Universitário Filadélfia UniFil do Paraná. A proposta foi o desenvolvimento de um jogo utilizando a ferramenta Godot Engine.
 ### Gameplay
-O jogo tem como objetivo sobreviver por um determinado período de tempo contra inimigos que perseguem o jogador, com o objetivo de reduzir a vida dele à zero. Em resposta, Hayato, o protagonista, pode se defender usando seus punhos, e um arsenal variado de armas e equipamentos. Além disso, ele pode se fortalecer através de power-ups, que mudam aspectos de sua jogabilidade, aumentando o seu poder. Além disso, o jogo contém níveis de dificuldade.
+O jogo tem como objetivo sobreviver por um determinado período de tempo contra inimigos que perseguem o jogador, com o objetivo de reduzir sua barra de vida à zero. Em resposta, nosso protagonista, Hayato, deve se defender usando seus punhos, além de um arsenal variado de armas, habilidades e melhorias de seus atributos e do próprio personagem, enquanto uma horda crescente de inimigos tenta te eliminar.
+
+#### Arsenal
+
 
 ### Sobre o código
 A engine Godot contêm uma própria linguagem de programação, chamada GDScript. É similar a Python.  
 ```gdscript
 print("Hello world")
 ```
-### Time
-O projeto foi desenvolvido por:  
+### Nosso Time
 
-Kleyton Luiz: https://github.com/KleytonL  
+Kleyton Luiz: https://github.com/KleytonL  [![My Skills](https://skillicons.dev/icons?i=github)](https://skillicons.dev)
 
 Fernando Bersellini: https://github.com/FernandoBersellini  
 
