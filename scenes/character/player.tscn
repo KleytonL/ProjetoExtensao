@@ -406,6 +406,7 @@ atlas = ExtResource("34_kg8dr")
 region = Rect2(32, 96, 32, 32)
 
 [node name="Player" type="CharacterBody2D" unique_id=1155197298 node_paths=PackedStringArray("animations", "state_machine", "attack_range", "experience", "stats", "health", "sprite") groups=["Player"]]
+z_index = 1
 motion_mode = 1
 script = ExtResource("1_onrkg")
 animations = NodePath("AnimationPlayer")

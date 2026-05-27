@@ -43,6 +43,7 @@ func apply_stat_upgrade(data: Dictionary) -> void:
 			bonus_attack_speed += data["value"]
 		"projectile_size":
 			bonus_projectile_size += data["value"]
+			emit_signal("update_stats")
 		"collect_area_size":
 			bonus_collect_area_size += data["value"]
 			emit_signal("update_stats")
@@ -71,7 +72,6 @@ func apply_meta_upgrade() -> void:
 				bonus_vampirism += value
 			"bonus_size":
 				bonus_projectile_size += value
-				emit_signal("update_stats")
 			"bonus_area_size":
 				bonus_collect_area_size += value
 				emit_signal("update_stats")

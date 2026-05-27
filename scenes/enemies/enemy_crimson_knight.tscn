@@ -10,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cb2yhgaert72e" path="res://scenes/misc/components/enemy_hitbox_component.tscn" id="8_jsuxr"]
 [ext_resource type="PackedScene" uid="uid://ddpik0loc53gt" path="res://scenes/misc/components/enemy_hurtbox_component.tscn" id="9_x1dab"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t11r7"]
-radius = 4.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02wy6"]
 size = Vector2(10, 14)
 
@@ -66,9 +63,6 @@ hframes = 6
 vframes = 6
 frame = 6
 
-[node name="OtherCollisions" type="CollisionShape2D" parent="." unique_id=693213036]
-shape = SubResource("CircleShape2D_t11r7")
-
 [node name="StateMachine" parent="." unique_id=46313988 node_paths=PackedStringArray("initial_state") instance=ExtResource("3_xblos")]
 initial_state = NodePath("PursuitState")
 
@@ -90,7 +84,7 @@ metadata/_custom_type_script = "uid://bboq2cifjak1t"
 
 [node name="EnemyHealthComponent" parent="." unique_id=2004770144 node_paths=PackedStringArray("death_state") instance=ExtResource("7_grsvy")]
 death_state = NodePath("../StateMachine/DeathState")
-max_health = 100.0
+max_health = 1000.0
 
 [node name="EnemyHitboxComponent" parent="." unique_id=1431613630 instance=ExtResource("8_jsuxr")]
 damage = 10

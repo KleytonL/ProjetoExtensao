@@ -2,8 +2,8 @@ extends Node2D
 class_name LevelOne
 
 @onready var crate = preload("res://scenes/misc/crate.tscn")
+var active_enemies: Array = []
 var current_crates: int = 0
-var active_enemies: int
 
 func _ready() -> void:
 	spawn_crates()
@@ -22,11 +22,13 @@ func _on_crate_timer_timeout() -> void:
 	spawn_crates()
 
 func _on_level_timer_timeout() -> void:
-	active_enemies = get_tree().get_node_count_in_group("Enemy")
-	victory_condition(active_enemies)
+	victory_condition()
 
-func victory_condition(enemies) -> void:
-	if enemies != 0:
+func victory_condition() -> void:
+	active_enemies = get_tree().get_nodes_in_group("Enemy").filter(
+		func(e): return e.is_visible_on_screen
+	)
+	if active_enemies.size() != 0:
 		$LevelTimer.start(1.0)
 	else:
 		SaveManager.set_weapons(3)

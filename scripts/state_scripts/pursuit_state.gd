@@ -4,7 +4,7 @@ class_name PursuitState
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
 
 const separation_radius: float = 324.0
-const separation_force: float = 0.005
+const separation_force: float = 0.01
 
 func process_physics(delta: float) -> State:
 	if player:
