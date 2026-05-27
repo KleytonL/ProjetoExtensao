@@ -9,7 +9,7 @@ O jogo tem como objetivo sobreviver por um determinado período de tempo contra 
 #### Arsenal
 
 
-### Sobre o código [![GODOT](https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/godot.png)]
+### Sobre o código <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/godot.png" width="100" />
 A engine Godot contêm uma própria linguagem de programação, chamada GDScript. É similar a Python.  
 ```gdscript
 print("Hello world")
