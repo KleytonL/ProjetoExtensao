@@ -9,7 +9,7 @@ O jogo tem como objetivo sobreviver por um determinado período de tempo contra 
 #### Arsenal
 
 
-### Sobre o código
+### Sobre o código [![GODOT](https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/godot.png)]
 A engine Godot contêm uma própria linguagem de programação, chamada GDScript. É similar a Python.  
 ```gdscript
 print("Hello world")
@@ -20,11 +20,11 @@ Kleyton Luiz: [![My Skills](https://skillicons.dev/icons?i=github)](https://gith
 
 Fernando Bersellini: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/FernandoBersellini) 
 
-Guilherme Acioli: https://github.com/GuilhermeAcioli  [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)
+Guilherme Acioli: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)
 
-Matheus Cardoso: https://github.com/MathJoones  [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/MathJoones)
+Matheus Cardoso: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/MathJoones)
 
-Vitor Kenji: https://github.com/vkenji1 [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/vkenji1)
+Vitor Kenji: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/vkenji1)
 
 ### Preview
 <img width="1919" height="899" alt="image" src="https://github.com/user-attachments/assets/93c62a3f-dade-4ac5-9636-6d569b0630b0" />  
