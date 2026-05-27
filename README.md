@@ -8,19 +8,15 @@ O jogo tem como objetivo sobreviver por um determinado período de tempo contra 
 
 #### Arsenal
 
-
-### Sobre o código <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/godot.png" width="100" />
-A engine Godot contêm uma própria linguagem de programação, chamada GDScript. É similar a Python.  
+                              
+### Sobre o código <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/godot.png" width="50" />  
+O Godot Engine tem sua própria linguagem, mas é fortemente inspirada em Python, apesar de sua tipagem ser estática e gradual. 
 ```gdscript
 print("Hello world")
 ```
 ### Nosso Time
 
-Kleyton Luiz: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/KleytonL)
-
-Fernando Bersellini: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/FernandoBersellini) 
-
-Guilherme Acioli: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)
+Kleyton Luiz: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/KleytonL) Fernando Bersellini: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/FernandoBersellini) Guilherme Acioli: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)
 
 Matheus Cardoso: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/MathJoones)
 
