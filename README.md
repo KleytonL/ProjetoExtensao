@@ -16,11 +16,12 @@ print("Hello world")
 ```
 ### Nosso Time
 
-Kleyton Luiz: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/KleytonL) Fernando Bersellini: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/FernandoBersellini) Guilherme Acioli: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)
+Kleyton Luiz             Fernando Bersellini         Guilherme Acioli
+[![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/KleytonL) [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/FernandoBersellini) [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)
 
-Matheus Cardoso: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/MathJoones)
+Matheus Cardoso             Vitor Kenji
 
-Vitor Kenji: [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/vkenji1)
+ [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/MathJoones) [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/vkenji1)
 
 ### Preview
 <img width="1919" height="899" alt="image" src="https://github.com/user-attachments/assets/93c62a3f-dade-4ac5-9636-6d569b0630b0" />  
