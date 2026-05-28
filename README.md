@@ -16,35 +16,47 @@ print("Hello world")
 ```
 ### Nosso Time
 
-<table width="100%">
+<table align="center">
   <tr>
-    <td width="33.33%" align="center">Kleyton Luiz</td>
-    <td width="33.33%" align="center">Fernando Bersellini</td>
-    <td width="33.33%" align="center">Guilherme Acioli</td>
+    <td align="center" width="250">
+      Kleyton Luiz
+    </td>
+    <td align="center" width="250">
+      Fernando Bersellini
+    </td>
+    <td align="center" width="250">
+      Guilherme Acioli
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="250">
+      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+    </td>
+    <td align="center" width="250">
+      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+    </td>
+    <td align="center" width="250">
+      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+    </td>
   </tr>
 </table>
 
-<table width="100%">
-  <tr>
-    <td width="33.33%" align="center"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" width="40" alt="Git Kleyton"></td>
-    <td width="33.33%" align="center"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" width="40" alt="Git Fernando"></td>
-    <td width="33.33%" align="center"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" width="40" alt="Git GuiAcioli"></td>
-  </tr>
-</table>
-
-https://skillicons.dev/icons?i=github
                      
-<table width="100%">
+<table align="center">
   <tr>
-    <td width="50%" align="center">Matheus Cardoso</td>
-    <td width="50%" align="center">Vitor Kenji</td>
-  </tr>
-</table>  
-
-<table width="100%">
+    <td align="center" width="250">
+      Vitor Kenji
+    </td>
+    <td align="center" width="250">
+      Matheus Vinicius
+    </td>
   <tr>
-    <td width="50%" align="center"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" width="40" alt="Git MathJones"></td>
-    <td width="50%" align="center"><img src="https://github.com/vkenji1](https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg)" width="40" alt="Git VKenji"></td>
+    <td align="center" width="250">
+      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+    </td>
+    <td align="center" width="250">
+      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+    </td>
   </tr>
 </table>
 
