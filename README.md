@@ -16,12 +16,37 @@ print("Hello world")
 ```
 ### Nosso Time
 
-Kleyton Luiz             Fernando Bersellini         Guilherme Acioli
-[![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/KleytonL) [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/FernandoBersellini) [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)
+<table width="100%">
+  <tr>
+    <td width="33.33%" align="center">Kleyton Luiz</td>
+    <td width="33.33%" align="center">Fernando Bersellini</td>
+    <td width="33.33%" align="center">Guilherme Acioli</td>
+  </tr>
+</table>
 
-Matheus Cardoso             Vitor Kenji
+<table width="100%">
+  <tr>
+    <td width="33.33%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/KleytonL)</td>
+    <td width="33.33%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/FernandoBersellini)</td>
+    <td width="33.33%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)</td>
+  </tr>
+</table>
 
- [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/MathJoones) [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/vkenji1)
+                     
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">Matheus Cardoso</td>
+    <td width="50%" align="center">Vitor Kenji</td>
+  </tr>
+</table>  
+
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/MathJoones)</td>
+    <td width="50%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/vkenji1)</td>
+  </tr>
+</table>
+
 
 ### Preview
 <img width="1919" height="899" alt="image" src="https://github.com/user-attachments/assets/93c62a3f-dade-4ac5-9636-6d569b0630b0" />  
