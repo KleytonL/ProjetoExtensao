@@ -26,12 +26,13 @@ print("Hello world")
 
 <table width="100%">
   <tr>
-    <td width="33.33%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/KleytonL)</td>
-    <td width="33.33%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/FernandoBersellini)</td>
-    <td width="33.33%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/GuilhermeAcioli)</td>
+    <td width="33.33%" align="center"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" width="40" alt="Git Kleyton"></td>
+    <td width="33.33%" align="center"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" width="40" alt="Git Fernando"></td>
+    <td width="33.33%" align="center"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" width="40" alt="Git GuiAcioli"></td>
   </tr>
 </table>
 
+https://skillicons.dev/icons?i=github
                      
 <table width="100%">
   <tr>
@@ -42,8 +43,8 @@ print("Hello world")
 
 <table width="100%">
   <tr>
-    <td width="50%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/MathJoones)</td>
-    <td width="50%" align="center">[![My GitHub](https://skillicons.dev/icons?i=github)](https://github.com/vkenji1)</td>
+    <td width="50%" align="center"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" width="40" alt="Git MathJones"></td>
+    <td width="50%" align="center"><img src="https://github.com/vkenji1](https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg)" width="40" alt="Git VKenji"></td>
   </tr>
 </table>
 
