@@ -9,8 +9,8 @@ O jogo tem como objetivo sobreviver por um determinado período de tempo contra 
 #### Arsenal
 
                               
-### Sobre o código <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/godot.png" width="25" />  
-O Godot Engine tem sua própria linguagem, mas é fortemente inspirada em Python, apesar de sua tipagem ser estática e gradual. 
+### Sobre a Godot Engine <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/godot.png" width="25" />  
+Godot é um dos mais famosos Engines para desenvolver jogos atualmente, graças a seu design inovador e flexivel de "Nós" e "Cenas". Atualmente, é possível criar jogos tanto 2D, com sua Engine dedicada, quanto 3D, sendo mais simples, porém ainda poderoso, com todas as ferramentas para contruir, animar e renderizar suas ideias. Além de ser possível realizar o lançamento de seus projetos em diversas plataformas e seu código ser totalmente aberto.
 ```gdscript
 print("Hello world")
 ```
