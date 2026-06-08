@@ -264,9 +264,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -59.0
+offset_left = -60.0
 offset_top = 3.0
-offset_right = -31.0
+offset_right = -32.0
 offset_bottom = 11.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 8
@@ -305,11 +305,11 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -59.0
 offset_top = 21.0
-offset_right = -17.0
+offset_right = -12.0
 offset_bottom = 25.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 4
-text = "Desbloqueia: ???"
+text = "Desbloqueia: O Vazio"
 
 [node name="level_three_button" type="TextureButton" parent="Grid" unique_id=1937409025]
 layout_mode = 2
@@ -331,11 +331,12 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -59.0
 offset_top = 3.0
-offset_right = -31.0
+offset_right = -25.999962
 offset_bottom = 11.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 8
-text = "???"
+text = "O Vazio"
+autowrap_trim_flags = 128
 
 [node name="TimeLabel" type="Label" parent="Grid/level_three_button" unique_id=1567410963]
 layout_mode = 1

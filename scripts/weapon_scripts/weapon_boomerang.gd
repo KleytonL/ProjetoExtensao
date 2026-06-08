@@ -36,6 +36,7 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			projectile_quantity = 1 + player.stats.bonus_projectile
 			attack_speed = 10.0 - player.stats.bonus_attack_speed
 			instance.damage = 1
+			instance.force = 10
 			instance.projectile_size = 0.75 * player.stats.bonus_projectile_size
 		2:
 			instance.projectile_speed = 150
@@ -43,6 +44,7 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			projectile_quantity = 1 + player.stats.bonus_projectile
 			attack_speed = 10.0 - player.stats.bonus_attack_speed
 			instance.damage = 1.5
+			instance.force = 10
 			instance.projectile_size = 0.9 * player.stats.bonus_projectile_size
 		3:
 			instance.projectile_speed = 150
@@ -50,6 +52,7 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 10.0 - player.stats.bonus_attack_speed
 			instance.damage = 1.5
+			instance.force = 15
 			instance.projectile_size = 0.9 * player.stats.bonus_projectile_size
 		4:
 			instance.projectile_speed = 150
@@ -57,6 +60,7 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 8.5 - player.stats.bonus_attack_speed
 			instance.damage = 2
+			instance.force = 15
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		5:
 			instance.projectile_speed = 175
@@ -64,6 +68,7 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			projectile_quantity = 2 + player.stats.bonus_projectile
 			attack_speed = 8.5 - player.stats.bonus_attack_speed
 			instance.damage = 2
+			instance.force = 20
 			instance.projectile_size = 1.0 * player.stats.bonus_projectile_size
 		6: 
 			instance.projectile_speed = 175
@@ -71,4 +76,5 @@ func calculate_current_level(instance: BoomerangProjectile) -> void:
 			projectile_quantity = 3 + player.stats.bonus_projectile
 			attack_speed = 7.0 - player.stats.bonus_attack_speed
 			instance.damage = 2.5
+			instance.force = 20
 			instance.projectile_size = 1.01 * player.stats.bonus_projectile_size

@@ -35,7 +35,7 @@ metadata/_custom_type_script = "uid://fqca6eefpksa"
 
 [sub_resource type="Resource" id="Resource_gb53w"]
 script = ExtResource("3_ec1tj")
-time_start = 100
+time_start = 90
 time_end = 240
 enemy = ExtResource("4_dc68i")
 enemy_num = 4

@@ -792,7 +792,7 @@ const UPGRADES: Dictionary = {
 	"crit_multiplier1": {
 		"icon": ICON_PATH + "icon-crit-multiplier.svg",
 		"displayname": "Multip. de Crítico",
-		"details": "Aumenta o seu dano crítico em 5%!",
+		"details": "Aumenta o seu multiplicador em 5%!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "stats",
@@ -852,7 +852,7 @@ const UPGRADES: Dictionary = {
 	"vampirism1": {
 		"icon": ICON_PATH + "icon-vampirism.svg",
 		"displayname": "Vampirismo",
-		"details": "Aumenta a cura do vampirismo em 3%!",
+		"details": "Ao atacar um inimigo, você tem 25% de chande de curar 3% do dano causado!",
 		"level": "Level 1",
 		"prerequisite": [],
 		"type": "stats",

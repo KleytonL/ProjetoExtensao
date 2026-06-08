@@ -6,7 +6,6 @@ class_name BoomerangProjectile
 var projectile_speed: float
 var projectile_acceleration: float
 var projectile_size: float
-var knockback: int
 
 var projectile_angle: Vector2 = Vector2.ZERO
 var projectile_target: Vector2 = Vector2.ZERO
