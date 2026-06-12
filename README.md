@@ -30,13 +30,19 @@ print("Hello world")
   </tr>
   <tr>
     <td align="center" width="250">
-      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      <a href="https://github.com/KleytonL" target="_blank">
+        <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      </a>
     </td>
     <td align="center" width="250">
-      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      <a href="https://github.com/FernandoBersellini" target="_blank">
+        <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      </a>
     </td>
     <td align="center" width="250">
-      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      <a href="https://github.com/GuilhermeAcioli" target="_blank">
+        <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      </a>
     </td>
   </tr>
 </table>
@@ -52,10 +58,14 @@ print("Hello world")
     </td>
   <tr>
     <td align="center" width="250">
-      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      <a href="https://github.com/vitorkenji10" target="_blank">
+        <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      </a>
     </td>
     <td align="center" width="250">
-      <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      <a href="https://github.com/MathJoones" target="_blank">
+        <img src="https://skillicons.dev/icons?i=github" width="45" alt="GitHub" />
+      </a>
     </td>
   </tr>
 </table>
